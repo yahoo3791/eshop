@@ -1,0 +1,103 @@
+/* Navbar style START*/
+.nav-item {
+  border: 5px solid transparent;
+  &:hover {
+    animation-name: squareHover;
+    animation-duration: 2s;
+    animation-delay: .2s;
+    animation-iteration-count: infinite;
+  }
+}
+.gsapNavbar {
+  background-color: rgba(0, 0, 0, 0.643);
+  height: 80px;
+  position: fixed;
+  overflow: hidden;
+  top:0;
+  width: 100vw;
+  box-shadow:0 2px 5px black;
+  z-index: 100;
+}
+.logo {
+  width: 50px;
+}
+@keyframes squareHover {
+  0% {
+    border-bottom: 5px solid transparent;
+    background-color: black;
+  }
+
+  25% {
+    border-bottom: 5px solid rgba(255, 255, 255, 0.745);
+  }
+
+  50% {
+    border-right: 5px solid rgb(225, 222, 222);
+    border-bottom: 5px solid transparent;
+  }
+
+  75% {
+    border-top: 5px solid rgb(164, 161, 161);
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+
+  100% {
+    border-left: 5px solid rgb(113, 109, 109);
+    border-top: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+}
+/* Navbar style END*/
+/* Footer style START*/
+.footer {
+  box-shadow: 0px 0px 11px rgb(97, 96, 96);
+}
+.subInput {
+  border:none;
+  border-bottom:1px solid white;
+  background-color: transparent;
+  outline: none;
+  &:focus {
+    border-bottom:1px solid rgb(176, 176, 176);
+  }
+}
+.subBtn {
+  border:none;
+  border-bottom: 1px solid white;
+  &:active {
+    box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 1.0);
+  }
+}
+.ins,
+.meta {
+  width: 30px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.096);
+}
+.ins {
+  line-height: 30px;
+  color: white;
+  transition: .2s all;
+  &:hover{
+    background: white;
+    color:black;
+  }
+}
+.meta {
+  transition: .2s all;
+  &:hover{
+    background: white;
+    svg{
+      fill:black;
+    }
+  }
+  &:active{
+    background: white;
+    svg {
+      fill:black;
+    }
+  }
+}
+/* Footer style END*/

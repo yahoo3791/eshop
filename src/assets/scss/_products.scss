@@ -7,3 +7,23 @@
   background-size: 200px 200px;
 }
 /* products rotate color end */
+
+/* products item START*/
+.product_item {
+  border: 1px solid white;
+    height: 250px;
+    box-shadow: 0px 5px 0px #ffffff;
+  .product_h3 {
+    writing-mode: vertical-lr;
+      text-orientation: mixed;
+      text-decoration: underline;
+  }
+  .product_more {
+    color: black;
+      line-height: 30px;
+      width: 30px;
+      height: 30px;
+  }
+}
+
+/* products item END*/

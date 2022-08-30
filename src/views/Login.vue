@@ -5,11 +5,15 @@
         <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
         <div class="mb-2">
           <label for="inputEmail" class="sr-only">Email address</label>
-          <input v-model="this.user.username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
+          <input v-model="this.user.username" type="email"
+          id="inputEmail" class="form-control" name="inputEmail"
+            placeholder="Email address" required />
         </div>
         <div class="mb-2">
           <label for="inputPassword" class="sr-only">Password</label>
-          <input v-model="this.user.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+          <input v-model="this.user.password"
+          type="password" id="inputPassword" class="form-control"
+            placeholder="Password" required />
         </div>
         <div class="text-end mt-4">
           <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
@@ -23,32 +27,28 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
-      user:{
-        username:'',
-        password:'',
-      }
-    }
+      user: {
+        username: '',
+        password: '',
+      },
+    };
   },
-  methods:{
+  methods: {
     signIn() {
       const api = `${process.env.VUE_APP_API}admin/signin`;
       this.axios.post(api, this.user)
         .then((res) => {
           console.log(res);
-          if ( res.data.success ) {
+          if (res.data.success) {
             const { token, expired } = res.data;
             document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
-            this.$router.push('/dashboard');
+            this.$router.push('/dashboard/backproducts');
           }
         });
     },
   },
-  computed() {
-
-  }
-}
+};
 </script>

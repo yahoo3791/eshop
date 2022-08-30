@@ -1,31 +1,40 @@
-/* pic parallax */
+/* 滾動視插圖 */
 .article {
   width: 100%;
-  height: 700px;
+  height: 500px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
   box-shadow: 4px 10px 40px gray;
+  z-index: -10;
+  transition: all 1s;
 }
 .section1 {
-  background-image: url('@/assets/pic/bg01.jpg');
+  background-image: url('@/assets/pic/pic01.jpg');
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 .section2 {
-  background-image: url('@/assets/pic/bg01.jpg');
+  background-image: url('@/assets/pic/pic03.jpg');
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 .section3 {
-  background-image: url('@/assets/pic/bg01.jpg');
+  background-image: url('@/assets/pic/pic03.jpg');
 }
-/* pic parallax end */
-/* font slide */
+/* 滾動視插圖 end */
+
+/* 首頁字體keyframes */
 .banner_title {
     white-space: nowrap;
-    font-size: 6rem;
-    width: 6ch;
+    font-size: 1rem;
+    width: 2ch;
     overflow: hidden;
-    animation: 2s typing steps(13, jump-none) forwards;
-    animation-iteration-count: infinite;
+    animation: 3s typing steps(150, jump-none) forwards;
+    // animation-iteration-count: infinite;
 }
 @keyframes typing {
   0% {
@@ -33,20 +42,23 @@
   }
 
   100% {
-    width: 6ch;
+    width: 20ch;
   }
 }
-/*  font slide end  */
-/* */
+/*  首頁字體keyframes end  */
+/* 配件背景 */
 .slide_bg2 {
     background: linear-gradient(45deg,
           rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 25%, transparent 25%, transparent 50%,
           rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 75%, transparent 75%, transparent);
       background-size: 50px 50px;
 }
-.slide_bg3 {
-    background: linear-gradient(45deg,
-          rgb(0, 0, 0) 0, rgb(0, 0, 0) 25%, transparent 25%, transparent 50%,
-          rgb(0, 0, 0) 50%, rgb(0, 0, 0) 75%, transparent 75%, transparent);
-      background-size: 50px 50px;
+/* 配件背景 end */
+.bg-font {
+  text-align: center;
+  bottom:-75px;
+  color:rgba(128, 128, 128, 0.463);
+}
+.mask {
+  background-color: rgba(0, 0, 0, 0.595);
 }

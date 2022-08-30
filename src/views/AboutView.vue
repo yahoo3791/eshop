@@ -1,7 +1,9 @@
 <template>
+<Navbar />
   <div class="banner position-fixed top-0 w-100" style="background:fixed;height:100vh;z-index:-1">
     <img src="../assets/pic/pexels-daria-shevtsova-737108.jpg" class="w-100 h-100" alt="">
-    <div class="mask position-absolute top-0 start-0 w-100 h-100" style="background:rgba(0,0,0,0.6)"></div>
+    <div class="mask position-absolute top-0 start-0 w-100 h-100"
+    style="background:rgba(0,0,0,0.6)"></div>
   </div>
   <div class="container overflow-hidden w-100">
     <div class="row">
@@ -16,26 +18,30 @@
       </div>
     </div>
   </div>
+<Footer />
 </template>
 <script>
 import { gsap } from 'gsap';
+import Navbar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   methods: {
     scrollAnimation() {
-      gsap.to('.about1',{x:2000,duration: 3,scrollTrigger: {trigger: '.about1',start: 'top center',scrub:5}})
-      gsap.to('.about2', { x: 2000, duration: 3, scrollTrigger: { trigger: '.about2', start: 'top center', scrub: 10 } })
-      gsap.to('.about3', { x: 2000, duration: 3, scrollTrigger: { trigger: '.about3', start: 'top center', scrub: 10 } })
-      gsap.to('.about4', { x: 2000, duration: 3, scrollTrigger: { trigger: '.about4', start: 'top center', scrub: 10 } })
-      gsap.to('.about5', { x: 2000, duration: 3, scrollTrigger: { trigger: '.about5', start: 'top center', scrub: 10 } })
-      gsap.to('.about6', { x: 2000, duration: 3, scrollTrigger: { trigger: '.about6', start: 'top center', scrub: 10 } })
-      gsap.to('.about7', { x: 2000, duration: 3, scrollTrigger: { trigger: '.about7', start: 'top center', scrub: 10 } })
-    }
+      gsap.to('.about1', { x: 2000, duration: 1, scrollTrigger: { trigger: '.about1', start: 'top center', scrub: 2 } });
+      gsap.to('.about2', { x: 2000, duration: 1, scrollTrigger: { trigger: '.about2', start: 'top center', scrub: 2 } });
+      gsap.to('.about3', { x: 2000, duration: 1, scrollTrigger: { trigger: '.about3', start: 'top center', scrub: 2 } });
+      gsap.to('.about4', { x: 2000, duration: 1, scrollTrigger: { trigger: '.about4', start: 'top center', scrub: 2 } });
+      gsap.to('.about5', { x: 2000, duration: 1, scrollTrigger: { trigger: '.about5', start: 'top center', scrub: 2 } });
+      gsap.to('.about6', { x: 2000, duration: 1, scrollTrigger: { trigger: '.about6', start: 'top center', scrub: 2 } });
+      gsap.to('.about7', { x: 2000, duration: 1, scrollTrigger: { trigger: '.about7', start: 'top center', scrub: 2 } });
+    },
   },
   created() {
   },
-  mounted: function () {
+  mounted() {
     this.scrollAnimation();
-  }
-}
+  },
+  components: { Navbar, Footer },
+};
 </script>
