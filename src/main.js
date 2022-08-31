@@ -5,6 +5,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import axios from 'axios';
 import VueAxios from 'vue-axios'
 import router from './router';
+import "bootstrap"
 import App from './App.vue';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import { currency } from './methods/filters';

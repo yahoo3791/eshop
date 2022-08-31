@@ -25,61 +25,70 @@
       </div>
     </div>
     <div class="container" style="">
-      產品分類的navbar
-      商品的item > 點擊後進入更詳細商品說明
-      footer
-      找地方放購物車icon
-
       <div class="row gx-0 gx-md-5 text-white" style="padding-top:100px;padding-bottom:100px">
-        <div class="col-12 col-md-6 col-xl-4 px-5 py-5">
+        <div class="col-12 col-md-6 col-xl-4 px-5 py-5" v-for="item in products">
           <div class="product_item text-white position-relative">
-            <img src="@/assets/pic/pic01.jpg" class="w-100 h-100" alt="">
+            <img :src="item.imageUrl" class="w-100 h-100" alt="">
             <h3 class="product_h3 position-absolute start-0 top-0">
-              時尚雜誌</h3>
-            <h3 class="position-absolute bottom-0 end-0"><del style="color:red;">1000$</del><br>new price</h3>
-            <a href="#" class="product_more position-absolute d-inline-block bg-white text-center"><i
+              {{item.title}}</h3>
+            <h3 class="position-absolute bottom-0 end-0 text-end"><del
+                style="color:red;">{{item.origin_price}}$</del><br>
+              特價{{item.price}}$</h3>
+            <a href="#" @click.prevent="addCart(item)" class="product_more position-absolute d-inline-block bg-white text-center"><i
                 class="bi bi-cart-plus"></i></a>
           </div>
           <div class="text-end">
-            <a href="#" class="text-white">查看更多</a>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-xl-4 px-5 py-5">
-          <div class="product_item text-white position-relative">
-            <img src="@/assets/pic/pic01.jpg" class="w-100 h-100" alt="">
-            <h3 class="product_h3 position-absolute start-0 top-0">
-              時尚雜誌</h3>
-            <h3 class="position-absolute bottom-0 end-0"><del style="color:red;">1000$</del><br>new price</h3>
-            <a href="#" class="product_more position-absolute d-inline-block bg-white text-center"><i
-                class="bi bi-cart-plus"></i></a>
-          </div>
-          <div class="text-end">
-            <a href="#" class="text-white">查看更多</a>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-xl-4 px-5 py-5">
-          <div class="product_item text-white position-relative">
-            <img src="@/assets/pic/pic01.jpg" class="w-100 h-100" alt="">
-            <h3 class="product_h3 position-absolute start-0 top-0">
-              時尚雜誌</h3>
-            <h3 class="position-absolute bottom-0 end-0"><del style="color:red;">1000$</del><br>new price</h3>
-            <a href="#" class="product_more position-absolute d-inline-block bg-white text-center"><i
-                class="bi bi-cart-plus"></i></a>
-          </div>
-          <div class="text-end">
-            <a href="#" class="text-white">查看更多</a>
+            <a href="#" class="text-white" @click.prevent="more(item.id)">查看更多</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <Pagination class="bg-dark" :pagination-obj="this.pagination" @post-page="getData"></Pagination>
   <Footer />
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
+import Pagination from '@/components/ProductsPage.vue';
 
 export default {
-  components: { Navbar, Footer },
+  data() {
+    return {
+      products: {},
+      pagination:{},
+    }
+  },
+  components: { Navbar, Footer, Pagination },
+  methods:{
+    getData(page=1) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products?page=${page}`;
+      this.axios.get(api).then((res) => {
+        this.products = res.data.products;
+        this.pagination = res.data.pagination;
+      })
+    },
+    more(id) {
+      console.log(id);
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
+      this.axios.get(api).then((res) => {
+        this.$router.push(`/user/product/${id}`);
+      })
+    },
+    addCart(item) {
+      const data = {
+        product_id: item.id,
+        qty: 1,
+      }
+      console.log(data);
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      this.axios.post(api, {data: data}).then((res) => {
+        console.log(res);
+      })
+    }
+  },
+  mounted() {
+    this.getData();
+  }
 };
 </script>

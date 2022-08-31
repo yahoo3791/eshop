@@ -1,11 +1,13 @@
 <template>
   <Navbar />
-  <div class="banner_video w-100 position-relative" style="height:100vh;">
-    <video class="w-100 h-100 xx" muted autoplay loop style="object-fit: cover;filter: blur(2px);">
-      <!-- autoplay loop -->
-      <source src="../assets/video/bannerVideo.mp4" type="video/mp4">
+  <div class="banner_video w-100 position-relative">
+    <video class="w-100 h-100" muted autoplay loop style="object-fit: cover;filter: blur(2px);">
+      <source src="@/assets/video/bannerVideo.mp4" type="video/mp4">
     </video>
-    <div class="position-absolute start-50" style="bottom:50px;">
+    <h1 class="text-white banner_title position-absolute start-50 top-50
+        translate-middle-x">透過雜誌看見世界。
+    </h1>
+    <div class="position-absolute start-50 translate-middle-x" style="bottom:50px;">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-arrow-bar-down animate__animated animate__slideOutDown
           animate__infinite	infinite" viewBox="0 0 16 16">
@@ -17,17 +19,61 @@
       </div>
     </div>
   </div>
-  <div class="container-fulid">
+  <div class="bg-img w-100" style="height:100vh;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="home-content w-75 position-relative mx-auto">
+            <img src="../assets/pic/pic01.jpg" class="w-100" style="height:220px;" alt="">
+            <h1 class="position-absolute top-0">每本雜誌都有故事</h1>
+            <a class="position-absolute bottom-0 start-50">前往商店</a>            
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h1>最新消息</h1>
+          <h1>2</h1>
+          <h1>3</h1>
+          <h1>4</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h1>優惠卷</h1>
+          <h1>2</h1>
+          <h1>3</h1>
+          <h1>4</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h1>熱門推薦</h1>
+          <h1>2</h1>
+          <h1>3</h1>
+          <h1>4</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h1>熱門新聞</h1>
+          <h1>2</h1>
+          <h1>3</h1>
+          <h1>4</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="container-fulid">
     <div class="row">
       <div class="col-12">
-        <h1 class="text-white banner_title position-absolute
-        translate-middle top-50 start-50">雜誌讓您的生活多點樂趣!!</h1>
+       
       </div>
       <div class="col-12">
       </div>
     </div>
-  </div>
-  <div class="container-fluid position-relative overflow-hidden">
+  </div> -->
+  <!-- <div class="container-fluid position-relative overflow-hidden">
     <div class="banner_solid position-absolute start-0 bg-dark w-100" style="height:10px"></div>
     <div class="slide_bg2 position-absolute end-0" style="height:30px;width: 2000px;z-index:10"></div>
     <div class="row">
@@ -72,50 +118,53 @@
       <div class="col-12 coupon text-center py-2" style="background:yellow">
         <div class=""><i class="bi bi-stopwatch"></i>結帳時輸入<span style="color:red">FHion99</span>使用折扣優惠碼</div>
       </div>
-    </div>
-    <div class="row position-relative">
-      <!-- <div class="col-5"></div> -->
-      <div class="col-12 gx-0 overflow-hidden" style="">
-        <div class="article section2">
-        </div>
+    </div> -->
+  <!-- <div class="row position-relative"> -->
+  <!-- <div class="col-12 gx-0 overflow-hidden" style="">
+      <div class="article section2">
       </div>
-      <div class="bg-font position-absolute" style="z-index:1">
+    </div> -->
+  <!-- <div class="bg-font position-absolute" style="z-index:1">
         <h1 style="font-size:10em">magazine</h1>
+      </div> -->
+  <!-- </div> -->
+  <!-- <div class="row position-relative" style="z-index:2">
+    <div class="col-12 coupon text-center py-2" style="background:yellow">
+      <div class="">
+        <marquee direction="right" height="20" scrollamount="10" behavior="alternate"><i class="bi bi-megaphone"></i>
+          跑馬燈測試</marquee>
       </div>
     </div>
-    <div class="row position-relative" style="z-index:2">
-      <div class="col-12 coupon text-center py-2" style="background:yellow">
-        <div class="">
-          <marquee direction="right" height="20" scrollamount="10" behavior="alternate"><i class="bi bi-megaphone"></i>
-            跑馬燈測試</marquee>
-        </div>
+  </div> -->
+  <!-- <div class="row d-none d-md-flex">
+    <div class="col-6 px-0">
+      <div class="recommend_item">
+        <img src="../assets/pic/pic02.jpg" class="d-block h-100 w-100" alt="">
       </div>
     </div>
-    <div class="row d-none d-md-flex">
-      <div class="col-6 px-0">
-        <div class="recommend_item">
-          <img src="../assets/pic/pic02.jpg" class="d-block h-100 w-100" alt="">
-        </div>
+    <div class="col-3 d-flex flex-column px-0">
+      <div class="recommend_item">
+        <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
       </div>
-      <div class="col-3 d-flex flex-column px-0">
-        <div class="recommend_item">
-          <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
-        </div>
-        <div class="recommend_item">
-          <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
-        </div>
+      <div class="recommend_item">
+        <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
+      </div>
 
+    </div>
+    <div class="col-3 d-md-flex flex-md-column px-0">
+      <div class="recommend_item">
+        <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
       </div>
-      <div class="col-3 d-md-flex flex-md-column px-0">
-        <div class="recommend_item">
-          <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
-        </div>
-        <div class="recommend_item">
-          <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
-        </div>
+      <div class="recommend_item">
+        <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
       </div>
     </div>
-    <!-- <div class="row">
+  </div> -->
+
+
+
+
+  <!-- <div class="row">
       <div class="col-12 gx-0 overflow-hidden position-relative" style="z-index: 2;">
         <div class="mask position-absolute top-0 w-100 h-100" style="z-index:3"></div>
         <div class="article section3">
@@ -137,7 +186,7 @@
         </div>
       </div>
     </div> -->
-  </div>
+  <!-- </div> -->
   <!-- 精選推薦 -->
   <Footer />
 </template>
@@ -176,16 +225,16 @@ export default {
       //     scrub: 4,
       //   },
       // });
-      gsap.to('.slide_bg2', {
-        x: 500,
-        duration: 5,
-        scrollTrigger: {
-          trigger: '.banner_video',
-          start: 'top',
-          toggleActions: 'play none none none',
-          scrub: 4,
-        },
-      });
+      // gsap.to('.slide_bg2', {
+      //   x: 500,
+      //   duration: 5,
+      //   scrollTrigger: {
+      //     trigger: '.banner_video',
+      //     start: 'top',
+      //     toggleActions: 'play none none none',
+      //     scrub: 4,
+      //   },
+      // });
     },
   },
   created() {

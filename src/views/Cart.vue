@@ -99,6 +99,22 @@ import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 
 export default {
+  data() {
+    return {
+
+    }
+  },
   components: { Navbar, Footer },
+  methods:{
+    getData() {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      this.axios.get(api).then((res) => {
+        console.log(res);
+      })
+    }
+  },
+  mounted() {
+    this.getData();
+  }
 };
 </script>

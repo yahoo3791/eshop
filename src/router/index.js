@@ -10,17 +10,30 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+    component: () => import('../views/AboutView.vue'),
   },
   {
-    path: '/products',
-    name: 'products',
-    component: () => import('../views/Products.vue'),
-  },
-  {
-    path: '/cart',
-    name: 'cart',
-    component: () => import('../views/Cart.vue'),
+    path: '/user',
+    component: () => import('../views/Userboard.vue'),
+    children:[
+      {
+        path: 'products',
+        component: () => import('../views/Products.vue'),
+      },
+      {
+        path: 'carts',
+        component: () => import('../views/Cart.vue'),
+      },
+      {
+        path: 'product/:productId',
+        component: () => import('../views/ProductMore.vue'),
+      },
+      // {
+      //   path: 'checkout/:orderId',
+      //   name: 'test',
+      //   component: () => import('../views/front/UserCheckout.vue'),
+      // }
+    ]
   },
   {
     path: '/login',
@@ -46,26 +59,6 @@ const routes = [
       }
     ],
   },
-  {
-    path: '/user',
-    component: () => import('../views/front/Userboard.vue'),
-    children:[
-      {
-        path: 'cart',
-        component: () => import('../views/front/UserCart.vue'),
-      },
-      {
-        path: 'product/:productId',
-        name:'test',
-        component: () => import('../views/front/UserProduct.vue'),
-      },
-      {
-        path: 'checkout/:orderId',
-        name: 'test',
-        component: () => import('../views/front/UserCheckout.vue'),
-      }
-    ]
-  }
 ];
 
 const router = createRouter({
@@ -74,7 +67,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // console.log(to)
   document.title = `${ process.env.VUE_APP_TITLE } - ${ to.name }`
   next()
 })

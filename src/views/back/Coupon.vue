@@ -43,7 +43,7 @@
   <deleteModal ref="deleteModal" :delete-item="this.deleteCoupon" @delete-coupon="deleteItem"></deleteModal>
 </template>
 <script>
-import couponModal from '@/components/couponModal.vue';
+import couponModal from '@/components/CouponModal.vue';
 import emitter from '@/methods/emitter';
 import deleteModal from '@/views/back/DeleteCoupon.vue';
 import Loading from 'vue-loading-overlay';

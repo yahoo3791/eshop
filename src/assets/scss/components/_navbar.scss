@@ -1,0 +1,84 @@
+// .nav-item {
+//   border: 5px solid transparent;
+
+//   &:hover {
+//     animation-name: squareHover;
+//     animation-duration: 2s;
+//     animation-delay: .2s;
+//     animation-iteration-count: infinite;
+//   }
+// }
+
+// .gsapNavbar {
+//   background-color: rgba(0, 0, 0, 0.643);
+//   height: 80px;
+//   position: fixed;
+//   overflow: hidden;
+//   top: 0;
+//   width: 100vw;
+//   box-shadow: 0 2px 5px black;
+//   z-index: 100;
+// }
+
+// .logo {
+//   width: 50px;
+// }
+
+// @keyframes squareHover {
+//   0% {
+//     border-bottom: 5px solid transparent;
+//     background-color: black;
+//   }
+
+//   25% {
+//     border-bottom: 5px solid rgba(255, 255, 255, 0.745);
+//   }
+
+//   50% {
+//     border-right: 5px solid rgb(225, 222, 222);
+//     border-bottom: 5px solid transparent;
+//   }
+
+//   75% {
+//     border-top: 5px solid rgb(164, 161, 161);
+//     border-right: 5px solid transparent;
+//     border-bottom: 5px solid transparent;
+//   }
+
+//   100% {
+//     border-left: 5px solid rgb(113, 109, 109);
+//     border-top: 5px solid transparent;
+//     border-right: 5px solid transparent;
+//     border-bottom: 5px solid transparent;
+//   }
+// }
+
+// /* Navbar style END*/
+// /* Footer style START*/
+
+.navbar {
+  box-shadow: 0px 5px 20px black;
+  .navbar-logo {
+    width: 100px;
+  }
+  .navbar-nav {
+    letter-spacing: 2px;
+    .nav-link {
+      color:#ffffffc9;
+    }
+  }
+  .navbar-toggler {
+    border: none;
+    outline: none;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .navbar-toggler-icon,
+  .navbar-logo {
+    filter: invert(1);
+  }
+}
+.information {
+  font-size: 8px;
+}

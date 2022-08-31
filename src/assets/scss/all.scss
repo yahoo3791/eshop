@@ -1,9 +1,11 @@
-@import './reset.scss';
+@import './base/reset';
 @import "~bootstrap/scss/functions";
-@import "../scss/variable";
+@import "../scss/abstracts/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/bootstrap";                            
-@import "./homePage";
-@import "./products";
-@import './utility';
-@import './rwd';
+@import "./page/homePage";
+@import "./page/loginPage";
+@import "./page/products";
+@import './page/productMore';
+@import "./components/navbar";
+@import "./components/footer";
