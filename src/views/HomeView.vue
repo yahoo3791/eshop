@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <div class="banner_video w-100 position-relative">
-    <video class="w-100 h-100" muted autoplay loop style="object-fit: cover;filter: blur(2px);">
+    <video class="w-100 h-100" muted autoplay loop controls="false" style="object-fit: cover;filter: blur(2px);">
       <source src="@/assets/video/bannerVideo.mp4" type="video/mp4">
     </video>
     <h1 class="text-white banner_title position-absolute start-50 top-50
@@ -19,175 +19,67 @@
       </div>
     </div>
   </div>
-  <div class="bg-img w-100" style="height:100vh;">
+  <div class="bg-dark overflow-hidden bg-shadow w-100">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="home-content w-75 position-relative mx-auto">
-            <img src="../assets/pic/pic01.jpg" class="w-100" style="height:220px;" alt="">
-            <h1 class="position-absolute top-0">每本雜誌都有故事</h1>
-            <a class="position-absolute bottom-0 start-50">前往商店</a>            
+            <img src="../assets/pic/pic01.jpg" class="w-100 position-relative" style="height:220px;z-index:2;" alt="">
+            <h1 class="home-content-h1 position-absolute top-0 fs-6" style="z-index:2">每本雜誌都有故事</h1>
+            <div class="bg-solid position-absolute"></div>
+            <div class="bg-solid2 position-absolute"></div>
+            <a href="#/user/products" class="position-absolute bottom-0 start-50 text-white" style="z-index:2">前往商店</a>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <h1>最新消息</h1>
-          <h1>2</h1>
-          <h1>3</h1>
-          <h1>4</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <h1>優惠卷</h1>
-          <h1>2</h1>
-          <h1>3</h1>
-          <h1>4</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <h1>熱門推薦</h1>
-          <h1>2</h1>
-          <h1>3</h1>
-          <h1>4</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <h1>熱門新聞</h1>
-          <h1>2</h1>
-          <h1>3</h1>
-          <h1>4</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- <div class="container-fulid">
-    <div class="row">
-      <div class="col-12">
-       
-      </div>
-      <div class="col-12">
-      </div>
-    </div>
-  </div> -->
-  <!-- <div class="container-fluid position-relative overflow-hidden">
-    <div class="banner_solid position-absolute start-0 bg-dark w-100" style="height:10px"></div>
-    <div class="slide_bg2 position-absolute end-0" style="height:30px;width: 2000px;z-index:10"></div>
-    <div class="row">
-      <div class="col-2 d-flex justify-content-around align-items-end" style="writing-mode:vertical-lr">
-        <h2>每一本雜誌，<br>都有說不完的故事</h2>
-        <h1 class="border-bottom">MGZ <span class="fs-6">想說的話</span></h1>
-      </div>
-      <div class="col-4 gx-0 overflow-hidden" style="">
-        <div class="article section1 position-relative">
-          <h2 class="position-absolute bottom-0" style="left:30%">magazine</h2>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="row">
-          <div class="col-12 pt-5">
-            <h1 class="text-center">品牌發展與事跡</h1>
-          </div>
-          <div class="col-12">
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <div class="ps-md-5" style="border-bottom:1px solid black">
-                  <p>紙本雜誌背後的辛酸與挑戰，是閱聽眾與編輯之間的兩難。</p>
-                </div>
-              </div>
-              <div class="col-6 col-md-6 d-sm-none"></div>
-            </div>
-          </div>
-          <div class="col-3" style="border-right:1px solid black">
-          </div>
-          <div class="col-9 pt-3 mt-md-5" style="text-indent: 2rem;">
-            <p>現代諸多原因導致大環境閱讀方式改變，不再需要紙張閱讀，通路迅速萎縮，
-              許多雜誌品牌紛紛轉型網路書籍，反之也有重新定義雜誌書籍的書商，
-              不再是單純是本雜誌，讓已逐漸成為歷史回憶、變成像黑膠唱片的藝術品，
-              然而MGZ零售商提供網路平台提供他們販售不抽佣金，就為了把回憶留存到最後一刻...
-              <span class="d-block text-end" style="font-size:10px">2020/02/02</span>
+          <div class="home-coupon mx-auto position-relative text-center">
+            <span class="d-block home-coupon-inner position-absolute"></span>
+            <span class="d-block position-absolute"></span>
+            <span class="d-block position-absolute"></span>
+            <p class="text-white opacity-75">折扣10%優惠碼<br><strong>Sunny010</strong><br><i class="coupon-remind">結帳時輸入</i>
             </p>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12 coupon text-center py-2" style="background:yellow">
-        <div class=""><i class="bi bi-stopwatch"></i>結帳時輸入<span style="color:red">FHion99</span>使用折扣優惠碼</div>
-      </div>
-    </div> -->
-  <!-- <div class="row position-relative"> -->
-  <!-- <div class="col-12 gx-0 overflow-hidden" style="">
-      <div class="article section2">
-      </div>
-    </div> -->
-  <!-- <div class="bg-font position-absolute" style="z-index:1">
-        <h1 style="font-size:10em">magazine</h1>
-      </div> -->
-  <!-- </div> -->
-  <!-- <div class="row position-relative" style="z-index:2">
-    <div class="col-12 coupon text-center py-2" style="background:yellow">
-      <div class="">
-        <marquee direction="right" height="20" scrollamount="10" behavior="alternate"><i class="bi bi-megaphone"></i>
-          跑馬燈測試</marquee>
-      </div>
-    </div>
-  </div> -->
-  <!-- <div class="row d-none d-md-flex">
-    <div class="col-6 px-0">
-      <div class="recommend_item">
-        <img src="../assets/pic/pic02.jpg" class="d-block h-100 w-100" alt="">
-      </div>
-    </div>
-    <div class="col-3 d-flex flex-column px-0">
-      <div class="recommend_item">
-        <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
-      </div>
-      <div class="recommend_item">
-        <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
-      </div>
-
-    </div>
-    <div class="col-3 d-md-flex flex-md-column px-0">
-      <div class="recommend_item">
-        <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
-      </div>
-      <div class="recommend_item">
-        <img src="../assets/pic/pic02.jpg" class="h-100 w-100" alt="">
-      </div>
-    </div>
-  </div> -->
-
-
-
-
-  <!-- <div class="row">
-      <div class="col-12 gx-0 overflow-hidden position-relative" style="z-index: 2;">
-        <div class="mask position-absolute top-0 w-100 h-100" style="z-index:3"></div>
-        <div class="article section3">
-          <div class="row position-relative" style="z-index:4">
-            <div class="col-12 text-white">
-              <h1 style="writing-mode: vertical-lr;
-    text-orientation: upright;text-shadow:0px 0px black">NEWS</h1>
-            </div>
-            <div class="col">
-              <div class="item"></div>
-            </div>
-            <div class="col">
-              <div class="item"></div>
-            </div>
-            <div class="col">
-              <div class="item"></div>
-            </div>
+      <div class="row">
+        <div class="col-12 text-white text-center pt-5">
+          <div class="topPicks-area">
+            <h1>TOP<br><i class="bi bi-trophy"></i><br><span class="topPicks-span">picks</span></h1>
           </div>
         </div>
+        <div class="col-12 mb-5">
+          <div class="topPicks-item p-1">
+            <img src="../../src/assets/pic/pic03.jpg" class="w-100 h-100" alt="">
+          </div>
+          <div class="topPicks-content text-white">
+            <h2>title & black</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio dolorem nostrum non minus nobis? Amet
+              maxime officia similique minima adipisci!</p>
+            <a href="#" class="text-white">看更多</a>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="topPicks-item p-1">
+            <img src="../../src/assets/pic/pic03.jpg" class="w-100 h-100" alt="">
+          </div>
+          <div class="topPicks-content text-white">
+            <h2>title & black</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio dolorem nostrum non minus nobis? Amet
+              maxime officia similique minima adipisci!</p>
+            <a href="#" class="text-white">看更多</a>
+          </div>
+        </div>
+        <div class="col-12 text-center py-5">
+          <button>SHOP <i class="bi bi-bag"></i></button>
+        </div>
       </div>
-    </div> -->
-  <!-- </div> -->
-  <!-- 精選推薦 -->
+      <div class="arrowUp ps-2 position-fixed bottom-0 end-0 opacity-75">
+        <a href="#" class="text-black"><i class="bi bi-arrow-90deg-up"></i></a>
+      </div>
+    </div>
+  </div>
   <Footer />
 </template>
 

@@ -64,33 +64,6 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid pb-5">
-      <div class="col-12 d-flex pt-5 pb-2">
-        <h1 class="text-white">Top Picks</h1>
-      </div>
-      <div class="row gy-5">
-        <div class="col-12 col-md-4 col-lg-3">
-          <div class="item" style="height: 400px;">
-            <img src="../assets/pic/pic01.jpg" class="w-100 h-100" alt="">
-          </div>
-        </div>
-        <div class="col-12 col-md-4 col-lg-3">
-          <div class="item" style="height: 400px;">
-            <img src="../assets/pic/pic01.jpg" class="w-100 h-100" alt="">
-          </div>
-        </div>
-        <div class="col-12 col-md-4 col-lg-3">
-          <div class="item" style="height: 400px;">
-            <img src="../assets/pic/pic01.jpg" class="w-100 h-100" alt="">
-          </div>
-        </div>
-        <div class="col-12 col-md-4 col-lg-3">
-          <div class="item" style="height: 400px;">
-            <img src="../assets/pic/pic01.jpg" class="w-100 h-100" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
   <Footer />
 </template>

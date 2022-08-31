@@ -17,9 +17,9 @@
           <router-link to="/login" class="nav-link">登入<i class="bi bi-person"></i></router-link>
           <div class="information text-white opacity-75 mt-5">
             <p>辦公室地址:台北市信義區市府路101號<br>
-              客服電話:<a href="tel:+886-2-1010101">(02)1010101</a><br>
+              客服電話:<a href="tel:+886-2-1010101" class="text-white">(02)1010101</a><br>
               客服時間:週一至週五,上午07:00~下午17:00<br>
-              Email:<a href="mailto:MgzOfficer010@gmail.com">MgzOfficer010@gmail.com</a><br>
+              Email:<a href="mailto:MgzOfficer010@gmail.com" class="text-white">MgzOfficer010@gmail.com</a><br>
             </p>
           </div>
         </div>

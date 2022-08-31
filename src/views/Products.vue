@@ -1,10 +1,9 @@
 <template>
   <Navbar />
   <div class="banner position-relative">
-    <img src="@/assets/pic/pexels-daria-shevtsova-737108.jpg" class="w-100" style="object-fit:cover;height: 100vh;"
+    <img src="@/assets/pic/pexels-daria-shevtsova-737108.jpg" class="w-100" style="object-fit:cover;height: 50vh;"
       alt="">
-    <div class="position-absolute overflow-hidden" style="bottom:-65px; width: 100%; height: 250px;
-      background-color: #212529; transform: skewY(-2deg);">
+    <div class="position-absolute overflow-hidden" style="bottom: 0;width: 100%;height: 70px;background-color: rgb(33, 37, 41);">
       <div class="div2"></div>
     </div>
   </div>
@@ -14,7 +13,7 @@
         <div class="col-12">
         </div>
         <div class="col">
-          <ul class="d-flex justify-content-center position-relative">
+          <ul class="d-flex justify-content-center position-relative p-0">
             <li class="px-1 px-md-3"><a class="text-white text-decoration-none" href="">全部雜誌</a></li>
             <li class="px-1 px-md-3"><a class="text-white text-decoration-none" href="">時尚</a></li>
             <li class="px-1 px-md-3"><a class="text-white text-decoration-none" href="">藝術</a></li>
@@ -25,7 +24,7 @@
       </div>
     </div>
     <div class="container" style="">
-      <div class="row gx-0 gx-md-5 text-white" style="padding-top:100px;padding-bottom:100px">
+      <div class="row gx-0 gx-md-5 text-white">
         <div class="col-12 col-md-6 col-xl-4 px-5 py-5" v-for="item in products">
           <div class="product_item text-white position-relative">
             <img :src="item.imageUrl" class="w-100 h-100" alt="">
@@ -34,7 +33,8 @@
             <h3 class="position-absolute bottom-0 end-0 text-end"><del
                 style="color:red;">{{item.origin_price}}$</del><br>
               特價{{item.price}}$</h3>
-            <a href="#" @click.prevent="addCart(item)" class="product_more position-absolute d-inline-block bg-white text-center"><i
+            <a href="#" @click.prevent="addCart(item)"
+              class="product_more position-absolute d-inline-block bg-white text-center"><i
                 class="bi bi-cart-plus"></i></a>
           </div>
           <div class="text-end">

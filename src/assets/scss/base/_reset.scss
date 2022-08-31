@@ -133,13 +133,11 @@ table {
   border-spacing: 0;
 }
 *,*::before,*::after {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
 }
 html {
   scroll-behavior: smooth;
 }
 a {
-  color:white !important;
+  color:white;
 }
