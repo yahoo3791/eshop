@@ -71,7 +71,7 @@
             <a href="#" class="text-white">看更多</a>
           </div>
         </div>
-        <div class="col-12 text-center py-5">
+        <div class="col-12 text-center text-black py-5">
           <button>SHOP <i class="bi bi-bag"></i></button>
         </div>
       </div>

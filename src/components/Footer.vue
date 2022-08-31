@@ -5,9 +5,7 @@
         <div class="col-12">
           <img class="footer-logo" src="@/assets/pic/logo2.png" alt="">
         </div>
-
-
-
+        
         <div class="col-12">
           <Form @submit="onSubmit" v-slot="{errors}" class="position-relative form-outline form-white my-2">
             <label class="d-block sub-font" for="subscription">訂閱更多流行資訊</label>
