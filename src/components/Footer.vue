@@ -5,7 +5,7 @@
         <div class="col-12">
           <img class="footer-logo" src="@/assets/pic/logo2.png" alt="">
         </div>
-        
+
         <div class="col-12">
           <Form @submit="onSubmit" v-slot="{errors}" class="position-relative form-outline form-white my-2">
             <label class="d-block sub-font" for="subscription">訂閱更多流行資訊</label>
@@ -14,9 +14,9 @@
             <span class="errorMessage-footer errorMessage position-absolute">
               {{ errors.email }}
             </span>
-            <button type="submit" class="subBtn">
+            <a class="subBtn bg-white p-1 px-2">
               <i class="bi bi-box-arrow-right"></i>
-            </button>
+            </a>
           </Form>
         </div>
         <div class="col-12 d-flex align-items-center justify-content-center mt-1">

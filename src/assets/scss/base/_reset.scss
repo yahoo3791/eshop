@@ -141,3 +141,6 @@ html {
 a {
   color:white;
 }
+input[type="button"],input[type="submit"] {
+  -webkit-appearance: none;
+}

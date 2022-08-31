@@ -72,7 +72,8 @@
           </div>
         </div>
         <div class="col-12 text-center text-black py-5">
-          <button>SHOP <i class="bi bi-bag"></i></button>
+          <!-- <button type="button">SHOP <i class="bi bi-bag"></i></button> -->
+          <a href="#" class="bg-white text-black text-decoration-none px-2 py-1">SHOP <i class="bi bi-bag"></i></a>
         </div>
       </div>
       <div class="arrowUp ps-2 position-fixed bottom-0 end-0 opacity-75">
