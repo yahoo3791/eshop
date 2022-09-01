@@ -1,9 +1,7 @@
 <template>
   <Navbar />
   <div class="banner_video w-100 position-relative">
-    <video class="w-100 h-100" muted autoplay loop controls="false" style="object-fit: cover;filter: blur(2px);">
-      <source src="@/assets/video/bannerVideo.mp4" type="video/mp4">
-    </video>
+    <img src="@/assets/pic/banner.jpg" class="w-100 h-100" alt="">
     <h1 class="text-white banner_title position-absolute start-50 top-50
         translate-middle-x">透過雜誌看見世界。
     </h1>
@@ -38,7 +36,7 @@
             <span class="d-block home-coupon-inner position-absolute"></span>
             <span class="d-block position-absolute"></span>
             <span class="d-block position-absolute"></span>
-            <p class="text-white opacity-75">折扣10%優惠碼<br><strong>Sunny010</strong><br><i class="coupon-remind">結帳時輸入</i>
+            <p class="text-white opacity-75">折扣10%優惠碼<br><strong>coupon012</strong><br><i class="coupon-remind">結帳時輸入</i>
             </p>
           </div>
         </div>
@@ -51,13 +49,13 @@
         </div>
         <div class="col-12 mb-5">
           <div class="topPicks-item p-1">
-            <img src="../../src/assets/pic/pic03.jpg" class="w-100 h-100" alt="">
+            <img src="@/assets/pic/pic03.jpg" class="w-100 h-100" alt="">
           </div>
           <div class="topPicks-content text-white">
             <h2>title & black</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio dolorem nostrum non minus nobis? Amet
               maxime officia similique minima adipisci!</p>
-            <a href="#" class="text-white">看更多</a>
+            <router-link to="/user/products" class="text-white">看更多</router-link>
           </div>
         </div>
         <div class="col-12">
@@ -68,15 +66,15 @@
             <h2>title & black</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio dolorem nostrum non minus nobis? Amet
               maxime officia similique minima adipisci!</p>
-            <a href="#" class="text-white">看更多</a>
+            <router-link to="/user/products" class="text-white">看更多</router-link>
           </div>
         </div>
         <div class="col-12 text-center text-black py-5">
-          <!-- <button type="button">SHOP <i class="bi bi-bag"></i></button> -->
-          <a href="#" class="bg-white text-black text-decoration-none px-2 py-1">SHOP <i class="bi bi-bag"></i></a>
+          <router-link to="/user/products" class="bg-white text-black text-decoration-none px-3 py-2">SHOP <i
+              class="bi bi-bag"></i></router-link>
         </div>
       </div>
-      <div class="arrowUp ps-2 position-fixed bottom-0 end-0 opacity-75">
+      <div class="arrowUp ps-2 position-fixed bottom-0 end-0 opacity-75 d-md-none">
         <a href="#" class="text-black"><i class="bi bi-arrow-90deg-up"></i></a>
       </div>
     </div>

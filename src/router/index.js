@@ -28,11 +28,10 @@ const routes = [
         path: 'product/:productId',
         component: () => import('../views/ProductMore.vue'),
       },
-      // {
-      //   path: 'checkout/:orderId',
-      //   name: 'test',
-      //   component: () => import('../views/front/UserCheckout.vue'),
-      // }
+      {
+        path: 'checkout/:orderId',
+        component: () => import('../views/Checkout.vue'),
+      }
     ]
   },
   {

@@ -14,7 +14,7 @@
             <span class="errorMessage-footer errorMessage position-absolute">
               {{ errors.email }}
             </span>
-            <a class="subBtn bg-white p-1 px-2">
+            <a class="subBtn bg-white p-1 px-3 text-black">
               <i class="bi bi-box-arrow-right"></i>
             </a>
           </Form>

@@ -141,6 +141,12 @@ html {
 a {
   color:white;
 }
+a:hover {
+  color:white;
+}
 input[type="button"],input[type="submit"] {
   -webkit-appearance: none;
+}
+i {
+  pointer-events: none !important;
 }

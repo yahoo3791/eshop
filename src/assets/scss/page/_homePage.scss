@@ -126,6 +126,7 @@
   p {
     text-indent: 2rem;
     text-align: justify;
+    letter-spacing: -1px;
   }
 }
 .arrowUp {
@@ -134,4 +135,5 @@
   background-color: #fff;
   z-index: 5;
   border:1px solid black;
+  line-height: 40px;
 }
