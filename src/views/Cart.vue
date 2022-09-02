@@ -17,7 +17,7 @@
       </div>
       <div class="row mx-0" :class="{ 'd-none': orderHide }">
         <div class="col-12">
-          <h1 class="text-center">購物車<i class="bi bi-cart4"></i></h1>
+          <h1 class="text-center">購物車<b-icon-cart4/></h1>
           <div class="row">
             <div class="col-12 text-end">
               <a @click.prevent="deleteCarts" href="" class="text-white">刪除全部</a>

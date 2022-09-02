@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <div class="banner_video w-100 position-relative">
-    <img src="@/assets/pic/banner.jpg" class="w-100 h-100" alt="">
+    <img src="../assets/pic/banner.webp" class="w-100 h-100" alt="">
     <h1 class="text-white banner_title position-absolute start-50 top-50
         translate-middle-x">透過雜誌看見世界。
     </h1>
@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-12">
           <div class="home-content w-75 position-relative mx-auto">
-            <img src="../assets/pic/pic01.jpg" class="w-100 position-relative" style="height:220px;z-index:2;" alt="">
+            <img src="../assets/pic/pic01.webp" class="w-100 position-relative" style="height:220px;z-index:2;" alt="">
             <h1 class="home-content-h1 position-absolute top-0 fs-6" style="z-index:2">每本雜誌都有故事</h1>
             <div class="bg-solid position-absolute"></div>
             <div class="bg-solid2 position-absolute"></div>
@@ -36,7 +36,8 @@
             <span class="d-block home-coupon-inner position-absolute"></span>
             <span class="d-block position-absolute"></span>
             <span class="d-block position-absolute"></span>
-            <p class="text-white opacity-75">折扣10%優惠碼<br><strong>coupon012</strong><br><i class="coupon-remind">結帳時輸入</i>
+            <p class="text-white opacity-75">折扣10%優惠碼<br><strong>coupon012</strong><br><i
+                class="coupon-remind">結帳時輸入</i>
             </p>
           </div>
         </div>
@@ -49,7 +50,7 @@
         </div>
         <div class="col-12 mb-5">
           <div class="topPicks-item p-1">
-            <img src="@/assets/pic/pic03.jpg" class="w-100 h-100" alt="">
+            <img src="@/assets/pic/pic02.webp" class="w-100 h-100" alt="">
           </div>
           <div class="topPicks-content text-white">
             <h2>title & black</h2>
@@ -60,7 +61,7 @@
         </div>
         <div class="col-12">
           <div class="topPicks-item p-1">
-            <img src="../../src/assets/pic/pic03.jpg" class="w-100 h-100" alt="">
+            <img src="@/assets/pic/pic02.webp" class="w-100 h-100" alt="">
           </div>
           <div class="topPicks-content text-white">
             <h2>title & black</h2>
@@ -75,7 +76,7 @@
         </div>
       </div>
       <div class="arrowUp ps-2 position-fixed bottom-0 end-0 opacity-75 d-md-none">
-        <a href="#" class="text-black"><i class="bi bi-arrow-90deg-up"></i></a>
+        <a href="#" class="text-black"><b-icon-arrow-90deg-up/></a>
       </div>
     </div>
   </div>

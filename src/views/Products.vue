@@ -2,7 +2,7 @@
   <loading :active="isLoading"></loading>
   <Navbar :carts-num="this.cartsNum"></Navbar>
   <div class="banner position-relative">
-    <img src="@/assets/pic/productBg.jpg" class="w-100" style="object-fit:cover;height: 50vh;" alt="">
+    <img src="@/assets/pic/productBg.webp" class="w-100" style="object-fit:cover;height: 50vh;" alt="">
     <div class="position-absolute overflow-hidden"
       style="bottom: 0;width: 100%;height: 70px;background-color: rgb(33, 37, 41);">
       <div class="div2"></div>
@@ -35,8 +35,8 @@
                 style="color:red;">{{item.origin_price}}$</del><br>
               特價{{item.price}}$</h3>
             <a href="#" @click.prevent="addCart(item)"
-              class="product_more position-absolute d-inline-block bg-white text-center"><i
-                class="bi bi-cart-plus"></i></a>
+              class="product_more position-absolute d-inline-block bg-white text-center">
+              <b-icon-cart-plus/></a>
           </div>
           <div class="text-end mt-1">
             <a href="#" class="text-white" @click.prevent="more(item.id)">查看更多</a>

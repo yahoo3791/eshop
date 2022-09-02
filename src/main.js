@@ -12,15 +12,11 @@ import { currency } from './methods/filters';
 import { date } from './methods/filters';
 import {Field, Form, ErrorMessage, defineRule, configure,} from 'vee-validate';
 import { required, email, min } from '@vee-validate/rules';
-// import * as rules from '@vee-validate/rules';
 import { localize, setLocale } from '@vee-validate/i18n';
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 defineRule('required', required);
 defineRule('email', email);
 defineRule('min', min);
-// Object.keys(rules).forEach(rule => {
-//   defineRule(rule, rules[rule]);
-// });
 configure({
   generateMessage: localize({ zh_TW: zhTW }), // 載入繁體中文語系
   validateOnInput: true, // 當輸入任何內容直接進行驗證

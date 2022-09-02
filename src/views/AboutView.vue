@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <div class="banner position-fixed top-0 w-100" style="background:fixed;height:100vh;z-index:-1">
-    <img src="../assets/pic/productBg.jpg" class="w-100 h-100" alt="">
+    <img src="../assets/pic/productBg.webp" class="w-100 h-100" alt="">
     <div class="mask position-absolute top-0 start-0 w-100 h-100" style="background:rgba(0,0,0,0.6)"></div>
   </div>
   <div class="container overflow-hidden w-100">
