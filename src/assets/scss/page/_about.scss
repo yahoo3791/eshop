@@ -1,0 +1,14 @@
+.mb-300-bs-2 {
+  margin-bottom: 300px;
+  border-left: 2px solid white;
+}
+
+.mb-150 {
+  margin-bottom: 150px;
+}
+
+@include media-breakpoint-up(md) {
+  .about-font {
+    font-size: 26px;
+  }
+}

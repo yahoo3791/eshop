@@ -12,12 +12,12 @@
         <div class="navbar-nav text-center">
           <router-link to="/" class="nav-link">首頁</router-link>
           <router-link to="/about" class="nav-link active" aria-current="page">關於品牌</router-link>
-          <router-link to="/user/products" class="nav-link">商店<b-icon-shop-window /></router-link>
-          <router-link to="/user/carts" class="nav-link">購物車<b-icon-cart />
-            <span class="d-inline-block bg-white text-black p-1">{{ cartsNum }}</span>
+          <router-link to="/user/products" class="nav-link">商店</router-link>
+          <router-link to="/user/carts" class="nav-link">購物車
+            <span class="d-inline-block text-white p-1">{{ cartsNum }}</span>
           </router-link>
-          <router-link to="/login" class="nav-link">登入<b-icon-person/></router-link>
-          <div class="information text-white opacity-75 mt-5 d-lg-none">
+          <router-link to="/login" class="nav-link">登入</router-link>
+          <div class="information text-white opacity-75 mt-5 d-lg-none fs-6">
             <p>辦公室地址:台北市信義區市府路101號<br>
               客服電話:<a href="tel:+886-2-1010101" class="text-white">(02)1010101</a><br>
               客服時間:週一至週五,上午07:00~下午17:00<br>
@@ -32,7 +32,7 @@
 <script>
 import { gsap } from 'gsap';
 export default {
-  props:['cartsNum'],
+  props: ['cartsNum'],
   data() {
     return {
     }

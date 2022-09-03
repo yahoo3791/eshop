@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-6">
         <router-link to="/user/products" class="text-black">
-          <i class="bi bi-skip-backward fs-1"></i>
+          返回
         </router-link>
       </div>
       <div class="col-6 text-end">
