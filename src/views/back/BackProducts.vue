@@ -94,7 +94,6 @@ export default {
       });
     },
     UpdateData(item) {
-      // this function is ProductsModal的 (v-model)data $emit item 進來 ,data = item
       this.tempProduct = item;
       // 新增
       let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`;
@@ -135,7 +134,6 @@ export default {
       }
       this.$refs.productModal.modalShow();
       this.isNew = isNew;
-      // openModal判斷新增or編輯按鈕,並把結果賦予isNew,提供UpdateData判斷使用
     },
     openDeleteModal(item) {
       this.$refs.deleteModal.modalShow();

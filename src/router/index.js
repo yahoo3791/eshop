@@ -58,6 +58,12 @@ const routes = [
       }
     ],
   },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: {
+      name: '首頁',
+    }
+  }
 ];
 
 const router = createRouter({

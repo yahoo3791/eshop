@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <w-app>
+    <router-view />
+  </w-app>
 </template>
 <script>
 export default {

@@ -60,7 +60,5 @@ export default {
       this.tempCoupon = this.coupon
     }
   },
-  mounted() {
-  }
 }
 </script>

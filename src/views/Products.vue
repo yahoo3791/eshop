@@ -1,19 +1,10 @@
 <template>
   <loading :active="isLoading"></loading>
   <Navbar :carts-num="this.cartsNum"></Navbar>
-  <div class="banner position-relative">
-    <img src="@/assets/pic/productBg.webp" class="w-100" style="object-fit:cover;height: 50vh;" alt="">
-    <div class="position-absolute overflow-hidden"
-      style="bottom: 0;width: 100%;height: 70px;background-color: rgb(33, 37, 41);">
-      <div class="div2"></div>
-    </div>
-  </div>
   <div class="bg-dark">
-    <div class="container-fluid">
+    <div class="container-fluid mt-5 pt-5">
       <div class="row">
         <div class="col-12">
-        </div>
-        <div class="col">
           <ul @click.prevent="productsFilter($event)"
             class="d-flex justify-content-center position-relative p-0 products-fs">
             <li class="px-1 px-md-3"><a class="text-white text-decoration-none" href="">全部雜誌</a></li>
@@ -29,11 +20,11 @@
       <div class="row gx-0 gx-md-5 text-white">
         <div class="col-12 col-md-6 col-xl-4 px-5 py-5" v-for="item in products">
           <div class="product_item text-white position-relative">
-            <img :src="item.imageUrl" class="w-100 h-100" alt="">
+            <w-image :src="item.imageUrl" class="w-100 h-100" alt="" />
             <h3 class="product_h3 position-absolute start-0 top-0">
               {{ item.title }}</h3>
-            <h3 class="position-absolute bottom-0 end-0 text-end"><del
-                style="color:red;">{{ item.origin_price }}$</del><br>
+            <h3 class="position-absolute bottom-0 end-0 text-end"><del style="color:red;">{{ item.origin_price
+            }}$</del><br>
               特價{{ item.price }}$</h3>
           </div>
           <div class="text-end mt-1 col-12 ">
@@ -48,33 +39,31 @@
       </div>
     </div>
   </div>
-  <!-- <Pagination class="bg-dark" :pagination-obj="this.pagination" @post-page="getData"></Pagination> -->
   <Footer />
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
-import Pagination from '@/components/ProductsPage.vue';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+
 export default {
   data() {
     return {
       products: {},
-      pagination: {},
       isLoading: false,
       cartsNum: 0,
+      bannerUrl: require('@/assets/pic/productBg.jpg'),
     }
   },
-  components: { Navbar, Footer, Pagination, Loading },
+  components: { Navbar, Footer, Loading },
   methods: {
     getData(page = 1) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products?page=${page}`;
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
       this.isLoading = true;
       this.axios.get(api).then((res) => {
         this.isLoading = false;
         this.products = res.data.products;
-        this.pagination = res.data.pagination;
       })
     },
     more(id) {
@@ -129,6 +118,14 @@ export default {
         }
         this.products = data;
       })
+    }
+  },
+  watch: {
+    cartsNum: {
+      handler :function() {
+        console.log('123');
+      },
+      immediate: true,
     }
   },
   mounted() {

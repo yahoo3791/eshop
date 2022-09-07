@@ -9,20 +9,19 @@
             <br>
             快去逛逛吧！！
           </h1>
-          <router-link style="border:1px solid white"
-            class="d-inline-block px-5 py-2 mt-5 text-decoration-none text-white" to="/user/products">
-            前往商城
+          <router-link to="/user/products">
+              <w-button class="px-5 py-3 ma1 mt-5 text-black" tile bg-color="white" color="yellow-light2">前往商城
+            </w-button>
           </router-link>
         </div>
       </div>
       <div class="row mx-0" :class="{ 'd-none': orderHide }">
         <div class="col-12">
           <h1 class="text-center">購物車
-            <b-icon-cart4 />
           </h1>
           <div class="row">
             <div class="col-12 text-end">
-              <a @click.prevent="deleteCarts" href="" class="text-white   ">刪除全部</a>
+              <a @click.prevent="deleteCarts" href="" class="text-white">刪除全部</a>
             </div>
             <div v-for="item in cartsData" :key="item.id"
               class="col-12 d-flex justify-content-between align-items-center pb-2 pt-4"
@@ -58,7 +57,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 pt-2 pb-3 text-end text-white">
+        <div class="col-12 pt-2 pb-3 text-white text-end">
           <p>總計{{ this.orderTotal.total }}$</p>
           <p>折扣價{{ this.orderTotal.final_total }}$</p>
         </div>
@@ -101,7 +100,7 @@
                 class="carts-textarea"></textarea>
             </div>
             <div class="col-12 text-end px-3 mb-5">
-              <button type="submit" class="text-black">前往結帳</button>
+              <button type="submit" class="text-white btn btn-outline-secondary">前往結帳</button>
             </div>
           </Form>
         </div>
@@ -196,7 +195,6 @@ export default {
     submit() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`;
       this.axios.post(api, { data: this.formData }).then((res) => {
-        // console.log(res.data.orderId);
         let orderId = res.data.orderId;
         this.$router.push(`/user/checkout/${orderId}`);
       })

@@ -9,16 +9,10 @@
 
 .subInput {
   border: none;
-  border-bottom: 1px solid white;
-  background-color: transparent;
   outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
-  &:focus {
-    border-bottom: 1px solid rgb(176, 176, 176);
-  }
 }
 
 .subBtn {
@@ -33,35 +27,15 @@
   }
 }
 
-.ins,
-.meta {
-  width: 40px;
-  height: 40px;
-  background: rgba(236, 233, 233, 0.096);
-}
-
 .ins {
   line-height: 40px;
   color: white;
   transition: .2s all;
-
-  &:hover {
-    background: white;
-    color: black;
-  }
 }
 
 .meta {
   line-height: 40px;
   transition: .2s all;
-
-  &:hover {
-    background: white;
-
-    svg {
-      fill: black;
-    }
-  }
 
   &:active {
     background: white;

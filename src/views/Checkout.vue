@@ -14,7 +14,11 @@
         <div class="col-12 py-3 d-flex align-items-center justify-content-around">
           <img src="@/assets/pic/logo2.png" alt="" style="width:50px">
           <h1>CHECKOUT</h1>
-          <i class="bi bi-lock-fill fs-1"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-lock-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+          </svg>
         </div>
         <div class="col-12 text-center">
           <p style="color:red">確認您的訂單資訊，<br>請勿離開頁面，離開將導致訂單取消</p>

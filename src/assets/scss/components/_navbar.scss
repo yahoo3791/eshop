@@ -57,7 +57,7 @@
 // /* Footer style START*/
 
 .navbar {
-  box-shadow: 0px 5px 20px black;
+  // box-shadow: 0px 5px 20px black;
 
   .navbar-logo {
     width: 150px;
@@ -90,5 +90,13 @@
   .navbar-toggler-icon,
   .navbar-logo {
     filter: invert(1);
+  }
+}
+.gsapNavbar {
+  height: 50px;
+}
+@include media-breakpoint-down(lg) {
+  .nav-link {
+    border-bottom: 1px solid gray
   }
 }
