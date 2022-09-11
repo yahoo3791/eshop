@@ -1,28 +1,48 @@
 <template>
   <loading v-model:active="isLoading" />
   <Navbar />
-  <div class="bg-dark w-100 h-100">
+  <div class="bg-dark w-100 h-100 pb-5">
+    <div class="container" style="padding-top:100px">
+      <div class="row">
+        <!-- TIMELINE -->
+        <div class="timeline col-12 d-flex align-items-center" :class="{ 'd-none': !orderOpen }">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="d-block bi bi-1-circle-fill"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z" />
+          </svg>
+          <w-progress class="d-block w-50" color="white"></w-progress>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="d-block bi bi-2-circle"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306Z" />
+          </svg>
+          <w-progress class="d-block w-50" model-value="100" color="grey"></w-progress>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="grey" class="d-block bi bi-3-circle"
+            viewBox="0 0 16 16">
+            <path
+              d="M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318Z" />
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Z" />
+          </svg>
+        </div>
+        <!--  -->
+      </div>
+    </div>
     <div class="container text-white" style="padding-top: 100px;position: relative;z-index: 5;">
       <div class="row">
-        <div :class="{ 'd-none': orderOpen }" class="col-12 text-center" style="height:calc( 100vh - 365px )">
-          <h1 class="">目前購物車是空的
-            <br>
-            快去逛逛吧！！
-          </h1>
+        <div class="col-12 text-center" :class="{ 'd-none': orderOpen }" style="height:calc( 100vh - 365px )">
+          <h1 class="">目前購物車是空的<br>快去逛逛吧！！</h1>
           <router-link to="/user/products">
-              <w-button class="px-5 py-3 ma1 mt-5 text-black" tile bg-color="white" color="yellow-light2">前往商城
-            </w-button>
+            <w-button class="mt-5 text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile>前往商城</w-button>
           </router-link>
         </div>
       </div>
       <div class="row mx-0" :class="{ 'd-none': orderHide }">
         <div class="col-12">
-          <h1 class="text-center">購物車
-          </h1>
-          <div class="row">
-            <div class="col-12 text-end">
-              <a @click.prevent="deleteCarts" href="" class="text-white">刪除全部</a>
-            </div>
+          <h1 class="text-center">購物車</h1>
+          <div class="text-end">
+            <a @click.prevent="deleteCarts" href="#" class="text-white">刪除全部</a>
+          </div>
             <div v-for="item in cartsData" :key="item.id"
               class="col-12 d-flex justify-content-between align-items-center pb-2 pt-4"
               style="border-bottom:1px solid white">
@@ -45,7 +65,6 @@
                   </svg></a>
               </div>
             </div>
-          </div>
         </div>
         <div class="col-12">
           <div class="input-group my-3 input-group-sm ms-auto w-100" style="max-width:500px;">
@@ -61,48 +80,8 @@
           <p>總計{{ this.orderTotal.total }}$</p>
           <p>折扣價{{ this.orderTotal.final_total }}$</p>
         </div>
-        <div class="col-12 text-center">
-          <h3>訂購人資訊</h3>
-          <Form action="" @submit="submit">
-            <div class=" col-12 pb-3 pt-3">
-              <label for="name">姓名:</label>
-              <Field id="name" v-model="this.formData.user.name" name="姓名" placeholder="請填寫中文姓名" rules="required"
-                type="text" class="ms-2 carts-input" style="border: none;">
-              </Field>
-              <br>
-              <ErrorMessage style="color:#ff4343" name="姓名"></ErrorMessage>
-            </div>
-            <div class="col-12 pb-3">
-              <label for="email">信箱:</label>
-              <Field id="email" v-model="formData.user.email" name="信箱" placeholder="ex:example@gamil.com"
-                rules="required|email" type="email" class="ms-2 carts-input" style="border: none;"></Field>
-              <br>
-              <ErrorMessage style="color:#ff4343" name="信箱"></ErrorMessage>
-            </div>
-            <div class="col-12 pb-3">
-              <label for="phone">手機:</label>
-              <Field id="phone" v-model="formData.user.tel" name="手機" placeholder="ex:0912345678" rules="required"
-                type="tel" class="ms-2 carts-input" style="border: none;">
-              </Field>
-              <br>
-              <ErrorMessage style="color:#ff4343" name="手機"></ErrorMessage>
-            </div>
-            <div class="col-12 pb-3">
-              <label for="adress">地址:</label>
-              <Field id="adress" v-model="formData.user.address" name="地址" placeholder="輸入完整地址" rules="required"
-                type="address" class="ms-2 carts-input" style="border: none;">
-              </Field>
-              <br>
-              <ErrorMessage style="color:#ff4343" name="地址"></ErrorMessage>
-            </div>
-            <div class="col-12 pb-3 text-center">
-              <textarea v-model="formData.message" placeholder="留言您的問題" name="" id="" cols="30" rows="10"
-                class="carts-textarea"></textarea>
-            </div>
-            <div class="col-12 text-end px-3 mb-5">
-              <button type="submit" class="text-white btn btn-outline-secondary">前往結帳</button>
-            </div>
-          </Form>
+        <div class="col-12 text-end">
+          <w-button class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile @click="contactMethod">下一步</w-button>
         </div>
       </div>
     </div>
@@ -114,7 +93,6 @@ import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import { Field, Form, ErrorMessage } from 'vee-validate';
 export default {
   data() {
     return {
@@ -124,18 +102,9 @@ export default {
       orderOpen: false,
       codeValue: '',
       orderTotal: {},
-      formData: {
-        user: {
-          name: '',
-          email: '',
-          tel: '',
-          address: '',
-        },
-        message: '',
-      },
     }
   },
-  components: { Navbar, Footer, Loading, Field, Form, ErrorMessage },
+  components: { Navbar, Footer, Loading },
   methods: {
     getData() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
@@ -192,13 +161,9 @@ export default {
         }
       })
     },
-    submit() {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`;
-      this.axios.post(api, { data: this.formData }).then((res) => {
-        let orderId = res.data.orderId;
-        this.$router.push(`/user/checkout/${orderId}`);
-      })
-    },
+    contactMethod() {
+      this.$router.push('/user/contact');
+    }
   },
   mounted() {
     this.getData();

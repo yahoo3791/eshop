@@ -140,6 +140,7 @@ html {
 }
 a {
   color:white;
+  text-decoration: none;
 }
 a:hover {
   color:white;
@@ -147,6 +148,6 @@ a:hover {
 input[type="button"],input[type="submit"] {
   -webkit-appearance: none;
 }
-i {
-  pointer-events: none !important;
+p {
+  margin-bottom: 0 !important;
 }

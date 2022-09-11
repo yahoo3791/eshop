@@ -10,7 +10,7 @@
           </button>
         </div>
       </div>
-      <div class="col">
+      <div class="col-12">
         <table class="table mt-4">
           <thead>
             <tr>

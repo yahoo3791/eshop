@@ -8,35 +8,39 @@ const routes = [
     component: HomeView,
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/AboutView.vue'),
-  },
-  {
     path: '/user',
     component: () => import('../views/Userboard.vue'),
     children:[
       {
         path: 'products',
+        name: '產品',
         component: () => import('../views/Products.vue'),
       },
       {
         path: 'carts',
+        name: '購物車',
         component: () => import('../views/Cart.vue'),
       },
       {
+        path: 'contact',
+        name: '訂購人資訊',
+        component: () => import('../views/OrderContact.vue'),
+      },
+      {
         path: 'product/:productId',
+        name: '看更多',
         component: () => import('../views/ProductMore.vue'),
       },
       {
         path: 'checkout/:orderId',
+        name: '結帳流程',
         component: () => import('../views/Checkout.vue'),
       }
     ]
   },
   {
     path: '/login',
-    name: 'login',
+    name: '後台登入',
     component: () => import('../views/Login.vue'),
   },
   {
@@ -46,14 +50,17 @@ const routes = [
     children: [
       {
         path: 'backproducts',
+        name: '管理產品',
         component: () => import('../views/back/BackProducts.vue'),
       },
       {
         path: 'order',
+        name: '管理訂單',
         component: () => import('../views/back/Order.vue'),
       },
       {
         path: 'coupon',
+        name: '管理優惠卷',
         component: () => import('../views/back/Coupon.vue'),
       }
     ],

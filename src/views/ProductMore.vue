@@ -62,7 +62,8 @@
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
               aria-labelledby="panelsStayOpen-headingOne">
               <div class="accordion-body">
-                <!-- content -->
+                {{product.content}}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, atque!
               </div>
             </div>
           </div>
@@ -78,17 +79,8 @@
               aria-labelledby="panelsStayOpen-headingTwo">
               <div class="accordion-body">
                 <p>退換貨說明<br>
-                  請注意！下列商品購買後博客來不提供10天的猶豫期，請務必詳閱商品說明並再次確認確有購買該項商品之需求及意願時始下單購買，有任何疑問並請先聯繫博客來客服詢問：<br>
-                  1.易於腐敗、保存期限較短或解約時即將逾期。<br>
-                  2.客製化之商品。<br>
-                  3.報紙、期刊或雜誌。<br>
-                  4.經消費者拆封之影音商品或電腦軟體。<br>
-                  5.下載版軟體、資訊及電子書。<br>
-                  6.涉及個人衛生，並經消費者拆封之商品，如：內衣褲、刮鬍刀…等。<br>
-                  7.藝文展覽票券、藝文表演票券。<br>
-                  非屬上列品項之商品均享有到貨十天的猶豫期﹝含例假日﹞。退回之商品必須於猶豫期內寄回。
-                  辦理退換貨時，商品必須是全新狀態與完整包裝(請注意保持商品本體、配件、贈品、保證書、原廠包裝及所有附隨文件或資料的完整性，切勿缺漏任何配件或損毀原廠外盒)。退回商品無法回復原狀者，恐將影響退貨權益或需負擔部分費用。
-                  訂購本商品前請務必詳閱商品退換貨原則。</p>
+                  請注意！請務必詳閱商品說明並再次確認確有購買該項商品之需求及意願時始下單購買，有任何疑問並請先聯繫客服詢問：<br>
+                  辦理退換貨時，商品必須是完整包裝(請注意保持商品本體、配件、贈品、保證書、原廠包裝及所有附隨文件或資料的完整性，切勿缺漏任何配件或損毀原廠外盒)</p>
                 <!-- 原文自博客來 -->
               </div>
             </div>

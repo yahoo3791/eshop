@@ -1,17 +1,9 @@
 <template>
   <footer class="footer bg-dark text-center text-white position-relative bottom-0 w-100 pb-3">
     <div class="container p-4">
-      <div class="row d-flex ">
+      <div class="row d-flex justify-content-between">
         <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center">
           <img class="footer-logo" src="@/assets/pic/logo2.png" alt="">
-        </div>
-        <div class="col-12 col-lg-4">
-          <Form @submit="onSubmit" v-slot="{ errors }" class="position-relative form-outline form-white my-2">
-            <label class="text-white d-block sub-font fs-4" for="subscription">訂閱更多流行資訊</label>
-            <w-input type="email" name="email" rules="email" id="subscription"
-              class="my-3 subInput d-inline-block ps-1">email</w-input>
-            <w-button class="ma1 text-black" bg-color="white" shadow tile>訂閱</w-button>
-          </Form>
         </div>
         <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center mt-1">
           <div class="me-3">
@@ -44,14 +36,6 @@
   </footer>
 </template>
 <script>
-import { Form, Field, ErrorMessage } from 'vee-validate';
 export default {
-  components: {
-    Form, Field, ErrorMessage
-  },
-  methods: {
-    onSubmit() {
-    }
-  }
 }
 </script>

@@ -1,44 +1,74 @@
-/* products rotate color */
-.div2 {
-  background: linear-gradient(45deg,
-      rgba(255, 255, 255, .5) 0, rgba(255, 255, 255, .5) 25%, transparent 25%, transparent 50%,
-      rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, .5) 75%, transparent 75%, transparent);
-  height: 60px;
-  background-size: 10px 10px;
-}
-
-/* products rotate color end */
-/**/
-.products-fs {
-  font-size: 20px;
-}
-
-/**/
-/* products item START*/
-.product_item {
-  border: 1px solid white;
-  height: 250px;
-  box-shadow: 0px 5px 0px #ffffff;
-
-  .product_h3 {
-    writing-mode: vertical-lr;
-    text-orientation: mixed;
-    text-decoration: underline;
-    color: white;
-    text-shadow: 0px -2px 0px #af9d9d;
+/*麵包削*/
+.breadcrumb-style {
+  border-radius: 5px;
+  background: rgb(255 255 255 / 20%);
+  .breadcrumb-item-none {
+    color: #6c757D
   }
-
-  .product_more {
-    color: black;
+}
+/* list-group active樣式 */
+.products-active {
+  background: white !important;
+  color: black !important;
+}
+/* products樣式 */
+.product-item {
+  height: 300px;
+  border: 1px solid white;
+  padding: 30px;
+  cursor: pointer;
+  .product-img {
+    object-fit: cover
+  }
+}
+.product-content {
+  .product-p {
     line-height: 40px;
+    color: red;
+  }
+  .addCartSize {
     width: 40px;
     height: 40px;
   }
 }
-
-/* products item END*/
+/* addCart/scrollUp icon */
+.drawer-container {
+  z-index: 100;
+  cursor: pointer;
+  .drawer-btn {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #ccc;
+    height: 45px;
+    width: 45px;
+  }
+}
+.scrollTop-container {
+  z-index: 100;
+  bottom: 55px;
+  .scrollTop-btn {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #ccc;
+    height: 45px;
+    width: 45px;
+  }
+}
+/* set w-badge bgc */
+.dark--bg {
+  background-color: #212529 !important;
+}
+/* media-breakpoint */
+@include media-breakpoint-up(sm) {
+  .product-outside {
+    width: 100% !important;
+  }
+}
 @include media-breakpoint-up(md) {
-  .products-fs {
-    font-size: 26px;
+  .product-outside {
+    width: 50% !important;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .product-outside {
+    width: 33.3% !important;
   }
 }

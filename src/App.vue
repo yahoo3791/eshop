@@ -4,10 +4,7 @@
   </w-app>
 </template>
 <script>
-export default {
-  components: {
-  },
-};
+export default {};
 </script>
 <style lang="scss">
 @import '@/assets/scss/all.scss';

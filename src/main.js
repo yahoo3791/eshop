@@ -6,10 +6,6 @@ import router from './router';
 import "bootstrap"
 import App from './App.vue';
 import WaveUI from 'wave-ui';
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-// import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
-gsap.registerPlugin(ScrollTrigger);
 import 'animate.css';
 import 'wave-ui/dist/wave-ui.css';
 import 'vue-loading-overlay/dist/vue-loading.css';
@@ -34,7 +30,6 @@ app.component('Form', Form);
 new WaveUI(app, {
   // Some Wave UI options.
 });
-// new wow({ live: false }).init();
 app.component('Field', Field);
 app.component('ErrorMessage', ErrorMessage);
 app.config.globalProperties.$filters = {
