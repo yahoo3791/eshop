@@ -100,7 +100,6 @@ export default {
       let httpMethod = 'post';
       // 編輯
       if (!this.isNew) {
-        console.log(item.id);
         api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`;
         httpMethod = 'put';
       }
@@ -108,7 +107,6 @@ export default {
       this.isLoading = true;
       this.axios[httpMethod](api, { data: this.tempProduct }).then((res) => {
         this.isLoading = false;
-        console.log(res);
         this.$refs.productModal.modalHide();
         this.tempProduct = {};
         if (res.data.success) {

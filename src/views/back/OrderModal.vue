@@ -54,8 +54,5 @@
     },
     props:['changeData'],
     mixins:[modalMixin],
-    created() {
-      console.log(this.changeData);
-    }
   }
 </script>

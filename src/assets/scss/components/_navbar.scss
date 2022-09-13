@@ -1,102 +1,44 @@
-// .nav-item {
-//   border: 5px solid transparent;
-
-//   &:hover {
-//     animation-name: squareHover;
-//     animation-duration: 2s;
-//     animation-delay: .2s;
-//     animation-iteration-count: infinite;
-//   }
-// }
-
-// .gsapNavbar {
-//   background-color: rgba(0, 0, 0, 0.643);
-//   height: 80px;
-//   position: fixed;
-//   overflow: hidden;
-//   top: 0;
-//   width: 100vw;
-//   box-shadow: 0 2px 5px black;
-//   z-index: 100;
-// }
-
-// .logo {
-//   width: 50px;
-// }
-
-// @keyframes squareHover {
-//   0% {
-//     border-bottom: 5px solid transparent;
-//     background-color: black;
-//   }
-
-//   25% {
-//     border-bottom: 5px solid rgba(255, 255, 255, 0.745);
-//   }
-
-//   50% {
-//     border-right: 5px solid rgb(225, 222, 222);
-//     border-bottom: 5px solid transparent;
-//   }
-
-//   75% {
-//     border-top: 5px solid rgb(164, 161, 161);
-//     border-right: 5px solid transparent;
-//     border-bottom: 5px solid transparent;
-//   }
-
-//   100% {
-//     border-left: 5px solid rgb(113, 109, 109);
-//     border-top: 5px solid transparent;
-//     border-right: 5px solid transparent;
-//     border-bottom: 5px solid transparent;
-//   }
-// }
-
-// /* Navbar style END*/
-// /* Footer style START*/
-
-.navbar {
-  // box-shadow: 0px 5px 20px black;
-
-  .navbar-logo {
-    width: 150px;
-    height: 70px;
+.navbar-logo {
+  width: 150px;
+  height: 70px;
+  filter: invert(1);
+}
+.navbar-sm {
+  cursor: pointer;
+  .navbar-icon span {
+    height: 2px;
+    background: $secondary-BF;
+    border-radius: 10px;
   }
-
-  .navbar-nav {
-    letter-spacing: 2px;
-    font-size: 1.2rem;
-
+  .navbar-icon span:nth-child(1),
+  .navbar-icon span:nth-child(2),
+  .navbar-icon span:nth-child(3) {
+    margin-top: 10px;
+    transition: all .2s;
+  }
+}
+.rotate45 {
+  transition: all .3s;
+  transform: translateY(8px) rotate(45deg);
+}
+.rotate-45 {
+  transition: all .3s;
+  transform: translateY(-5px) rotate(-45deg);
+}
+.rotate-none {
+  display: none !important;
+}
+.navbar-md {
+  color: $secondary-BF;
+}
+a.router-link-active{
+  border-bottom: 1px solid $base-color;
+}
+@include media-breakpoint-down(md) {
+  .navbar-overlay {
+    top: 70px;
     .nav-link {
-      color: #ffffffc9;
+      border-bottom: 1px solid $secondary-40
     }
-  }
-
-  .navbar-toggler {
-    border: none;
-    outline: none;
-
-    &:focus {
-      box-shadow: none;
-    }
-
-    .navbar-toggler-icon {
-      width: 2.5em;
-      height: 2.5em;
-    }
-  }
-
-  .navbar-toggler-icon,
-  .navbar-logo {
-    filter: invert(1);
-  }
-}
-.gsapNavbar {
-  height: 50px;
-}
-@include media-breakpoint-down(lg) {
-  .nav-link {
-    border-bottom: 1px solid gray
   }
 }

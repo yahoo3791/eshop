@@ -1,7 +1,7 @@
 <template>
   <loading v-model:active="isLoading" />
   <Navbar />
-  <div class="bg-dark w-100 h-100 pb-5">
+  <div class="bg-dark w-100 h-100 pb-5 overflow-hidden">
     <div class="container" style="padding-top:100px">
       <div class="row">
         <!-- TIMELINE -->
@@ -39,48 +39,66 @@
       </div>
       <div class="row mx-0" :class="{ 'd-none': orderHide }">
         <div class="col-12">
-          <h1 class="text-center">購物車</h1>
-          <div class="text-end">
-            <a @click.prevent="deleteCarts" href="#" class="text-white">刪除全部</a>
+          <h1 class="text-center tracking-widest font-bold text-3xl">購物車</h1>
+          <div class="tracking-wide">
+            <w-button class="text-black px-3 py-md-2 px-md-3 py-lg-3 px-lg-4" lg bg-color="white" tile @click.prevent="deleteCarts">刪除全部
+            </w-button>
           </div>
-            <div v-for="item in cartsData" :key="item.id"
-              class="col-12 d-flex justify-content-between align-items-center pb-2 pt-4"
-              style="border-bottom:1px solid white">
-              <div class="box d-flex align-items-center">
-                <img :src="item.product.imageUrl" class="carts-imgSize" alt="">
-                <div class="content px-2">
-                  <h1 class="fs-6">{{ item.product.title }}</h1>
-                  <p class="fs-6" style="color:#ff4343">{{ item.product.price }}$/{{ item.product.unit }}</p>
-                </div>
+          <div class="">
+            <div class="col-12 py-3 my-5" v-for="item,key in cartsData" :key="item.id" style="border-bottom:1px solid #404040">
+              <div class="d-flex justify-content-between pb-2 tracking-wide">
+                <w-button class="text-black px-3 py-md-2 px-md-3 py-lg-3 px-lg-4" lg bg-color="white" tile @click="open(item,key)">
+                  編輯
+                </w-button>
+                <p>{{item.product.category}}類</p>
               </div>
-              <div class="box text-end d-flex flex-column justify-content-between align-items-end h-75">
-                <input :disabled="this.isLoading" ref="updateValue" @change="updateQty(item.id)" class="d-block"
-                  type="number" min="1" style="width:50px" :value="item.qty">
-                <h2 class="fs-6 mb-0">{{ item.total }}$</h2>
+              <div class="position-absolute text-white py-3 py-md-5" ref="left" style="transform: translateX(-500px);">
+                <input :disabled="this.isLoading" ref="updateValue" @change="updateQty(item.id)" class="d-block mb-1 mb-md-3" type="number"
+                  min="1" style="width:50px" :value="item.qty">
                 <a href="" @click.prevent="deleteProduct(item.id)" class="d-block text-decoration-none text-white"
                   style="height:20px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-trash3 carts-trashIcon" viewBox="0 0 16 16">
                     <path
                       d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
-                  </svg></a>
+                  </svg>
+                </a>
+              </div>
+              <div class="d-flex" ref="right" style="transform:translateX(0px);transition: all .3s;">
+                <div class="pic d-inline-block">
+                  <img style="" :src="item.product.imageUrl" class="carts-imgSize" alt="">
+                </div>
+                <div class="d-inline-block ms-3 w-100">
+                  <p class="tracking-wide font-semibold text-lg">{{ item.product.title }}</p>
+                  <p class="leading-7 tracking-wider">{{ item.product.price }}$/{{ item.product.unit }}</p>
+                  <div class="price d-flex justify-content-between">
+                    <p class="leading-7 d-block tracking-wider">數量/{{item.qty}}</p>
+                    <p class="d-block tracking-wider">{{ item.total }}$</p>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
         </div>
         <div class="col-12">
           <div class="input-group my-3 input-group-sm ms-auto w-100" style="max-width:500px;">
-            <input type="text" ref="codeValue" v-model="codeValue" class="form-control" placeholder="請輸入優惠碼">
+            <input type="text" ref="codeValue" v-model="codeValue" class="form-control tracking-widest" placeholder="請輸入優惠碼" style="border-radius:0">
             <div class="input-group-append">
-              <button @click="useCoupon" class="btn btn-outline-secondary" type="button">
+              <button @click="useCoupon" class="btn btn-outline-secondary tracking-widest" type="button" style="border-radius:0">
                 套用優惠碼
               </button>
             </div>
           </div>
         </div>
-        <div class="col-12 pt-2 pb-3 text-white text-end">
+        <div class="col-12 pt-2 pb-3 text-white text-end tracking-widest font-semibold text-base">
           <p>總計{{ this.orderTotal.total }}$</p>
           <p>折扣價{{ this.orderTotal.final_total }}$</p>
         </div>
-        <div class="col-12 text-end">
+        <div class="col-12 mb-3">
+          <w-flex class="align-center tracking-wide">
+            <w-checkbox class="ms-auto" color="grey" v-model="selection1"><p class="text-white">我已確認商品資訊</p></w-checkbox>
+          </w-flex>
+        </div>
+        <div v-if="selection1 === true " class="col-12 text-end">
           <w-button class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile @click="contactMethod">下一步</w-button>
         </div>
       </div>
@@ -93,6 +111,9 @@ import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
+
 export default {
   data() {
     return {
@@ -102,6 +123,8 @@ export default {
       orderOpen: false,
       codeValue: '',
       orderTotal: {},
+      openDoor: false,
+      selection1: false,
     }
   },
   components: { Navbar, Footer, Loading },
@@ -128,6 +151,39 @@ export default {
       this.axios.delete(api).then((res) => {
         this.isLoading = false;
         this.getData();
+        if ( res.data.success ) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'success',
+            title: '刪除品項成功'
+          })
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'error',
+            title: '更新異常'
+          })
+        }
       })
     },
     deleteCarts() {
@@ -136,6 +192,39 @@ export default {
       this.axios.delete(api).then((res) => {
         this.isLoading = false;
         this.getData();
+        if (res.data.success) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'success',
+            title: '刪除成功'
+          })
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'error',
+            title: '更新異常'
+          })
+        }
       })
     },
     updateQty(id) {
@@ -145,8 +234,40 @@ export default {
       }
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
       this.axios.put(api, { data: updateData }).then((res) => {
-        console.log(res);
         this.getData();
+        if (res.data.success) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'success',
+            title: '更新品項成功'
+          })
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'error',
+            title: '更新異常'
+          })
+        }
       })
     },
     useCoupon() {
@@ -158,11 +279,53 @@ export default {
         this.getData();
         if (res.data.success) {
           this.$refs.codeValue.disabled = true;
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'success',
+            title: '使用優惠卷成功'
+          })
+        }else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'error',
+            title: '使用優惠卷異常'
+          })
         }
       })
     },
     contactMethod() {
       this.$router.push('/user/contact');
+    },
+    open(i,k) {
+      if ( this.openDoor === true ) {
+        this.$refs.right[k].style.transform = 'translateX(0px)';
+        this.$refs.left[k].style.transform = 'translateX(-500px)';
+        this.openDoor = false;
+      } else if ( this.openDoor === false ) {
+        this.$refs.right[k].style.transform = 'translateX(100px)';
+        this.$refs.left[k].style.transform = 'translateX(0px)';
+        this.openDoor = true; 
+      }
     }
   },
   mounted() {

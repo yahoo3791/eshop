@@ -11,7 +11,6 @@
     line-height: 100px;
     text-align: center;
     white-space: nowrap;
-    font-size: 1.5rem;
     width: 2ch;
     overflow: hidden;
     animation: 3s typing steps(150, jump-none) forwards;
@@ -39,8 +38,8 @@
   line-height: 45px;
 }
 /* news */
-.bg-burlywood {
-  background: burlywood;
+.bg-secondary-80 {
+  background: $secondary-80;
 }
 .newsItem {
   width: 200px;
@@ -96,11 +95,13 @@
   right: -30px;
   cursor: pointer;
 }
-.coupon-remind {
-  font-size: 8px;
+.coupon-img {
+  width: 45px;
+  height: 45px;
 }
 .coupon {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid white;
   border-radius: 50%;
   z-index: 100;
   cursor: pointer;
@@ -122,6 +123,11 @@
   }
 }
 /* media-breakpoint */
+@include media-breakpoint-down(sm) {
+.bounce-coupon {
+  margin-bottom: 60px !important;
+  }
+}
 @include media-breakpoint-up(md) {
   .home-coupon {
     width: 400px;

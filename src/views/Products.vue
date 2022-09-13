@@ -2,19 +2,19 @@
   <loading :active="isLoading"></loading>
   <Navbar />
   <div class="bg-dark">
-    <div class="container-fluid mt-5 pt-5">
+    <div class="container-fluid pt-4">
       <div class="row">
         <div class="col-12">
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb p-2 breadcrumb-style">
-              <li class="breadcrumb-item"><a class="text-white" href="#">首頁</a></li>
+            <ol class="breadcrumb p-2 breadcrumb-style tracking-wider">
+              <li class="breadcrumb-item"><a class="text-black" href="#">首頁</a></li>
               <li class="breadcrumb-item breadcrumb-item-none">商品列表</li>
               <li class="breadcrumb-item breadcrumb-item-none" aria-current="page">{{this.clickText}}</li>
             </ol>
           </nav>
         </div>
         <div class="col-12 col-md-3 mb-5">
-          <div class="list-group px-md-0 text-center" @click.prevent="productsFilter($event)">
+          <div class="list-group px-md-0 text-center tracking-wider" @click.prevent="productsFilter($event)">
             <a href="#" :class="{' products-active ' : this.clickText === '全部雜誌'}" class="list-group-item
             list-group-item-action bg-dark text-white border" aria-current="true">全部雜誌</a>
             <a href="#" :class="{' products-active ' : this.clickText === '時尚'}" class="list-group-item 
@@ -33,10 +33,10 @@
                 <w-image @click.prevent="more(item.id)" :src="item.imageUrl" class="position-relative w-100 h-100 product-img" alt="雜誌圖片"></w-image>
               </div>
               <div class="product-content py-1">
-                <h5>{{ item.title }}</h5>
+                <h5 class="text-xl font-semibold tracking-wide">{{ item.title }}</h5>
                 <p><w-rating color="white" :model-value="4.5" readonly></w-rating></p>
                 <div class="d-flex justify-content-between">
-                  <p class="product-p"><del class="text-white">原價{{item.origin_price }}$</del>${{ item.price }}</p>
+                  <p class="product-p"><del class="text-white">原價{{item.origin_price }}$</del><span class="text-xl font-semibold">特價${{ item.price }}</span></p>
                     <button @click.prevent="addCart(item)" :class="{'opacity-75': this.isLoading === true }" :disabled="this.isLoading ===true"
                     class="addCartSize border-0 d-inline-block p-2 bg-white text-center overflow-hidden">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -73,15 +73,16 @@
           <div v-if="this.carts.length == 0" class="row" style="padding-top:150px">
             <div class="col-12 text-white">
               <h3 class="text-center">購物車</h3>
-              <h3>目前沒有商品加入購物車</h3>
-                <w-button @click="this.openDrawer = false" class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5 w-100" lg bg-color="white" tile>去逛逛</w-button>
+              <h3>目前購物車是空的
+              快去逛逛吧！！</h3>
+                <w-button @click="this.openDrawer = false" class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5 w-100" lg bg-color="white" tile>看商品</w-button>
             </div>
           </div>
             <div v-else-if="this.carts.length !== 0" class="row" style="padding-top:150px">
               <div class="col-12 text-white" style="overflow:auto;height:50vh;">
-                <h3 class="text-center">購物車</h3>
-                <ul class="p-0">
-                  <li class="pt-1" style="border-bottom:1px solid white;" v-for="item in this.carts">
+                <h3 class="text-center text-xl font-medium tracking-wide">購物車</h3>
+                <ul class="p-0 tracking-wide">
+                  <li class="pt-1" style="border-bottom:1px solid #404040;" v-for="item in this.carts">
                     <h6>{{item.product.title}}</h6>
                     <div class="d-flex justify-content-between">
                       <p>{{item.qty}}/{{item.product.unit}}</p>
@@ -135,7 +136,6 @@ export default {
       })
     },
     more(id) {
-      console.log(id);
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
       this.isLoading = false;
       this.axios.get(api).then((res) => {
@@ -198,7 +198,6 @@ export default {
         this.getCarts();
       })
       this.renderCarts();
-
     },
     productsFilter(e) {
       let clickText = e.target.innerText;
@@ -258,20 +257,10 @@ export default {
         this.renderCarts();
       },
       immediate: true,
-    },
-    carts :{
-      handler: function () {
-        // console.log('123');
-      },
-      immediate: true,
     }
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
-    setTimeout(() => {
-      // console.log(this.$refs.product)
-    }, 1000)
-
   },
   mounted() {
     this.getData();

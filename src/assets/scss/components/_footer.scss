@@ -1,6 +1,7 @@
 .footer-logo {
   width: 60px;
   height: 60px;
+  filter: contrast(50%);
 }
 
 .footer {
@@ -29,13 +30,14 @@
 
 .ins {
   line-height: 40px;
-  color: white;
   transition: .2s all;
+  color: $secondary-BF;
 }
 
 .meta {
   line-height: 40px;
   transition: .2s all;
+  color: $secondary-BF;
 
   &:active {
     background: white;
@@ -46,21 +48,7 @@
   }
 }
 
-.errorMessage-footer {
-  font-size: 10px;
-  top: 50px;
-  left: 35px;
-  color: red
-}
-
-.sub-font {
-  font-size: 14px;
-}
-
 .copyright {
-  font-size: 12px;
+  color: $secondary-BF;
 }
 
-.copyright-span {
-  font-size: 8px;
-}

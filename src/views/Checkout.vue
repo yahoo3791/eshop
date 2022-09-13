@@ -8,8 +8,7 @@
       </div>
     </div>
   </loading>
-  <div class="bg-dark" style="">
-
+  <div class="bg-dark">
     <div class="container">
       <div class="row">
         <div class="col-12 text-white py-3 d-flex align-items-center justify-content-around">
@@ -49,11 +48,8 @@
         </div>
       </div>
     </div>
-
-
     <div class="container text-white">
       <div class="row">
-
         <div class="col-12 text-center">
           <p style="color:red">確認您的訂單資訊，<br>請勿離開頁面，離開將導致訂單取消</p>
         </div>
@@ -133,7 +129,6 @@ export default {
       this.isLoading = false;
       this.details = res.data.order;
       this.userData = res.data.order.user;
-      console.log(this.details);
     })
   }
 }

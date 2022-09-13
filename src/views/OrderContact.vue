@@ -67,11 +67,19 @@
               <ErrorMessage style="color:#ff4343" name="地址"></ErrorMessage>
             </div>
             <div class="col-12 pb-3 text-center">
-              <textarea v-model="formData.message" placeholder="留言您的問題" name="" id="" cols="30" rows="10"
-                class="carts-textarea"></textarea>
+              <!-- <textarea v-model="formData.message" placeholder="留言您的問題" name="" id="" cols="30" rows="10"
+                class="carts-textarea"></textarea> -->
+                <w-textarea v-model="formData.message" bg-color="white" color="blue-grey" cols="30" rows="10">
+                  留言區
+                </w-textarea>
             </div>
             <div class="col-12 text-end px-3 mb-5">
-              <w-button type="submit" class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile>前往結帳</w-button>
+              <w-flex class="align-center tracking-wide">
+                <w-checkbox class="ms-auto mb-3" color="grey" v-model="selection1">
+                  <p class="text-white">我已確認訂購人資訊</p>
+                </w-checkbox>
+              </w-flex>
+              <w-button v-if="selection1 === true" type="submit" class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile>前往結帳</w-button>
             </div>
           </Form>
         </div>
@@ -90,6 +98,7 @@ import { Field, Form, ErrorMessage } from 'vee-validate';
   export default {
     data() {
       return {
+        selection1: false,
         formData: {
           user: {
             name: '',

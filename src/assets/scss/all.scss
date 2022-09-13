@@ -1,4 +1,5 @@
 @import './base/reset';
+@import "./base/font";
 @import "~bootstrap/scss/functions";
 @import "../scss/abstracts/variables";
 @import "~bootstrap/scss/mixins";
@@ -10,5 +11,4 @@
 @import "./components/navbar";
 @import "./components/footer";
 @import "./page/checkout";
-@import "./page/about";
 @import "./page/carts";

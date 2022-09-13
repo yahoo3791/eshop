@@ -1,83 +1,68 @@
 <template>
 <loading v-model:active="isLoading" />
-  <div class="container">
+<div class="bg-dark">
+  <div class="container text-white pt-3">
     <div class="row">
-      <div class="col-6">
-        <router-link to="/user/products" class="text-black">
-          返回
-        </router-link>
-      </div>
-      <div class="col-6 text-end">
-        <p>{{ product.category }}類</p>
+      <div class="col-12" >
+          <nav aria-label="breadcrumb" class="fixed-top m-2 m-md-4" style="top:5px;">
+            <ol class="breadcrumb p-2 breadcrumb-style">
+              <li class="breadcrumb-item"><a class="text-black" href="#">首頁</a></li>
+              <li class="breadcrumb-item breadcrumb-item-none">商品列表</li>
+              <li class="breadcrumb-item breadcrumb-item-none" aria-current="page">{{ product.category }}類</li>
+              <li class="breadcrumb-item breadcrumb-item-none">內容</li>
+              <li class="ms-auto">
+              <router-link to="/user/products" class="text-black">返回</router-link>
+              </li>
+            </ol>
+          </nav>
       </div>
     </div>
-    <div class="row pt-md-5 mt-5 d-flex flex-column-reverse flex-md-row">
+    <div class="row pt-md-5 mt-5 d-flex flex-column-reverse flex-md-row align-items-center">
       <div class="col-12 col-md-4 offset-md-1">
         <div class="product_content">
           <div class="product_title">
-            <h1 class="product_title_h1">{{product.title}}</h1>
+            <h1 class="product_title_h1 text-2xl font-bold tracking-wider mb-4">{{product.title}}</h1>
           </div>
-          <div class="product_description">
-            <p>{{product.description}}</p>
+          <div class="product_description" style="text-indent:2rem">
+            <p class="leading-8 tracking-normal product-description">{{product.description}}</p>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-4 offset-md-2">
-        <div class="product_pic position-relative">
-          <img :src="product.imageUrl" class="w-100 h-100" alt="">
+        <div class="product_pic position-relative my-3">
+          <img :src="product.imageUrl" class="w-100 h-100" style="object-fit:cover" alt="">
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 text-end">
-        <div class="product_price">
-          <del>原價{{product.origin_price}}$/{{product.unit}}</del>
-          <p class="fs-4" style="color:red">特價{{product.price}}$/{{product.unit}}</p>
-        </div>
-      </div>
-      <div class="col-12 d-flex justify-content-end">
-        <div class="numInput d-flex">
-          <a @click.prevent="min()" class="d-block prev text-center text-decoration-none text-black">-</a>
-          <div class="counter">
-            <input v-model="this.num" type="text" class="text-center" style="width:40px">
-          </div>
-          <a @click.prevent="add()" class="next text-center text-decoration-none text-black">+</a>
-        </div>
-      </div>
-      <div class="col-12 text-end mt-2">
-        <a @click.prevent="addCart(product.id)" href="#" class="cartIcon text-black text-decoration-none py-2 px-1" style="border:1px solid black">加入購物車<i class="bi bi-cart-plus fs-2"></i></a>
       </div>
     </div>
     <div class="row mt-5 mb-5">
-      <div class="col-12">
+      <div class="col-12 col-md-6 offset-md-1">
         <div class="accordion" id="accordionPanelsStayOpenExample">
-          <div class="accordion-item">
+          <div class="accordion-item" style="border-radius:0">
             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              <button class="tracking-wide accordion-button" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseOne">
                 書本內容
               </button>
             </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
               aria-labelledby="panelsStayOpen-headingOne">
-              <div class="accordion-body">
+              <div class="accordion-body leading-7">
                 {{product.content}}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, atque!
               </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              <button class="tracking-wide accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseTwo">
                 購物說明
               </button>
             </h2>
-            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show"
               aria-labelledby="panelsStayOpen-headingTwo">
-              <div class="accordion-body">
+              <div class="accordion-body leading-7">
                 <p>退換貨說明<br>
                   請注意！請務必詳閱商品說明並再次確認確有購買該項商品之需求及意願時始下單購買，有任何疑問並請先聯繫客服詢問：<br>
                   辦理退換貨時，商品必須是完整包裝(請注意保持商品本體、配件、贈品、保證書、原廠包裝及所有附隨文件或資料的完整性，切勿缺漏任何配件或損毀原廠外盒)</p>
@@ -87,15 +72,15 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              <button class="tracking-wide accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseThree">
+                aria-controls="panelsStayOpen-collapseThree" style="border-radius:0">
                 專人服務
               </button>
             </h2>
             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingThree">
-              <div class="accordion-body">
+              aria-labelledby="panelsStayOpen-headingThree" style="border-radius:0">
+              <div class="accordion-body leading-7">
                 辦公室地址:台北市信義區市府路101號<br>
                 客服電話:(02)1010101<br>
                 客服時間:週一至週五,上午07:00~下午17:00<br>
@@ -106,11 +91,41 @@
         </div>
       </div>
     </div>
+      <div class="row pb-5">
+        <div class="col-12 text-end mb-5">
+          <div class="product_price">
+            <del>原價{{product.origin_price}}$/{{product.unit}}</del>
+            <p class="font-semibold text-2xl" style="color:red">特價{{product.price}}$/{{product.unit}}</p>
+          </div>
+        </div>
+        <div class="col-6 d-flex">
+          <div class="numInput d-flex align-items-center">
+            <a @click.prevent="min()" style="cursor:pointer"
+              class="d-block prev text-center text-decoration-none text-white">-</a>
+            <div class="counter" style="height:26px">
+              <input v-model="this.num" type="text" class="text-center h-100" style="width:40px;    background: #212529;
+                              color: white;
+                              border: 1px solid white;">
+            </div>
+            <a @click.prevent="add()" style="cursor:pointer" class="next text-center text-decoration-none text-white">+</a>
+          </div>
+        </div>
+        <div class="col-6 text-end">
+          <w-button @click.prevent="addCart(product.id)" class="text-black px-3 py-md-3 px-md-4  px-lg-5 w-100" lg
+            bg-color="white" tile style="max-width:300px">加入購物車</w-button>
+        </div>
+      </div>
+    </div>
   </div>
+<Footer/>
 </template>
 <script>
+import Navbar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 
   export default {
     data() {
@@ -120,7 +135,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
         isLoading:false,
       }
     },
-    components:{ Loading },
+  components: { Loading, Navbar, Footer },
     methods: {
       getData() {
         const id = this.$route.params.productId;
@@ -140,7 +155,39 @@ import 'vue-loading-overlay/dist/vue-loading.css';
         this.isLoading = true;
         this.axios.post(api, {data: cartData}).then((res) => {
           this.isLoading = false;
-          console.log(res);
+          if (res.data.success) {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+            Toast.fire({
+              icon: 'success',
+              title: '成功加入購物車'
+            })
+          } else {
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+            Toast.fire({
+              icon: 'error',
+              title: '加入購物車失敗'
+            })
+          }
         })
       },
       add() {

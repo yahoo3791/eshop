@@ -86,7 +86,6 @@ export default {
       this.isLoading = true;
       this.axios[httpMethod](api, {data:this.tempCoupon}).then((res) => {
         this.isLoading = false;
-        // console.log(res);
         if (res.data.success) {
           this.updateData();
           this.emitter.emit('push-message', {

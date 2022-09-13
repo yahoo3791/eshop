@@ -132,7 +132,6 @@ export default {
   methods: {
     add() {
       this.$emit('add', this.data);
-      console.log(this.data);
     },
     uploadFile() {
       const uploadFile = this.$refs.fileInput.files[0];
@@ -142,7 +141,6 @@ export default {
       this.isLoading = true;
       this.axios.post(url, formData).then((res) => {
         this.isLoading = false;
-        console.log(res.data);
         if (res.data.success) {
           this.data.imageUrl = res.data.imageUrl;
         }
