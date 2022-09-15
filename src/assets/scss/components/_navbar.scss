@@ -31,8 +31,14 @@
 .navbar-md {
   color: $secondary-BF;
 }
-a.router-link-active{
-  border-bottom: 1px solid $base-color;
+a.router-link-active {
+  color: $secondary-E6;
+}
+.hideNavbar {
+  top: -80px;
+}
+.hideSubNavbar {
+  transform: translateY(-250px)
 }
 @include media-breakpoint-down(md) {
   .navbar-overlay {

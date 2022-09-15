@@ -66,51 +66,53 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 export default {
   data() {
     return {
-      data:{},
-      deleteData:{},
-      changeData:{},
-      pagination:{},
-      isLoading:false,
-    }
+      data: {},
+      deleteData: {},
+      changeData: {},
+      pagination: {},
+      isLoading: false,
+    };
   },
-  components: { Loading, orderModal, Pagination, deleteModal, deleteOrderAllModal },
-methods: {
-  getData(page = 1 ) {
-    const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`;
-    this.axios.get(api).then((res) => {
-      this.data = res.data.orders;
-      this.pagination = res.data.pagination;
-    })
+  components: {
+    Loading, orderModal, Pagination, deleteModal, deleteOrderAllModal,
   },
-  deleteAllModal() {
-    this.$refs.deleteOrderAllModal.modalShow();
+  methods: {
+    getData(page = 1) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`;
+      this.axios.get(api).then((res) => {
+        this.data = res.data.orders;
+        this.pagination = res.data.pagination;
+      });
+    },
+    deleteAllModal() {
+      this.$refs.deleteOrderAllModal.modalShow();
+    },
+    ChangeModal(item) {
+      this.changeData = item;
+      this.$refs.orderModal.modalShow();
+    },
+    DeleteModal(item) {
+      this.deleteData = item;
+      this.$refs.deleteModal.modalShow();
+    },
+    deleteItem() {
+      const { id } = this.deleteData;
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${id}`;
+      this.axios.delete(api).then((res) => {
+        this.$refs.deleteModal.modalHide();
+        this.getData();
+      });
+    },
+    deleteAll() {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders/all`;
+      this.axios.delete(api).then((res) => {
+        this.$refs.deleteOrderAllModal.modalHide();
+        this.getData();
+      });
+    },
   },
-  ChangeModal(item) {
-    this.changeData = item;
-    this.$refs.orderModal.modalShow();
+  created() {
+    this.getData();
   },
-  DeleteModal(item) {
-    this.deleteData = item;
-    this.$refs.deleteModal.modalShow();
-  },
-  deleteItem() {
-    let id = this.deleteData.id;
-    const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${id}`;
-    this.axios.delete(api).then((res) => {
-      this.$refs.deleteModal.modalHide();
-      this.getData();
-    })
-  },
-  deleteAll() {
-    const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders/all`;
-    this.axios.delete(api).then((res) => {
-      this.$refs.deleteOrderAllModal.modalHide();
-      this.getData();
-    })
-  }
-},
-created() {
-  this.getData();
-},
-}
+};
 </script>

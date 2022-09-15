@@ -31,16 +31,17 @@
 </template>
 <script>
 import modalMixin from '@/mixins/modalMixin';
-  export default {
+
+export default {
   data() {
-    return {}
+    return {};
   },
   methods: {
     checkDelete() {
-      this.$emit('deleteItem')
-    }
+      this.$emit('deleteItem');
+    },
   },
   props: ['deleteData'],
   mixins: [modalMixin],
-}
+};
 </script>

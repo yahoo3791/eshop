@@ -7,14 +7,14 @@
           <div id="carouselExampleDark" class="carousel carousel-dark slide" pause="hover" touch="true" data-bs-ride="carousel">
             <div class="carousel-inner w-100">
               <div class="carousel-item carousel-item-home overflow-hidden active" data-bs-interval="3000">
-                <w-image :src="carouselUrl" style="width: 220px;height: 180px;" class="me-4 ms-auto d-block" alt="artPicture" />
+                <w-image :src="carouselUrl" style="width: 220px;height: 180px;" class="carouselItem-img me-4 ms-auto d-block" alt="artPicture" />
                   <div class="carousel-caption carousel-caption-home d-block text-white">
                     <h5 class="text-2xl font-semibold tracking-wider">熱銷No.1</h5>
                     <p class="font-medium">FAUNE</p>
                   </div>
               </div>
               <div class="carousel-item carousel-item-home overflow-hidden" data-bs-interval="3000">
-                <w-image :src="carousel2Url" style="width: 200px;height: 180px;" class="ms-auto d-block" alt="artPicture" />
+                <w-image :src="carousel2Url" style="width: 200px;height: 180px;" class="carouselItem-img ms-auto d-block" alt="artPicture" />
                   <div class="carousel-caption carousel-caption-home d-block text-white">
                     <h5 class="text-2xl font-semibold tracking-wider">熱銷No.2</h5>
                     <p class="font-medium">Black&White</p>
@@ -23,7 +23,7 @@
               <div class="mask w-50 h-100 bg-dark position-absolute top-0 d-none d-sm-inline-block">
                 <div class="banner-container">
                   <h1 class="banner-title d-block text-white mx-auto text-3xl tracking-wider">透過雜誌看見世界<br>
-                    <router-link to="/user/products">
+                    <router-link to="/user/products" class="text-decoration-none">
                       <w-button class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile><p>前往商店</p>
                       </w-button>
                       </router-link>
@@ -31,20 +31,22 @@
                 </div>
               </div>
             </div>
-            <button class="carousel-control-prev position-relative d-inline-block" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" style="filter: invert(0);" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next position-relative d-inline-block" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-              <span class="carousel-control-next-icon" style="filter: invert(0);" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+            <div class="text-center text-md-end">
+              <button class="carousel-control-prev position-relative d-inline-block" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" style="filter: invert(0);" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next position-relative d-inline-block" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" style="filter: invert(0);" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
           </div>
         </div>
         <div class="col-12 d-block d-sm-none">
           <div class="banner-container">
             <h1 class="banner-title d-block text-white mx-auto py-5 text-3xl tracking-wider">透過雜誌看見世界 <br></h1>
-              <router-link to="/user/products">
+              <router-link to="/user/products" class="text-decoration-none">
                 <w-button class="d-block mx-auto text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile><p>前往商店</p>
                 </w-button>
               </router-link>
@@ -68,8 +70,8 @@
           <h4 class="pt-3 pb-1 tracking-wide text-2xl font-semibold" data-wow-duration="2s">優良的退貨機制</h4>
           <p class="text-lg leading-7" data-wow-duration="2s">3天無條件退貨，10天鑑賞期<br>專人到府回收</p>
         </div>
-        <div class="col-12 d-md-flex justify-content-md-around my-5 wow animated fadeInRight" data-wow-duration="3s">
-          <div class="d-flex align-items-center justify-content-center pb-3">
+        <div class="col-12 d-md-flex justify-content-md-around my-5">
+          <div class="d-flex align-items-center justify-content-center pb-3 wow animated fadeInRight" data-wow-delay=".1s" data-wow-duration="1s">
             <div class="homeDetails-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-currency-dollar"
                 viewBox="0 0 16 16">
@@ -79,7 +81,7 @@
             </div>
             <p class="ps-3 text-xl  font-medium tracking-wider">比市價更便宜</p>
           </div>
-          <div class="d-flex align-items-center justify-content-center pb-3">
+          <div class="d-flex align-items-center justify-content-center pb-3 wow animated fadeInRight" data-wow-delay=".2s" data-wow-duration="2s">
             <div class="homeDetails-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag"
                 viewBox="0 0 16 16">
@@ -89,7 +91,7 @@
             </div>
             <p class="ps-3 text-xl  font-medium tracking-wider">商品每週更新</p>
           </div>
-          <div class="d-flex align-items-center justify-content-center pb-3">
+          <div class="d-flex align-items-center justify-content-center pb-3 wow animated fadeInRight" data-wow-delay=".3s" data-wow-duration="3s">
             <div class="homeDetails-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-seam"
                 viewBox="0 0 16 16">
@@ -102,35 +104,61 @@
         </div>
       </div>
     </div>
-    <div class="container text-white p-5 mt-5">
-      <div class="row bg-secondary-80">
-        <div class="col-12 py-2 text-center">
-          <h2 class="text-4xl font-semibold tracking-wide">Mgz x ibook</h2>
+    <div class="container-fuild my-5">
+      <div class="row">
+        <div class="col-12 text-white text-center">
+          <h2 class="text-4xl font-semibold tracking-widest">Mgz x ibook</h2>
+          <p class="text-lg tracking-wide py-2">新上架雜誌，特價中!</p>
         </div>
-        <div class="col-12 col-md-4">
-          <div class="newsItem mx-auto pb-2">
+      </div>
+      <div class="d-flex justify-content-lg-around bg-dark" style="overflow-x: scroll;">
+        <div class="newsItem-container m-4 animated fadeIn wow" data-wow-duration="3s">
+          <div class="newsItem mx-auto p-5 border position-relative">
             <router-link to="/user/products">
-              <img src="@/assets/pic/homeArt01.png" class="w-100 h-100" alt="">
+              <img src="@/assets/pic/homeArt01.png" class="newsItem-img w-100 h-100" alt="newsItemImage">
             </router-link>
+            <div class="newsItem-content text-white position-absolute top-50 start-50 translate-middle tracking-widest text-xl">
+              <p>點擊進入商店</p>
+            </div>
+          </div>
+          <div class="text-white py-3">
+            <h4 class="text-center text-2xl font-semibold tracking-wider">今藝術</h4>
+            <p class="text-indent2rem leading-8 text-lg">當代藝術的界限已越來越模糊，裝置藝術、行為藝術、觀念藝術、跨媒介藝術……</p>
           </div>
         </div>
-        <div class="col-12 col-md-4">
-          <div class="newsItem mx-auto pb-2">
+        <div class="newsItem-container m-4 animated fadeIn wow" data-wow-duration="3s">
+          <div class="newsItem mx-auto p-5 border position-relative">
             <router-link to="/user/products">
-              <img src="@/assets/pic/homeFashion04.png" class="w-100 h-100" alt="">
+              <img src="@/assets/pic/homeFashion04.png" class="newsItem-img w-100 h-100" alt="newsItemImage">
             </router-link>
+            <div class="newsItem-content text-white position-absolute top-50 start-50 translate-middle tracking-widest text-xl">
+              <p>點擊進入商店</p>
+            </div>
+          </div>
+          <div class="text-white py-3">
+            <h4 class="text-center text-2xl font-semibold tracking-wider">Fashion Wedding</h4>
+            <p class="text-indent2rem leading-8 text-lg">五大最潮婚禮穿搭攻略：這樣穿得體又時尚</p>
           </div>
         </div>
-        <div class="col-12 col-md-4">
-          <div class="newsItem mx-auto pb-2">
+        <div class="newsItem-container m-4 animated fadeIn wow" data-wow-duration="3s">
+          <div class="newsItem mx-auto p-5 border position-relative">
             <router-link to="/user/products">
-              <img src="@/assets/pic/homeTrival03.png" class="w-100 h-100" alt="">
+              <img src="@/assets/pic/homeTrival03.png" class="newsItem-img w-100 h-100" alt="newsItemImage">
             </router-link>
+            <div class="newsItem-content text-white position-absolute top-50 start-50 translate-middle tracking-widest text-xl">
+              <p>點擊進入商店</p>
+            </div>
+          </div>
+          <div class="text-white py-3">
+            <h4 class="text-center text-2xl font-semibold tracking-wider">亞馬遜河歷險記</h4>
+            <p class="text-indent2rem leading-8 text-lg">嚴謹的考察活動和豐富的科學知識揉進情節生動、妙趣橫生的故事之中。</p>
           </div>
         </div>
-        <div class="col-12 text-center pb-4">
-          <h3 class="text-3xl font-medium tracking-widest">NEWS</h3>
-          <p class="text-lg">新上架雜誌<br>特價中!</p>
+      </div>
+      <div class="row d-lg-none">
+        <div class="col-12 text-white">
+          <div class="slidebar"></div>
+          <div class="pe-3 pt-3 wow animated pulse text-end" data-wow-iteration="infinite" data-wow-duration="5s">scroll</div>
         </div>
       </div>
     </div>
@@ -139,81 +167,78 @@
         <div class="col-12 col-md-8 col-lg-5 mx-auto text-center my-4">
           <Form @submit="onSubmit"  class="position-relative form-outline form-white my-2">
             <label class="text-2xl font-medium tracking-wide text-white d-block pb-3 " for="subscription">訂閱流行資訊</label>
-            <div class="d-flex flex-wrap justify-content-center">
+            <div class="sub d-flex flex-wrap justify-content-center">
               <Field v-model="subMail" type="email" name="信箱" id="subscription" rules="email"
-              class="sub-input d-inline-block bg-dark text-white" placeholder="EMAIL ADDRESS" />
-              <button type="submit" class="sub-btn d-inline-block text-black bg-white">立即訂閱</button>
+              class="sub-input d-inline-block bg-dark text-white rounded-0" placeholder="EMAIL ADDRESS" />
+              <button type="submit" class="sub-btn d-inline-block text-black">立即訂閱</button>
               <ErrorMessage name="信箱" style="color:orangered"></ErrorMessage>
             </div>
           </Form>
         </div>
       </div>
     </div>
-  </div>
-  <div :class="{ 'd-none': this.ScrollCoupon }" data-wow-duration="2s" class="wow animated bounceIn bounce-coupon position-fixed
-            start-0 bottom-0 bg-white p-3 m-2" style="z-index:100;">
-    <div class="home-coupon ms-auto position-relative text-center">
-      <span class="d-block home-coupon-inner position-absolute"></span>
-      <span class="d-block position-absolute"></span>
-      <span class="d-block position-absolute"></span>
-      <span class="d-block position-absolute text-black" @click="hideCoupon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-          <path
-            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-        </svg>
-      </span>
-      <p class="coupon-content">折扣10%優惠碼<br><strong>coupon012</strong><br>
-        <i class="coupon-remind">結帳時輸入</i></p>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div :class="{'d-none': openDrawer}" class="coupon position-fixed bottom-0 end-0 m-2 m-md-3 p-md-2"
+            @click="noOverlay = true;overlayColor = '';openDrawer = !openDrawer">
+            <img src="@/assets/pic/coupon.png" class="coupon-img" alt="coupon">
+          </div>
+          <w-drawer v-model="openDrawer" :no-overlay="noOverlay" :overlay-color="overlayColor" bottom height="60px">
+            <div class="d-flex align-items-center justify-content-between w-100 px-1 px-md-3 bg-dark" style="border-top:1px solid #404040;border-bottom:1px solid #404040">
+              <img src="@/assets/pic/coupon.png" class="d-block coupon-img" alt="coupon" style="filter: invert(1);">
+              <p class="d-inline-block text-sm font-medium" style="color:#BFBFBF">結帳時輸入優惠碼coupon012<br class="d-md-none">即可折扣總金額10%</p>
+              <w-button @click="openDrawer = false" icon="wi-cross" sm round bg-color="transparent" color="grey" class="position-relative">
+            </w-button>
+            </div>
+          </w-drawer>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="coupon position-fixed bottom-0 end-0 m-2 m-md-3 p-md-2" @click="openCoupon">
-    <img src="@/assets/pic/coupon.png" class="coupon-img" alt="coupon">
   </div>
   <Footer/>
 </template>
 
 <script>
+import { Field, Form, ErrorMessage, defineRule, } from 'vee-validate';
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
-import { Field, Form, ErrorMessage } from 'vee-validate';
-import { defineRule } from 'vee-validate';
 
 export default {
   data() {
     return {
-      ScrollCoupon: true,
-      once: false,
       carouselUrl: require('@/assets/pic/Arttransparent.png'),
       carousel2Url: require('@/assets/pic/Arttransparent02.png'),
       contentUrl: require('@/assets/pic/pic01.webp'),
       content2Url: require('@/assets/pic/smile02.png'),
       content3Url: require('@/assets/pic/smile01.png'),
       subMail: '',
+      openDrawer: false,
+      once: false,
+      noOverlay: false,
+      overlayColor: '',
     };
   },
-  components: { Navbar, Footer, Form, Field, ErrorMessage },
+  components: {
+    Navbar, Footer, Form, Field, ErrorMessage,
+  },
   methods: {
     handleScroll() {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop ||
-        document.body.scrollTop;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+        || document.body.scrollTop;
       if (scrollTop > 450 && this.once === false) {
         this.once = true;
-        this.ScrollCoupon = false; 
-        }
-    },
-    hideCoupon() {
-      this.ScrollCoupon = true;
-    },
-    openCoupon() {
-      this.ScrollCoupon = false;
-      this.once = false;
+        this.noOverlay = true;
+        this.overlayColor = '';
+        this.openDrawer = true;
+      }
     },
     onSubmit() {
-    }
+    },
   },
   mounted() {
-    window.addEventListener('scroll',this.handleScroll);
-    window.addEventListener('load', function () {
+    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('load', () => {
       new WOW({
         boxClass: 'wow',
         animateClass: 'animated',

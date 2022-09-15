@@ -25,7 +25,7 @@ export default {
   props: ['pages'],
   methods: {
     updatePage(page) {
-      this.$emit('update-page',page);
+      this.$emit('update-page', page);
     },
   },
 };

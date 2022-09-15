@@ -41,9 +41,29 @@
 .bg-secondary-80 {
   background: $secondary-80;
 }
+.newsItem-container {
+  width: 300px;
+  height: 100%;
+  flex-shrink: 0
+}
 .newsItem {
-  width: 200px;
-  height: 200px;
+  height: 300px;
+  overflow: hidden;
+  &:hover .newsItem-img {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  &:hover .newsItem-content {
+    opacity: 1;
+  }
+  .newsItem-img {
+    object-fit: cover;
+    transition: all .3s ease-in-out;
+  }
+}
+.newsItem-content {
+  transition: all .3s ease-in-out;
+  opacity: 0;
 }
 /* 訂閱Ｆorm */ 
 .sub-input {
@@ -55,93 +75,65 @@
   width: 30%;
   border: 1px solid white;
   padding: 5px;
+  transition: all .3s;
+  background: $base-color;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 /* coupon style */
-.home-coupon {
-  background: rgb(255,69,0);
-  width: 250px;
-  height: 70px;
-  box-shadow: 0px 2px 0px white;
-}
-.home-coupon span:nth-child(1) {
-  background: white;
-  border-radius: 50px;
-  width: 30px;
-  height: 30px;
-  left: -15px;
-  top: 15px;
-}
-.home-coupon span:nth-child(2) {
-  background: white;
-  border-radius: 50px;
-  width: 30px;
-  height: 30px;
-  right: -15px;
-  top: 15px;
-  z-index: 3;
-}
-.home-coupon span:nth-child(3) {
-  width: 50px;
-  height: 70px;
-  background-color: #f88181;
-  right: 0;
-}
-.home-coupon span:nth-child(4) {
-  width: 30px;
-  height: 30px;
-  background: white;
-  border-radius: 50%;
-  top: -30px;
-  right: -30px;
-  cursor: pointer;
-}
 .coupon-img {
   width: 45px;
   height: 45px;
+  filter: invert(1);
 }
 .coupon {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 2px solid white;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid #ccc;
   border-radius: 50%;
   z-index: 100;
   cursor: pointer;
+  transition: all .3s ease-in;
+  &:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255,0.3);
+  }
 }
-.coupon-content strong{
-  animation: flashCoupon 2s infinite steps(1, end);
+.slidebar {
+  width: 50px;
+  height: 1px;
+  background: $secondary-E6;
+  animation-name: slidebar;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
 }
-.coupon-content::before {
-  content: '(限時)';
-  color: yellow;
-  animation: flash 2s infinite steps(1, end);
+.nav-link {
+  position: relative;
 }
-@keyframes flashCoupon {
+.nav-link::after {
+  content: '';
+  position: absolute;
+  background-color: $secondary-80;
+  height: 2px;
+  width: 0%;
+  left: 0;
+  bottom: 0px;
+  border-radius: 5px;
+}
+.nav-link:hover::after {
+  content: '';
+  width: 100%;
+  transition: all .2s ease-in-out;
+}
+@keyframes slidebar {
   0% {
-    color: #fff;
+    width: 50%;
   }
   50% {
-    color: black;
+    width: 100%;
   }
-}
-/* media-breakpoint */
-@include media-breakpoint-down(sm) {
-.bounce-coupon {
-  margin-bottom: 60px !important;
+  100% {
+    width: 50%;
   }
-}
-@include media-breakpoint-up(md) {
-  .home-coupon {
-    width: 400px;
-    height: 100px;
-    line-height: 30px;
-  }
-  .home-coupon span:nth-child(1) {
-    top: 35px;
-  }
-  .home-coupon span:nth-child(2) {
-    top: 35px;
-  }
-  .home-coupon span:nth-child(3) {
-    width: 70px;
-    height: 100px;
-  }
+  
 }

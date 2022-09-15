@@ -11,14 +11,8 @@
   <div class="bg-dark">
     <div class="container">
       <div class="row">
-        <div class="col-12 text-white py-3 d-flex align-items-center justify-content-around">
-          <img src="@/assets/pic/logo2.png" alt="" style="width:50px">
+        <div class="col-12 text-white py-3 text-center">
           <h1>CHECKOUT</h1>
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-lock-fill"
-            viewBox="0 0 16 16">
-            <path
-              d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
-          </svg>
         </div>
         <div class="timeline col-12 d-flex align-items-center"  style="padding-top:15px">
           <div class="">
@@ -50,32 +44,31 @@
     </div>
     <div class="container text-white">
       <div class="row">
-        <div class="col-12 text-center">
-          <p style="color:red">確認您的訂單資訊，<br>請勿離開頁面，離開將導致訂單取消</p>
+        <div class="col-12 text-center my-5">
+          <p class="text-red">確認您的訂單資訊，<br class="d-md-none">請勿離開頁面，離開將導致訂單取消</p>
         </div>
-        <div class="col-12">
+        <div class="col-12 col-md-8 mx-auto">
+          <h3 class="text-center">訂購人資料</h3>
           <p>訂單編號:{{details.create_at}} <span v-if="this.details.create_at">----訂單成立成功</span></p>
-          <div class="col-12 bg-white text-dark px-2 py-1" style="box-shadow:4px 4px 0px gray">
-            <h3 class="text-center"><i class="bi bi-1-circle"></i> 訂購人資料</h3>
-            <p>姓名: {{userData.name}}</p>
-            <p>電話: {{userData.tel}}</p>
-            <p>信箱: {{userData.email}}</p>
-            <p>地址: {{userData.address}}</p>
-            <p style="font-size:8px;color:orangered">資料填寫錯誤導致配送及抵達延誤,本公司不予負責</p>
+          <div class="col-12 bg-white text-dark p-2 p-md-5 mb-5 d-flex justify-content-center shadow">
+            <p class="tracking-wide leading-7">姓名: {{userData.name}}<br>
+            電話: {{userData.tel}}<br>
+            信箱: {{userData.email}}<br>
+            地址: {{userData.address}}<br></p>
           </div>
-          <div class="col-12 bg-white text-dark px-2 py-1 my-3" style="box-shadow:4px 4px 0px gray">
-            <h3 class="text-center"><i class="bi bi-2-circle"></i> 商品資訊</h3>
-            <div class="order-item border-bottom" v-for="item in details.products" :key="item.id">
-              <p><img :src="item.product.imageUrl" alt="" style="width:100px"></p>
-              <p>書名: {{item.product.title}}</p>
-              <p>類別: {{item.product.category}}</p>
-              <p>原價: {{item.product.origin_price}}$</p>
-              <p>優惠價: {{item.product.price}}$</p>
-              <p>數量: {{item.qty}}/{{item.product.unit}}</p>
+          <div class="col-12 bg-white text-dark p-md-5 my-3 shadow">
+            <h3 class="text-center">商品資訊</h3>
+            <div class="order-item border-bottom d-flex flex-column align-items-center flex-md-row justify-content-center py-5" v-for="item in details.products" :key="item.id">
+              <p><img :src="item.product.imageUrl" alt="product-image" class="w-100" style="max-width:200px"></p>
+              <p class="tracking-wide leading-7 ps-1 ps-lg-5">書名: {{item.product.title}}<br>
+              類別: {{item.product.category}}<br>
+              原價: {{item.product.origin_price}}$<br>
+              優惠價: {{item.product.price}}$<br>
+              數量: {{item.qty}}/{{item.product.unit}}</p>
             </div>
           </div>
-          <div class="col-12 bg-white text-dark px-2 py-1 my-3" style="box-shadow:4px 4px 0px gray">
-            <h3 class="text-center"><i class="bi bi-3-circle"></i> 付款資訊</h3>
+          <div class="col-12 bg-white text-dark px-2 py-1 my-5 shadow">
+            <h3 class="text-center">付款資訊</h3>
             <div class="" v-for="item in details.products">
               <p v-if="!item.coupon == 0">已使用優惠卷，折扣{{ item.total - item.final_total }}$</p>
             </div>
@@ -83,7 +76,7 @@
             <p v-if="details.is_paid === true">已付款完成</p>
             <p v-else-if="details.is_paid === false">尚未付款</p>
           </div>
-          <div class="col-12 pt-2 pb-5 text-end">
+          <div class="col-12 pt-2 pb-5 text-end my-5">
               <w-button @click="cancelOrder" class="me-4 text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile>取消</w-button>
               <w-button @click="payOrder" class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile>付款</w-button>
           </div>
@@ -95,41 +88,81 @@
 <script>
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 
 export default {
   data() {
     return {
-      details:{},
-      userData:{},
-      isLoading:false,
-    }
+      details: {},
+      userData: {},
+      isLoading: false,
+    };
   },
-  components:{ Loading },
+  components: { Loading },
   methods: {
     payOrder() {
-      const orderId = this.$route.params.orderId;
+      const { orderId } = this.$route.params;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${orderId}`;
       this.isLoading = true;
       this.axios.post(api).then((res) => {
         this.isLoading = false;
-        if ( res.data.success ) {
-          alert('付款完成 轉址頁面 還未製作');
+        if (res.data.success) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '付款成功，五秒後返回首頁',
+            showConfirmButton: false,
+            timer: 5000,
+          });
+          setTimeout(() => {
+            this.$router.push('/');
+          }, 5000);
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: '付款失敗',
+            text: '請聯絡我們客服人員',
+            footer: '辦公室地址:台北市信義區市府路101號,客服電話:(02)1010101,客服時間:週一至週五上午07:00~下午17:00,Email:MgzOfficer010@gmail.com',
+          });
         }
-      })
+      });
     },
     cancelOrder() {
-      alert('取消訂單 轉址頁面 未製作');
-    }
+      Swal.fire({
+        title: '是否要取消訂單',
+        text: '確認後無法恢復',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '取消成功，五秒後返回首頁',
+            showConfirmButton: false,
+            timer: 5000,
+          });
+          setTimeout(() => {
+            this.$router.push('/');
+          }, 5000);
+        }
+      });
+    },
   },
   mounted() {
-    const orderId = this.$route.params.orderId;
+    const { orderId } = this.$route.params;
     const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${orderId}`;
     this.isLoading = true;
     this.axios.get(api).then((res) => {
       this.isLoading = false;
       this.details = res.data.order;
       this.userData = res.data.order.user;
-    })
-  }
-}
+    });
+  },
+};
 </script>

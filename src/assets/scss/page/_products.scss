@@ -6,50 +6,94 @@
     color: #6c757D
   }
 }
+.breadcrumb-item:nth-child(1) a:hover {
+  border-bottom:1px solid $secondary-40;
+}
 /* list-group active樣式 */
 .products-active {
   background: white !important;
   color: black !important;
 }
+.list-group-item {
+  background: $dark;
+  color: $base-color;
+  transition: all .1s;
+  &:hover{
+    background-color: white;
+    opacity: 0.9;
+    border: 2px solid $secondary-E6;
+    color:black;
+  }
+}
 /* products樣式 */
 .product-item {
-  height: 300px;
+  height: 150px;
   border: 1px solid white;
-  padding: 30px;
   cursor: pointer;
+  overflow: hidden;
   .product-img {
-    object-fit: cover
+    object-fit: cover;
+    transition: all .3s;
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.2);
+    }
+  }
+  .product-notes {
+    transition: all .3s;
+    opacity: 0;
+  }
+  &:hover .product-notes{
+    opacity: 1;
   }
 }
 .product-content {
   .product-p {
-    line-height: 40px;
-    color: red;
+    line-height: 20px;
+    color: rgb(255, 73, 73);
   }
   .addCartSize {
     width: 40px;
     height: 40px;
+    transition: all .3s;
+    &:hover {
+      opacity: 0.9;
+    }
+    &:hover svg{
+      transition: transform .3s;
+      transform: scale(1.1);
+    }
   }
 }
 /* addCart/scrollUp icon */
 .drawer-container {
   z-index: 100;
   cursor: pointer;
+  transition: all .3s;
   .drawer-btn {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: #ffffffb3;
     border: 1px solid #ccc;
     height: 45px;
     width: 45px;
+    &:hover {
+      opacity: 0.9;
+      border: 1px solid $secondary-80;
+    }
   }
 }
 .scrollTop-container {
   z-index: 100;
   bottom: 55px;
+  transition: all .3s;
   .scrollTop-btn {
     background-color: rgba(255, 255, 255, 0.7);
     border: 1px solid #ccc;
     height: 45px;
     width: 45px;
+    &:hover {
+      opacity: 0.9;
+      border: 1px solid $secondary-80;
+    }
   }
 }
 /* set w-badge bgc */
@@ -65,6 +109,21 @@
 @include media-breakpoint-up(md) {
   .product-outside {
     width: 50% !important;
+  }
+  .product-item {
+    height: 250px;
+  }
+  .product-content-h5 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .product-price {
+    font-size: 1.125rem;
+  }
+  .product-content {
+    .product-p {
+      line-height: 30px;
+    }
   }
 }
 @include media-breakpoint-up(lg) {

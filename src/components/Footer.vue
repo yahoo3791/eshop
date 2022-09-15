@@ -16,7 +16,7 @@
                 <p class="ps-2 d-inline-block tracking-wider">Meta</p>
             </a>
           </div>
-          <div class="">
+          <div>
             <a href="https://www.instagram.com/mgzofficial/" target="_blank" class="ins">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-instagram"
                 viewBox="0 0 16 16">
@@ -35,7 +35,3 @@
     </div>
   </footer>
 </template>
-<script>
-export default {
-}
-</script>

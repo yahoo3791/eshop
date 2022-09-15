@@ -2,29 +2,42 @@
   width: 230px;
   height: 50px
 }
-
 .carts-imgSize {
   width: 70px;
   height: 80px;
   object-fit: cover;
 }
-
+.carts-trashIcon:hover {
+  transition: all .3s;
+  color: red;
+}
+.deleteAllCarts {
+  &:hover {
+    border:1px solid red;
+  }
+}
+.formData-label {
+  top: 20px;
+  color:black;
+  padding-left: 10px;
+  transition: all .3s;
+}
+.carts-input {
+  border: 1px solid transparent;
+  &:focus {
+  border: 1px solid $secondary-80;
+  }
+}
+.carts-input:focus ~ .formData-label{
+  top: -10px;
+  color:white;
+  padding: 0px;
+}
 @include media-breakpoint-up(md) {
-  .carts-input {
-    width: 500px;
-    padding: 5px;
-  }
-
-  .carts-textarea {
-    width: 550px;
-    height: 70px
-  }
-
   .carts-imgSize {
     width: 160px;
     height: 160px;
   }
-
   .carts-trashIcon {
     width: 30px;
     height: 30px;

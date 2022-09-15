@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/user',
     component: () => import('../views/Userboard.vue'),
-    children:[
+    children: [
       {
         path: 'products',
         name: '產品',
@@ -35,8 +35,8 @@ const routes = [
         path: 'checkout/:orderId',
         name: '結帳流程',
         component: () => import('../views/Checkout.vue'),
-      }
-    ]
+      },
+    ],
   },
   {
     path: '/login',
@@ -62,15 +62,15 @@ const routes = [
         path: 'coupon',
         name: '管理優惠卷',
         component: () => import('../views/back/Coupon.vue'),
-      }
+      },
     ],
   },
   {
     path: '/:pathMatch(.*)*',
     redirect: {
       name: '首頁',
-    }
-  }
+    },
+  },
 ];
 
 const router = createRouter({
@@ -79,8 +79,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  document.title = `${ process.env.VUE_APP_TITLE } - ${ to.name }`
-  next()
-})
+  document.title = `${process.env.VUE_APP_TITLE} - ${to.name}`;
+  next();
+});
 
 export default router;

@@ -28,7 +28,7 @@ export default {
   },
   components: {
     ToastMessages,
-    Navbar
+    Navbar,
   },
   provide() {
     return {

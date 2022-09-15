@@ -1,32 +1,34 @@
 <template>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  <div class="modal fade" id="exampleModal" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true"
     ref="modal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">優惠卷</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+          aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="coupon_title mb-3">
             <label for="title">優惠卷名稱</label>
-            <input type="text" id="title" v-model="tempCoupon.title">
+            <input type="text" name="title" id="title" v-model="tempCoupon.title">
           </div>
           <div class="coupon_isEnabled mb-3">
             <label for="is_enabled">是否啟用</label>
-            <input type="checkbox" id="is_enabled" v-model="tempCoupon.is_enabled">
+            <input type="checkbox" name="is_enabled" id="is_enabled" v-model="tempCoupon.is_enabled">
           </div>
           <div class="coupon_percent mb-3">
             <label for="percent">折扣百分比</label>
-            <input type="number" id="percent" v-model="tempCoupon.percent">
+            <input type="number" name="percent" id="percent" v-model="tempCoupon.percent">
           </div>
           <div class="coupon_dueDate mb-3">
             <label for="due_date">到期日</label>
-            <input type="date" id="due_date" v-model="tempCoupon.due_date">
+            <input type="date" name="due_date" id="due_date" v-model="tempCoupon.due_date">
           </div>
           <div class="coupon_code mb-3">
             <label for="code">折扣代碼</label>
-            <input type="text" id="code" v-model="tempCoupon.code">
+            <input type="text" name="code" id="code" v-model="tempCoupon.code">
           </div>
         </div>
         <div class="modal-footer">
@@ -43,22 +45,22 @@ import modalMixin from '@/mixins/modalMixin';
 export default {
   data() {
     return {
-      modal:{},
-      tempCoupon:{},
-    }
+      modal: {},
+      tempCoupon: {},
+    };
   },
   props: ['coupon'],
-  mixins:[modalMixin],
-  methods:{
-    saveCoupon(){
-      this.$emit('saveCoupon',this.tempCoupon);
+  mixins: [modalMixin],
+  methods: {
+    saveCoupon() {
+      this.$emit('saveCoupon', this.tempCoupon);
       this.modal.hide();
-    }
+    },
   },
   watch: {
     coupon() {
-      this.tempCoupon = this.coupon
-    }
+      this.tempCoupon = this.coupon;
+    },
   },
-}
+};
 </script>

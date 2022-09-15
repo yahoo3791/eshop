@@ -4,6 +4,8 @@ $secondary-BF: #BFBFBF;
 $secondary-80: #808080;
 $secondary-40: #404040;
 $secondary-E6: #E6E6E6;
+$dark: #212529;
+.text-red { color:red; }
 
 html { font-size: 16px; }
 body {
@@ -51,3 +53,7 @@ body {
 .leading-8 { line-height: 2rem; }    /* 32px */
 .leading-9 { line-height: 2.25rem; } /* 36px */
 .leading-10{ line-height: 2.5rem; }  /* 40px */
+
+.text-indent2rem {
+  text-indent: 2rem;
+}

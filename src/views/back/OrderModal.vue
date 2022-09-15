@@ -45,14 +45,15 @@
   </div>
 </template>
 <script>
-  import modalMixin from '@/mixins/modalMixin';
-  export default {
-    data() {
-      return {
-        modal: {},
-      }
-    },
-    props:['changeData'],
-    mixins:[modalMixin],
-  }
+import modalMixin from '@/mixins/modalMixin';
+
+export default {
+  data() {
+    return {
+      modal: {},
+    };
+  },
+  props: ['changeData'],
+  mixins: [modalMixin],
+};
 </script>

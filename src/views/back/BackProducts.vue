@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-12">
         <div class="text-end">
-          <button @click="openModal(true)" type="button" class="btn" style="border:1px solid black"
+          <button @click="openModal(true)" type="button" class="btn border"
             data-bs-target="#exampleModal">
             新增一個項目
           </button>
@@ -62,7 +62,7 @@ import Loading from 'vue-loading-overlay';
 import productModal from './ProductsModal.vue';
 import deleteModal from './DeleteModal.vue';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import pagination from '../back/Pagination.vue';
+import pagination from './Pagination.vue';
 import Navbar from '../../components/BackNavbar.vue';
 
 export default {
@@ -81,10 +81,10 @@ export default {
     deleteModal,
     Loading,
     pagination,
-},
+  },
   inject: ['emitter'],
   methods: {
-    getData( page=1 ) {
+    getData(page = 1) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`;
       this.isLoading = true;
       this.axios.get(api).then((res) => {

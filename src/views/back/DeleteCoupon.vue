@@ -8,7 +8,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          確定要刪除<span style="color:red;">{{this.deleteItem.code}}</span>優惠碼<br>
+          確定要刪除<span class="text-red">{{this.deleteItem.code}}</span>優惠碼<br>
           刪除後無法復原
         </div>
         <div class="modal-footer">
@@ -25,17 +25,17 @@ import modalMixin from '@/mixins/modalMixin';
 export default {
   data() {
     return {
-      modal: {}
-    }
+      modal: {},
+    };
   },
-  mixins:[modalMixin],
+  mixins: [modalMixin],
   mounted() {
   },
-  methods :{
+  methods: {
     deleteCoupon() {
       this.$emit('deleteCoupon', this.deleteItem.id);
-    }
+    },
   },
-  props:['deleteItem']
-}
+  props: ['deleteItem'],
+};
 </script>

@@ -3,7 +3,7 @@
   <div style="margin-top:100px">
     <div class="container">
       <div class="text-end">
-        <button class="btn" style="border:1px solid black" @click="openCoupon(true)">新增優惠卷</button>
+        <button class="btn border" @click="openCoupon(true)">新增優惠卷</button>
       </div>
       <div class="row">
         <div class="col-12">
@@ -53,38 +53,38 @@ export default {
   data() {
     return {
       // modal資料
-      tempCoupon:{},
-      pagination:{},
-      //存已建立優惠卷資料
-      getCoupons:{},
-      isNew:false,
-      deleteCoupon:{},
-      isLoading:false,
-    }
+      tempCoupon: {},
+      pagination: {},
+      // 存已建立優惠卷資料
+      getCoupons: {},
+      isNew: false,
+      deleteCoupon: {},
+      isLoading: false,
+    };
   },
-  inject:['emitter'],
-  methods:{
+  inject: ['emitter'],
+  methods: {
     openCoupon(isNew, item) {
       this.$refs.couponModal.modalShow();
       if (isNew === true) {
-        this.tempCoupon = {}
+        this.tempCoupon = {};
       } else {
-        this.tempCoupon = {...item}
+        this.tempCoupon = { ...item };
       }
       this.isNew = isNew;
     },
     couponData(data) {
       this.tempCoupon = data;
       this.tempCoupon.due_date = new Date(this.tempCoupon.due_date).getTime() / 1000;
-      if (this.tempCoupon.is_enabled === true) { this.tempCoupon.is_enabled = 1 } else { this.tempCoupon.is_enabled = 0 }
-        let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon`;
-        let httpMethod = 'post';
-      if(this.isNew === false){
+      if (this.tempCoupon.is_enabled === true) { this.tempCoupon.is_enabled = 1; } else { this.tempCoupon.is_enabled = 0; }
+      let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon`;
+      let httpMethod = 'post';
+      if (this.isNew === false) {
         api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`;
         httpMethod = 'put';
       }
       this.isLoading = true;
-      this.axios[httpMethod](api, {data:this.tempCoupon}).then((res) => {
+      this.axios[httpMethod](api, { data: this.tempCoupon }).then((res) => {
         this.isLoading = false;
         if (res.data.success) {
           this.updateData();
@@ -99,16 +99,16 @@ export default {
             content: res.data.message.join('、'),
           });
         }
-      })
+      });
     },
-    updateData( page=1 ) {
-      this.isLoading =true;
+    updateData(page = 1) {
+      this.isLoading = true;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`;
       this.axios.get(api).then((res) => {
         this.isLoading = false;
         this.getCoupons = res.data.coupons;
         this.pagination = res.data.pagination;
-      })
+      });
     },
     openDeleteModal(item) {
       this.$refs.deleteModal.modalShow();
@@ -119,7 +119,7 @@ export default {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${id}`;
       this.isLoading = false;
-      this.axios.delete(api).then((res)=> {
+      this.axios.delete(api).then((res) => {
         if (res.data.success) {
           this.updateData();
           this.emitter.emit('push-message', {
@@ -133,16 +133,16 @@ export default {
             content: res.data.message.join('、'),
           });
         }
-      })
-    }
+      });
+    },
   },
-  components:{
+  components: {
     couponModal,
     deleteModal,
-    Loading
+    Loading,
   },
   mounted() {
     this.updateData();
-  }
-}
+  },
+};
 </script>

@@ -6,12 +6,12 @@
       <div class="col-12" >
           <nav aria-label="breadcrumb" class="fixed-top m-2 m-md-4" style="top:5px;">
             <ol class="breadcrumb p-2 breadcrumb-style">
-              <li class="breadcrumb-item"><a class="text-black" href="#">首頁</a></li>
+              <li class="breadcrumb-item"><a class="text-black text-decoration-none" href="#">首頁</a></li>
               <li class="breadcrumb-item breadcrumb-item-none">商品列表</li>
               <li class="breadcrumb-item breadcrumb-item-none" aria-current="page">{{ product.category }}類</li>
               <li class="breadcrumb-item breadcrumb-item-none">內容</li>
               <li class="ms-auto">
-              <router-link to="/user/products" class="text-black">返回</router-link>
+              <router-link to="/user/products" class="breadcrumb-item-back text-black text-decoration-none">返回</router-link>
               </li>
             </ol>
           </nav>
@@ -23,14 +23,14 @@
           <div class="product_title">
             <h1 class="product_title_h1 text-2xl font-bold tracking-wider mb-4">{{product.title}}</h1>
           </div>
-          <div class="product_description" style="text-indent:2rem">
+          <div class="product_description">
             <p class="leading-8 tracking-normal product-description">{{product.description}}</p>
           </div>
         </div>
       </div>
       <div class="col-12 col-md-4 offset-md-2">
         <div class="product_pic position-relative my-3">
-          <img :src="product.imageUrl" class="w-100 h-100" style="object-fit:cover" alt="">
+          <img :src="product.imageUrl" class="w-100 h-100" alt="productImage">
         </div>
       </div>
     </div>
@@ -72,14 +72,14 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-              <button class="tracking-wide accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              <button class="tracking-wide accordion-button collapsed rounded-0" type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseThree" style="border-radius:0">
+                aria-controls="panelsStayOpen-collapseThree">
                 專人服務
               </button>
             </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingThree" style="border-radius:0">
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse rounded-0"
+              aria-labelledby="panelsStayOpen-headingThree">
               <div class="accordion-body leading-7">
                 辦公室地址:台北市信義區市府路101號<br>
                 客服電話:(02)1010101<br>
@@ -95,19 +95,17 @@
         <div class="col-12 text-end mb-5">
           <div class="product_price">
             <del>原價{{product.origin_price}}$/{{product.unit}}</del>
-            <p class="font-semibold text-2xl" style="color:red">特價{{product.price}}$/{{product.unit}}</p>
+            <p class="font-semibold text-2xl text-red">特價{{product.price}}$/{{product.unit}}</p>
           </div>
         </div>
         <div class="col-6 d-flex">
           <div class="numInput d-flex align-items-center">
-            <a @click.prevent="min()" style="cursor:pointer"
-              class="d-block prev text-center text-decoration-none text-white">-</a>
-            <div class="counter" style="height:26px">
-              <input v-model="this.num" type="text" class="text-center h-100" style="width:40px;    background: #212529;
-                              color: white;
-                              border: 1px solid white;">
+            <a @click.prevent="min()"
+              class="cursor-pointer d-block prev text-center text-decoration-none">-</a>
+            <div class="counter">
+              <input v-model="this.num" type="text" min="1" class="rounded-0 bg-dark text-center text-white h-100">
             </div>
-            <a @click.prevent="add()" style="cursor:pointer" class="next text-center text-decoration-none text-white">+</a>
+            <a @click.prevent="add()" class="cursor-pointer next text-center text-decoration-none">+</a>
           </div>
         </div>
         <div class="col-6 text-end">
@@ -127,80 +125,102 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
 
-  export default {
-    data() {
-      return {
-        product:{},
-        num:1,
-        isLoading:false,
-      }
-    },
+export default {
+  data() {
+    return {
+      product: {},
+      num: 1,
+      isLoading: false,
+    };
+  },
   components: { Loading, Navbar, Footer },
-    methods: {
-      getData() {
-        const id = this.$route.params.productId;
-        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
-        this.isLoading = true;
-        this.axios.get(api).then((res) => {
-          this.isLoading = false;
-          this.product = res.data.product;
-        })
-      },
-      addCart(id) {
-        const cartData = {
-          product_id: id,
-          qty : this.num,
-        }
-        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
-        this.isLoading = true;
-        this.axios.post(api, {data: cartData}).then((res) => {
-          this.isLoading = false;
-          if (res.data.success) {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-            })
-            Toast.fire({
-              icon: 'success',
-              title: '成功加入購物車'
-            })
-          } else {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top',
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-            })
-            Toast.fire({
-              icon: 'error',
-              title: '加入購物車失敗'
-            })
+  methods: {
+    getData() {
+      const id = this.$route.params.productId;
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
+      this.isLoading = true;
+      this.axios.get(api).then((res) => {
+        this.isLoading = false;
+        this.product = res.data.product;
+      });
+    },
+    addCart(id) {
+      if ( this.num <=0 || this.num >= 50) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
           }
         })
-      },
-      add() {
-        this.num ++
-      },
-      min() {
-        this.num -- 
-      },
+        Toast.fire({
+          icon: 'warning',
+          title: '請輸入正確數字:等於1小於51'
+        })
+        return;
+      }
+      const cartData = {
+        product_id: id,
+        qty: this.num,
+      };
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      this.isLoading = true;
+      this.axios.post(api, { data: cartData }).then((res) => {
+        this.isLoading = false;
+        if (res.data.success) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: 'success',
+            title: '成功加入購物車',
+          });
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: 'error',
+            title: '加入購物車失敗',
+          });
+        }
+      });
     },
-    created() {
-      this.getData();
+    add() {
+      this.num++;
+      if ( this.num >= 50 ) {
+        return this.num = 50;
+      }
     },
-    mounted() {
-    }
-  }
+    min() {
+      this.num--;
+      if ( this.num <=0 ) {
+        return this.num = 1;
+      }
+    },
+  },
+  created() {
+    this.getData();
+  },
+};
 </script>

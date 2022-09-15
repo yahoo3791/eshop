@@ -10,7 +10,7 @@
           data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          確定要刪除<span style="color:red">{{ this.delete.title }}</span>
+          確定要刪除<span class="text-red">{{ this.delete.title }}</span>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>

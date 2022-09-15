@@ -7,12 +7,11 @@
 <script>
 import ToastMessages from '@/components/ToastMessages.vue';
 import emitter from '@/methods/emitter';
+
 export default {
   components: { ToastMessages },
   provide() {
-    return {
-      emitter
-    }
-  }
-}
+    return { emitter };
+  },
+};
 </script>

@@ -7,7 +7,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          確定要刪除全部訂單嗎 <span style="color:red">(刪除後無法恢復)</span>
+          確定要刪除全部訂單嗎 <span class="text-red">(刪除後無法恢復)</span>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
@@ -19,17 +19,18 @@
 </template>
 <script>
 import modalMixin from '@/mixins/modalMixin';
-  export default {
-    data() {
-      return {
-        modal:{},
-      }
+
+export default {
+  data() {
+    return {
+      modal: {},
+    };
+  },
+  methods: {
+    deleteAll() {
+      this.$emit('deleteAll');
     },
-    methods:{
-      deleteAll() {
-        this.$emit('deleteAll')
-      }
-    },
+  },
   mixins: [modalMixin],
-  }
+};
 </script>
