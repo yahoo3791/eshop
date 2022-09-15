@@ -227,9 +227,29 @@ export default {
       });
     },
     updateQty(id, k) {
+      let num = Number(this.$refs.updateValue[k].value);
+      if (num <= 0 || num >= 50) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        Toast.fire({
+          icon: 'warning',
+          title: '請輸入正確數字:等於1小於51'
+        })
+        this.$refs.updateValue[k].value = 1;
+        return;
+      }
       const updateData = {
         product_id: id,
-        qty: Number(this.$refs.updateValue[k].value),
+        qty: num,
       };
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.isLoading = true;

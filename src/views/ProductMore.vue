@@ -165,7 +165,7 @@ export default {
       }
       const cartData = {
         product_id: id,
-        qty: this.num,
+        qty: Number(this.num),
       };
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.isLoading = true;
