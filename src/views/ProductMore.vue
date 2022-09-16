@@ -161,7 +161,7 @@ export default {
           icon: 'warning',
           title: '請輸入正確數字:等於1小於51'
         })
-        return;
+        return this.num = 1 ;
       }
       const cartData = {
         product_id: id,
@@ -187,6 +187,7 @@ export default {
             icon: 'success',
             title: '成功加入購物車',
           });
+          this.num = 1;
         } else {
           const Toast = Swal.mixin({
             toast: true,

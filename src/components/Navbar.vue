@@ -1,12 +1,12 @@
 <template>
-  <div :class="{'hideNavbar': scrollNavbar}" class="container-fluid fixed-top bg-dark" style="z-index:10000;transition: all 0.3s ease-in-out;">
+  <div :class="{'hideNavbar': scrollNavbar}" class="container-fluid fixed-top bg-dark" style="z-index:10000;">
     <div :class="{'hideSubNavbar':scrollNavbar }" class="d-block d-md-none navbar-overlay position-absolute start-0 w-100 bg-dark tracking-wider">
         <div :class="{'d-none': togglerOverlay }" class="text-lg navbar-nav text-white text-center pt-3 pb-4 w-75 mx-auto tracking-wider">
-          <router-link to="/" class="nav-link py-3 animated fadeInDown wow" data-wow-delay=".1s">首頁HOME</router-link>
-          <router-link to="/user/products" class="nav-link py-3 animated fadeInDown wow" data-wow-delay=".2s">商品PRODUCTS
+          <router-link to="/" class="nav-link py-3 animated fadeInDown">首頁HOME</router-link>
+          <router-link to="/user/products" class="nav-link py-3 animated fadeInDown">商品PRODUCTS
           </router-link>
-          <router-link to="/user/carts" class="nav-link py-3 animated fadeInDown wow" data-wow-delay=".3s">購物車CART</router-link>
-          <router-link to="/login" class="nav-link d-lg-none py-3 border-bottom-0 animated fadeInDown wow" data-wow-delay=".3s">
+          <router-link to="/user/carts" class="nav-link py-3 animated fadeInDown">購物車CART</router-link>
+          <router-link to="/login" class="nav-link d-lg-none py-3 border-bottom-0 animated fadeInDown">
             後台登入LOGIN</router-link>
         </div>
     </div>
@@ -55,16 +55,18 @@ export default {
       }
     },
     scrollHandling() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-        || document.body.scrollTop;
-      if (scrollTop >= this.lastScrollTop) {
-        // 讀取下面時
-        this.scrollNavbar = true;
-      } else {
-        // 讀取上面時
-        this.scrollNavbar = false;
+      if ( document.body.clientWidth >= 768) {
+        const scrollTop = document.documentElement.scrollTop || window.pageYOffset
+          || document.body.scrollTop;
+        if (scrollTop >= this.lastScrollTop) {
+          // 讀取下面時
+          this.scrollNavbar = true;
+        } else {
+          // 讀取上面時
+          this.scrollNavbar = false;
+        }
+        this.lastScrollTop = scrollTop;
       }
-      this.lastScrollTop = scrollTop;
     },
   },
   mounted() {

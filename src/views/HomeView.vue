@@ -45,7 +45,7 @@
         </div>
         <div class="col-12 d-block d-sm-none">
           <div class="banner-container">
-            <h1 class="banner-title d-block text-white mx-auto py-5 text-3xl tracking-wider">透過雜誌看見世界 <br></h1>
+            <h1 class="banner-title d-block text-white mx-auto py-5 text-3xl tracking-wider">透過雜誌看見世界</h1>
               <router-link to="/user/products" class="text-decoration-none">
                 <w-button class="d-block mx-auto text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile><p>前往商店</p>
                 </w-button>
@@ -115,7 +115,7 @@
         <div class="newsItem-container m-4 animated fadeIn wow" data-wow-duration="3s">
           <div class="newsItem mx-auto p-5 border position-relative">
             <router-link to="/user/products">
-              <img src="@/assets/pic/homeArt01.png" class="newsItem-img w-100 h-100" alt="newsItemImage">
+              <img src="@/assets/pic/art01300px.jpg" class="newsItem-img w-100 h-100" alt="newsItemImage">
             </router-link>
             <div class="newsItem-content text-white position-absolute top-50 start-50 translate-middle tracking-widest text-xl">
               <p>點擊進入商店</p>
@@ -129,7 +129,7 @@
         <div class="newsItem-container m-4 animated fadeIn wow" data-wow-duration="3s">
           <div class="newsItem mx-auto p-5 border position-relative">
             <router-link to="/user/products">
-              <img src="@/assets/pic/homeFashion04.png" class="newsItem-img w-100 h-100" alt="newsItemImage">
+              <img src="@/assets/pic/fashion04300px.jpg" class="newsItem-img w-100 h-100" alt="newsItemImage">
             </router-link>
             <div class="newsItem-content text-white position-absolute top-50 start-50 translate-middle tracking-widest text-xl">
               <p>點擊進入商店</p>
@@ -143,7 +143,7 @@
         <div class="newsItem-container m-4 animated fadeIn wow" data-wow-duration="3s">
           <div class="newsItem mx-auto p-5 border position-relative">
             <router-link to="/user/products">
-              <img src="@/assets/pic/homeTrival03.png" class="newsItem-img w-100 h-100" alt="newsItemImage">
+              <img src="@/assets/pic/trival03300px.jpg" class="newsItem-img w-100 h-100" alt="newsItemImage">
             </router-link>
             <div class="newsItem-content text-white position-absolute top-50 start-50 translate-middle tracking-widest text-xl">
               <p>點擊進入商店</p>
@@ -184,7 +184,7 @@
             @click="noOverlay = true;overlayColor = '';openDrawer = !openDrawer">
             <img src="@/assets/pic/coupon.png" class="coupon-img" alt="coupon">
           </div>
-          <w-drawer v-model="openDrawer" :no-overlay="noOverlay" :overlay-color="overlayColor" bottom height="60px">
+          <w-drawer v-model="openDrawer" :no-overlay="noOverlay" :overlay-color="overlayColor" bottom height="60px" class="overflow-hidden" style="top:auto">
             <div class="d-flex align-items-center justify-content-between w-100 px-1 px-md-3 bg-dark" style="border-top:1px solid #404040;border-bottom:1px solid #404040">
               <img src="@/assets/pic/coupon.png" class="d-block coupon-img" alt="coupon" style="filter: invert(1);">
               <p class="d-inline-block text-sm font-medium" style="color:#BFBFBF">結帳時輸入優惠碼coupon012<br class="d-md-none">即可折扣總金額10%</p>
@@ -207,11 +207,11 @@ import Footer from '../components/Footer.vue';
 export default {
   data() {
     return {
-      carouselUrl: require('@/assets/pic/Arttransparent.png'),
-      carousel2Url: require('@/assets/pic/Arttransparent02.png'),
+      carouselUrl: require('@/assets/pic/Arttransparent250px.png'),
+      carousel2Url: require('@/assets/pic/Arttransparent0250px.png'),
       contentUrl: require('@/assets/pic/pic01.webp'),
-      content2Url: require('@/assets/pic/smile02.png'),
-      content3Url: require('@/assets/pic/smile01.png'),
+      content2Url: require('@/assets/pic/smile02170px.jpg'),
+      content3Url: require('@/assets/pic/smile0170px.jpg'),
       subMail: '',
       openDrawer: false,
       once: false,
@@ -233,11 +233,25 @@ export default {
         this.openDrawer = true;
       }
     },
+    scrollHandling() {
+      const scrollTop = document.documentElement.scrollTop || window.pageYOffset
+        || document.body.scrollTop;
+      if (scrollTop >= this.lastScrollTop) {
+        // 讀取下面時
+        // this.scrollNavbar = true;
+      } else {
+        // 讀取上面時
+        // this.scrollNavbar = false;
+
+      }
+      this.lastScrollTop = scrollTop;
+    },
     onSubmit() {
     },
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.scrollHandling);
     window.addEventListener('load', () => {
       new WOW({
         boxClass: 'wow',
@@ -247,6 +261,8 @@ export default {
         live: true,
       }).init();
     });
+    document.body.addEventListener('focusin', () => {
+    })
   },
 };
 </script>
