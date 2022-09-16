@@ -2,7 +2,8 @@
   <loading v-model:active="isLoading" />
   <div class="container-fluid" style="margin-top:100px">
     <div class="text-end">
-      <button type="button" class="btn btn-danger" @click="deleteAllModal">刪除全部訂單</button>
+      <button type="button" class="btn btn-danger"
+      @click="deleteAllModal">刪除全部訂單</button>
     </div>
     <table class="table mt-4">
       <thead>
@@ -40,8 +41,10 @@
             </td>
             <td>
               <div class="btn-group">
-                <button class="btn btn-outline-primary btn-sm" @click="ChangeModal(item)">檢視</button>
-                <button class="btn btn-outline-danger btn-sm" @click="DeleteModal(item)">刪除</button>
+                <button class="btn btn-outline-primary btn-sm"
+                @click="ChangeModal(item)">檢視</button>
+                <button class="btn btn-outline-danger btn-sm"
+                @click="DeleteModal(item)">刪除</button>
               </div>
             </td>
           </tr>
@@ -51,8 +54,10 @@
     <Pagination :pages="pagination" @updatePage="getData"></Pagination>
   </div>
   <orderModal ref="orderModal" :change-data="changeData"></orderModal>
-  <deleteModal ref="deleteModal" :delete-data="deleteData" @delete-item="deleteItem"></deleteModal>
-  <deleteOrderAllModal ref="deleteOrderAllModal" @delete-all="deleteAll"></deleteOrderAllModal>
+  <deleteModal ref="deleteModal" :delete-data="deleteData"
+  @delete-item="deleteItem"></deleteModal>
+  <deleteOrderAllModal ref="deleteOrderAllModal"
+  @delete-all="deleteAll"></deleteOrderAllModal>
 
 </template>
 <script>

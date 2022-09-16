@@ -16,7 +16,8 @@
           </div>
           <div class="coupon_isEnabled mb-3">
             <label for="is_enabled">是否啟用</label>
-            <input type="checkbox" name="is_enabled" id="is_enabled" v-model="tempCoupon.is_enabled">
+            <input type="checkbox" name="is_enabled" id="is_enabled"
+            v-model="tempCoupon.is_enabled">
           </div>
           <div class="coupon_percent mb-3">
             <label for="percent">折扣百分比</label>

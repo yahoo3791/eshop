@@ -76,7 +76,8 @@
                 </div>
                 <div class="mb-3">
                   <label for="content" class="form-label">說明內容</label>
-                  <textarea v-model="data.content" type="text" class="form-control" id="content"
+                  <textarea v-model="data.content" type="text"
+                  class="form-control" id="content"
                     placeholder="請輸入產品說明內容"></textarea>
                 </div>
                 <div class="mb-3">
@@ -93,7 +94,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">取消
+            <button type="button" class="btn btn-outline-secondary"
+            data-bs-dismiss="modal">取消
             </button>
             <button type="button" class="btn btn-primary" @click="add">確認</button>
           </div>

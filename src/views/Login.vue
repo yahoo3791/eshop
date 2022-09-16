@@ -11,7 +11,8 @@
         <div class="mb-2">
           <label for="inputEmail" class="sr-only"></label>
           <input v-model="this.user.username" type="email" id="inputEmail"
-            class="rounded-pill form-control loginInput" name="inputEmail" placeholder="Email" required />
+            class="rounded-pill form-control loginInput" name="inputEmail"
+            placeholder="Email" required />
         </div>
         <div class="mb-2">
           <label for="inputPassword" class="sr-only"></label>

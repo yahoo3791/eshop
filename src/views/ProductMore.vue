@@ -6,12 +6,14 @@
       <div class="col-12" >
           <nav aria-label="breadcrumb" class="fixed-top m-2 m-md-4" style="top:5px;">
             <ol class="breadcrumb p-2 breadcrumb-style">
-              <li class="breadcrumb-item"><a class="text-black text-decoration-none" href="#">首頁</a></li>
+              <li class="breadcrumb-item">
+                <a class="text-black text-decoration-none" href="#">首頁</a></li>
               <li class="breadcrumb-item breadcrumb-item-none">商品列表</li>
               <li class="breadcrumb-item breadcrumb-item-none" aria-current="page">{{ product.category }}類</li>
               <li class="breadcrumb-item breadcrumb-item-none">內容</li>
               <li class="ms-auto">
-              <router-link to="/user/products" class="breadcrumb-item-back text-black text-decoration-none">返回</router-link>
+              <router-link to="/user/products"
+              class="breadcrumb-item-back text-black text-decoration-none">返回</router-link>
               </li>
             </ol>
           </nav>
@@ -21,7 +23,8 @@
       <div class="col-12 col-md-4 offset-md-1">
         <div class="product_content">
           <div class="product_title">
-            <h1 class="product_title_h1 text-2xl font-bold tracking-wider mb-4">{{product.title}}</h1>
+            <h1 class="product_title_h1 text-2xl font-bold
+            tracking-wider mb-4">{{product.title}}</h1>
           </div>
           <div class="product_description">
             <p class="leading-8 tracking-normal product-description">{{product.description}}</p>
@@ -39,7 +42,8 @@
         <div class="accordion" id="accordionPanelsStayOpenExample">
           <div class="accordion-item" style="border-radius:0">
             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-              <button class="tracking-wide accordion-button" type="button" data-bs-toggle="collapse"
+              <button class="tracking-wide accordion-button"
+              type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseOne">
                 書本內容
@@ -54,7 +58,8 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-              <button class="tracking-wide accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              <button class="tracking-wide accordion-button collapsed"
+              type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseTwo">
                 購物說明
@@ -72,7 +77,8 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-              <button class="tracking-wide accordion-button collapsed rounded-0" type="button" data-bs-toggle="collapse"
+              <button class="tracking-wide accordion-button collapsed rounded-0"
+              type="button" data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseThree">
                 專人服務
@@ -103,13 +109,16 @@
             <a @click.prevent="min()"
               class="cursor-pointer d-block prev text-center text-decoration-none">-</a>
             <div class="counter">
-              <input v-model="this.num" type="text" min="1" class="rounded-0 bg-dark text-center text-white h-100">
+              <input v-model="this.num" type="text" min="1"
+              class="rounded-0 bg-dark text-center text-white h-100">
             </div>
-            <a @click.prevent="add()" class="cursor-pointer next text-center text-decoration-none">+</a>
+            <a @click.prevent="add()"
+            class="cursor-pointer next text-center text-decoration-none">+</a>
           </div>
         </div>
         <div class="col-6 text-end">
-          <w-button @click.prevent="addCart(product.id)" class="text-black px-3 py-md-3 px-md-4  px-lg-5 w-100" lg
+          <w-button @click.prevent="addCart(product.id)"
+          class="text-black px-3 py-md-3 px-md-4  px-lg-5 w-100" lg
             bg-color="white" tile style="max-width:300px">加入購物車</w-button>
         </div>
       </div>
@@ -145,7 +154,7 @@ export default {
       });
     },
     addCart(id) {
-      if ( this.num <=0 || this.num >= 50) {
+      if (this.num <= 0 || this.num >= 50) {
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
@@ -153,15 +162,15 @@ export default {
           timer: 3000,
           timerProgressBar: true,
           didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
         Toast.fire({
           icon: 'warning',
-          title: '請輸入正確數字:等於1小於51'
-        })
-        return this.num = 1 ;
+          title: '請輸入正確數字:等於1小於51',
+        });
+        return this.num = 1;
       }
       const cartData = {
         product_id: id,
@@ -209,13 +218,13 @@ export default {
     },
     add() {
       this.num++;
-      if ( this.num >= 50 ) {
+      if (this.num >= 50) {
         return this.num = 50;
       }
     },
     min() {
       this.num--;
-      if ( this.num <=0 ) {
+      if (this.num <= 0) {
         return this.num = 1;
       }
     },

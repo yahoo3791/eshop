@@ -38,8 +38,10 @@
               </td>
               <td>
                 <div class="btn-group">
-                  <button class="btn btn-outline-primary btn-sm" @click="openModal(false, item)">編輯</button>
-                  <button class="btn btn-outline-danger btn-sm" @click="openDeleteModal(item)">刪除</button>
+                  <button class="btn btn-outline-primary btn-sm"
+                  @click="openModal(false, item)">編輯</button>
+                  <button class="btn btn-outline-danger btn-sm"
+                  @click="openDeleteModal(item)">刪除</button>
                 </div>
               </td>
             </tr>
@@ -53,8 +55,10 @@
       </div>
     </div>
   </div>
-  <productModal ref="productModal" :product="tempProduct" @add="UpdateData"></productModal>
-  <deleteModal ref="deleteModal" :delete="deleteItem" @delete-item="deleteProduct"></deleteModal>
+  <productModal ref="productModal" :product="tempProduct"
+  @add="UpdateData"></productModal>
+  <deleteModal ref="deleteModal" :delete="deleteItem"
+  @delete-item="deleteProduct"></deleteModal>
 </template>
 
 <script>

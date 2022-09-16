@@ -28,8 +28,10 @@
                 </td>
                 <td>
                   <div class="btn-group">
-                    <button class="btn btn-outline-primary btn-sm" @click="openCoupon(false, item)">編輯</button>
-                    <button class="btn btn-outline-danger btn-sm" @click="openDeleteModal(item)">刪除</button>
+                    <button class="btn btn-outline-primary btn-sm"
+                    @click="openCoupon(false, item)">編輯</button>
+                    <button class="btn btn-outline-danger btn-sm"
+                    @click="openDeleteModal(item)">刪除</button>
                   </div>
                 </td>
               </tr>
@@ -39,8 +41,10 @@
       </div>
     </div>
   </div>
-  <couponModal ref="couponModal" :coupon="this.tempCoupon" @save-coupon="couponData"></couponModal>
-  <deleteModal ref="deleteModal" :delete-item="this.deleteCoupon" @delete-coupon="deleteItem"></deleteModal>
+  <couponModal ref="couponModal" :coupon="this.tempCoupon"
+  @save-coupon="couponData"></couponModal>
+  <deleteModal ref="deleteModal" :delete-item="this.deleteCoupon"
+  @delete-coupon="deleteItem"></deleteModal>
 </template>
 <script>
 import couponModal from '@/components/CouponModal.vue';
