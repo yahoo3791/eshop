@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <div class="bg-dark overflow-hidden">
+  <div class="bg-dark">
     <div class="container-fulid" style="padding-top: 70px;">
       <div class="row">
         <div class="col">

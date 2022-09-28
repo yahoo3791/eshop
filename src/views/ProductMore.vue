@@ -142,7 +142,7 @@ import "../assets/scss/swiper/productMoreSwiper.css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
-
+import emitter from '@/methods/emitter';
 
 export default {
   data() {
@@ -197,6 +197,7 @@ export default {
       this.axios.post(api, { data: cartData }).then((res) => {
         this.isLoading = false;
         if (res.data.success) {
+          emitter.emit('updateNum');
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',

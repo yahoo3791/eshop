@@ -110,18 +110,14 @@ export default {
       });
     }
   },
-  watch: {
-    cartsData: {
-      handler() {
-        this.renderCartsNum();
-      },
-      immediate: true,
-    }
-  },
   created() {
     this.renderCartsNum();
     emitter.on('updateCartsNum', (e) => {
       this.cartsNum = 0;
+    });
+    emitter.on('updateNum', () => {
+        this.renderCartsNum();
+        console.log('12')
     })
   },
   mounted() {
