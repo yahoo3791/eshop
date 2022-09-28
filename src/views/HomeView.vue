@@ -1,229 +1,302 @@
 <template>
   <Navbar />
   <div class="bg-dark overflow-hidden">
-    <div class="container-fuild" style="padding-top: 100px;">
+    <div class="container-fulid" style="padding-top: 70px;">
       <div class="row">
-        <div class="col-12">
-          <div id="carouselExampleDark" class="carousel carousel-dark slide"
-          pause="hover" touch="true" data-bs-ride="carousel">
-            <div class="carousel-inner w-100">
-              <div class="carousel-item carousel-item-home overflow-hidden active"
-              data-bs-interval="3000">
-                <w-image :src="carouselUrl" style="width: 220px;height: 180px;"
-                class="carouselItem-img me-4 ms-auto d-block" alt="artPicture" />
-                  <div class="carousel-caption carousel-caption-home d-block text-white">
-                    <h5 class="text-2xl font-semibold tracking-wider">熱銷No.1</h5>
-                    <p class="font-medium">FAUNE</p>
-                  </div>
+        <div class="col">
+          <swiper :direction="'vertical'" :slidesPerView="1"
+          :spaceBetween="0" :mousewheel="true" :pagination="{
+            clickable: true,
+          }" :effect="'fade'" :speed="50"
+          :autoplay="{ delay: 50000, disableOnInteraction: false, }"
+          :modules="modules" class="mySwiper" style=" height: calc( 70vh - 70px ) ">
+            <swiper-slide>
+              <div class="swiperBg1 w-100 h-100"></div>
+              <div class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
+                <p>雜誌看見世界每個角落<br><span class="tracking-wide font-normal text-lg">等你來開闊視野</span></p>
+                  <router-link to="/user/products" class="text-decoration-none">
+                    <w-button class="tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent" tile>
+                      SHOP
+                    </w-button>
+                  </router-link>
               </div>
-              <div class="carousel-item carousel-item-home overflow-hidden"
-              data-bs-interval="3000">
-                <w-image :src="carousel2Url" style="width: 200px;height: 180px;"
-                 class="carouselItem-img ms-auto d-block" alt="artPicture" />
-                  <div class="carousel-caption carousel-caption-home d-block text-white">
-                    <h5 class="text-2xl font-semibold tracking-wider">熱銷No.2</h5>
-                    <p class="font-medium">Black&White</p>
-                  </div>
+              <div class="slider-icon position-absolute bottom-0 start-50 translate-middle-x border border-2"
+                style="width:30px;height:50px;z-index:2;border-radius: 30px;"></div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiperBg2 w-100 h-100"></div>
+              <div
+                class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
+                <p>不去感受世界的奇妙，<br>怎麼知道世界將被什麼改變。</p>
+                <router-link to="/user/products" class="text-decoration-none">
+                  <w-button class="tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                    tile>
+                    旅遊雜誌
+                  </w-button>
+                </router-link>
               </div>
-              <div class="mask w-50 h-100 bg-dark position-absolute top-0 d-none
-              d-sm-inline-block">
-                <div class="banner-container">
-                  <h1 class="banner-title d-block text-white mx-auto text-3xl
-                  tracking-wider">透過雜誌看見世界<br>
-                    <router-link to="/user/products" class="text-decoration-none">
-                      <w-button class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5"
-                      lg bg-color="white" tile><p>前往商店</p>
-                      </w-button>
-                      </router-link>
-                  </h1>
-                </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiperBg3 w-100 h-100"></div>
+              <div
+                class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
+                <p>那些年，<br>曾經紅極一時的80、90年代經典跑車</p>
+                <router-link to="/user/products" class="text-decoration-none">
+                  <w-button class="tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                    tile>
+                    汽車雜誌
+                  </w-button>
+                </router-link>
               </div>
-            </div>
-            <div class="text-center text-md-end">
-              <button class="carousel-control-prev position-relative d-inline-block"
-              type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" style="filter: invert(0);"
-                aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next position-relative d-inline-block"
-              type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <span class="carousel-control-next-icon" style="filter: invert(0);"
-                aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 d-block d-sm-none">
-          <div class="banner-container">
-            <h1 class="banner-title d-block text-white mx-auto py-5 text-3xl
-            tracking-wider">透過雜誌看見世界</h1>
-              <router-link to="/user/products" class="text-decoration-none">
-                <w-button class="d-block mx-auto text-black px-3 py-md-3 px-md-4
-                py-lg-4 px-lg-5" lg bg-color="white" tile><p>前往商店</p>
-                </w-button>
-              </router-link>
-          </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiperBg4 w-100 h-100"></div>
+              <div
+                class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
+                <p>欣賞萬物就是欣賞藝術</p>
+                <router-link to="/user/products" class="text-decoration-none">
+                  <w-button class="tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                    tile>
+                    藝術雜誌
+                  </w-button>
+                </router-link>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="swiperBg5 w-100 h-100"></div>
+              <div
+                class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
+                <p>時尚是一種生活態度</p>
+                <router-link to="/user/products" class="text-decoration-none">
+                  <w-button class="tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                    tile>
+                    時尚雜誌
+                  </w-button>
+                </router-link>
+              </div>
+            </swiper-slide>
+          </swiper>
         </div>
       </div>
     </div>
-    <div class="container mt-5">
+    <div class="container">
+      <div class="row text-white gx-3">
+        <div class="col-12">
+          <h1 class="text-center pb-5 my-5">好書推薦</h1>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="px-3 tracking-wide my-5" style="box-shadow:0px 0px 20px black">
+            <div class="">
+              <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第一</div>
+              <div class="rounded-pill bg-info my-2 d-inline-block px-2">推薦</div>
+            </div>
+            <div class="my-1 p-5 p-md-0">
+              <a href="#/user/product/-NAkm6tU8bQ1adqkp5Q6  ">
+                <img src="../assets/pic/homePage-recommend/faune.png" class="w-100 h-100 mx-auto d-block" alt="">
+              </a>
+            </div>
+            <div class="text-center">
+              <h3 class="my-md-3 tracking-wider font-semibold text-lg">《FAUNE|攝影》</h3>
+              <div class="rounded-pill bg-info my-2 d-inline-block px-3 me-3 m-lg-0">知名攝影家</div>
+              <div class="rounded-pill bg-info my-2 d-inline-block px-3">榮獲金獎攝影組</div>
+              <p class="pt-5 text-base leading-7 tracking-wide" style="text-indent:1rem">得獎這組〈FAUNE〉動物系列專題，攝影者以十張不同面向的照片，
+                如動物生態、保安林、森林步道、樹屋、都會廊帶及植物的培育栽種等，
+                努力經營多元的影像，藉此探討居住環境與林木之間的依存關係。</p>
+            </div>
+            <div class="text-end">
+              <router-link to="/user/product/-NAkm6tU8bQ1adqkp5Q6" class="text-decoration-none">
+                <w-button class="tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent" tile>
+                more  
+                </w-button>
+              </router-link>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="px-3 tracking-wide my-5" style="box-shadow:0px 0px 20px black">
+            <div class="">
+              <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第二</div>
+              <div class="rounded-pill bg-info my-2 d-inline-block px-2">推薦</div>
+            </div>
+            <div class="my-1 p-5 p-md-0">
+              <a href="#/user/product/-NAklvqQCunu-L8Xjryy">
+                <img src="../assets/pic/homePage-recommend/mockup.png" class="w-100 h-100 mx-auto d-block" alt="">
+              </a>
+            </div>
+            <div class="text-center">
+              <h3 class="my-md-3 tracking-wider font-semibold text-lg">《框架|思想》</h3>
+              <div class="rounded-pill bg-info my-2 d-inline-block px-3">榮獲金獎設計組</div>
+              <p class="pt-5 text-base leading-7 tracking-wide" style="text-indent:1rem">
+                  不以雜誌既定版型為限制，而以每期主題為設計主軸，
+                  融入編輯與文字而成為一體，
+                  每期皆有可觀的實驗創意，既是雜誌也是主題別冊；
+                  整體表現擴張了「設計」在傳統上的定位與詮釋，
+                  適切呈現視覺閱讀與當代性的緊密關係。</p>
+            </div>
+            <div class="text-end">
+              <router-link to="/user/product/-NAklvqQCunu-L8Xjryy" class="text-decoration-none">
+                <w-button class="tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
+                  tile>
+                  more
+                </w-button>
+              </router-link>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="px-3 tracking-wide my-5" style="box-shadow:0px 0px 20px black">
+            <div class="">
+              <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第三</div>
+            </div>
+            <div class="my-1 p-5 p-md-0">
+              <a href="#/user/product/-NAkkWx8Eff6JS9kfwXM">
+                <img src="../assets/pic/homePage-recommend/art.png" class="w-100 h-100 mx-auto d-block" alt="">
+              </a>
+            </div>
+            <div class="text-center">
+              <h3 class="my-md-3 tracking-wider font-semibold text-lg">優良推薦出版品｜《現代藝術》</h3>
+              <div class="rounded-pill bg-info my-2 d-inline-block px-3">人文藝術組</div>
+              <p class="pt-5 text-base leading-7 tracking-wide" style="text-indent:1rem">
+                《現代藝術》是創造了深度、廣度與高度三維空間的人文藝術雜誌，
+                全方位出擊，樹立紙媒的新典範。
+                內容深入淺出，呈現方式不凡
+                ，不只令人印象深刻，亦予人耳目一新。</p>
+            </div>
+            <div class="text-end">
+              <router-link to="/user/product/-NAkkWx8Eff6JS9kfwXM" class="text-decoration-none">
+                <w-button class="tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
+                  tile>
+                  more
+                </w-button>
+              </router-link>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="px-3 tracking-wide my-5" style="box-shadow:0px 0px 20px black">
+            <div class="">
+              <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第四</div>
+            </div>
+            <div class="my-1 p-5 p-md-0">
+              <a href="#/user/product/-NAkjWcSbcaLuPjC3Km_">
+                <img src="../assets/pic/homePage-recommend/travel.png" class="w-100 h-100 mx-auto d-block" alt="">
+              </a>
+            </div>
+            <div class="text-center">
+              <h3 class="my-md-3 tracking-wider font-semibold text-lg">優良推薦出版品｜《環島海陸旅行》</h3>
+              <div class="rounded-pill bg-info my-2 d-inline-block px-3">好書獎</div>
+              <p class="pt-5 text-base leading-7 tracking-wide" style="text-indent:1rem">
+                    本書不僅是單純的台灣旅遊行腳書籍，除了26天的海上環島日誌外，
+                    作者將臺灣海域航行遭遇的各種狀況，製成易懂的圖解知識欄。
+                    最後一章「我們與海洋國家的距離」講述臺灣人民出海的諸多限制，作者對法規的直面檢討期盼著更自由無据的海之國。</p>
+            </div>
+            <div class="text-end">
+              <router-link to="/user/product/-NAkjWcSbcaLuPjC3Km_" class="text-decoration-none">
+                <w-button class="tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
+                  tile>
+                  more
+                </w-button>
+              </router-link>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 text-end">
+          <a href="" class="d-inline-block fs-3 mb-3 py-2 ps-5 tracking-wider font-semibold text-decoration-none text-white">
+            查看更多<i class="bi bi-arrow-right ps-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container my-5">
       <div class="row text-white text-center">
+        <div class="col-12"><h1 class="my-5 pb-2">輕鬆挑選 放心購物</h1></div>
         <div class="col-12 col-md-6 py-5 wow animated fadeInUp" data-wow-duration="1s">
           <div class="homeDetails-inner overflow-hidden mx-auto">
-            <w-image :src="content2Url" class="w-100 h-100" alt="driver" />
+            <w-image :src="content01" class="w-100 h-100" alt="driver" />
           </div>
-          <h4 class="pt-3 pb-1 tracking-wide text-2xl font-semibold">下單後24hr內到貨</h4>
-          <p class="text-lg">時間未到達，現金回饋補償</p>
+          <h4 class="pt-3 pb-1 tracking-wide text-2xl font-semibold">包裝品質把關</h4>
+          <p class="text-lg">顧客的東西視為自己的</p>
         </div>
         <div class="col-12 col-md-6 py-5 wow animated fadeInUp" data-wow-duration="2s">
           <div class="homeDetails-inner overflow-hidden mx-auto">
-            <w-image :src="content3Url" class="w-100 h-100" alt="driver" />
+            <w-image :src="content02" class="w-100 h-100" alt="driver" />
           </div>
-          <h4 class="pt-3 pb-1 tracking-wide text-2xl font-semibold"
-          data-wow-duration="2s">優良的退貨機制</h4>
-          <p class="text-lg leading-7" data-wow-duration="2s">3天無條件退貨，10天鑑賞期<br>專人到府回收</p>
+          <h4 class="pt-3 pb-1 tracking-wide text-2xl font-semibold" data-wow-duration="2s">優良的退貨機制</h4>
+          <p class="text-lg leading-7" data-wow-duration="2s">3天無條件退貨 10天鑑賞期</p>
         </div>
-        <div class="col-12 d-md-flex justify-content-md-around my-5">
+        <div class="col-12 d-md-flex justify-content-md-around my-5 flex-wrap">
           <div class="d-flex align-items-center justify-content-center pb-3
-          wow animated fadeInRight" data-wow-delay=".1s" data-wow-duration="1s">
+              wow animated fadeInRight" data-wow-delay=".1s" data-wow-duration="1s">
             <div class="homeDetails-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-              fill="white" class="bi bi-currency-dollar"
-                viewBox="0 0 16 16">
-                <path
-                  d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179
-                  3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11
-                  1.879.714 2.07
-                  1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27
-                  1.472-3.27 3.156 0 1.454.966 2.483 2.661
-                  2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616
-                  0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591
-                  1.872c1.287.323 1.852.859 1.852 1.769
-                  0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
-              </svg>
+              <i class="bi bi-currency-dollar fs-2"></i>
             </div>
-            <p class="ps-3 text-xl  font-medium tracking-wider">比市價更便宜</p>
+            <p class="ps-3 text-xl  font-medium tracking-wider">具有競爭力的價格</p>
           </div>
           <div class="d-flex align-items-center justify-content-center
-          pb-3 wow animated fadeInRight"
-          data-wow-delay=".2s" data-wow-duration="2s">
+              pb-3 wow animated fadeInRight" data-wow-delay=".2s" data-wow-duration="2s">
             <div class="homeDetails-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-              class="bi bi-bag"
-                viewBox="0 0 16 16">
-                <path
-                  d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0
-                  0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7
-                  0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2
-                  5h12v9a1 1 0 0 1-1 1H3a1 1 0
-                  0 1-1-1V5z" />
-              </svg>
+              <i class="bi bi-bag fs-2"></i>
             </div>
-            <p class="ps-3 text-xl  font-medium tracking-wider">商品每週更新</p>
+            <p class="ps-3 text-xl  font-medium tracking-wider">商品不斷推陳出新</p>
           </div>
           <div class="d-flex align-items-center justify-content-center pb-3 wow animated
-          fadeInRight" data-wow-delay=".3s" data-wow-duration="3s">
+              fadeInRight" data-wow-delay=".3s" data-wow-duration="3s">
             <div class="homeDetails-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-              fill="currentColor" class="bi bi-box-seam"
-                viewBox="0 0 16 16">
-                <path
-                  d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564
-                  1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25
-                  1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5
-                  2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1
-                  16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372
-                  0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
-              </svg>
+              <i class="bi bi-box-seam fs-2"></i>
             </div>
-            <p class="ps-3 text-xl  font-medium tracking-wider">包裝品質把關</p>
+            <p class="ps-3 text-xl  font-medium tracking-wider">下單後24hr內到貨</p>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="container-fuild my-5">
-      <div class="row">
-        <div class="col-12 text-white text-center">
-          <h2 class="text-4xl font-semibold tracking-widest">Mgz x ibook</h2>
-          <p class="text-lg tracking-wide py-2">新上架雜誌，特價中</p>
-        </div>
-      </div>
-      <div class="d-flex justify-content-lg-around bg-dark" style="overflow-x: scroll;">
-        <div class="newsItem-container m-4 animated fadeIn wow" data-wow-duration="3s">
-          <div class="newsItem mx-auto p-5 border position-relative">
-            <router-link to="/user/products">
-              <img src="@/assets/pic/art01300px.jpg" class="newsItem-img w-100 h-100"
-              alt="newsItemImage">
-            </router-link>
-            <div class="newsItem-content text-white position-absolute top-50 start-50
-            translate-middle tracking-widest text-xl">
-              <p>點擊進入商店</p>
-            </div>
-          </div>
-          <div class="text-white py-3">
-            <h4 class="text-center text-2xl font-semibold tracking-wider">今藝術</h4>
-            <p class="text-indent2rem leading-8 text-lg">
-              當代藝術的界限已越來越模糊，裝置藝術、行為藝術、觀念藝術、跨媒介藝術……</p>
-          </div>
-        </div>
-        <div class="newsItem-container m-4 animated fadeIn wow" data-wow-duration="3s">
-          <div class="newsItem mx-auto p-5 border position-relative">
-            <router-link to="/user/products">
-              <img src="@/assets/pic/fashion04300px.jpg" class="newsItem-img w-100 h-100"
-              alt="newsItemImage">
-            </router-link>
-            <div class="newsItem-content text-white position-absolute top-50
-            start-50 translate-middle tracking-widest text-xl">
-              <p>點擊進入商店</p>
-            </div>
-          </div>
-          <div class="text-white py-3">
-            <h4 class="text-center text-2xl font-semibold tracking-wider">Fashion Wedding</h4>
-            <p class="text-indent2rem leading-8 text-lg">五大最潮婚禮穿搭攻略：這樣穿得體又時尚</p>
-          </div>
-        </div>
-        <div class="newsItem-container m-4 animated fadeIn wow" data-wow-duration="3s">
-          <div class="newsItem mx-auto p-5 border position-relative">
-            <router-link to="/user/products">
-              <img src="@/assets/pic/trival03300px.jpg"
-              class="newsItem-img w-100 h-100" alt="newsItemImage">
-            </router-link>
-            <div class="newsItem-content text-white position-absolute
-            top-50 start-50 translate-middle tracking-widest text-xl">
-              <p>點擊進入商店</p>
-            </div>
-          </div>
-          <div class="text-white py-3">
-            <h4 class="text-center text-2xl font-semibold tracking-wider">亞馬遜河歷險記</h4>
-            <p class="text-indent2rem leading-8 text-lg">
-              嚴謹的考察活動和豐富的科學知識揉進情節生動、妙趣橫生的故事之中。</p>
-          </div>
-        </div>
-      </div>
-      <div class="row d-lg-none">
-        <div class="col-12 text-white">
-          <div class="slidebar"></div>
-          <div class="pe-3 pt-3 wow animated pulse text-end"
-          data-wow-iteration="infinite" data-wow-duration="5s">scroll</div>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-12 col-md-8 col-lg-5 mx-auto text-center my-4">
-          <Form @submit="onSubmit"  class="position-relative form-outline form-white my-2">
-            <label class="text-2xl font-medium tracking-wide text-white d-block pb-3"
-            for="subscription">訂閱流行資訊</label>
-            <div class="sub d-flex flex-wrap justify-content-center">
-              <Field v-model="subMail" type="email" name="信箱" id="subscription" rules="email"
-              class="sub-input d-inline-block bg-dark text-white rounded-0"
-              placeholder="EMAIL ADDRESS" />
-              <button type="submit" class="sub-btn d-inline-block text-black">立即訂閱</button>
-              <ErrorMessage name="信箱" style="color:orangered"></ErrorMessage>
+        <div class="col-12">
+          <h1 class="text-white text-center my-5">售後服務</h1>
+        </div>
+        <div class="col-12 col-md-4">
+          <a href="" class="d-block text-decoration-none text-white py-3 my-3">
+            <div class="text-center">
+              <i class="bi bi-envelope text-5xl"></i>
+              <h3 class="pt-2 pb-1 text-xl tracking-wider">透過Email</h3>
+              <p class="text-base tracking-wide">發送訊息給客服中心</p>
             </div>
-          </Form>
+          </a>
+        </div>
+        <div class="col-12 col-md-4">
+          <a href="" class="d-block text-decoration-none text-white py-3 my-3">
+            <div class="text-center">
+              <i class="bi bi-telephone text-5xl"></i>
+              <h3 class="pt-2 pb-1 text-xl tracking-wider">撥打電話</h3>
+              <p class="text-base tracking-wide">(02)1010101<br>週一至週五,上午7:00~下午17:00</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-4">
+          <a href="" class="d-block text-decoration-none text-white py-3 my-3">
+            <div class="text-center">
+              <i class="bi bi-house text-5xl"></i>
+              <h3 class="pt-2 pb-1 text-xl tracking-wider">自行前往</h3>
+              <p class="text-base tracking-wide">台北市信義區市府路101號</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container-fulid mt-5">
+      <div class="row">
+        <div class="col-12 text-white">
+          <div class="couponBg position-relative">
+            <div class="coupon-content position-absolute text-center top-50 start-50 translate-middle">
+              <div class="coupon-outline rounded-4 px-5 py-2 mb-2">
+                <p class="text-2xl tracking-widest">歡慶開幕<br>
+                  <span class="text-xl">全品項折扣</span></p>
+              </div>
+              <p class="text-lg tracking-wide">總金額<span style="color:#5A4C4C">10%</span>優惠</p>
+              <p class="d-block py-2 mt-2 mb-1 mt-md-3 mb-md-2" style="border-top:2px solid #5A4C4C; border-bottom:2px solid #5A4C4C;">限時優惠卷</p>
+              <p class="text-lg tracking-wide">優惠碼coupon012</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -257,21 +330,20 @@
 </template>
 
 <script>
-import {
-  Field, Form, ErrorMessage, defineRule,
-} from 'vee-validate';
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "../assets/scss/swiper/homePageSwiper.css";
+import "swiper/css/pagination";
+import { EffectFade, Autoplay, Mousewheel, Pagination } from "swiper";
 
 export default {
   data() {
     return {
-      carouselUrl: require('@/assets/pic/Arttransparent250px.png'),
-      carousel2Url: require('@/assets/pic/Arttransparent0250px.png'),
-      contentUrl: require('@/assets/pic/pic01.webp'),
-      content2Url: require('@/assets/pic/smile02170px.jpg'),
-      content3Url: require('@/assets/pic/smile0170px.jpg'),
-      subMail: '',
+      content01: require('@/assets/pic/homePage-content/content01.jpg'),
+      content02: require('@/assets/pic/homePage-content/content02.jpg'),
       openDrawer: false,
       once: false,
       noOverlay: false,
@@ -279,7 +351,12 @@ export default {
     };
   },
   components: {
-    Navbar, Footer, Form, Field, ErrorMessage,
+    Navbar, Footer, Swiper, SwiperSlide
+  },
+  setup() {
+    return {
+      modules: [ EffectFade, Autoplay, Mousewheel, Pagination ],
+    };
   },
   methods: {
     handleScroll() {
@@ -292,7 +369,6 @@ export default {
         this.openDrawer = true;
       }
     },
-    onSubmit() {},
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);

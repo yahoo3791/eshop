@@ -13,8 +13,8 @@
             </ol>
           </nav>
         </div>
-        <div class="col-12 col-md-3 mb-5">
-          <div class="list-group px-md-0 text-center tracking-wider" @click.prevent="productsFilter($event)">
+        <div class="col-12 col-md-3 mb-3">
+          <div class="list-group px-md-0 text-center tracking-wider" @click.prevent="productsFilter($event.target.innerText)">
             <a href="#" :class="{' products-active ' : this.clickText === '全部雜誌'}" class="list-group-item
             list-group-item-action border" aria-current="true">全部雜誌</a>
             <a href="#" :class="{' products-active ' : this.clickText === '時尚'}" class="list-group-item
@@ -26,24 +26,44 @@
             <a href="#" :class="{' products-active ' : this.clickText === '汽車'}" class="list-group-item
             list-group-item-action border border-top-0">汽車</a>
           </div>
+          <div class="px-3 px-md-0 d-flex flex-wrap justify-content-end justify-content-md-center align-items-center mt-3">
+            <label for="sort" class="text-white pe-2 pb-md-2 d-inline-block">顯示方法</label>
+            <div class="bg-white d-inline-block" style="max-width:300px;">
+              <select name="sort" id="sort" class="text-black px-4 py-1 border-0" style="background: transparent;">
+                <option value="價格排序低到高">價格排序低到高</option>
+                <option value="價格排序高到低">價格排序高到低</option>
+              </select>
+            </div>
+          </div>
         </div>
         <div class="col-12 col-md-9 d-flex flex-row flex-wrap flex-md-row flex-md-wrap">
-          <div class="product-outside w-50 p-3 pt-md-0 pb-md-5 px-md-3 text-white"
-          v-for="item,index in products" :key="item.id" >
+          <div class="product-outside w-50 px-3 py-2 mb-5 text-white border"
+          v-for="item,index in products" :key="item.id" @click.prevent="more(item.id)" style="cursor:pointer">
               <div class="product-item position-relative">
-                <w-image @click.prevent="more(item.id)" :src="item.imageUrl"
+                <w-image :src="item.imageUrl"
                 class="position-relative w-100 h-100 product-img" alt="雜誌圖片"></w-image>
-                <div class="product-notes position-absolute top-50 start-50
-                translate-middle tracking-widest text-lg">
-                  <p>點擊圖片看更詳細</p>
+                <div class="border w-100 product-notes position-absolute  bottom-0 start-50
+                tracking-widest text-lg text-center">
+                  <p>點擊看更詳細</p>
+                </div>
+                <div @click.prevent class="fav position-absolute end-0 top-0">
+                  <a href="" class="d-inline-block p-2 rounded-pill">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="d-inline-block bi bi-heart"
+                      viewBox="0 0 16 16" style="filter: drop-shadow(0px 0px 3px rgb(0 0 0 / 0.7))">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="d-none bi bi-heart-fill"
+                      viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                    </svg>
+                  </a>
                 </div>
               </div>
-              <div class="product-content py-1">
+              <div class="product-content py-1 border">
                 <h5 class="product-content-h5 text-base font-medium tracking-wide">{{ item.title }}</h5>
-                <p><w-rating color="white" :model-value="4.5" readonly></w-rating></p>
                 <div class="d-flex justify-content-between">
-                  <p class="product-p"><del class="text-white">原價{{item.origin_price }}$</del>
-                    <span class="product-price text-base font-semibold"><br>特價${{ item.price }}</span></p>
+                  <p class="product-p">${{ item.price }}</p>
                     <button @click.prevent="addCart(item)"
                     :class="{'opacity-75': this.isLoading === true }" :disabled="this.isLoading ===true"
                     class="addCartSize border-0 d-inline-block align-self-end p-2 bg-white text-center overflow-hidden">
@@ -75,7 +95,7 @@
         </svg>
       </a>
     </div>
-    <div :class="{ 'd-none' : scrollIcon }" class="scrollTop-container position-fixed end-0 text-center">
+    <div :class="{ 'scrollIconMoveIn':!scrollIcon  }" ref="scrollTop" class="scrollTop-container position-fixed end-0 text-center">
       <a @click.prevent="scrollToTop" href="/#/user/products"
       class="scrollTop-btn d-block p-2 m-1 rounded-circle text-white">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -140,7 +160,6 @@ export default {
       isLoading: false,
       cartsNum: 0,
       carts: {},
-      bannerUrl: require('@/assets/pic/productBg.jpg'),
       scrollIcon: true,
       openDrawer: false,
       clickText: '全部雜誌',
@@ -159,6 +178,7 @@ export default {
       });
     },
     more(id) {
+      // 排除 add to cart fav點擊觸發more , 更改product item content
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
       this.isLoading = false;
       this.axios.get(api).then((res) => {
@@ -223,8 +243,9 @@ export default {
       this.renderCarts();
     },
     productsFilter(e) {
-      const clickText = e.target.innerText;
-      this.clickText = e.target.innerText;
+      console.log(e);
+      const clickText = e;
+      this.clickText = e;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
       this.axios.get(api).then((res) => {
         const getProducts = res.data.products;

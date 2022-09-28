@@ -1,28 +1,94 @@
 /* banner carousel && title */
-.carousel-item-home {
-  height: 220px;
-  .carousel-caption-home {
-    right: 0%;
-    left: 50%
+.swiperBg1 {
+  background-image: url('@/assets/pic/homePage-swiperBanner/swiperBg1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, 
+    rgba(233, 217, 217, 0.49625787815126055) 0%,
+    rgba(123, 128, 129, 0.5466780462184874) 48%,
+      rgba(123, 128, 129, 0.4010197829131653) 80%,
+    rgba(143, 143, 143, 0.4150253851540616) 100%);
   }
 }
-.banner-container {
-  .banner-title {
-    line-height: 100px;
-    text-align: center;
-    white-space: nowrap;
-    width: 2ch;
-    overflow: hidden;
-    animation: 3s typing steps(150, jump-none) forwards;
+.swiperBg2 {
+  background-image: url('@/assets/pic/homePage-swiperBanner/swiperBg2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle,
+    rgba(233, 217, 217, 0.49625787815126055) 0%,
+      rgba(123, 128, 129, 0.5466780462184874) 48%,
+      rgba(123, 128, 129, 0.4010197829131653) 80%,
+      rgba(143, 143, 143, 0.4150253851540616) 100%);
   }
 }
-@keyframes typing {
-  0% {
-    width: 1ch;
+.swiperBg3 {
+  background-image: url('@/assets/pic/homePage-swiperBanner/swiperBg3.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle,
+        rgba(233, 217, 217, 0.49625787815126055) 0%,
+        rgba(123, 128, 129, 0.5466780462184874) 48%,
+        rgba(123, 128, 129, 0.4010197829131653) 80%,
+        rgba(143, 143, 143, 0.4150253851540616) 100%);
   }
-  100% {
-    width: 20ch;
+}
+.swiperBg4 {
+  background-image: url('@/assets/pic/homePage-swiperBanner/swiperBg4.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle,
+        rgba(233, 217, 217, 0.49625787815126055) 0%,
+        rgba(123, 128, 129, 0.5466780462184874) 48%,
+        rgba(123, 128, 129, 0.4010197829131653) 80%,
+        rgba(143, 143, 143, 0.4150253851540616) 100%);
   }
+}
+.swiperBg5 {
+  background-image: url('@/assets/pic/homePage-swiperBanner/swiperBg5.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle,
+        rgba(233, 217, 217, 0.49625787815126055) 0%,
+        rgba(123, 128, 129, 0.5466780462184874) 48%,
+        rgba(123, 128, 129, 0.4010197829131653) 80%,
+        rgba(143, 143, 143, 0.4150253851540616) 100%);
+  }
+}
+.swiperBg-content {
+  color: $secondary-BF;
 }
 /* details */
 .homeDetails-inner {
@@ -36,50 +102,6 @@
   border-radius: 50px;
   box-shadow: 0px 0px 3px gray;
   line-height: 45px;
-}
-/* news */
-.bg-secondary-80 {
-  background: $secondary-80;
-}
-.newsItem-container {
-  width: 300px;
-  height: 100%;
-  flex-shrink: 0
-}
-.newsItem {
-  height: 300px;
-  overflow: hidden;
-  &:hover .newsItem-img {
-    transform: scale(1.5);
-    opacity: 0.5;
-  }
-  &:hover .newsItem-content {
-    opacity: 1;
-  }
-  .newsItem-img {
-    object-fit: cover;
-    transition: all .3s ease-in-out;
-  }
-}
-.newsItem-content {
-  transition: all .3s ease-in-out;
-  opacity: 0;
-}
-/* 訂閱Ｆorm */ 
-.sub-input {
-  width: 70%;
-  border: 1px solid white;
-  padding: 5px 20px;
-}
-.sub-btn {
-  width: 30%;
-  border: 1px solid white;
-  padding: 5px;
-  transition: all .3s;
-  background: $base-color;
-  &:hover {
-    opacity: 0.8;
-  }
 }
 /* coupon style */
 .coupon-img {
@@ -99,14 +121,6 @@
   border: 2px solid rgba(255, 255, 255,0.3);
   }
 }
-.slidebar {
-  width: 50px;
-  height: 1px;
-  background: $secondary-E6;
-  animation-name: slidebar;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-}
 .nav-link {
   position: relative;
 }
@@ -125,15 +139,102 @@
   width: 100%;
   transition: all .2s ease-in-out;
 }
-@keyframes slidebar {
-  0% {
-    width: 50%;
+
+
+
+
+
+// recommend START
+.recommend-item:nth-child(even) {
+  flex-direction: row-reverse;
+  .recommend-img {
+    // margin-left: -10%;
   }
-  50% {
+}
+.recommend-item {
+  .recommend-txt {
+    // margin-left: -10%;
+  }
+}
+.recommend-img {
+  overflow: hidden;
+  background-color: black;
+}
+.recommend-txt {
+  background-color: black;
+  padding: 10px;
+}
+// recommend END
+
+// START coupon item
+.couponBg {
+  background-image: url('@/assets/pic/homePage-couponBanner/couponBg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 300px;
+  &::after {
+    content: '';
+    display: block;
     width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, 
+    rgba(233, 217, 217, 0.49625787815126055) 0%,
+    rgba(123, 128, 129, 0.5466780462184874) 48%, 
+    rgba(123, 128, 129, 0.4010197829131653) 80%, 
+    rgba(143, 143, 143, 0.4150253851540616) 100%);
+  }
+  .coupon-content {
+    width: 250px;
+    // rwd width md lg 
+    .coupon-outline {
+      background-color: #d9d9d996;
+      // border:1px solid black;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.138);
+    }
+  }
+}
+// END coupon item
+
+.slider-icon {
+  margin-bottom: 10px;
+  &:after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    transform: translateY(0px);
+    width:2px;
+    height: 8px;
+    background: white;
+    border-radius: 5px;
+    animation: move 1.2s linear .3s infinite;
+  }
+}
+@keyframes move {
+  0% {
+    transform: translateY(0px);
+    opacity: 0;
   }
   100% {
-    width: 50%;
+    transform: translateY(15px);
   }
-  
+}
+@include media-breakpoint-down(sm) {
+  .couponBg {
+    background-attachment: scroll;
+  }
+}
+@include media-breakpoint-up(md) {
+  .couponBg{
+    .coupon-content {
+      width: 400px;
+    }
+  }
+}
+@include media-breakpoint-up(lg) {
+  .couponBg {
+    height: 450px;
+  }
 }

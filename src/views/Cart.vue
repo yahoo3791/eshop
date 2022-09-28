@@ -140,6 +140,24 @@
           <w-button class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5"
           lg bg-color="white" tile @click="contactMethod">下一步</w-button>
         </div>
+        <div class="col-12">
+          <h3 class="border-bottom">其他人也買了這些...</h3>
+          <div class="row gx-5 d-flex flex-wrap justify-content-between">
+            <div class="swiper-container">
+              <div class="col-12">
+                <div class="swiper-container">
+                  <swiper ref="{swiperRef}" :slidesPerView="4" :centeredSlides="true" :spaceBetween="30" :navigation="true"
+                    :modules="modules" class="mySwiper">
+                    <swiper-slide>Slide 1</swiper-slide>
+                    <swiper-slide>Slide 2</swiper-slide>
+                    <swiper-slide>Slide 3</swiper-slide>
+                    <swiper-slide>Slide 4</swiper-slide>
+                  </swiper>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -152,6 +170,13 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import 'sweetalert2/src/sweetalert2.scss';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "../assets/scss/swiper/productMoreSwiper.css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper";
+import emitter from '@/methods/emitter';
 
 export default {
   data() {
@@ -166,7 +191,12 @@ export default {
       selection1: false,
     };
   },
-  components: { Navbar, Footer, Loading },
+  components: { Navbar, Footer, Loading, Swiper, SwiperSlide },
+  setup() {
+    return {
+      modules: [Pagination, Navigation],
+    };
+  },
   methods: {
     getData() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
@@ -190,6 +220,7 @@ export default {
       this.axios.delete(api).then((res) => {
         this.isLoading = false;
         this.getData();
+        emitter.emit('updateCartsNum', 0 );
         if (res.data.success) {
           const Toast = Swal.mixin({
             toast: true,
@@ -231,6 +262,7 @@ export default {
       this.axios.delete(api).then((res) => {
         this.isLoading = false;
         this.getData();
+        emitter.emit('updateCartsNum', 0);
         if (res.data.success) {
           const Toast = Swal.mixin({
             toast: true,

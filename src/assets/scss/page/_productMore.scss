@@ -1,9 +1,6 @@
 .product_pic {
-  margin:auto;
-  width: 250px;
-  height: 250px;
   img {
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 .product_title_h1 {
@@ -73,6 +70,23 @@
 }
 @include media-breakpoint-down(sm) {
   .product_pic {
-    width: 100%;  
+    width: 100%;
+  }
+  .breadcrumb-position {
+    position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+    top: 70px;
+  }
+}
+@include media-breakpoint-up(md) {
+  .breadcrumb-position {
+    position: fixed;
+    z-index: 1030;
+    top: 0;
+    right: 0;
+    left: 0;
+    top: 5px;
   }
 }

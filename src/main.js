@@ -3,6 +3,7 @@ import VueLoading from 'vue-loading-overlay';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import 'bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import WaveUI from 'wave-ui';
 import 'animate.css';
 import 'wave-ui/dist/wave-ui.css';
@@ -21,8 +22,8 @@ defineRule('required', required);
 defineRule('email', email);
 defineRule('min', min);
 configure({
-  generateMessage: localize({ zh_TW: zhTW }), // 載入繁體中文語系
-  validateOnInput: true, // 當輸入任何內容直接進行驗證
+  generateMessage: localize({ zh_TW: zhTW }),
+  validateOnInput: true, 
 });
 setLocale('zh_TW');
 const app = createApp(App);

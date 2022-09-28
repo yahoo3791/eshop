@@ -95,10 +95,17 @@
             <p v-if="details.is_paid === true">已付款完成</p>
             <p v-else-if="details.is_paid === false">尚未付款</p>
           </div>
+          <div class="col-12">
+            <w-flex class="align-center tracking-wide">
+              <w-checkbox class="ms-auto" color="grey" v-model="section">
+                <p class="text-white">我已閱讀並明瞭<a href="#" class="text-white">「網站使用條款」</a>、<a href="#" class="text-white">「隱私權政策」</a>、<a href="#" class="text-white">「免責聲明」</a>同意接受該等條款規定，並願遵守網站規範。</p>
+              </w-checkbox>
+            </w-flex>
+          </div>
           <div class="col-12 pt-2 pb-5 text-end my-5">
               <w-button @click="cancelOrder" class="me-4 text-black px-3 py-md-3
               px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile>取消</w-button>
-              <w-button @click="payOrder" class="text-black px-3 py-md-3 px-md-4
+              <w-button v-if="this.section === true" @click="payOrder" class="text-black px-3 py-md-3 px-md-4
               py-lg-4 px-lg-5" lg bg-color="white" tile>付款</w-button>
           </div>
         </div>
@@ -118,6 +125,7 @@ export default {
       details: {},
       userData: {},
       isLoading: false,
+      section: false,
     };
   },
   components: { Loading },

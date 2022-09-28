@@ -36,6 +36,21 @@ const routes = [
         name: '結帳流程',
         component: () => import('../views/Checkout.vue'),
       },
+      {
+        path: 'faq',
+        name: '常見問題',
+        component: () => import('../views/FAQ.vue'),
+      },
+      {
+        path: 'companyContact',
+        name: '聯絡方式',
+        component: () => import('../views/Contact.vue'),
+      },
+      {
+        path: 'favorite',
+        name: '我的收藏',
+        component: () => import('../views/Favorite.vue'),
+      }
     ],
   },
   {

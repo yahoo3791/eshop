@@ -26,6 +26,27 @@
   }
 }
 /* products樣式 */
+.product-outside {
+  &:hover {
+    background-color: rgba(0, 0, 0,0.1);
+  }
+  &:hover .product-notes {
+      opacity: 1;
+      transform: translate(-50%, 0px);
+  }
+  &:hover .product-content {
+    .addCartSize {
+      svg {
+        transition: transform .2s;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+.w-image {
+  background-position: center;
+  background-size: contain;
+}
 .product-item {
   height: 150px;
   border: 1px solid white;
@@ -36,15 +57,18 @@
     transition: all .3s;
     &:hover {
       opacity: 0.8;
-      transform: scale(1.2);
     }
   }
   .product-notes {
+    transform: translate(-50%, 100px);
+    background-color: rgba(255, 255, 255, 0.374);
+    height: 25%;
     transition: all .3s;
     opacity: 0;
   }
   &:hover .product-notes{
     opacity: 1;
+    transform: translate(-50%, 0px);
   }
 }
 .product-content {
@@ -85,6 +109,9 @@
   z-index: 100;
   bottom: 55px;
   transition: all .3s;
+  transform: translateY(-20px);
+  transition-duration: .3s;
+  opacity: 0;
   .scrollTop-btn {
     background-color: rgba(255, 255, 255, 0.7);
     border: 1px solid #ccc;
@@ -95,6 +122,10 @@
       border: 1px solid $secondary-80;
     }
   }
+}
+.scrollIconMoveIn {
+  opacity: 1;
+  transform: translateY(0px);
 }
 /* set w-badge bgc */
 .dark--bg {
