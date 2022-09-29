@@ -1,7 +1,7 @@
 <template>
   <Navbar />
-  <div class="bg-dark">
-    <div class="container-fulid" style="padding-top: 70px;">
+  <div class="bg-dark overflow-hidden ">
+    <div class="container-fulid" style="padding-top: 80px;">
       <div class="row">
         <div class="col">
           <swiper :direction="'vertical'" :slidesPerView="1"
@@ -201,7 +201,7 @@
           </div>
         </div>
         <div class="col-12 text-end">
-          <a href="" class="d-inline-block fs-3 mb-3 py-2 ps-5 tracking-wider font-semibold text-decoration-none text-white">
+          <a href="#/user/products" class="d-inline-block fs-3 mb-3 py-2 ps-5 tracking-wider font-semibold text-decoration-none text-white">
             查看更多<i class="bi bi-arrow-right ps-2"></i>
           </a>
         </div>
@@ -255,7 +255,7 @@
           <h1 class="text-white text-center my-5">售後服務</h1>
         </div>
         <div class="col-12 col-md-4">
-          <a href="" class="d-block text-decoration-none text-white py-3 my-3">
+          <a href="mailto:mgzofficer@gmail.com" class="d-block text-decoration-none text-white py-3 my-3">
             <div class="text-center">
               <i class="bi bi-envelope text-5xl"></i>
               <h3 class="pt-2 pb-1 text-xl tracking-wider">透過Email</h3>
@@ -264,7 +264,7 @@
           </a>
         </div>
         <div class="col-12 col-md-4">
-          <a href="" class="d-block text-decoration-none text-white py-3 my-3">
+          <a href="tel:(02)1010101" class="d-block text-decoration-none text-white py-3 my-3">
             <div class="text-center">
               <i class="bi bi-telephone text-5xl"></i>
               <h3 class="pt-2 pb-1 text-xl tracking-wider">撥打電話</h3>
@@ -273,7 +273,7 @@
           </a>
         </div>
         <div class="col-12 col-md-4">
-          <a href="" class="d-block text-decoration-none text-white py-3 my-3">
+          <a href="https://goo.gl/maps/115xT6CDWXH6J2kD6" target="_blank" rel="noreferrer noopenner" class="d-block text-decoration-none text-white py-3 my-3">
             <div class="text-center">
               <i class="bi bi-house text-5xl"></i>
               <h3 class="pt-2 pb-1 text-xl tracking-wider">自行前往</h3>

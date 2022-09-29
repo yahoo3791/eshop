@@ -1,7 +1,9 @@
 .navbar-logo {
-  width: 150px;
-  height: 70px;
+  width: 130px;
+  height: 60px;
+  margin: 10px 0;
   filter: invert(1);
+  transition: all .3s;
 }
 .navbar-sm {
   cursor: pointer;
@@ -35,10 +37,19 @@ a.router-link-active {
   color: $secondary-E6;
 }
 .hideNavbar {
-  top: -80px;
+  top: -100px;
 }
 .hideSubNavbar {
   transform: translateY(-250px)
+}
+.smallNavbar {
+  width: 100px;
+  height: 50px;
+  margin: 5px 0;
+  transition: all .3s;
+}
+.top50px {
+  top:50px !important;
 }
 @include media-breakpoint-down(md) {
   .navbar-overlay {

@@ -40,3 +40,7 @@ app.use(VueLoading);
 app.use(VueAxios, axios);
 app.use(router);
 app.mount('#app');
+
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0);
+});

@@ -47,13 +47,19 @@
   background-position: center;
   background-size: contain;
 }
+.product-content-shadow {
+  box-shadow: 0px 0px 15px black;
+}
 .product-item {
-  height: 150px;
-  border: 1px solid white;
+  height: 165px;
+  // box-shadow: inset 3px 2px 0px rgb(0 0 0 / 43%),
+  //  inset 3px 3px 0px rgb(0 0 0 / 39%),
+  //   inset -3px -2px 5px rgb(0 0 0 / 43%),
+  //   inset 3px 3px 10px rgb(0 0 0 / 39%);
   cursor: pointer;
   overflow: hidden;
   .product-img {
-    object-fit: cover;
+    object-fit: cotain;
     transition: all .3s;
     &:hover {
       opacity: 0.8;
@@ -107,7 +113,8 @@
 }
 .scrollTop-container {
   z-index: 100;
-  bottom: 55px;
+  // bottom: 55px;
+  bottom: 0px;
   transition: all .3s;
   transform: translateY(-20px);
   transition-duration: .3s;
@@ -127,23 +134,33 @@
   opacity: 1;
   transform: translateY(0px);
 }
+/* Adapt text color according to the background color. */
+.w-switch__track {
+  color: #666;
+}
+
+.w-switch--on .w-switch__track {
+  color: #fff;
+}
+
+/* Wider switch. */
+.w-switch--wide .w-switch__input {
+  width: 55px;
+}
+
+.w-switch--wide .w-switch__track {
+  width: 35px;
+  text-align: center;
+}
 /* set w-badge bgc */
 .dark--bg {
   background-color: #212529 !important;
 }
 /* media-breakpoint */
-@include media-breakpoint-up(sm) {
-  .product-outside {
-    width: 100% !important;
-  }
-}
 @include media-breakpoint-up(md) {
-  .product-outside {
-    width: 50% !important;
-  }
-  .product-item {
-    height: 250px;
-  }
+  // .product-item {
+  //   height: 310px;
+  // }
   .product-content-h5 {
     font-size: 1.25rem;
     font-weight: 700;
@@ -157,8 +174,38 @@
     }
   }
 }
-@include media-breakpoint-up(lg) {
-  .product-outside {
-    width: 33.3% !important;
+// @include media-breakpoint-up(lg) {
+//   .product-outside {
+//     width: 33.3% !important;
+//   }
+// }
+@media (min-width:320px) {
+  .product-item {
+    height: 165px;
+  }
+}
+@media (min-width:375px) {
+  .product-item {
+    height: 195px;
+  }
+}
+@media (min-width:425px) {
+  .product-item {
+    height: 225px;
+  }
+}
+@media (min-width:768px) {
+  .product-item {
+    height: 310px;
+  }
+}
+@media (min-width:1024px) {
+  .product-item {
+    height: 275px;
+  }
+}
+@media (min-width:1440px) {
+  .product-item {
+    height: 300px;
   }
 }

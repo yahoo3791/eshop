@@ -13,7 +13,7 @@
                 <router-link to="/user/companyContact" class="d-inline-block text-decoration-none text-white py-2 px-1 px-md-3 tracking-wide">聯絡方式Contact</router-link>
               </div>
               <div class="col-6 col-md-12">
-                <a href="" class="d-inline-block text-decoration-none text-white py-2 px-1 px-md-3 tracking-wide">部落格blog</a>
+                <a href="https://medium.com/" target="_blank" rel="noreferrer noopenner" class="d-inline-block text-decoration-none text-white py-2 px-1 px-md-3 tracking-wide">部落格blog</a>
               </div>
               <div class="col-6 col-md-12">
                 <router-link to="/login" class="d-inline-block text-decoration-none text-white py-2 px-1 px-md-3 tracking-wide py-md-4">
@@ -34,11 +34,11 @@
           </Form>
           <div class="follow my-5">
             <p class="font-medium tracking-wide pb-2 text-base">FOLLOW US</p>
-            <a href="https://www.instagram.com/" class="ins me-lg-2"><i class="bi bi-instagram"></i>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer noopenner" class="ins me-lg-2"><i class="bi bi-instagram"></i>
               <p class="ps-2 d-inline-block tracking-wider">Instagram</p>
             </a>
-            <a href="https://www.facebook.com/" class="meta">
-              <i class="bi bi-facebook"></i>
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer noopenner" class="meta">
+              <i class="bi bi-facebook"></i>  
               <p class="ps-2 d-inline-block tracking-wider">Facebook</p>
             </a>
           </div>

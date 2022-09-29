@@ -16,7 +16,10 @@
         </div>
         <div class="col-12 text-white">
           <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 text-center">
+              <h1>comming soon !!</h1>
+            </div>
+            <!-- <div class="col-12 col-md-6">
               <h1>公司聯絡資訊</h1>
               <p>注意客服時間</p>
               <h4 class="py-5">信箱email:</h4>
@@ -38,7 +41,7 @@
               <label for="">手機phone</label><br>
               <input type="text"><br>
               <textarea name="" id="" cols="30" rows="10"></textarea>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
