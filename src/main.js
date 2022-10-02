@@ -17,6 +17,8 @@ import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 import { date, currency } from './methods/filters';
 import App from './App.vue';
 import router from './router';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 defineRule('required', required);
 defineRule('email', email);
@@ -39,6 +41,9 @@ app.config.globalProperties.$filters = {
 app.use(VueLoading);
 app.use(VueAxios, axios);
 app.use(router);
+AOS.init({
+  duration: 1200,
+});
 app.mount('#app');
 
 router.afterEach((to, from, next) => {

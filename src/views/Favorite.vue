@@ -15,17 +15,20 @@
         <div class="col-12 d-n"
           :class="{ 'd-block' : this.favoriteData.length == 0}">
           <h1 class="text-white text-center fs-4"
-          style="padding:20vh;">
+          style="padding:20vh 0;">
           我的收藏是空的<br>快去添加喜愛的商品吧！</h1>
         </div>
         <div class="col-12 col-md-3" :class="{ 'd-none' :this.favoriteData.length == 0 }">
           <div class="px-3 px-md-0 d-flex flex-wrap justify-content-end justify-content-md-center align-items-center mt-3">
             <label for="sort" class="text-white pe-2 pb-md-2 d-inline-block">顯示方法</label>
-            <select name="sort" id="sort" class="p-1 d-inline-block" style="max-width:300px" @change="onChange($event)">
+            <div class="bg-white tracking-wide font-medium d-inline-block" style="max-width:300px;border-radius: 5px;">
+              <select name="sort" id="sort" class="text-black tracking-wide font-medium px-4 py-1 border-0"
+                @change="onChange($event)">
               <option selected="selected" disabled="disabled" style='display: none' value=''>選擇顯示方法</option>
               <option value="價格排序低到高">價格排序低到高</option>
               <option value="價格排序高到低">價格排序高到低</option>
             </select>
+            </div>
           </div>
         </div>
         <div class="col-12 col-md-9 text-white mt-3" 
@@ -93,7 +96,7 @@ export default {
       });
     },
     updateFav() {
-      this.favoriteData = JSON.parse(localStorage.getItem('fav'));
+      this.favoriteData = JSON.parse(localStorage.getItem('fav')) || [];
     },
     getFavoriteData() {
       this.filterData = this.products.filter((fav) => this.favoriteData.includes(fav.id));

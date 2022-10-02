@@ -7,29 +7,29 @@
           <swiper :direction="'vertical'" :slidesPerView="1"
           :spaceBetween="0" :mousewheel="true" :pagination="{
             clickable: true,
-          }" :effect="'fade'" :speed="50"
-          :autoplay="{ delay: 50000, disableOnInteraction: false, }"
+          }" :effect="'fade'" :speed="500" :parallax="true"
+          :autoplay="{ delay: 5000000, disableOnInteraction: false, }"
           :modules="modules" class="mySwiper" style=" height: calc( 70vh - 70px ) ">
             <swiper-slide>
               <div class="swiperBg1 w-100 h-100"></div>
               <div class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
-                <p>雜誌看見世界每個角落<br><span class="tracking-wide font-normal text-lg">等你來開闊視野</span></p>
+                <p data-swiper-parallax="-300">每一本雜誌都有自己的主角<br><span class="tracking-wide font-normal text-lg">紀錄著<br>世界各個角落的故事</span></p>
                   <router-link to="/user/products" class="text-decoration-none">
-                    <w-button class="tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent" tile>
+                    <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent" tile>
                       SHOP
                     </w-button>
                   </router-link>
               </div>
-              <div class="slider-icon position-absolute bottom-0 start-50 translate-middle-x border border-2"
-                style="width:30px;height:50px;z-index:2;border-radius: 30px;"></div>
+              <a href="#recommend" class="slider-icon position-absolute bottom-0 start-50 translate-middle-x border border-3"
+                style="width:30px;height:50px;z-index:2;border-radius: 30px;"></a>
             </swiper-slide>
             <swiper-slide>
               <div class="swiperBg2 w-100 h-100"></div>
               <div
                 class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
-                <p>不去感受世界的奇妙，<br>怎麼知道世界將被什麼改變。</p>
+                <p data-swiper-parallax="-300">不去感受世界的奇妙，<br>怎麼知道世界將被什麼改變。</p>
                 <router-link to="/user/products" class="text-decoration-none">
-                  <w-button class="tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                  <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
                     tile>
                     旅遊雜誌
                   </w-button>
@@ -40,9 +40,9 @@
               <div class="swiperBg3 w-100 h-100"></div>
               <div
                 class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
-                <p>那些年，<br>曾經紅極一時的80、90年代經典跑車</p>
+                <p data-swiper-parallax="-300">那些年，<br>曾經紅極一時的80、90年代經典跑車</p>
                 <router-link to="/user/products" class="text-decoration-none">
-                  <w-button class="tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                  <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
                     tile>
                     汽車雜誌
                   </w-button>
@@ -53,9 +53,9 @@
               <div class="swiperBg4 w-100 h-100"></div>
               <div
                 class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
-                <p>欣賞萬物就是欣賞藝術</p>
+                <p data-swiper-parallax="-300">欣賞萬物就是欣賞藝術</p>
                 <router-link to="/user/products" class="text-decoration-none">
-                  <w-button class="tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                  <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
                     tile>
                     藝術雜誌
                   </w-button>
@@ -66,9 +66,9 @@
               <div class="swiperBg5 w-100 h-100"></div>
               <div
                 class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
-                <p>時尚是一種生活態度</p>
+                <p data-swiper-parallax="-300">時尚是一種生活態度</p>
                 <router-link to="/user/products" class="text-decoration-none">
-                  <w-button class="tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                  <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
                     tile>
                     時尚雜誌
                   </w-button>
@@ -82,16 +82,16 @@
     <div class="container">
       <div class="row text-white gx-3">
         <div class="col-12">
-          <h1 class="text-center pb-5 my-5">好書推薦</h1>
+          <h1 id="recommend" class="text-3xl font-semibold tracking-widest text-center mt-5">好書推薦</h1>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <div class="px-3 tracking-wide my-5" style="box-shadow:0px 0px 20px black">
+          <div class="recommend-item px-3 tracking-wide my-5">
             <div class="">
               <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第一</div>
               <div class="rounded-pill bg-info my-2 d-inline-block px-2">推薦</div>
             </div>
             <div class="my-1 p-5 p-md-0">
-              <a href="#/user/product/-NAkm6tU8bQ1adqkp5Q6  ">
+              <a class="d-block recommend-img" href="#/user/product/-NAkm6tU8bQ1adqkp5Q6  ">
                 <img src="../assets/pic/homePage-recommend/faune.png" class="w-100 h-100 mx-auto d-block" alt="">
               </a>
             </div>
@@ -105,7 +105,7 @@
             </div>
             <div class="text-end">
               <router-link to="/user/product/-NAkm6tU8bQ1adqkp5Q6" class="text-decoration-none">
-                <w-button class="tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent" tile>
+                <w-button class="offset-btn tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent" tile>
                 more  
                 </w-button>
               </router-link>
@@ -113,13 +113,13 @@
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <div class="px-3 tracking-wide my-5" style="box-shadow:0px 0px 20px black">
+          <div class="recommend-item px-3 tracking-wide my-5">
             <div class="">
               <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第二</div>
               <div class="rounded-pill bg-info my-2 d-inline-block px-2">推薦</div>
             </div>
             <div class="my-1 p-5 p-md-0">
-              <a href="#/user/product/-NAklvqQCunu-L8Xjryy">
+              <a class="d-block recommend-img" href="#/user/product/-NAklvqQCunu-L8Xjryy">
                 <img src="../assets/pic/homePage-recommend/mockup.png" class="w-100 h-100 mx-auto d-block" alt="">
               </a>
             </div>
@@ -135,7 +135,7 @@
             </div>
             <div class="text-end">
               <router-link to="/user/product/-NAklvqQCunu-L8Xjryy" class="text-decoration-none">
-                <w-button class="tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
+                <w-button class="offset-btn tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
                   tile>
                   more
                 </w-button>
@@ -144,12 +144,12 @@
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <div class="px-3 tracking-wide my-5" style="box-shadow:0px 0px 20px black">
+          <div class="recommend-item px-3 tracking-wide my-5">
             <div class="">
               <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第三</div>
             </div>
             <div class="my-1 p-5 p-md-0">
-              <a href="#/user/product/-NAkkWx8Eff6JS9kfwXM">
+              <a class="d-block recommend-img" href="#/user/product/-NAkkWx8Eff6JS9kfwXM">
                 <img src="../assets/pic/homePage-recommend/art.png" class="w-100 h-100 mx-auto d-block" alt="">
               </a>
             </div>
@@ -164,7 +164,7 @@
             </div>
             <div class="text-end">
               <router-link to="/user/product/-NAkkWx8Eff6JS9kfwXM" class="text-decoration-none">
-                <w-button class="tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
+                <w-button class="offset-btn tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
                   tile>
                   more
                 </w-button>
@@ -173,12 +173,12 @@
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <div class="px-3 tracking-wide my-5" style="box-shadow:0px 0px 20px black">
+          <div class="recommend-item px-3 tracking-wide my-5">
             <div class="">
               <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第四</div>
             </div>
             <div class="my-1 p-5 p-md-0">
-              <a href="#/user/product/-NAkjWcSbcaLuPjC3Km_">
+              <a class="d-block recommend-img" href="#/user/product/-NAkjWcSbcaLuPjC3Km_">
                 <img src="../assets/pic/homePage-recommend/travel.png" class="w-100 h-100 mx-auto d-block" alt="">
               </a>
             </div>
@@ -192,7 +192,7 @@
             </div>
             <div class="text-end">
               <router-link to="/user/product/-NAkjWcSbcaLuPjC3Km_" class="text-decoration-none">
-                <w-button class="tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
+                <w-button class="offset-btn tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
                   tile>
                   more
                 </w-button>
@@ -200,51 +200,53 @@
             </div>
           </div>
         </div>
-        <div class="col-12 text-end">
-          <a href="#/user/products" class="d-inline-block fs-3 mb-3 py-2 ps-5 tracking-wider font-semibold text-decoration-none text-white">
-            查看更多<i class="bi bi-arrow-right ps-2"></i>
+        <div class="col-12 text-end mb-3 py-2">
+          <a href="#/user/products" class="position-relative d-inline-block fs-3 ps-5 tracking-wider font-semibold text-decoration-none text-white">
+            查看更多<i class="ms-2 bi bi-arrow-right opacity-always"></i>
           </a>
         </div>
       </div>
     </div>
     <div class="container my-5">
       <div class="row text-white text-center">
-        <div class="col-12"><h1 class="my-5 pb-2">輕鬆挑選 放心購物</h1></div>
-        <div class="col-12 col-md-6 py-5 wow animated fadeInUp" data-wow-duration="1s">
+        <div class="col-12"><h1 class="text-3xl font-semibold tracking-widest my-5 pb-2">輕鬆挑選 放心購物</h1></div>
+        <div class="col-12 col-md-6 py-5" data-aos="fade-up">
           <div class="homeDetails-inner overflow-hidden mx-auto">
             <w-image :src="content01" class="w-100 h-100" alt="driver" />
           </div>
-          <h4 class="pt-3 pb-1 tracking-wide text-2xl font-semibold">包裝品質把關</h4>
-          <p class="text-lg">顧客的東西視為自己的</p>
+          <h4 class="pt-3 pb-1 tracking-wide text-xl font-semibold"
+          data-aos="fade-up" data-aos-duration="1000">包裝品質</h4>
+          <p class="text-lg"
+          data-aos="fade-up" data-aos-duration="2000">您的商品就是我的商品</p>
         </div>
-        <div class="col-12 col-md-6 py-5 wow animated fadeInUp" data-wow-duration="2s">
+        <div class="col-12 col-md-6 py-5" data-aos="fade-up">
           <div class="homeDetails-inner overflow-hidden mx-auto">
             <w-image :src="content02" class="w-100 h-100" alt="driver" />
           </div>
-          <h4 class="pt-3 pb-1 tracking-wide text-2xl font-semibold" data-wow-duration="2s">優良的退貨機制</h4>
-          <p class="text-lg leading-7" data-wow-duration="2s">3天無條件退貨 10天鑑賞期</p>
+          <h4 class="pt-3 pb-1 tracking-wide text-xl font-semibold" data-aos="fade-up" data-aos-duration="1000">退貨機制</h4>
+          <p class="text-lg leading-7" data-aos="fade-up" data-aos-duration="2000">3天無條件退貨 10天鑑賞期</p>
         </div>
         <div class="col-12 d-md-flex justify-content-md-around my-5 flex-wrap">
-          <div class="d-flex align-items-center justify-content-center pb-3
-              wow animated fadeInRight" data-wow-delay=".1s" data-wow-duration="1s">
+          <div class="d-flex align-items-center justify-content-center pb-3"
+          data-aos="fade-left" data-aos-duration="500">
             <div class="homeDetails-icon">
               <i class="bi bi-currency-dollar fs-2"></i>
             </div>
-            <p class="ps-3 text-xl  font-medium tracking-wider">具有競爭力的價格</p>
+            <p class="ps-3 text-xl  font-medium tracking-wider text-xl">具有競爭力的價格</p>
           </div>
-          <div class="d-flex align-items-center justify-content-center
-              pb-3 wow animated fadeInRight" data-wow-delay=".2s" data-wow-duration="2s">
+          <div class="d-flex align-items-center justify-content-center pb-3"
+          data-aos="fade-left" data-aos-duration="1000">
             <div class="homeDetails-icon">
               <i class="bi bi-bag fs-2"></i>
             </div>
-            <p class="ps-3 text-xl  font-medium tracking-wider">商品不斷推陳出新</p>
+            <p class="ps-3 text-xl  font-medium tracking-wider text-xl">商品不斷推陳出新</p>
           </div>
-          <div class="d-flex align-items-center justify-content-center pb-3 wow animated
-              fadeInRight" data-wow-delay=".3s" data-wow-duration="3s">
+          <div class="d-flex align-items-center justify-content-center pb-3"
+          data-aos="fade-left" data-aos-duration="2000">
             <div class="homeDetails-icon">
               <i class="bi bi-box-seam fs-2"></i>
             </div>
-            <p class="ps-3 text-xl  font-medium tracking-wider">下單後24hr內到貨</p>
+            <p class="ps-3 text-xl  font-medium tracking-wider text-xl">下單後24hr內到貨</p>
           </div>
         </div>
       </div>
@@ -252,11 +254,12 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1 class="text-white text-center my-5">售後服務</h1>
+          <h1 class="text-3xl font-semibold tracking-widest text-white text-center my-5">售後服務</h1>
         </div>
         <div class="col-12 col-md-4">
-          <a href="mailto:mgzofficer@gmail.com" class="d-block text-decoration-none text-white py-3 my-3">
-            <div class="text-center">
+          <a href="mailto:mgzofficer@gmail.com" class="salesServer-item d-block text-decoration-none text-white py-3 my-3">
+            <div class="text-center" data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom">
               <i class="bi bi-envelope text-5xl"></i>
               <h3 class="pt-2 pb-1 text-xl tracking-wider">透過Email</h3>
               <p class="text-base tracking-wide">發送訊息給客服中心</p>
@@ -264,8 +267,10 @@
           </a>
         </div>
         <div class="col-12 col-md-4">
-          <a href="tel:(02)1010101" class="d-block text-decoration-none text-white py-3 my-3">
-            <div class="text-center">
+          <a href="tel:(02)1010101" class="salesServer-item d-block text-decoration-none text-white py-3 my-3">
+            <div class="text-center" data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+              data-aos-delay="200">
               <i class="bi bi-telephone text-5xl"></i>
               <h3 class="pt-2 pb-1 text-xl tracking-wider">撥打電話</h3>
               <p class="text-base tracking-wide">(02)1010101<br>週一至週五,上午7:00~下午17:00</p>
@@ -273,8 +278,11 @@
           </a>
         </div>
         <div class="col-12 col-md-4">
-          <a href="https://goo.gl/maps/115xT6CDWXH6J2kD6" target="_blank" rel="noreferrer noopenner" class="d-block text-decoration-none text-white py-3 my-3">
-            <div class="text-center">
+          <a href="https://goo.gl/maps/115xT6CDWXH6J2kD6" target="_blank" rel="noreferrer noopenner"
+          class="salesServer-item d-block text-decoration-none text-white py-3 my-3">
+            <div class="text-center" data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+              data-aos-delay="400">
               <i class="bi bi-house text-5xl"></i>
               <h3 class="pt-2 pb-1 text-xl tracking-wider">自行前往</h3>
               <p class="text-base tracking-wide">台北市信義區市府路101號</p>
@@ -285,15 +293,16 @@
     </div>
     <div class="container-fulid mt-5">
       <div class="row">
-        <div class="col-12 text-white">
+        <div class="col-12">
           <div class="couponBg position-relative">
-            <div class="coupon-content position-absolute text-center top-50 start-50 translate-middle">
-              <div class="coupon-outline rounded-4 px-5 py-2 mb-2">
+            <div class="coupon-content position-absolute text-center top-50 start-50 translate-middle"
+            data-aos="fade-up" data-aos-duration="1000">
+              <div class="coupon-outline rounded-4 px-4 py-2 mb-2">
                 <p class="text-2xl tracking-widest">歡慶開幕<br>
-                  <span class="text-xl">全品項折扣</span></p>
+                  <span class="text-xl">全品項折扣活動</span></p>
               </div>
-              <p class="text-lg tracking-wide">總金額<span style="color:#5A4C4C">10%</span>優惠</p>
-              <p class="d-block py-2 mt-2 mb-1 mt-md-3 mb-md-2" style="border-top:2px solid #5A4C4C; border-bottom:2px solid #5A4C4C;">限時優惠卷</p>
+              <p class="text-lg tracking-wide">總金額<span class="coupon-span">10%</span>優惠</p>
+              <p class="d-block py-2 mt-2 mb-1 mt-md-3 mb-md-2 coupon-border">限時優惠卷</p>
               <p class="text-lg tracking-wide">優惠碼coupon012</p>
             </div>
           </div>
@@ -337,7 +346,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "../assets/scss/swiper/homePageSwiper.css";
 import "swiper/css/pagination";
-import { EffectFade, Autoplay, Mousewheel, Pagination } from "swiper";
+import { Parallax, EffectFade, Autoplay, Mousewheel, Pagination } from "swiper";
 
 export default {
   data() {
@@ -355,7 +364,7 @@ export default {
   },
   setup() {
     return {
-      modules: [ EffectFade, Autoplay, Mousewheel, Pagination ],
+      modules: [ Parallax, EffectFade, Autoplay, Mousewheel, Pagination ],
     };
   },
   methods: {
@@ -369,6 +378,7 @@ export default {
         this.openDrawer = true;
       }
     },
+    countdown() {}
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
@@ -381,6 +391,7 @@ export default {
         live: true,
       }).init();
     });
+    this.countdown();
   },
 };
 </script>

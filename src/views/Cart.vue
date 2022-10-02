@@ -107,7 +107,7 @@
                     {{ item.product.price }}$/{{ item.product.unit }}</p>
                   <div class="price d-flex justify-content-between">
                     <p class="leading-7 d-block tracking-wider">數量/{{item.qty}}</p>
-                    <p class="d-block tracking-wider">{{ item.total }}$</p>
+                    <p class="d-block tracking-wider">{{ $filters.currency( item.total ) }}$</p>
                   </div>
                 </div>
               </div>
@@ -127,8 +127,8 @@
           </div>
         </div>
         <div class="col-12 pt-2 pb-3 text-white text-end tracking-widest font-semibold text-base">
-          <p>總計{{ this.orderTotal.total }}$</p>
-          <p>折扣價{{ this.orderTotal.final_total }}$</p>
+          <p>總計 {{ $filters.currency( this.orderTotal.total ) }} $ </p>
+          <p :class="{'d-none' : !coupon }">折扣價{{ $filters.currency( this.orderTotal.final_total ) }}$</p>
         </div>
         <div class="col-12 mb-3">
           <w-flex class="align-center tracking-wide">
@@ -189,6 +189,7 @@ export default {
       orderTotal: {},
       openDoor: false,
       selection1: false,
+      coupon: false,
     };
   },
   components: { Navbar, Footer, Loading, Swiper, SwiperSlide },
@@ -364,6 +365,7 @@ export default {
       });
     },
     useCoupon() {
+      this.coupon = true;
       const codeData = {
         code: this.codeValue,
       };

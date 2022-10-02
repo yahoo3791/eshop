@@ -25,24 +25,7 @@
     color:black;
   }
 }
-/* products樣式 */
-.product-outside {
-  &:hover {
-    background-color: rgba(0, 0, 0,0.1);
-  }
-  &:hover .product-notes {
-      opacity: 1;
-      transform: translate(-50%, 0px);
-  }
-  &:hover .product-content {
-    .addCartSize {
-      svg {
-        transition: transform .2s;
-        transform: scale(1.1);
-      }
-    }
-  }
-}
+// products item
 .w-image {
   background-position: center;
   background-size: contain;
@@ -52,10 +35,6 @@
 }
 .product-item {
   height: 165px;
-  // box-shadow: inset 3px 2px 0px rgb(0 0 0 / 43%),
-  //  inset 3px 3px 0px rgb(0 0 0 / 39%),
-  //   inset -3px -2px 5px rgb(0 0 0 / 43%),
-  //   inset 3px 3px 10px rgb(0 0 0 / 39%);
   cursor: pointer;
   overflow: hidden;
   .product-img {
@@ -65,14 +44,28 @@
       opacity: 0.8;
     }
   }
-  .product-notes {
+  .productNotes-container {
     transform: translate(-50%, 100px);
     background-color: rgba(255, 255, 255, 0.374);
-    height: 25%;
+    height: 100%;
     transition: all .3s;
     opacity: 0;
+    .productNotes {
+      height: 100%;
+      &::before {
+        content: '';
+        height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .productNotes-icon {
+        height: 100%;
+        display: inline-block;
+      }
+    }
   }
-  &:hover .product-notes{
+  &:hover .productNotes-container,
+  &:active .productNotes-container{
     opacity: 1;
     transform: translate(-50%, 0px);
   }

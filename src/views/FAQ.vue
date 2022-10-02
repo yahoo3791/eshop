@@ -143,7 +143,7 @@
             <div class="d-flex justify-content-end align-items-center">
               <p>以上未解決問題</p>
                 <router-link to="/user/companyContact" class="text-decoration-none">
-                <w-button class="text-black ms-4 px-3 py-md-2 px-md-3 py-lg-3 px-lg-4" lg bg-color="white" tile>
+                <w-button class="offset-btn text-white ms-4 px-3 py-md-2 px-md-3 py-lg-3 px-lg-4 border border-2" lg bg-color="transparent" tile>
                   聯絡客服人員<i class="bi bi-headset"></i>
                 </w-button>
               </router-link>

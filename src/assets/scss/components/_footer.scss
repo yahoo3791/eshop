@@ -23,41 +23,49 @@
     box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 1.0);
   }
 }
+.footer-active-hover {
+  transition: .2s all;
+  color: $secondary-BF;
+  &:hover,
+  &:active {
+    color: $base-color;
+  }
+}
 .ins,
 .meta {
   padding: 10px;
   line-height: 40px;
-  transition: .2s all;
-  color: $secondary-BF;
 }
-.ins {
-  &:hover {
-    color: $secondary-BF;
-    opacity: 0.8;
-  }
-}
-.meta {
-  &:hover{
-    color: $secondary-BF;
-    opacity: 0.8;
-  }
-}
-.copyright {
+.footer-color {
   color: $secondary-BF;
 }
 /* 訂閱Ｆorm */
 .sub-input {
   width: 70%;
-  border: 1px solid white;
+  border: 1px solid $secondary-BF;
   padding: 5px 20px;
+  color: $secondary-BF;
+  &:focus {
+    border: 1px solid $base-color;
+  }
 }
 .sub-btn {
   width: 30%;
-  border: 1px solid white;
+  border: 1px solid $secondary-BF;
   padding: 5px;
   transition: all .3s;
-  background: $base-color;
-  &:hover {
-    opacity: 0.8;
+  background: $secondary-BF;
+  .footer-envelope {
+    color: $secondary-E6;
+  }
+  &:hover,
+  &:active {
+    border: 1px solid $base-color;
+    background: $base-color;
+    // opacity: 0.8;
+    .footer-envelope {
+        color: $secondary-BF;
+      
+    }
   }
 }

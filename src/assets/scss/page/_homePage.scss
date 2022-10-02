@@ -139,33 +139,31 @@
   width: 100%;
   transition: all .2s ease-in-out;
 }
-
-
-
-
-
-// recommend START
-.recommend-item:nth-child(even) {
-  flex-direction: row-reverse;
-  .recommend-img {
-    // margin-left: -10%;
-  }
-}
+// recommend-itemSTART
 .recommend-item {
-  .recommend-txt {
-    // margin-left: -10%;
+  box-shadow: 0px 0px 20px black;
+  transition: all .3s;
+  &:hover {
+    transform: translateY(-20px);
+    box-shadow: 0px 10px 20px black;
+  }
+  .recommend-img {
+    transition: all .2s;
+    &:hover {
+      box-shadow: 2px 2px 2px white;
+    }
   }
 }
-.recommend-img {
-  overflow: hidden;
-  background-color: black;
-}
-.recommend-txt {
-  background-color: black;
-  padding: 10px;
-}
-// recommend END
+// recommend-item END
+.salesServer-item {
+  transition: all .3s;
+  &:hover,
+  &:active {
+    box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.3),
+    inset -5px -5px 8px rgba(0, 0, 0, 0.4);
 
+  }
+}
 // START coupon item
 .couponBg {
   background-image: url('@/assets/pic/homePage-couponBanner/couponBg.png');
@@ -188,11 +186,20 @@
   }
   .coupon-content {
     width: 250px;
-    // rwd width md lg 
+    color: $secondary-E6;
     .coupon-outline {
+      text-shadow: .5px .5px 0px white;
       background-color: #d9d9d996;
-      // border:1px solid black;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.138);
+    }
+    .coupon-span {
+      color: $base-color;
+    }
+    .coupon-border {
+      text-shadow: .5px .5px 0px white;
+      border-radius: 2px;
+      border-top: 2px solid $base-color;
+      border-bottom: 2px solid $base-color;
     }
   }
 }
@@ -205,16 +212,28 @@
     display: inline-block;
     position: relative;
     transform: translateY(0px);
-    width:2px;
+    width:8px;
     height: 8px;
     background: white;
     border-radius: 5px;
     animation: move 1.2s linear .3s infinite;
   }
 }
+.opacity-always {
+  opacity: 0;
+  animation: opacity-always 5s linear .3s infinite;
+}
+@keyframes opacity-always {
+  0%{
+  opacity: 0;
+  }
+  100%{
+  opacity: 1;
+  }
+}
 @keyframes move {
   0% {
-    transform: translateY(0px);
+    transform: translateY(-10px);
     opacity: 0;
   }
   100% {
@@ -237,4 +256,13 @@
   .couponBg {
     height: 450px;
   }
+}
+// utility
+.offset-btn {
+  background-color: #fff;
+  transition: all .3s !important;
+  box-shadow: 0.3em 0.3em 0 white;
+  &:hover,
+  &:active {
+  box-shadow: 0 0 0 white,inset 0.2em 0.2em 0 white;}
 }

@@ -9,10 +9,18 @@
           <router-link to="/user/products" class="nav-link py-3 animated fadeInDown" style="animation-delay: .1s;">商品PRODUCTS
           </router-link>
           <router-link to="/user/carts"
-          class="nav-link py-3 animated fadeInDown" style="animation-delay: .15s;">購物車CART</router-link>
+          class="nav-link py-3 animated fadeInDown" style="animation-delay: .15s;">
+          <div class="d-inline-block position-relative">購物車CART
+            <span :class="{'d-none': cartsNum == 0 }"
+              class="d-inline-block navbar-badge navbar-badge-sm animated position-absolute">{{cartsNum}}</span>
+          </div></router-link>
           <router-link to="/user/favorite"
           class="nav-link d-lg-none py-3 animated fadeInDown" style="animation-delay: .2s;">
-            收藏FAVORITE</router-link>
+            <div class="d-inline-block position-relative">收藏FAVORITE
+              <span :class="{'d-none': favoriteData.length == 0 }"
+                class="d-inline-block navbar-badge navbar-badge-sm animated position-absolute">{{favoriteData.length}}</span>
+            </div>
+          </router-link>
           <router-link to="" @click.prevent="openLogin()" class="nav-link d-lg-none py-3 border-bottom-0 animated fadeInDown" style="animation-delay: .25s;">
             會員登入LOGIN</router-link>
         </div>
@@ -34,12 +42,14 @@
         <router-link to="/user/products" class="nav-link px-3 py-3">商品
         </router-link>
         <router-link to="/user/carts" class="nav-link px-3 py-3 position-relative">
-          <i class="bi bi-cart-fill me-1" style="font-size:1em"></i>
-          <span class="d-inline-block text-base">{{ cartsNum }}</span>
+          <i class="bi bi-cart-fill me-1 position-relative" style="font-size:1em">
+            <span :class="{'d-none': cartsNum == 0 }" ref="cartsNum" class="d-block position-absolute navbar-badge navbar-badge-md animated">{{cartsNum}}</span>
+          </i>
         </router-link>
         <router-link to="/user/favorite" class="nav-link px-3 py-3 position-relative">
-          <i class="bi bi-heart-fill me-1" style="font-size:1em"></i>
-          <span class="fav-num d-inline-block text-base">{{ favoriteData.length }}</span>
+          <i class="bi bi-heart-fill me-1 position-relative" style="font-size:1em">
+            <span :class="{'d-none': favoriteData.length == 0 }" ref="fav" class="d-block position-absolute navbar-badge navbar-badge-md animated">{{favoriteData.length}}</span>
+          </i>
         </router-link>
         <a href="#" @click.prevent="openLogin()" class="nav-link px-3 py-3 position-relative">
           <i class="bi bi-person-fill" style="font-size:1em"></i>
@@ -122,14 +132,12 @@ export default {
     },
     updateFav() {
       this.favoriteData = JSON.parse(localStorage.getItem('fav'));
-    }
+    },
   },
   mounted() {
     window.addEventListener('scroll', this.scrollHandling);
-    if ( document.body.clientWidth >= 768 ) {
       this.getCarts();
-    }
-    emitter.on('updateNum', ()=> {
+    emitter.on('updateNum', () => {
       this.updateFav();
     });
     emitter.on('updateCartsNum', () => {

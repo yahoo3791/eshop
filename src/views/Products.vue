@@ -27,9 +27,9 @@
             list-group-item-action border border-top-0">汽車</a>
           </div>
           <div class="ps-3 px-md-0 d-flex flex-wrap justify-content-end justify-content-md-center align-items-center mt-3">
-            <label for="sort" class="text-white pe-2 pb-md-1 d-inline-block">顯示方法</label>
-            <div class="bg-white d-inline-block" style="max-width:300px;">
-              <select name="sort" id="sort" class="text-black px-4 py-1 border-0" style="background: transparent;" @change="onChange($event)">
+            <label for="sort" class="text-white tracking-wide font-medium pe-2 pb-md-1 d-inline-block">顯示方法</label>
+            <div class="bg-white d-inline-block" style="max-width:300px;border-radius: 5px;">
+              <select name="sort" id="sort" class="text-black tracking-wide font-medium px-4 py-1 border-0" @change="onChange($event)">
                 <option selected="selected" disabled="disabled" style='display: none' value=''>選擇顯示方法</option>
                 <option value="價格排序低到高">價格排序低到高</option>
                 <option value="價格排序高到低">價格排序高到低</option>
@@ -50,10 +50,12 @@
             <div class="col-6 col-md-6 col-lg-4 mb-5" v-for="item,index in products">
               <div class="text-white product-content-shadow" @click.prevent="more(item.id,$event)" style="cursor:pointer">
                 <div class="product-item position-relative">
-                  <w-image :src="item.imageUrl" class="position-relative w-100 h-100 product-img" alt="雜誌圖片"></w-image>
-                  <div class="w-100 product-notes position-absolute bottom-0 start-50
-                    racking-widest text-lg text-center">
-                    <p>點擊看更詳細</p>
+                  <w-image :src="item.imageUrl" class="position-relative w-100 h-100 product-img" alt="雜誌圖片">
+                  </w-image>
+                  <div class="w-100 productNotes-container position-absolute bottom-0 start-50 text-center">
+                    <div class="productNote wow" fadeIn data-wow-duration="2s">
+                      <i class="productNotes-icon bi bi-info-square text-3xl"></i>
+                    </div>
                   </div>
                   <div @click.stop="addFav(item,index)" class="fav position-absolute end-0 top-0">
                     <i class="bi fs-2 mx-2" 
@@ -326,7 +328,7 @@ export default {
       emitter.emit('updateNum');
     },
     updateFav() {
-      this.favoriteData = JSON.parse(localStorage.getItem('fav'));
+      this.favoriteData = JSON.parse(localStorage.getItem('fav')) || [];
     }
   },
   watch: {
