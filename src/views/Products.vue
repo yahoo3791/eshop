@@ -45,29 +45,30 @@
             <div class="py-2 text-white d-inline-block" @click="filterBar = !filterBar" :class="{'d-none': filterBar}">關閉所有篩選條件欄</div>
             <div class="py-2 text-white d-inline-block" @click="filterBar = !filterBar" :class="{'d-none': !filterBar}">開啟所有篩選條件欄</div>
           </div>
-          <!-- START -->
           <div class="row">
             <div class="col-6 col-md-6 col-lg-4 mb-5" v-for="item,index in products">
-              <div class="text-white product-content-shadow" @click.prevent="more(item.id,$event)" style="cursor:pointer">
+              <div class="text-white product-content-container" @click.prevent="more(item.id,$event,index)" style="cursor:pointer">
                 <div class="product-item position-relative">
                   <w-image :src="item.imageUrl" class="position-relative w-100 h-100 product-img" alt="雜誌圖片">
                   </w-image>
-                  <div class="w-100 productNotes-container position-absolute bottom-0 start-50 text-center">
-                    <div class="productNote wow" fadeIn data-wow-duration="2s">
-                      <i class="productNotes-icon bi bi-info-square text-3xl"></i>
-                    </div>
+                  <div class="w-100 productNotes-container position-absolute bottom-0 start-50">
+                      <i class="productNotes-icon d-block bi bi-info-square text-4xl position-relative top-50 start-50 text-center"></i>
                   </div>
                   <div @click.stop="addFav(item,index)" class="fav position-absolute end-0 top-0">
                     <i class="bi fs-2 mx-2" 
-                    :class="favoriteData.includes(item.id) ? 'bi-heart-fill' : 'bi-heart'"
-                    ></i>
+                    :class="favoriteData.includes(item.id) ? 'bi-heart-fill' : 'bi-heart'"></i>
                   </div>
                 </div>
                 <div class="product-content pt-1">
                   <h5 class="product-content-h5 text-base font-medium tracking-wide">{{ item.title }}</h5>
                     <p class="product-p">${{ item.price }}</p>
-                    <a href="" @click.prevent="addCart(item)" :class="{'opacity-75': this.isLoading === true }"
-                      :disabled="this.isLoading ===true" class="d-block mt-2 p-1 text-center text-black bg-white text-decoration-none">加入購物車</a>
+                    <div @click.stop="addCart(item, $event)" :class="{'opacity-75': this.isLoading === true }"
+                      :disabled="this.isLoading ===true"
+                      class="d-block mt-2 p-1 text-center product-btn
+                      tracking-wide font-medium bg-white text-decoration-none">
+                      <div @click.stop class="d-none spinner-border spinner-border-sm" role="status">
+                      </div>
+                        加入購物車</div>
                 </div>
               </div>
             </div>
@@ -86,42 +87,6 @@
       </svg>
     </a>
     </div>
-    <w-drawer v-model="openDrawer" width="250px" bg-color="dark">
-        <w-button style="top:100px" color="white" @click="this.openDrawer = false"
-        xl outline absolute icon="wi-cross"></w-button>
-        <div class="container">
-          <div v-if="this.carts.length == 0" class="row" style="padding-top:150px">
-            <div class="col-12 text-white text-center">
-              <h3 class="text-center">購物車</h3>
-              <h3 class="text-lg py-5 leading-7 tracking-wide">目前購物車是空的<br>
-              快去逛逛吧！！</h3>
-                <w-button @click="this.openDrawer = false"
-                class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5 w-100"
-                lg bg-color="white" tile>看商品</w-button>
-            </div>
-          </div>
-            <div v-else-if="this.carts.length !== 0" class="row" style="padding-top:150px">
-              <div class="col-12 text-white overflow-auto" style="height:50vh;">
-                <h3 class="text-center text-xl font-medium tracking-wide">購物車</h3>
-                <ul class="p-0 tracking-wide">
-                  <li class="pt-1" style="border-bottom:1px solid #404040;" v-for="item in this.carts">
-                    <h6>{{item.product.title}}</h6>
-                    <div class="d-flex justify-content-between">
-                      <p>{{item.qty}}/{{item.product.unit}}</p>
-                      <p>{{item.total}}$</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-12">
-                <router-link to="/user/carts" class="d-block text-center text-decoration-none">
-                  <w-button class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5 w-100"
-                  lg bg-color="white" tile>結帳</w-button>
-                </router-link>
-              </div>
-            </div>
-        </div>
-    </w-drawer>
   </div>
 <Footer />
 </template>
@@ -146,6 +111,8 @@ export default {
       clickText: '全部雜誌',
       favoriteData: [],
       filterBar: false,
+      // spinner: true,
+      history: [],
     };
   },
   components: { Navbar, Footer, Loading },
@@ -158,7 +125,7 @@ export default {
         this.products = res.data.products;
       });
     },
-    more(id, e) {
+    more(id, e,index) {
       if ( e.target.innerText == '加入購物車' ) {
         return
       } else {
@@ -166,11 +133,25 @@ export default {
         this.isLoading = false;
         this.axios.get(api).then((res) => {
           this.isLoading = true;
-          this.$router.push(`/user/product/${id}`);
+          if ( res.data.success ) {
+            this.$router.push(`/user/product/${id}`);
+          }
         });
       }
+      this.productHistory(id);
     },
-    addCart(item) {
+    productHistory(id) {
+      // 可優化
+      this.history = JSON.parse(localStorage.getItem('setHistory')) || [];
+        if (this.history.includes(id)) {
+          this.history.splice(this.history.indexOf(id), 1);
+        } else {
+          this.history.push( id );
+          localStorage.setItem('setHistory', JSON.stringify(this.history))
+        }
+    },
+    addCart(item, e) {
+      e.target.childNodes[0].classList.remove('d-none');
       const data = {
         product_id: item.id,
         qty: 1,
@@ -179,6 +160,7 @@ export default {
       this.isLoading = true;
       this.axios.post(api, { data }).then((res) => {
         this.isLoading = false;
+        e.target.childNodes[0].classList.add('d-none');
         if (res.data.success) {
           const Toast = Swal.mixin({
             toast: true,
@@ -329,7 +311,7 @@ export default {
     },
     updateFav() {
       this.favoriteData = JSON.parse(localStorage.getItem('fav')) || [];
-    }
+    },
   },
   watch: {
     cartsNum: {
@@ -348,8 +330,11 @@ export default {
     })
   },
   mounted() {
-    this.getData();
-    this.updateFav();
+      this.getData();
+      this.updateFav();
+    setTimeout(() => {
+      localStorage.removeItem('setHistory');
+    }, 86400000);
   },
 };
 </script>

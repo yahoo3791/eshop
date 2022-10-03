@@ -8,6 +8,7 @@ import WaveUI from 'wave-ui';
 import 'animate.css';
 import 'wave-ui/dist/wave-ui.css';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import VueEasyLightbox from 'vue-easy-lightbox'
 import {
   Field, Form, ErrorMessage, defineRule, configure,
 } from 'vee-validate';
@@ -41,6 +42,7 @@ app.config.globalProperties.$filters = {
 app.use(VueLoading);
 app.use(VueAxios, axios);
 app.use(router);
+app.use(VueEasyLightbox);
 AOS.init({
   duration: 1200,
 });

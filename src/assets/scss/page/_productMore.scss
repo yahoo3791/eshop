@@ -1,66 +1,111 @@
-.product_pic {
+.productmore-item {
+  .numInput-item {
+    .counter {
+      height: 30px;
+      input {
+        max-width: 70px;
+      }
+    }
+    .numInput-prev,
+    .numInput-next {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      color: white;
+      border: 1px solid white;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      transition: all .3s;
+      &:hover,
+      &:active {
+        background-color: $base-color;
+        color: black;
+      }
+    }
+  }
+}
+// pic
+.productmore-pic {
   img {
-    object-fit: cover;
+    object-fit: contain;
+  }
+  .productmore-search {
+    p{
+      transform: translateY(100px);
+      transition: all .5s;
+    }
+    &:hover p,
+    &:active p{
+      transform: translateY(0px);
+    }
   }
 }
-.product_title_h1 {
-  white-space: nowrap;
-}
-.product_description {
-  text-indent: 2rem
-}
-.prev,
-.next {
-  color:white;
-  border: 1px solid white;
-  width: 30px;
-  transition: all .3s;
-  &:hover {
-    background-color: $base-color;
-    color: black;
+@include media-breakpoint-down(sm) {
+  .productmore-item {
+    .numInput-item {
+      .counter {
+        height: 50px;
+      }
+      .numInput-prev,
+      .numInput-next {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+      }
+    }
   }
 }
-.counter {
-  height: 26px;
-  input {
-    width: 40px;
-    border: 1px solid white;
+@include media-breakpoint-down(md) {
+  .productmore-pic {
+    max-width: 200px;
+    margin: 0 auto;
   }
 }
-.cartIcon {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+@include media-breakpoint-up(sm) {
+  .productmore-pic {
+    max-width: 300px;
+  }
 }
+// bootstrap 手風琴 style change START //
+
 .accordion-button,
 .accordion-body {
   background: #212529;
-  color:white;
+  color: white;
 }
+
 .accordion-body,
 .product-description {
-  color : $secondary-E6;
+  color: $secondary-E6;
 }
+
 .accordion-button:focus {
-  border-color:none;
+  border-color: none;
   box-shadow: none;
 }
+
 .accordion-button:not(.collapsed) {
-  color:white;
+  color: white;
   background-color: $secondary-40;
 }
+
 .accordion-item {
   border-radius: 0 !important;
 }
+
 .accordion-item:first-of-type .accordion-button {
   border-radius: 0 !important;
 }
+
 .accordion-button::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
+
 .accordion-button:not(.collapsed)::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
+
 .accordion-header:hover {
   transition: all .3s;
   opacity: 0.9;
@@ -68,25 +113,4 @@
 .breadcrumb-item-back:hover {
   border-bottom: 1px solid $secondary-40;
 }
-@include media-breakpoint-down(sm) {
-  .product_pic {
-    width: 100%;
-  }
-  .breadcrumb-position {
-    position: relative;
-  top: 0;
-  right: 0;
-  left: 0;
-    top: 70px;
-  }
-}
-@include media-breakpoint-up(md) {
-  .breadcrumb-position {
-    position: fixed;
-    z-index: 1030;
-    top: 0;
-    right: 0;
-    left: 0;
-    top: 5px;
-  }
-}
+// bootstrap style change END//

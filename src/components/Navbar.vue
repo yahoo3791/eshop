@@ -5,23 +5,23 @@
     class="d-block d-md-none navbar-overlay position-absolute start-0 w-100 bg-dark tracking-wider">
         <div :class="{'d-none': togglerOverlay }" class="text-lg navbar-nav
         text-white text-center pt-3 pb-4 w-75 mx-auto tracking-wider">
-          <router-link to="/" class="nav-link py-3 animated fadeInDown" style="animation-delay: .05s;">首頁HOME</router-link>
-          <router-link to="/user/products" class="nav-link py-3 animated fadeInDown" style="animation-delay: .1s;">商品PRODUCTS
+          <router-link to="/" class="nav-link py-3 animated fadeInDown" style="animation-duration: .5s;">首頁HOME</router-link>
+          <router-link to="/user/products" class="nav-link py-3 animated fadeInDown" style="animation-duration: 1s;">商品PRODUCTS
           </router-link>
           <router-link to="/user/carts"
-          class="nav-link py-3 animated fadeInDown" style="animation-delay: .15s;">
+          class="nav-link py-3 animated fadeInDown" style="animation-duration: 1.5s;">
           <div class="d-inline-block position-relative">購物車CART
             <span :class="{'d-none': cartsNum == 0 }"
               class="d-inline-block navbar-badge navbar-badge-sm animated position-absolute">{{cartsNum}}</span>
           </div></router-link>
           <router-link to="/user/favorite"
-          class="nav-link d-lg-none py-3 animated fadeInDown" style="animation-delay: .2s;">
+          class="nav-link d-lg-none py-3 animated fadeInDown" style="animation-duration: 2s;">
             <div class="d-inline-block position-relative">收藏FAVORITE
               <span :class="{'d-none': favoriteData.length == 0 }"
                 class="d-inline-block navbar-badge navbar-badge-sm animated position-absolute">{{favoriteData.length}}</span>
             </div>
           </router-link>
-          <router-link to="" @click.prevent="openLogin()" class="nav-link d-lg-none py-3 border-bottom-0 animated fadeInDown" style="animation-delay: .25s;">
+          <router-link to="" @click.prevent="openLogin()" class="nav-link d-lg-none py-3 border-bottom-0 animated fadeInDown" style="animation-duration: 2.5s;">
             會員登入LOGIN</router-link>
         </div>
         
@@ -131,7 +131,7 @@ export default {
       })
     },
     updateFav() {
-      this.favoriteData = JSON.parse(localStorage.getItem('fav'));
+      this.favoriteData = JSON.parse(localStorage.getItem('fav')) || [];
     },
   },
   mounted() {
