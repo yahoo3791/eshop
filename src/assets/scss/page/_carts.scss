@@ -1,45 +1,120 @@
+.carts-container {
+  padding-top: 15vh;
+  z-index: 2;
+}
+.carts-img {
+  height: 150px;
+  object-fit: contain;
+}
+.cartsItem {
+  transition: all .3s;
+  border-bottom: 1px solid #404040;
+}
+.cartsInput-sm-container {
+  height: 150px;
+  width: 100px;
+  .cartsInput-sm-Item {
+    .cartsInput-sm-add,
+    .cartsInput-sm-min {
+      height: 40px;
+      line-height: 40px;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      transition: all .3s;
+      &:hover,
+      &:active {
+        background-color: $base-color;
+        color: black;
+      }
+    }
+    .cartsInput-sm-input {
+      width: 50px;
+      height: 50px;
+      background: transparent;
+      border-radius: 0;
+    }
+  }
+}
+
+.cartsInput-md-container {
+  width: 30%;
+  .cartsInput-md-Item {
+    width: 100%;
+    .cartsInput-md-min,
+    .cartsInput-md-add {
+      width: 30%;
+      height: 40px;
+      line-height: 40px;
+      max-width: 60px;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      transition: all .3s;
+      &:hover,
+      &:active {
+        background-color: $base-color;
+        color: black;
+      }
+    }
+    .cartsInput-md-input {
+      input {
+        height: 40px;
+      }
+    }
+  }
+}
+.cartsInput-trash {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 4px #000;
+  &:hover,
+  &:active {
+    box-shadow: inset 2px 2px 7px #000;
+  }
+}
+@include media-breakpoint-up(md) {
+  .carts-img {
+    height: 200px;
+  }
+}
+
+
+
+
+// 填寫資料 下頁
 .carts-textarea {
   width: 230px;
   height: 50px
 }
-.carts-imgSize {
-  width: 70px;
-  height: 80px;
-  object-fit: cover;
-}
-.carts-trashIcon:hover {
-  transition: all .3s;
-  color: red;
-}
-.deleteAllCarts {
-  &:hover {
-    border:1px solid red;
-  }
-}
 .formData-label {
   top: 20px;
-  color:black;
+  color: black;
   padding-left: 10px;
   transition: all .3s;
 }
+
+.form-control {
+  &:focus {
+    box-shadow: 0px 0px 2px white !important;
+    border-color: white !important;
+  }
+}
+
 .carts-input {
   border: 1px solid transparent;
+
   &:focus {
-  border: 1px solid $secondary-80;
+    border: 1px solid $secondary-80;
   }
 }
-.carts-input:focus ~ .formData-label{
+
+.carts-input:focus~.formData-label {
   top: -10px;
-  color:white;
+  color: white;
   padding: 0px;
-}
-@include media-breakpoint-up(md) {
-  .carts-imgSize {
-    width: 160px;
-    height: 160px;
-  }
-  .carts-trashIcon {
-    width: 30px;
-    height: 30px;
-  }
 }

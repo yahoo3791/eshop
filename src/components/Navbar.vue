@@ -15,14 +15,12 @@
               class="d-inline-block navbar-badge navbar-badge-sm animated position-absolute">{{cartsNum}}</span>
           </div></router-link>
           <router-link to="/user/favorite"
-          class="nav-link d-lg-none py-3 animated fadeInDown" style="animation-duration: 2s;">
+          class="nav-link d-lg-none py-3 animated fadeInDown border-0" style="animation-duration: 2s;">
             <div class="d-inline-block position-relative">收藏FAVORITE
               <span :class="{'d-none': favoriteData.length == 0 }"
                 class="d-inline-block navbar-badge navbar-badge-sm animated position-absolute">{{favoriteData.length}}</span>
             </div>
           </router-link>
-          <router-link to="" @click.prevent="openLogin()" class="nav-link d-lg-none py-3 border-bottom-0 animated fadeInDown" style="animation-duration: 2.5s;">
-            會員登入LOGIN</router-link>
         </div>
         
     </div>
@@ -51,17 +49,11 @@
             <span :class="{'d-none': favoriteData.length == 0 }" ref="fav" class="d-block position-absolute navbar-badge navbar-badge-md animated">{{favoriteData.length}}</span>
           </i>
         </router-link>
-        <a href="#" @click.prevent="openLogin()" class="nav-link px-3 py-3 position-relative">
-          <i class="bi bi-person-fill" style="font-size:1em"></i>
-        </a>
       </div>
     </div>
   </div>
-  <UserLoginVue ref="userlogin"></UserLoginVue>
 </template>
 <script>
-import axios from 'axios';
-import UserLoginVue from './UserLogin.vue';
 import emitter from '@/methods/emitter';
 export default {
   data() {
@@ -75,7 +67,6 @@ export default {
       favoriteData: [],
     };
   },
-  components: { UserLoginVue },
   methods: {
     openOverlay() {
       if (this.togglerOverlay === true) {
@@ -110,13 +101,6 @@ export default {
           this.smallNavbar = false;
         }
       }
-    },
-    openLogin() {
-      this.$refs.userlogin.modalShow();
-      this.togglerOverlay = true;
-      this.$refs.navbarSpan1.classList.remove('rotate45');
-      this.$refs.navbarSpan2.classList.remove('rotate-none');
-      this.$refs.navbarSpan3.classList.remove('rotate-45');
     },
     getCarts() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;

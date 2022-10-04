@@ -27,18 +27,17 @@
 }
 // products item
 .w-image {
-  background-position: center;
-  background-size: contain;
+  background-position: top 10px;
 }
 .product-content-container {
   box-shadow: 0px 0px 15px black;
   transition: all .3s;
+  max-width: 250px;
   .product-item {
     height: 165px;
     cursor: pointer;
     overflow: hidden;
     .product-img {
-      object-fit: contain;
       transition: all .3s;
     }
     .productNotes-container {

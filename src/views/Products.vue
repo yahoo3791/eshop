@@ -1,5 +1,22 @@
 <template>
-  <loading :active="isLoading"></loading>
+<loading v-model:active="isLoading">
+  <div class="loadingio-spinner-interwind-il303leqtya">
+    <div class="ldio-k17d8xi3rys">
+      <div>
+        <div>
+          <div>
+            <div></div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</loading>
   <Navbar />
   <div class="bg-dark pt-5">
     <div class="container-fluid pt-5">
@@ -47,7 +64,8 @@
           </div>
           <div class="row">
             <div class="col-6 col-md-6 col-lg-4 mb-5" v-for="item,index in products">
-              <div class="text-white product-content-container" @click.prevent="more(item.id,$event,index)" style="cursor:pointer">
+              <div class="text-white product-content-container mx-auto cursor-pointer"
+              @click.prevent="more(item.id,$event,index)">
                 <div class="product-item position-relative">
                   <w-image :src="item.imageUrl" class="position-relative w-100 h-100 product-img" alt="雜誌圖片">
                   </w-image>
@@ -332,9 +350,6 @@ export default {
   mounted() {
       this.getData();
       this.updateFav();
-    setTimeout(() => {
-      localStorage.removeItem('setHistory');
-    }, 86400000);
   },
 };
 </script>

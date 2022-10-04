@@ -1,5 +1,22 @@
 <template>
-<loading v-model:active="isLoading" />
+<loading v-model:active="isLoading">
+  <div class="loadingio-spinner-interwind-il303leqtya">
+    <div class="ldio-k17d8xi3rys">
+      <div>
+        <div>
+          <div>
+            <div></div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</loading>
 <div class="bg-dark pt-5">
   <Navbar />
   <!-- 麵包削 -->
@@ -15,7 +32,9 @@
               <li class="breadcrumb-item breadcrumb-item-none">內容</li>
               <li class="ms-auto">
               <router-link to="/user/products"
-              class="breadcrumb-item-back text-black text-decoration-none">返回</router-link>
+              class="breadcrumb-item-back text-black text-decoration-none"
+              data-bs-toggle="tooltip" data-bs-placement="bottom"
+              title="前往商品頁">返回</router-link>
               </li>
             </ol>
           </nav>
@@ -317,6 +336,9 @@ export default {
   mounted() {
     this.getData();
     this.getDataAll();
+    setInterval(() => {
+      localStorage.removeItem('setHistory');
+    }, 3600000);
   },
 };
 </script>
