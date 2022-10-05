@@ -162,6 +162,7 @@ export default {
       orderTotal: {},
       openDoor: false,
       selection1: false,
+      deleteItem: {},
       num: 1,
     };
   },
@@ -185,10 +186,9 @@ export default {
       let id = this.deleteItem.id;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.axios.delete(api).then((res) => {
-        this.getData();
-        emitter.emit('updateCartsNum', 0 );
         this.$refs.DeleteCarts.modalHide();
         if (res.data.success) {
+          emitter.emit('updateCartsNum', 0 );
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -204,6 +204,7 @@ export default {
             icon: 'success',
             title: '刪除品項成功',
           });
+          this.getData();
         } else {
           const Toast = Swal.mixin({
             toast: true,
@@ -226,6 +227,7 @@ export default {
     openDeleteCarts(item) {
       this.$refs.DeleteCarts.modalShow();
       emitter.emit('delete-data',item);
+      this.deleteItem = item;
     },
     deleteCarts() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/carts`;
