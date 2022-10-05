@@ -66,10 +66,13 @@
             <h3 class="text-base pb-3 mt-3" style="border-bottom: 1px solid #404040;">付款資訊</h3>
             <div class="col-12">
               <p class="py-1">訂單編號-{{details.create_at}} <span v-if="this.details.create_at">訂單成立成功</span></p>
-              <div v-for="item,k in details.products" :key="item.k">
-                <p v-if="!item.coupon == 0">已使用優惠卷，折扣{{ item.total - item.final_total }}$</p>
+              <div class="">
+                <!-- {{details.products}} -->
               </div>
-              <p class="py-1">金額 {{details.total}}$</p>
+              <div v-for="item,k in details.products" :key="item.k">
+                <p v-if="!item.coupon == 0">{{ item.product.title }} 已使用優惠卷，折扣{{ Math.round($filters.currency(item.total - item.final_total)) }}$</p>
+              </div>
+              <p class="py-1">金額 {{ Math.round($filters.currency(details.total)) }}$</p>
               <p class="py-1" v-if="details.is_paid === true">付款完成</p>
               <p class="py-1" v-else-if="details.is_paid === false">尚未付款</p>
             </div>
@@ -107,6 +110,7 @@ export default {
       this.isLoading = true;
       this.axios.post(api).then((res) => {
         this.isLoading = false;
+        console.log(res);
         if (res.data.success) {
           Swal.fire({
             position: 'center',
@@ -115,6 +119,7 @@ export default {
             showConfirmButton: false,
             timer: 1500,
           });
+          this.render();
         } else {
           Swal.fire({
             icon: 'error',
@@ -124,17 +129,20 @@ export default {
           });
         }
       });
+    },
+    render() {
+      const { orderId } = this.$route.params;
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${orderId}`;
+      this.isLoading = true;
+      this.axios.get(api).then((res) => {
+        this.isLoading = false;
+        this.details = res.data.order;
+        this.userData = res.data.order.user;
+      });
     }
   },
   mounted() {
-    const { orderId } = this.$route.params;
-    const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${orderId}`;
-    this.isLoading = true;
-    this.axios.get(api).then((res) => {
-      this.isLoading = false;
-      this.details = res.data.order;
-      this.userData = res.data.order.user;
-    });
+    this.render();
     this.payOrder();
   },
 };
