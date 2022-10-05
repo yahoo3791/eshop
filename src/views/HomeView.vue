@@ -13,7 +13,8 @@
             <swiper-slide>
               <div class="swiperBg1 w-100 h-100"></div>
               <div class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
-                <p data-swiper-parallax="-300">每一本雜誌都有自己的主角<br><span class="tracking-wide font-normal text-lg">紀錄著<br>世界各個角落的故事</span></p>
+                <p data-swiper-parallax="-300">雜誌<br>
+                  <span class="tracking-wide font-normal text-lg">帶你看世界各個角落的故事</span></p>
                   <router-link to="/user/products" class="text-decoration-none">
                     <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent" tile>
                       SHOP
@@ -313,7 +314,7 @@
       <div class="row">
         <div class="col">
           <div :class="{'d-none': openDrawer}" class="coupon position-fixed
-          bottom-0 end-0 m-2 m-md-3 p-md-2"
+          bottom-0 end-0 m-2 m-md-3"
             @click="noOverlay = true;overlayColor = '';openDrawer = !openDrawer">
             <img src="@/assets/pic/coupon.png" class="coupon-img" alt="coupon">
           </div>

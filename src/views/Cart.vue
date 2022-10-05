@@ -130,7 +130,7 @@
             </w-flex>
           </div>
           <div class="col-12 text-end">
-            <w-button class="text-black px-3 py-md-3 px-md-4 py-lg-2 px-lg-5"
+            <w-button class="text-black px-3 py-md-3 px-md-4 py-lg-3 px-lg-5"
             lg bg-color="white" tile @click="contactMethod">下一步</w-button>
           </div>
         </div>
@@ -163,7 +163,6 @@ export default {
       openDoor: false,
       selection1: false,
       num: 1,
-      // deleteItem: {},
     };
   },
   components: { Navbar, Footer, Loading, DeleteCartsAll, DeleteCarts  },
@@ -226,8 +225,6 @@ export default {
     },
     openDeleteCarts(item) {
       this.$refs.DeleteCarts.modalShow();
-      // this.deleteItem = item;
-      // : delete -data="deleteItem"
       emitter.emit('delete-data',item);
     },
     deleteCarts() {

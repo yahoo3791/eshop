@@ -119,7 +119,6 @@
 }
 .scrollTop-container {
   z-index: 100;
-  // bottom: 55px;
   bottom: 0px;
   transition: all .3s;
   transform: translateY(-20px);
@@ -128,8 +127,9 @@
   .scrollTop-btn {
     background-color: rgba(255, 255, 255, 0.7);
     border: 1px solid #ccc;
-    height: 45px;
-    width: 45px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
     &:hover {
       opacity: 0.9;
       border: 1px solid $secondary-80;

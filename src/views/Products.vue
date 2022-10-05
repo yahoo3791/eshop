@@ -59,11 +59,14 @@
             <w-switch v-model="filterBar" class="ma4 w-switch--wide d-inline-block" color="grey-dark2">
               <template #track><strong>{{ filterBar ? 'on' : 'off' }}</strong></template>
             </w-switch>
-            <div class="py-2 text-white d-inline-block" @click="filterBar = !filterBar" :class="{'d-none': filterBar}">關閉所有篩選條件欄</div>
-            <div class="py-2 text-white d-inline-block" @click="filterBar = !filterBar" :class="{'d-none': !filterBar}">開啟所有篩選條件欄</div>
+            <div class="py-2 text-white d-inline-block"
+            @click="filterBar = !filterBar" :class="{'d-none': filterBar}">關閉所有篩選條件欄</div>
+            <div class="py-2 text-white d-inline-block"
+            @click="filterBar = !filterBar" :class="{'d-none': !filterBar}">開啟所有篩選條件欄</div>
           </div>
           <div class="row">
-            <div class="col-6 col-md-6 col-lg-4 mb-5" v-for="item,index in products">
+            <div class="col-6 col-md-6 col-lg-4 mb-5"
+            v-for="item,index in products">
               <div class="text-white product-content-container mx-auto cursor-pointer"
               @click.prevent="more(item.id,$event,index)">
                 <div class="product-item position-relative">
@@ -72,7 +75,8 @@
                   <div class="w-100 productNotes-container position-absolute bottom-0 start-50">
                       <i class="productNotes-icon d-block bi bi-info-square text-4xl position-relative top-50 start-50 text-center"></i>
                   </div>
-                  <div @click.stop="addFav(item,index)" class="fav position-absolute end-0 top-0">
+                  <div class="fav position-absolute end-0 top-0"
+                  @click.stop="addFav(item,index)">
                     <i class="bi fs-2 mx-2" 
                     :class="favoriteData.includes(item.id) ? 'bi-heart-fill' : 'bi-heart'"></i>
                   </div>
@@ -80,13 +84,14 @@
                 <div class="product-content pt-1">
                   <h5 class="product-content-h5 text-base font-medium tracking-wide">{{ item.title }}</h5>
                     <p class="product-p">${{ item.price }}</p>
-                    <div @click.stop="addCart(item, $event)" :class="{'opacity-75': this.isLoading === true }"
+                    <div :class="{'opacity-75': this.isLoading === true }"
+                    @click.stop="addCart(item, $event)"
                       :disabled="this.isLoading ===true"
                       class="d-block mt-2 p-1 text-center product-btn
                       tracking-wide font-medium bg-white text-decoration-none">
                       <div @click.stop class="d-none spinner-border spinner-border-sm" role="status">
                       </div>
-                        加入購物車</div>
+                      加入購物車</div>
                 </div>
               </div>
             </div>
@@ -96,13 +101,8 @@
     </div>
     <div :class="{ 'scrollIconMoveIn':!scrollIcon  }" ref="scrollTop" class="scrollTop-container position-fixed end-0 text-center">
       <a @click.prevent="scrollToTop" href="/#/user/products"
-      class="scrollTop-btn d-block p-2 m-1 rounded-circle text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-        class="bi bi-arrow-bar-up" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0
-        .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0
-        .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"/>
-      </svg>
+      class="scrollTop-btn d-block m-1 rounded-circle text-white m-2 m-md-3">
+        <i class="bi-arrow-bar-up fs-5"></i>
     </a>
     </div>
   </div>
@@ -154,7 +154,6 @@ export default {
       this.productHistory(id);
     },
     productHistory(id) {
-      // 可優化
       this.history = JSON.parse(localStorage.getItem('setHistory')) || [];
         if (this.history.includes(id)) {
           this.history.splice(this.history.indexOf(id), 1);

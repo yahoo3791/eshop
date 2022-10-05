@@ -1,23 +1,12 @@
 <template>
   <Navbar />
-  <div class="bg-dark">
-    <div class="container position-relative text-white" style="padding-top:100px;z-index: 1;">
-      <div class="row mx-0">
-        <div class="col-12 p-0 my-4">
-          <div class="d-flex justify-content-between align-items-center pb-3" style="border-bottom: 1px solid #404040;">
-            <h1 class="mb-0 text-center tracking-widest font-bold text-xl">訂購人資訊</h1>
-            <div class="tracking-wide text-black">
-              <w-button @click="this.$router.push('/user/carts')" class="ms-2 px-1
-                      py-md-2 px-md-3 py-lg-2 px-lg-4" lg bg-color="white" tile>購物車
-              </w-button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="bg-dark"  style="padding-top:100px;">
     <div class="container py-2 py-md-5">
       <div class="row text-white flex-column-reverse flex-md-row">
         <div class="col-12 col-md-6">
+          <div class="d-flex justify-content-between align-items-center pb-3 mb-3" style="border-bottom: 1px solid #404040;">
+            <h1 class="mb-0 text-center tracking-widest font-bold text-xl">訂購人資訊</h1>
+          </div>
           <Form action="" @submit="submit">
             <div class="py-3 position-relative">
               <label ref="formName" class="d-block formData-label
@@ -29,11 +18,11 @@
               <ErrorMessage style="color:#ff4343" class="ps-2 position-absolute text-xs" name="姓名"></ErrorMessage>
             </div>
             <div class="py-3 position-relative">
-              <label for="" class="tracking-wide text-sm">性別</label><br>
-              <w-radio class="ps-2" color="white" value="male" name="gendor">
+              <label for="gendor" class="tracking-wide text-sm">性別</label><br>
+              <w-radio class="ps-2" color="white" value="male" name="gendor" v-model="gendor">
                 <p class="text-white">男</p>
               </w-radio>
-              <w-radio class="ps-3" color="white" value="female" name="gendor">
+              <w-radio class="ps-3" color="white" value="female" name="gendor" v-model="gendor">
                 <p class="text-white">女</p>
               </w-radio>
             </div>
@@ -84,7 +73,7 @@
                 <option value="超商取貨付款" name="payment">超商取貨付款</option>
               </select>
             </div>
-            <div class="text-end mb-5 d-block d-md-none">
+            <div class="text-end mb-5 mt-3 d-block d-md-none">
               <w-flex class="align-center tracking-wide">
                 <w-checkbox class="ms-auto mb-3" color="grey" v-model="selection1">
                   <p class="text-white">我已確認資料無誤</p>
@@ -132,7 +121,7 @@
               </w-checkbox>
             </w-flex>
             <w-button type="submit" @click="submit()" class="text-black px-3 py-md-3 px-md-4 py-lg-3 px-lg-5"
-            lg bg-color="white" tile>前往結帳
+            lg bg-color="white" tile>付款
             </w-button>
           </div>
         </div>
@@ -166,6 +155,7 @@ export default {
       },
       codeValue: '',
       coupon: false,
+      gendor: '',
     };
   },
   components: {
@@ -192,9 +182,28 @@ export default {
         });
         return;
       }
-      
+      if ( this.gendor != true ) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'info',
+          title: '請填寫性別欄位 <i class="bi bi-emoji-smile-fill"></i>',
+        });
+        return;
+      }
+
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`;
       this.axios.post(api, { data: this.formData }).then((res) => {
+        console.log(res);
         const { orderId } = res.data;
         if (res.data.success) {
           this.$router.push(`/user/checkout/${orderId}`);

@@ -17,71 +17,75 @@
     </div>
   </div>
   </loading>
+  <Navbar />
   <div class="bg-dark">
     <div class="container">
       <div class="row">
-        <div class="col-12 text-white py-3 text-center">
-          <h1>付款成功以下是您的訂單資訊</h1>
+        <div class="col-12 text-white text-center"
+        style="padding-top: 20vh">
+          <h1 class="text-xl">付款成功! 感謝您的惠顧</h1>
+          <p>以下是您的訂單資訊</p>
         </div>
       </div>
     </div>
     <div class="container text-white">
       <div class="row">
-        <div class="col-12 text-center my-5">
-          <p class="text-red">確認您的訂單資訊，<br class="d-md-none">請勿離開頁面，離開將導致訂單取消</p>
-        </div>
-        <div class="col-12 col-md-8 mx-auto">
-          <h3 class="text-center">訂購人資料</h3>
-          <p>訂單編號:{{details.create_at}} <span v-if="this.details.create_at">----訂單成立成功</span></p>
-          <div class="col-12 bg-white text-dark p-2 p-md-5 mb-5 d-flex
-          justify-content-center shadow">
-            <p class="tracking-wide leading-7">姓名: {{userData.name}}<br>
-            電話: {{userData.tel}}<br>
-            信箱: {{userData.email}}<br>
-            地址: {{userData.address}}<br></p>
-          </div>
-          <div class="col-12 bg-white text-dark p-md-5 my-3 shadow">
-            <h3 class="text-center">商品資訊</h3>
-            <div class="order-item border-bottom d-flex flex-column align-items-center
-            flex-md-row justify-content-center py-5"
-            v-for="item in details.products" :key="item.id">
-              <p><img :src="item.product.imageUrl"
-                alt="product-image" class="w-100" style="max-width:200px"></p>
-              <p class="tracking-wide leading-7 ps-1 ps-lg-5">書名: {{item.product.title}}<br>
-              類別: {{item.product.category}}<br>
-              原價: {{item.product.origin_price}}$<br>
-              優惠價: {{item.product.price}}$<br>
-              數量: {{item.qty}}/{{item.product.unit}}</p>
+        <div class="col-10 col-md-6 mx-auto">
+          <h3 class="text-base pb-3 mt-5" style="border-bottom: 1px solid #404040;">訂購人資訊</h3>
+          <div class="row">
+            <div class="col-12 text-white mb-5 d-flex">
+              <div class="text-base">
+                <p class="py-1">聯絡人姓名</p>
+                <p class="py-1">聯絡人信箱</p>
+                <p class="py-1">聯絡人手機</p>
+                <p class="py-1">收件人地址</p>
+              </div>
+              <div class="ps-3">
+                <p class="py-1">{{userData.name}}</p>
+                <p class="py-1">{{userData.email}}</p>
+                <p class="py-1">{{userData.tel}}</p>
+                <p class="py-1">{{userData.address}}</p>
+              </div>
             </div>
           </div>
-          <div class="col-12 bg-white text-dark px-2 py-1 my-5 shadow">
-            <h3 class="text-center">付款資訊</h3>
-            <div class="" v-for="item,k in details.products" :key="item.k">
-              <p v-if="!item.coupon == 0">已使用優惠卷，折扣{{ item.total - item.final_total }}$</p>
+          <div class="row">
+          <h3 class="text-base pb-3 mt-3" style="border-bottom: 1px solid #404040;">商品資訊</h3>
+          <div class="col-12 text-white mb-5">
+            <div class="payCart-item border-bottom d-flex py-3" v-for="item in details.products">
+              <img :src="item.product.imageUrl" class="d-block" style="max-width: 100px;" alt="cartImage">
+              <div class="text-sm d-flex flex-column justify-content-between ps-3">
+                <p>{{item.product.title}}</p>
+                <p>{{item.product.category}}類</p>
+                <p><i class="bi bi-x"></i>{{item.qty}}</p>
+                <p>{{item.total}}<i class="bi bi-currency-dollar"></i></p>
+              </div>
             </div>
-            <p>付款金額: {{details.total}}$</p>
-            <p v-if="details.is_paid === true">已付款完成</p>
-            <p v-else-if="details.is_paid === false">尚未付款</p>
           </div>
-          <div class="col-12">
-            <w-flex class="align-center tracking-wide">
-              <w-checkbox class="ms-auto" color="grey" v-model="section">
-                <p class="text-white">我已閱讀並明瞭<a href="#" class="text-white">「網站使用條款」</a>、<a href="#" class="text-white">「隱私權政策」</a>、<a href="#" class="text-white">「免責聲明」</a>同意接受該等條款規定，並願遵守網站規範。</p>
-              </w-checkbox>
-            </w-flex>
+          </div>
+          <div class="row">
+            <h3 class="text-base pb-3 mt-3" style="border-bottom: 1px solid #404040;">付款資訊</h3>
+            <div class="col-12">
+              <p class="py-1">訂單編號-{{details.create_at}} <span v-if="this.details.create_at">訂單成立成功</span></p>
+              <div v-for="item,k in details.products" :key="item.k">
+                <p v-if="!item.coupon == 0">已使用優惠卷，折扣{{ item.total - item.final_total }}$</p>
+              </div>
+              <p class="py-1">金額 {{details.total}}$</p>
+              <p class="py-1" v-if="details.is_paid === true">付款完成</p>
+              <p class="py-1" v-else-if="details.is_paid === false">尚未付款</p>
+            </div>
           </div>
           <div class="col-12 pt-2 pb-5 text-end my-5">
-              <w-button @click="cancelOrder" class="me-4 text-black px-3 py-md-3
-              px-md-4 py-lg-4 px-lg-5" lg bg-color="white" tile>取消</w-button>
-              <w-button v-if="this.section === true" @click="payOrder" class="text-black px-3 py-md-3 px-md-4
-              py-lg-4 px-lg-5" lg bg-color="white" tile>付款</w-button>
+              <w-button @click="this.$router.push('/user/products')" class="text-black px-3 py-md-3 px-md-4 py-lg-3 px-lg-5" lg bg-color="white" tile>繼續購物</w-button>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <Footer />
 </template>
 <script>
+import Navbar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
@@ -93,10 +97,9 @@ export default {
       details: {},
       userData: {},
       isLoading: false,
-      section: false,
     };
   },
-  components: { Loading },
+  components: { Navbar, Footer, Loading },
   methods: {
     payOrder() {
       const { orderId } = this.$route.params;
@@ -108,13 +111,10 @@ export default {
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: '付款成功，五秒後返回首頁',
+            title: '付款成功',
             showConfirmButton: false,
-            timer: 5000,
+            timer: 1500,
           });
-          setTimeout(() => {
-            this.$router.push('/');
-          }, 5000);
         } else {
           Swal.fire({
             icon: 'error',
@@ -124,32 +124,7 @@ export default {
           });
         }
       });
-    },
-    cancelOrder() {
-      Swal.fire({
-        title: '是否要取消訂單',
-        text: '確認後無法恢復',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '確認',
-        cancelButtonText: '取消',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: '取消成功，五秒後返回首頁',
-            showConfirmButton: false,
-            timer: 5000,
-          });
-          setTimeout(() => {
-            this.$router.push('/');
-          }, 5000);
-        }
-      });
-    },
+    }
   },
   mounted() {
     const { orderId } = this.$route.params;
@@ -160,6 +135,7 @@ export default {
       this.details = res.data.order;
       this.userData = res.data.order.user;
     });
+    this.payOrder();
   },
 };
 </script>
