@@ -65,9 +65,9 @@
           <div class="row">
             <h3 class="text-base pb-3 mt-3" style="border-bottom: 1px solid #404040;">付款資訊</h3>
             <div class="col-12">
-              <p class="py-1">訂單編號-{{details.create_at}} <span v-if="this.details.create_at">訂單成立成功</span></p>
+              <p v-if="this.details.create_at">訂單成立成功 (記住您的訂單編號，查詢訂單需要輸入此編號)</p>
+              <p class="py-1">訂單編號: {{this.$route.params.orderId}}</p>
               <div class="">
-                <!-- {{details.products}} -->
               </div>
               <div v-for="item,k in details.products" :key="item.k">
                 <p v-if="!item.coupon == 0">{{ item.product.title }} 已使用優惠卷，折扣{{ Math.round($filters.currency(item.total - item.final_total)) }}$</p>

@@ -15,11 +15,15 @@
               class="d-inline-block navbar-badge navbar-badge-sm animated position-absolute">{{cartsNum}}</span>
           </div></router-link>
           <router-link to="/user/favorite"
-          class="nav-link d-lg-none py-3 animated fadeInDown border-0" style="animation-duration: 2s;">
+          class="nav-link d-lg-none py-3 animated fadeInDown" style="animation-duration: 2s;">
             <div class="d-inline-block position-relative">收藏FAVORITE
               <span :class="{'d-none': favoriteData.length == 0 }"
                 class="d-inline-block navbar-badge navbar-badge-sm animated position-absolute">{{favoriteData.length}}</span>
             </div>
+          </router-link>
+          <router-link to="/user/checkOrder" class="nav-link d-lg-none py-3 animated fadeInDown border-0"
+            style="animation-duration: 2.5s;">
+            <div class="d-inline-block position-relative">查詢訂單CHECK ORDER</div>
           </router-link>
         </div>
         
@@ -48,6 +52,9 @@
           <i class="bi bi-heart-fill me-1 position-relative" style="font-size:1em">
             <span :class="{'d-none': favoriteData.length == 0 }" ref="fav" class="d-block position-absolute navbar-badge navbar-badge-md animated">{{favoriteData.length}}</span>
           </i>
+        </router-link>
+        <router-link to="/user/checkOrder" class="nav-link px-3 py-3 position-relative">
+          <i class="bi bi-clipboard-check me-1" style="font-size:1em"></i>
         </router-link>
       </div>
     </div>

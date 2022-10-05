@@ -50,6 +50,11 @@ const routes = [
         path: 'favorite',
         name: '我的收藏',
         component: () => import('../views/Favorite.vue'),
+      },
+      {
+        path: 'checkOrder',
+        name: '查詢訂單',
+        component: () => import('../views/CheckOrder.vue'),
       }
     ],
   },
