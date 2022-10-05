@@ -8,3 +8,14 @@ transition: all .3s;
     border-bottom:1px solid grey !important;
   }
 }
+.carts-textarea {
+  background: transparent;
+  -webkit-border-radius: 0px;
+  transition: all .3s;
+  max-height: 250px;
+  &:hover,
+  &:focus {
+    box-shadow: 0px 0px 0px transparent;
+    border: 1px solid grey !important;
+  }
+}

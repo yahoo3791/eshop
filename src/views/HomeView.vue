@@ -8,7 +8,7 @@
           :spaceBetween="0" :mousewheel="true" :pagination="{
             clickable: true,
           }" :effect="'fade'" :speed="500" :parallax="true"
-          :autoplay="{ delay: 5000000, disableOnInteraction: false, }"
+          :autoplay="{ delay: 2500, disableOnInteraction: false, }"
           :modules="modules" class="mySwiper" style=" height: calc( 70vh - 70px ) ">
             <swiper-slide>
               <div class="swiperBg1 w-100 h-100"></div>
