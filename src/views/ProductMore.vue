@@ -225,9 +225,7 @@ export default {
     getData() {
       const id = this.$route.params.productId;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
-      this.isLoading = true;
       this.axios.get(api).then((res) => {
-        this.isLoading = false;
         this.product = res.data.product;
       });
     },

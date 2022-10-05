@@ -1,112 +1,140 @@
 <template>
   <Navbar />
   <div class="bg-dark">
-    <div class="container position-relative" style="padding-top:100px;z-index: 1;">
-      <div class="row">
-        <div class="timeline col-12 d-flex align-items-center">
-          <div class="">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-1-circle-fill"
-              viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283
-                4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z" />
-            </svg>
-          </div>
-          <w-progress class="d-block w-50" model-value="100" color="white"></w-progress>
-          <div class="">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-            fill="white" class="bi bi-2-circle-fill" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM6.646
-              6.24c0-.691.493-1.306 1.336-1.306.756 0 1.313.492
-              1.313 1.236 0 .697-.469 1.23-.902 1.705l-2.971
-              3.293V12h5.344v-1.107H7.268v-.077l1.974-2.22.096-.107c.688-.763
-              1.287-1.428 1.287-2.43 0-1.266-1.031-2.215-2.613-2.215-1.758
-              0-2.637 1.19-2.637 2.402v.065h1.271v-.07Z"/>
-            </svg>
-          </div>
-          <w-progress class="d-block w-50" color="white"></w-progress>
-          <div class="">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-            fill="white" class="bi bi-3-circle"
-              viewBox="0 0 16 16">
-              <path
-                d="M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522
-                1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348
-                1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012
-                2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482
-                1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277
-                2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68
-                1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318Z" />
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM1 8a7 7 0 1
-              0 14 0A7 7 0 0 0 1 8Z" />
-            </svg>
+    <div class="container position-relative text-white" style="padding-top:100px;z-index: 1;">
+      <div class="row mx-0">
+        <div class="col-12 p-0 my-4">
+          <div class="d-flex justify-content-between align-items-center pb-3" style="border-bottom: 1px solid #404040;">
+            <h1 class="mb-0 text-center tracking-widest font-bold text-xl">訂購人資訊</h1>
+            <div class="tracking-wide text-black">
+              <w-button @click="this.$router.push('/user/carts')" class="ms-2 px-1
+                      py-md-2 px-md-3 py-lg-2 px-lg-4" lg bg-color="white" tile>購物車
+              </w-button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container pt-5">
-      <div class="row text-white">
-        <div class="col-12 col-md-10 col-lg-6 mx-auto">
-          <h3 class="text-center pb-5">訂購人資訊</h3>
-          <Form action="" @submit="submit" class="text-center">
+    <div class="container py-2 py-md-5">
+      <div class="row text-white flex-column-reverse flex-md-row">
+        <div class="col-12 col-md-6">
+          <Form action="" @submit="submit">
             <div class="py-3 position-relative">
+              <label ref="formName" class="d-block formData-label
+              tracking-wide text-sm" for="name">*聯絡人姓名</label>
               <Field id="name" v-model="this.formData.user.name" name="姓名" rules="required"
-              type="text" class="carts-input w-100 p-2">
+              type="text" class="carts-input w-100 p-2 border-0 border-bottom text-white" placeholder="請輸入姓名">
             </Field>
-            <label ref="formName" class="d-block formData-label position-absolute
-            tracking-widest" for="name">*聯絡姓名:
-            <span class="text-sm tracking-wide opacity-75">請輸入中文名字</span></label>
               <br>
-              <ErrorMessage style="color:#ff4343" name="姓名"></ErrorMessage>
+              <ErrorMessage style="color:#ff4343" class="ps-2 position-absolute text-xs" name="姓名"></ErrorMessage>
             </div>
             <div class="py-3 position-relative">
+              <label for="" class="tracking-wide text-sm">性別</label><br>
+              <w-radio class="ps-2" color="white" value="male" name="gendor">
+                <p class="text-white">男</p>
+              </w-radio>
+              <w-radio class="ps-3" color="white" value="female" name="gendor">
+                <p class="text-white">女</p>
+              </w-radio>
+            </div>
+            <div class="py-3 position-relative">
+              <label ref="formEmail" class="d-block formData-label 
+              tracking-widest text-sm" for="email">
+              *聯絡人信箱</label>
               <Field id="email" v-model="formData.user.email" name="信箱"
-              rules="required|email" type="email" class="carts-input w-100 p-2"></Field>
-              <label ref="formEmail" class="d-block formData-label position-absolute
-              tracking-widest" for="email">
-              *聯絡信箱:<span class="text-sm tracking-wide opacity-75">
-                ex:example@gamil.com</span></label>
+              rules="required|email" type="email" class="carts-input w-100 p-2
+              border-0 border-bottom text-white" placeholder="請輸入電子信箱"></Field>
               <br>
-              <ErrorMessage style="color:#ff4343" name="信箱"></ErrorMessage>
+              <ErrorMessage style="color:#ff4343" class="ps-2 position-absolute text-xs" name="信箱"></ErrorMessage>
             </div>
             <div class="py-3 position-relative">
+              <label ref="formPhone" class="d-block formData-label  tracking-widest text-sm"
+              for="phone">*聯絡人手機</label>
               <Field id="phone" v-model="formData.user.tel" name="手機" rules="required"
-              type="tel" class="carts-input w-100 p-2">
+              type="tel" class="carts-input w-100 p-2 border-0 border-bottom text-white"
+              placeholder="請輸入手機號碼">
             </Field>
-            <label ref="formPhone" class="d-block formData-label position-absolute tracking-widest"
-            for="phone">*聯絡手機:
-            <span class="text-sm tracking-wide opacity-75">ex:0912345678</span></label>
               <br>
-              <ErrorMessage style="color:#ff4343" name="手機"></ErrorMessage>
+              <ErrorMessage style="color:#ff4343" class="ps-2 position-absolute text-xs" name="手機"></ErrorMessage>
             </div>
             <div class="py-3 position-relative">
+              <label ref="formAddress" class="d-block formData-label 
+              tracking-widest text-sm" for="adress">*收件人地址</label>
               <Field id="address" v-model="formData.user.address" name="地址" rules="required"
-              type="address" class="carts-input w-100 p-2">
+              type="address" class="carts-input w-100 p-2 border-0 border-bottom text-white"
+              placeholder="請輸入完整地址">
             </Field>
-            <label ref="formAddress" class="d-block formData-label position-absolute
-            tracking-widest" for="adress">*收件地址:
-            <span class="text-sm tracking-wide opacity-75">輸入完整地址</span></label>
               <br>
-              <ErrorMessage style="color:#ff4343" name="地址"></ErrorMessage>
+              <ErrorMessage style="color:#ff4343" class="ps-2 position-absolute text-xs" name="地址"></ErrorMessage>
             </div>
             <div class="py-3 position-relative">
-              <input  id="message" v-model="formData.message" name="留言"
-              class="carts-input w-100 p-2" maxlength="100">
-              <label ref="formMessage" class="d-block formData-label
-              position-absolute tracking-wide" for="adress">留言<span
+              <label ref="formMessage" class="ps-2 d-block formData-label
+              tracking-wide text-sm" for="adress">備註<span
                   class="text-sm tracking-wide opacity-75"></span></label>
+              <input id="message" v-model="formData.message" name="留言"
+              class="carts-input w-100 p-2 border-0 border-bottom text-white" maxlength="100"
+              placeholder="留下疑問或需求">
             </div>
-            <div class="text-end px-3 mb-5">
+            <div class="py-3 position-relative">
+              <label for="" class="d-block text-sm">*付款方式</label>
+              <select name="payment" id="payment" class="carts-input
+              text-white w-100 border-0 border-bottom p-2 text-center text-sm"
+              style="text-align-last:center">
+                <option value="信用卡" name="payment">信用卡</option>
+                <option value="超商取貨付款" name="payment">超商取貨付款</option>
+              </select>
+            </div>
+            <div class="text-end mb-5 d-block d-md-none">
               <w-flex class="align-center tracking-wide">
                 <w-checkbox class="ms-auto mb-3" color="grey" v-model="selection1">
-                  <p class="text-white">我已確認訂購人資訊</p>
+                  <p class="text-white">我已確認資料無誤</p>
                 </w-checkbox>
               </w-flex>
-              <w-button v-if="selection1 === true" type="submit"
-              class="text-black px-3 py-md-3 px-md-4 py-lg-4 px-lg-5" lg bg-color="white"
+              <w-button type="submit"
+              class="text-black px-3 py-md-3 px-md-4 py-lg-3 px-lg-5" lg bg-color="white"
               tile>前往結帳</w-button>
             </div>
           </Form>
+        </div>
+        <div class="col-12 col-md-5 offset-md-1">
+          <h4 class="text-base tracking-wide">商品資訊</h4>
+          <div class="payCart-item border-bottom d-flex py-3" v-for="item in cartsData.carts">
+            <img :src="item.product.imageUrl" class="d-block" style="max-width: 100px;" alt="cartImage">
+            <div class="text-sm d-flex flex-column justify-content-between ps-3">
+              <p>{{item.product.title}}</p>
+              <p>{{item.product.category}}類</p>
+              <p><i class="bi bi-x"></i>{{item.qty}}</p>
+              <p>{{item.total}}<i class="bi bi-currency-dollar"></i></p>
+            </div>
+          </div>
+          <div class="text-white text-end tracking-widest font-semibold text-base">
+            <div :class="{'d-none': coupon}">總價{{cartsData.total}}<i class="bi bi-currency-dollar"></i></div>
+            <div class=""><del :class="{'d-none' : !coupon}"
+              style="text-decoration-color: red;">總價{{cartsData.total}}$</del></div>
+            <div class="col-12 pt-2 pb-3 text-white text-end tracking-widest font-semibold text-base">
+              <p :class="{'d-none' : !coupon }">折扣價:{{Math.round($filters.currency(cartsData.final_total))}}$</p>
+            </div>
+          </div>
+          <div class="input-group mb-5 input-group-sm ms-auto w-100" style="">
+            <input type="text" ref="codeValue" v-model="codeValue" class="form-control tracking-widest border-0 rounded-0"
+              placeholder="請輸入優惠碼">
+            <div class="input-group-append">
+              <button @click="useCoupon()" class="btn btn-outline-secondary
+                tracking-widest rounded-0" type="button" :disabled="coupon">
+                套用優惠碼
+              </button>
+            </div>
+          </div>
+          <div class="text-end mb-5 d-none d-md-block">
+            <w-flex class="align-center tracking-wide">
+              <w-checkbox class="ms-auto mb-3" color="grey" v-model="selection1">
+                <p class="text-white">我已確認資料無誤</p>
+              </w-checkbox>
+            </w-flex>
+            <w-button type="submit" @click="submit()" class="text-black px-3 py-md-3 px-md-4 py-lg-3 px-lg-5"
+            lg bg-color="white" tile>前往結帳
+            </w-button>
+          </div>
         </div>
       </div>
     </div>
@@ -119,10 +147,13 @@ import Footer from '@/components/Footer.vue';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import { Field, Form, ErrorMessage } from 'vee-validate';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 
 export default {
   data() {
     return {
+      cartsData:{},
       selection1: false,
       formData: {
         user: {
@@ -133,61 +164,98 @@ export default {
         },
         message: '',
       },
+      codeValue: '',
+      coupon: false,
     };
-  },
-  watch: {
-    'formData.user.name': function () {
-      if (this.formData.user.name !== '') {
-        this.$refs.formName.style.top = '-10px';
-        this.$refs.formName.style.color = 'white';
-      } else {
-        this.$refs.formName.removeAttribute('style');
-      }
-    },
-    'formData.user.email': function () {
-      if (this.formData.user.email != '') {
-        this.$refs.formEmail.style.top = '-10px';
-        this.$refs.formEmail.style.color = 'white';
-      } else {
-        this.$refs.formEmail.removeAttribute('style');
-      }
-    },
-    'formData.user.tel': function () {
-      if (this.formData.user.tel != '') {
-        this.$refs.formPhone.style.top = '-10px';
-        this.$refs.formPhone.style.color = 'white';
-      } else {
-        this.$refs.formPhone.removeAttribute('style');
-      }
-    },
-    'formData.user.address': function () {
-      if (this.formData.user.address != '') {
-        this.$refs.formAddress.style.top = '-10px';
-        this.$refs.formAddress.style.color = 'white';
-      } else {
-        this.$refs.formAddress.removeAttribute('style');
-      }
-    },
-    'formData.message': function () {
-      if (this.formData.message != '') {
-        this.$refs.formMessage.style.top = '-10px';
-        this.$refs.formMessage.style.color = 'white';
-      } else {
-        this.$refs.formMessage.removeAttribute('style');
-      }
-    },
   },
   components: {
     Navbar, Footer, Loading, Field, Form, ErrorMessage,
   },
   methods: {
     submit() {
+      // 欄位勾選 ｏｋ
+      if (  this.selection1 === false ) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'info',
+          title: '確認資訊完成後<br>記得勾選確認欄位 <i class="bi bi-emoji-smile-fill"></i>',
+        });
+        return;
+      }
+      
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`;
       this.axios.post(api, { data: this.formData }).then((res) => {
         const { orderId } = res.data;
-        this.$router.push(`/user/checkout/${orderId}`);
+        if (res.data.success) {
+          this.$router.push(`/user/checkout/${orderId}`);
+        } else {
+          console.log('error');
+        }
+      });
+    },
+    getData() {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      this.axios.get(api).then((res) => {
+        this.cartsData = res.data.data;
+      })
+    },
+    useCoupon() {
+      const codeData = {
+        code: this.codeValue,
+      };
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`;
+      this.axios.post(api, { data: codeData }).then((res) => {
+        this.getData();
+        if (res.data.success) {
+          this.coupon = true;
+          this.$refs.codeValue.disabled = true;
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: 'success',
+            title: '使用優惠卷成功',
+          });
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: 'error',
+            title: '使用優惠卷異常',
+          });
+        }
       });
     },
   },
+  mounted() {
+    this.getData();
+  }
 };
 </script>

@@ -129,7 +129,6 @@ export default {
       clickText: '全部雜誌',
       favoriteData: [],
       filterBar: false,
-      // spinner: true,
       history: [],
     };
   },
@@ -137,9 +136,7 @@ export default {
   methods: {
     getData(page = 1) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
-      this.isLoading = true;
       this.axios.get(api).then((res) => {
-        this.isLoading = false;
         this.products = res.data.products;
       });
     },
@@ -148,9 +145,7 @@ export default {
         return
       } else {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
-        this.isLoading = false;
         this.axios.get(api).then((res) => {
-          this.isLoading = true;
           if ( res.data.success ) {
             this.$router.push(`/user/product/${id}`);
           }

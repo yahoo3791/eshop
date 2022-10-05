@@ -122,24 +122,6 @@
           </div>
           <p class="text-white text-end tracking-widest font-semibold text-base pb-3">總計 {{ $filters.currency( this.orderTotal.total ) }} $ </p>
         </div>
-        
-        
-        <!-- <div class="col-12 pt-2 pb-3 text-white text-end tracking-widest font-semibold text-base">
-          <p :class="{'d-none' : !coupon }">折扣價{{ $filters.currency( this.orderTotal.final_total ) }}$</p>
-        </div> -->
-
-          <!-- <div class="col-12">
-            <div class="input-group my-3 input-group-sm ms-auto w-100" style="max-width:500px;">
-              <input type="text" ref="codeValue" v-model="codeValue"
-              class="form-control tracking-widest border-0 rounded-0" placeholder="請輸入優惠碼">
-              <div class="input-group-append">
-                <button @click="useCoupon" class="btn btn-outline-secondary
-                tracking-widest rounded-0" type="button">
-                  套用優惠碼
-                </button>
-              </div>
-            </div>
-          </div> -->
         <div class="row">
           <div class="col-12 mb-5">
             <w-flex class="align-center tracking-wide">
@@ -147,7 +129,7 @@
                 <p class="text-white">我已確認商品資訊</p></w-checkbox>
             </w-flex>
           </div>
-          <div v-if="selection1 === true " class="col-12 text-end">
+          <div class="col-12 text-end">
             <w-button class="text-black px-3 py-md-3 px-md-4 py-lg-2 px-lg-5"
             lg bg-color="white" tile @click="contactMethod">下一步</w-button>
           </div>
@@ -155,7 +137,7 @@
         </div>
     </div>
     <DeleteCartsAll ref="DeleteCartsAll" @checkDeleteAll="deleteCarts()"></DeleteCartsAll>
-    <DeleteCarts ref="DeleteCarts" :delete-data="deleteItem" @checkDelete="deleteProduct()"></DeleteCarts>
+    <DeleteCarts ref="DeleteCarts" @checkDelete="deleteProduct()"></DeleteCarts>
   </div>
   <Footer />
 </template>
@@ -177,23 +159,19 @@ export default {
       isLoading: false,
       orderHide: true,
       orderOpen: false,
-      codeValue: '',
       orderTotal: {},
       openDoor: false,
       selection1: false,
-      coupon: false,
       num: 1,
-      deleteItem: {},
+      // deleteItem: {},
     };
   },
   components: { Navbar, Footer, Loading, DeleteCartsAll, DeleteCarts  },
   methods: {
     getData() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
-      this.isLoading = true;
       this.orderOpen = true;
       this.axios.get(api).then((res) => {
-        this.isLoading = false;
         this.orderTotal = res.data.data;
         this.cartsData = res.data.data.carts;
           if (this.cartsData.length === 0) {
@@ -207,9 +185,7 @@ export default {
     deleteProduct() {
       let id = this.deleteItem.id;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
-      this.isLoading = true;
       this.axios.delete(api).then((res) => {
-        this.isLoading = false;
         this.getData();
         emitter.emit('updateCartsNum', 0 );
         this.$refs.DeleteCarts.modalHide();
@@ -250,14 +226,14 @@ export default {
     },
     openDeleteCarts(item) {
       this.$refs.DeleteCarts.modalShow();
-      this.deleteItem = item;
+      // this.deleteItem = item;
+      // : delete -data="deleteItem"
+      emitter.emit('delete-data',item);
     },
     deleteCarts() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/carts`;
-      this.isLoading = true;
       this.$refs.DeleteCartsAll.modalHide();
       this.axios.delete(api).then((res) => {
-        this.isLoading = false;
         this.getData();
         emitter.emit('updateCartsNum', 0);
         if (res.data.success) {
@@ -361,51 +337,25 @@ export default {
       });
       emitter.emit('updateCartsNum');
     },
-    useCoupon() {
-      this.coupon = true;
-      const codeData = {
-        code: this.codeValue,
-      };
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`;
-      this.axios.post(api, { data: codeData }).then((res) => {
-        this.getData();
-        if (res.data.success) {
-          this.$refs.codeValue.disabled = true;
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer);
-              toast.addEventListener('mouseleave', Swal.resumeTimer);
-            },
-          });
-          Toast.fire({
-            icon: 'success',
-            title: '使用優惠卷成功',
-          });
-        } else {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer);
-              toast.addEventListener('mouseleave', Swal.resumeTimer);
-            },
-          });
-          Toast.fire({
-            icon: 'error',
-            title: '使用優惠卷異常',
-          });
-        }
-      });
-    },
     contactMethod() {
+      if( this.selection1 === false ) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'info',
+          title: '確認訂單完成後<br>記得勾選我已確認商品資訊 <i class="bi bi-emoji-smile-fill"></i>',
+        });
+        return;
+      }
       this.$router.push('/user/contact');
     },
     open(i, k) {
@@ -422,7 +372,7 @@ export default {
     add(id ,k) {
       this.num = this.cartsData[k].qty;
       this.num++;
-      
+
       if ( this.num >= 50 ) {
         this.$refs.updateValue[k].value = 1;
         this.getData();

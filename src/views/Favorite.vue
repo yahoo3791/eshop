@@ -108,10 +108,8 @@ export default {
   methods: {
     getData() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
-      this.isLoading = true;
       this.axios.get(api).then((res) => {
         this.products = res.data.products;
-        this.isLoading = false;
         if ( res.data.success ) {
           this.getFavoriteData();
         }
@@ -175,9 +173,7 @@ export default {
         return
       } else {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
-        this.isLoading = false;
         this.axios.get(api).then((res) => {
-          this.isLoading = true;
           this.$router.push(`/user/product/${id}`);
         });
       }
