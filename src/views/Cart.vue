@@ -65,21 +65,27 @@
               </w-button>
               <p>{{item.product.category}}類</p>
             </div>
-            <div class="d-md-none cartsInput-sm-container position-absolute mx-auto mt-3 mb-2 text-white" ref="left"
+            <div class="d-md-none cartsInput-sm-container
+              position-absolute mx-auto mt-3 mb-2 text-white"
+              ref="left"
               style="transform: translateX(-500px);">
               <div class="d-flex">
                 <div class="mx-auto cartsInput-sm-Item">
                   <div class="border text-center cartsInput-sm-add cursor-pointer"
-                  @click.prevent="add(item.id, key)">
+                  @click.prevent="add(item.id, key)"
+                  @keydown="add(item.id, key)">
                     +
                   </div>
-                  <input :disabled="this.isLoading" ref="updateValue"
-                  @change="updateQty(item.id,key)"
-                  class="d-block text-center text-white border
-                  cartsInput-sm-input" type="text"
-                    min="1" :value="item.qty">
+                  <label for="smNum">
+                    <input name="smNum" id="smNum" :disabled="this.isLoading" ref="updateValue"
+                    @change="updateQty(item.id,key)"
+                    class="d-block text-center text-white border
+                    cartsInput-sm-input" type="text"
+                      min="1" :value="item.qty">
+                  </label>
                   <div class="border text-center cartsInput-sm-min cursor-pointer"
-                  @click.prevent="min(item.id, key)">
+                  @click.prevent="min(item.id, key)"
+                  @keydown="min(item.id, key)">
                     -
                   </div>
                 </div>
@@ -93,34 +99,48 @@
                 </div>
                 <div class="ms-3 d-flex flex-column justify-content-between">
                   <p class="tracking-wide font-semibold text-lg">{{ item.product.title }}
-                    <span class="d-none d-md-inline-block text-xs">{{item.product.category}}類</span></p>
+                    <span class="d-none d-md-inline-block text-xs">
+                      {{item.product.category}}類
+                    </span>
+                  </p>
                   <p class="leading-7 tracking-wider">
-                    {{ item.product.price }}$/{{ item.product.unit }}</p>
-                    <p class="leading-7 d-block tracking-wider">{{ $filters.currency( item.total ) }}$/{{item.qty}}</p>
+                    {{ item.product.price }}$/{{ item.product.unit }}
+                  </p>
+                  <p class="leading-7 d-block tracking-wider">
+                    {{ $filters.currency( item.total ) }}$/{{item.qty}}
+                  </p>
                 </div>
               </div>
               <div class="ms-auto cartsInput-md-container d-none d-md-inline-block">
                 <div class="cartsInput-md-Item d-flex align-items-center">
                   <div @click.prevent="min(item.id, key)"
+                  @keydown="min(item.id, key)"
                   class="cartsInput-md-min cursor-pointer text-center border">-</div>
                   <div class="cartsInput-md-input">
-                    <input v-model="item.qty" type="text" min="1"
-                      class="d-block border rounded-0 bg-dark
-                      text-center text-white border w-100"
-                      @change="updateQty(item.id, key)"
-                      ref="updateValue">
+                    <label for="num" class="d-block h-100">
+                      <input id="num" name="num" v-model="item.qty" type="text" min="1"
+                        class="d-block border rounded-0 bg-dark
+                        text-center text-white border w-100"
+                        @change="updateQty(item.id, key)"
+                        ref="updateValue">
+                    </label>
                   </div>
-                  <div @click.prevent="add(item.id, key)"
-                  class="cartsInput-md-add cursor-pointer text-center border">+</div>
+                  <div
+                    @click.prevent="add(item.id, key)"
+                    @keydown="add(item.id, key)"
+                    class="cartsInput-md-add cursor-pointer text-center border">+</div>
                 </div>
               </div>
               <div class="ms-auto ms-md-3 delete text-center cartsInput-trash cursor-pointer"
-              @click="openDeleteCarts(item)">
+              @click="openDeleteCarts(item)"
+              @keydown="openDeleteCarts(item)">
                 <i class="bi bi-trash3-fill fs-3"></i>
               </div>
             </div>
           </div>
-          <p class="text-white text-end tracking-widest font-semibold text-base pb-3">總計 {{ $filters.currency( this.orderTotal.total ) }} $ </p>
+          <p class="text-white text-end tracking-widest font-semibold text-base
+            pb-3">總計 {{ $filters.currency( this.orderTotal.total ) }} $
+          </p>
         </div>
         <div class="row">
           <div class="col-12 mb-5">
@@ -146,7 +166,7 @@ import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2/dist/sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 import emitter from '@/methods/emitter';
 import DeleteCartsAll from '@/components/DeleteCartsAll.vue';
@@ -166,7 +186,9 @@ export default {
       num: 1,
     };
   },
-  components: { Navbar, Footer, Loading, DeleteCartsAll, DeleteCarts  },
+  components: {
+    Navbar, Footer, Loading, DeleteCartsAll, DeleteCarts,
+  },
   methods: {
     getData() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
@@ -174,21 +196,21 @@ export default {
       this.axios.get(api).then((res) => {
         this.orderTotal = res.data.data;
         this.cartsData = res.data.data.carts;
-          if (this.cartsData.length === 0) {
-            this.orderHide = true;
-            this.orderOpen = false;
-          } else {
-            this.orderHide = false;
-          }
+        if (this.cartsData.length === 0) {
+          this.orderHide = true;
+          this.orderOpen = false;
+        } else {
+          this.orderHide = false;
+        }
       });
     },
     deleteProduct() {
-      let id = this.deleteItem.id;
+      const { id } = this.deleteItem;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.axios.delete(api).then((res) => {
         this.$refs.DeleteCarts.modalHide();
         if (res.data.success) {
-          emitter.emit('updateCartsNum', 0 );
+          emitter.emit('updateCartsNum', 0);
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -226,7 +248,7 @@ export default {
     },
     openDeleteCarts(item) {
       this.$refs.DeleteCarts.modalShow();
-      emitter.emit('delete-data',item);
+      emitter.emit('delete-data', item);
       this.deleteItem = item;
     },
     deleteCarts() {
@@ -337,7 +359,7 @@ export default {
       emitter.emit('updateCartsNum');
     },
     contactMethod() {
-      if( this.selection1 === false ) {
+      if (this.selection1 === false) {
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
@@ -368,11 +390,10 @@ export default {
         this.openDoor = true;
       }
     },
-    add(id ,k) {
+    add(id, k) {
       this.num = this.cartsData[k].qty;
-      this.num++;
-
-      if ( this.num >= 50 ) {
+      this.num += 1;
+      if (this.num >= 50) {
         this.$refs.updateValue[k].value = 1;
         this.getData();
         const Toast = Swal.mixin({
@@ -392,12 +413,10 @@ export default {
         });
         return;
       }
-
       const updateData = {
         product_id: id,
         qty: this.num,
       };
-
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.isLoading = true;
       this.axios.put(api, { data: updateData }).then((res) => {
@@ -441,9 +460,8 @@ export default {
     },
     min(id, k) {
       this.num = this.cartsData[k].qty;
-      this.num--;
-
-      if ( this.num <= 0 ) {
+      this.num -= 1;
+      if (this.num <= 0) {
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
@@ -505,7 +523,7 @@ export default {
           });
         }
       });
-    }
+    },
   },
   mounted() {
     this.getData();

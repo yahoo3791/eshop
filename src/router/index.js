@@ -55,7 +55,7 @@ const routes = [
         path: 'checkOrder',
         name: '查詢訂單',
         component: () => import('../views/CheckOrder.vue'),
-      }
+      },
     ],
   },
   {

@@ -28,7 +28,10 @@
               <li class="breadcrumb-item">
                 <a class="text-black text-decoration-none" href="#">首頁</a></li>
               <li class="breadcrumb-item breadcrumb-item-none">商品列表</li>
-              <li class="breadcrumb-item breadcrumb-item-none" aria-current="page">{{ product.category }}類</li>
+              <li class="breadcrumb-item breadcrumb-item-none"
+                aria-current="page">
+                {{ product.category }}類
+              </li>
               <li class="breadcrumb-item breadcrumb-item-none">內容</li>
               <li class="ms-auto">
               <router-link to="/user/products"
@@ -42,19 +45,26 @@
     </div>
   </div>
   <!-- END -->
-  
   <!-- content -->
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-4">
-        <div class="productmore-pic position-relative cursor-pointer overflow-hidden" @click="showSingle">
+        <div class="productmore-pic position-relative cursor-pointer overflow-hidden"
+        @click="showSingle"
+        @keypress="showSingle">
           <img :src="product.imageUrl" class="w-100 h-100" alt="productImage">
-          <div class="productmore-search position-absolute bottom-0 end-0 p-2 text-white opacity-75">
+          <div
+            class="productmore-search position-absolute bottom-0 end-0 p-2 text-white opacity-75">
             <p class="d-inline-block pe-1 tracking-wide">點擊看更大圖片</p>
             <i class="bi bi-zoom-in fs-3"></i>
           </div>
         </div>
-        <vue-easy-lightbox :visible="visibleRef" :imgs="product.imageUrl" :index="indexRef" @hide="onHide"></vue-easy-lightbox>
+        <vue-easy-lightbox
+          :visible="visibleRef"
+          :imgs="product.imageUrl"
+          :index="indexRef"
+          @hide="onHide">
+        </vue-easy-lightbox>
       </div>
       <div class="col-12 col-md-5 d-flex flex-column justify-content-between">
         <div class="">
@@ -73,43 +83,74 @@
               <p class="font-semibold text-2xl text-red">特價{{product.price}}$/{{product.unit}}</p>
             </div>
             <div class="numInput-item d-flex justify-content-end align-items-center">
-              <div @click.prevent="min()"
+              <div
+              @click.prevent="min()"
+              @keypress="min()"
               class="cursor-pointer numInput-prev text-center">-</div>
               <div class="counter border">
-                <input v-model="this.num" type="text" min="1"
-                class="d-block rounded-0 bg-dark text-center text-white border-0 h-100">
+                <label for="num" class="d-block h-100">
+                  <input id="num" name="num" v-model="this.num" type="text" min="1"
+                  class="d-block rounded-0 bg-dark border-0 text-center text-white h-100">
+                </label>
               </div>
-              <div @click.prevent="add()"
+              <div
+              @click.prevent="add()"
+              @keydown="add()"
               class="cursor-pointer numInput-next text-center">+</div>
             </div>
           </div>
           <div class="d-flex align-items-center my-5">
-            <w-button @click.prevent="addCart(product.id, $event)" class="offset-btn border border-2 text-white px-3 py-4 py-md-3 px-md-4 px-lg-5 w-100" lg
-              bg-color="transparent" tile><div class="d-none spinner-border spinner-border-sm mx-3 tracking-wide font-medium" role="status"></div>加入購物車</w-button>
+            <w-button
+              @click.prevent="addCart(product.id, $event)"
+              class="offset-btn border border-2 text-white px-3
+              py-4 py-md-3 px-md-4 px-lg-5 w-100" lg
+              bg-color="transparent" tile>
+              <div class="d-none spinner-border spinner-border-sm mx-3 tracking-wide font-medium"
+                role="status">
+              </div>加入購物車
+            </w-button>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- END -->
-
   <!-- swiper -->
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-9 py-5 text-white">
-        <h4 class="pb-2 tracking-wide font-medium text-xl" style="border-bottom:1px solid #404040">瀏覽紀錄</h4>
+        <h4 class="pb-2 tracking-wide font-medium text-xl"
+        style="border-bottom:1px solid #404040">瀏覽紀錄</h4>
         <div class="swiper-container">
-          <swiper ref="{swiperRef}" :slidesPerView="2" :centeredSlides="true" :spaceBetween="30" :navigation="true"
-            :modules="modules" class="mySwiper">
-            <swiper-slide v-for="item,index in productHistory" class="flex-column">
+          <swiper
+            ref="{swiperRef}"
+            :slidesPerView="2"
+            :centeredSlides="true"
+            :spaceBetween="30"
+            :navigation="true"
+            :modules="modules"
+            class="mySwiper">
+            <swiper-slide
+            v-for="item,index in productHistory"
+            :key="index"
+            class="flex-column">
               <div class="mx-auto product-content-container cursor-pointer"
-              @click.stop="more(item.id, index)" style="max-width:250px">
+              @click.stop="more(item.id, index)"
+              @keydown="more(item.id, index)"
+              style="max-width:250px">
                 <img :src="item.imageUrl" alt="">
-                <h5 class="product-content-h5 text-base font-medium tracking-wide py-2">{{ item.title }}</h5>
+                <h5
+                  class="product-content-h5 text-base font-medium tracking-wide py-2">
+                  {{ item.title }}
+                </h5>
                 <p class="product-p">${{ item.price }}</p>
-                <div :class="{'opacity-75': this.isLoading === true }" :disabled="this.isLoading ===true" class="d-block mt-2 p-1 text-center
+                <div
+                :class="{'opacity-75': this.isLoading === true }"
+                :disabled="this.isLoading ===true"
+                class="d-block mt-2 p-1 text-center
                   tracking-wide font-medium bg-white text-decoration-none text-black"
-                  @click.stop="addCart(item.id, $event)">
+                  @click.stop="addCart(item.id, $event)"
+                  @keydown="addCart(item.id, $event)">
                   <div class="d-none spinner-border spinner-border-sm" role="status">
                   </div>加入購物車
                 </div>
@@ -121,7 +162,6 @@
     </div>
   </div>
   <!-- END -->
-
   <!-- 商品規格 書本內容 -->
   <div class="container">
     <div class="row mt-5 pb-5 justify-content-center">
@@ -156,10 +196,14 @@
                 書本內容
               </button>
             </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show rounded-0"
+            <div id="panelsStayOpen-collapseThree"
+            class="accordion-collapse collapse show rounded-0"
               aria-labelledby="panelsStayOpen-headingThree">
               <div class="accordion-body leading-7">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat amet quasi hic officia, esse quas voluptatem sunt laboriosam architecto ratione, cum, sint doloremque corrupti repudiandae dolorem! Reiciendis doloribus dolorum autem.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Placeat amet quasi hic officia, esse quas voluptatem sunt
+                laboriosam architecto ratione, cum, sint doloremque corrupti
+                repudiandae dolorem! Reiciendis doloribus dolorum autem.
               </div>
             </div>
           </div>
@@ -176,15 +220,17 @@ import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2/dist/sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
-import { Swiper, SwiperSlide } from "swiper/vue";
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
-import "swiper/css";
-import "../assets/scss/swiper/productMoreSwiper.css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper";
+import 'swiper/css';
+import '../assets/scss/swiper/productMoreSwiper.css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import {
+  Pagination, Navigation,
+} from 'swiper';
 import emitter from '@/methods/emitter';
 import VueEasyLightbox from 'vue-easy-lightbox';
 import { ref } from 'vue';
@@ -200,25 +246,28 @@ export default {
     };
   },
   components: {
-    Loading, Navbar, Footer, Swiper, SwiperSlide, VueEasyLightbox },
+    Loading, Navbar, Footer, Swiper, SwiperSlide, VueEasyLightbox,
+  },
   setup() {
-    const visibleRef = ref(false)
-    const indexRef = ref(0)
-    const imgsRef = ref([])
+    const visibleRef = ref(false);
+    const indexRef = ref(0);
+    const imgsRef = ref([]);
     const onShow = () => {
-      visibleRef.value = true
-    }
+      visibleRef.value = true;
+    };
     const showSingle = () => {
-      onShow()
-    }
-    const onHide = () => (visibleRef.value = false)
+      onShow();
+    };
+    const onHide = () => {
+      visibleRef.value = false;
+    };
     return {
       modules: [Pagination, Navigation],
       visibleRef,
       indexRef,
       imgsRef,
       showSingle,
-      onHide
+      onHide,
     };
   },
   methods: {
@@ -248,7 +297,7 @@ export default {
           icon: 'warning',
           title: '請輸入正確數字:等於1小於51',
         });
-        return this.num = 1;
+        this.num = 1;
       }
       const cartData = {
         product_id: id,
@@ -297,35 +346,35 @@ export default {
       });
     },
     add() {
-      this.num++;
+      this.num += 1;
       if (this.num >= 50) {
-        return this.num = 50;
+        this.num = 50;
       }
     },
     min() {
-      this.num--;
+      this.num -= 1;
       if (this.num <= 0) {
-        return this.num = 1;
+        this.num = 1;
       }
     },
     getDataAll() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
       this.axios.get(api).then((res) => {
         this.productAll = res.data.products;
-        if ( res.data.success ) {
+        if (res.data.success) {
           this.updateHistory();
         }
       });
     },
     updateHistory() {
-      let data = JSON.parse(localStorage.getItem('setHistory')) || [];
-      this.productAll.filter((history) => {
+      const data = JSON.parse(localStorage.getItem('setHistory')) || [];
+      this.productAll.forEach((history) => {
         data.forEach((i) => {
-          if (history.id == i) {
-            this.productHistory.push( history );
+          if (history.id === i) {
+            this.productHistory.push(history);
           }
-        })
-      })
+        });
+      });
     },
     more(id) {
       this.$router.replace(`/user/product/${id}`);

@@ -48,7 +48,6 @@
 </template>
 <script>
 import couponModal from '@/components/CouponModal.vue';
-import emitter from '@/methods/emitter';
 import deleteModal from '@/views/back/DeleteCoupon.vue';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
@@ -80,7 +79,11 @@ export default {
     couponData(data) {
       this.tempCoupon = data;
       this.tempCoupon.due_date = new Date(this.tempCoupon.due_date).getTime() / 1000;
-      if (this.tempCoupon.is_enabled === true) { this.tempCoupon.is_enabled = 1; } else { this.tempCoupon.is_enabled = 0; }
+      if (this.tempCoupon.is_enabled === true) {
+        this.tempCoupon.is_enabled = 1;
+      } else {
+        this.tempCoupon.is_enabled = 0;
+      }
       let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon`;
       let httpMethod = 'post';
       if (this.isNew === false) {

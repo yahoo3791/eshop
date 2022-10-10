@@ -21,7 +21,7 @@
               </div>
               <div class="col-12">
                 <h5>購買商品資訊</h5>
-                <div class="" v-for="item in this.changeData.products">
+                <div v-for="item,k in this.changeData.products" :key="k">
                   <p>書名:{{item.product.title}} <br>
                     數量:{{item.qty}}/{{item.product.unit}}
                   </p>
@@ -30,7 +30,7 @@
               </div>
               <div class="col-12">
                 <h5>客戶資料</h5>
-                <div class="" v-for="item in this.changeData.user">
+                <div v-for="item,k in this.changeData.user" :key="k">
                   {{item}}
                 </div>
                 留言: {{this.changeData.message}}

@@ -51,8 +51,10 @@
           <div class="row">
           <h3 class="text-base pb-3 mt-3" style="border-bottom: 1px solid #404040;">商品資訊</h3>
           <div class="col-12 text-white mb-5">
-            <div class="payCart-item border-bottom d-flex py-3" v-for="item in details.products">
-              <img :src="item.product.imageUrl" class="d-block" style="max-width: 100px;" alt="cartImage">
+            <div class="payCart-item border-bottom d-flex py-3"
+            v-for="item,k in details.products" :key="k">
+              <img :src="item.product.imageUrl"
+              class="d-block" style="max-width: 100px;" alt="cartImage">
               <div class="text-sm d-flex flex-column justify-content-between ps-3">
                 <p>{{item.product.title}}</p>
                 <p>{{item.product.category}}類</p>
@@ -69,8 +71,10 @@
               <p class="py-1">訂單編號: {{this.$route.params.orderId}}</p>
               <div class="">
               </div>
-              <div v-for="item,k in details.products" :key="item.k">
-                <p v-if="!item.coupon == 0">{{ item.product.title }} 已使用優惠卷，折扣{{ Math.round($filters.currency(item.total - item.final_total)) }}$</p>
+              <div v-for="item,k in details.products" :key="k">
+                <p v-if="!item.coupon == 0">{{ item.product.title }} 已使用優惠卷，
+                  折扣{{ Math.round($filters.currency(item.total - item.final_total)) }}$
+                </p>
               </div>
               <p class="py-1">金額 {{ Math.round($filters.currency(details.total)) }}$</p>
               <p class="py-1" v-if="details.is_paid === true">付款完成</p>
@@ -78,7 +82,11 @@
             </div>
           </div>
           <div class="col-12 pt-2 pb-5 text-end my-5">
-              <w-button @click="this.$router.push('/user/products')" class="text-black px-3 py-md-3 px-md-4 py-lg-3 px-lg-5" lg bg-color="white" tile>繼續購物</w-button>
+              <w-button
+                @click="this.$router.push('/user/products')"
+                class="text-black px-3 py-md-3 px-md-4 py-lg-3
+                px-lg-5" lg bg-color="white" tile>繼續購物
+              </w-button>
           </div>
         </div>
       </div>
@@ -91,7 +99,7 @@ import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2/dist/sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 
 export default {
@@ -139,7 +147,7 @@ export default {
         this.details = res.data.order;
         this.userData = res.data.order.user;
       });
-    }
+    },
   },
   mounted() {
     this.render();

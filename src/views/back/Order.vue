@@ -32,11 +32,11 @@
             <td>{{item.total}}</td>
             <td>
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox">
-                <label class="form-check-label">
+                <label class="form-check-label" for="paid">
+                  <input class="form-check-input" id="paid" name="paid" type="checkbox">
+                </label>
                   <span v-if="item.is_paid">已付款</span>
                   <span v-else>未付款</span>
-                </label>
               </div>
             </td>
             <td>
@@ -103,14 +103,14 @@ export default {
     deleteItem() {
       const { id } = this.deleteData;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${id}`;
-      this.axios.delete(api).then((res) => {
+      this.axios.delete(api).then(() => {
         this.$refs.deleteModal.modalHide();
         this.getData();
       });
     },
     deleteAll() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders/all`;
-      this.axios.delete(api).then((res) => {
+      this.axios.delete(api).then(() => {
         this.$refs.deleteOrderAllModal.modalHide();
         this.getData();
       });

@@ -9,15 +9,26 @@
             </router-link>
         </h1>
         <div class="mb-2">
-          <label for="inputEmail" class="sr-only"></label>
-          <input v-model="this.user.username" type="email" id="inputEmail"
-            class="rounded-pill form-control loginInput" name="inputEmail"
-            placeholder="Email" required />
+          <label for="inputEmail" class="sr-onl d-block">
+            <input
+              v-model="this.user.username"
+              type="email"
+              id="inputEmail"
+              class="rounded-pill form-control loginInput"
+              name="inputEmail"
+              placeholder="Email" required />
+          </label>
         </div>
         <div class="mb-2">
-          <label for="inputPassword" class="sr-only"></label>
-          <input v-model="this.user.password" type="password" id="inputPassword"
-            class="rounded-pill form-control loginInput" placeholder="Password" required />
+          <label for="inputPassword" class="sr-only d-block">
+            <input
+              v-model="this.user.password"
+              type="password"
+              name="inputPassword"
+              id="inputPassword"
+              class="rounded-pill form-control loginInput"
+              placeholder="Password" required />
+          </label>
         </div>
         <div class="text-end mt-4">
           <a href="#" class="loginBtn btn btn-md btn-block rounded-pill border"

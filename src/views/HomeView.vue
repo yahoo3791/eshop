@@ -5,32 +5,45 @@
       <div class="row">
         <div class="col">
           <swiper :direction="'vertical'" :slidesPerView="1"
-          :spaceBetween="0" :mousewheel="true" :pagination="{
-            clickable: true,
-          }" :effect="'fade'" :speed="500" :parallax="true"
-          :autoplay="{ delay: 2500, disableOnInteraction: false, }"
-          :modules="modules" class="mySwiper" style=" height: calc( 70vh - 70px ) ">
+            :spaceBetween="0" :mousewheel="true" :pagination="{
+              clickable: true,
+            }" :effect="'fade'" :speed="500" :parallax="true"
+            :autoplay="{ delay: 2500, disableOnInteraction: false, }"
+            :modules="modules" class="mySwiper" style=" height: calc( 70vh - 70px ) ">
             <swiper-slide>
               <div class="swiperBg1 w-100 h-100"></div>
-              <div class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
+              <div class="swiperBg-content w-100 font-semibold tracking-wider
+              text-2xl position-absolute top-50 start-50
+              translate-middle text-white">
                 <p data-swiper-parallax="-300">雜誌<br>
                   <span class="tracking-wide font-normal text-lg">帶你看世界各個角落的故事</span></p>
                   <router-link to="/user/products" class="text-decoration-none">
-                    <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent" tile>
+                    <w-button data-swiper-parallax="-200"
+                      class="offset-btn tracking-widest font-bold mt-5
+                      text-white px-5 py-3 border border-3"
+                      lg bg-color="transparent" tile>
                       SHOP
                     </w-button>
                   </router-link>
               </div>
-              <a href="#recommend" class="slider-icon position-absolute bottom-0 start-50 translate-middle-x border border-3"
-                style="width:30px;height:50px;z-index:2;border-radius: 30px;"></a>
+              <div href="#recommend"
+                class="slider-icon position-absolute bottom-0 start-50
+                translate-middle-x border border-3"
+                style="width:30px;height:50px;z-index:2;border-radius: 30px;">
+              </div>
             </swiper-slide>
             <swiper-slide>
               <div class="swiperBg2 w-100 h-100"></div>
               <div
-                class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
+                class="swiperBg-content w-100 font-semibold
+                tracking-wider text-2xl position-absolute
+                top-50 start-50 translate-middle text-white">
                 <p data-swiper-parallax="-300">不去感受世界的奇妙，<br>怎麼知道世界將被什麼改變。</p>
-                <router-link to="/user/products" class="text-decoration-none">
-                  <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                <router-link to="/user/products"
+                    class="text-decoration-none">
+                  <w-button data-swiper-parallax="-200"
+                    class="offset-btn tracking-widest font-bold mt-5 text-white
+                    px-5 py-3 border border-3" lg bg-color="transparent"
                     tile>
                     旅遊雜誌
                   </w-button>
@@ -40,10 +53,15 @@
             <swiper-slide>
               <div class="swiperBg3 w-100 h-100"></div>
               <div
-                class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
+                class="swiperBg-content w-100 font-semibold
+                tracking-wider text-2xl position-absolute
+                top-50 start-50 translate-middle text-white">
                 <p data-swiper-parallax="-300">那些年，<br>曾經紅極一時的80、90年代經典跑車</p>
                 <router-link to="/user/products" class="text-decoration-none">
-                  <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                  <w-button data-swiper-parallax="-200"
+                    class="offset-btn tracking-widest
+                    font-bold mt-5 text-white px-5 py-3 border
+                    border-3" lg bg-color="transparent"
                     tile>
                     汽車雜誌
                   </w-button>
@@ -53,10 +71,14 @@
             <swiper-slide>
               <div class="swiperBg4 w-100 h-100"></div>
               <div
-                class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
+                class="swiperBg-content w-100 font-semibold
+                tracking-wider text-2xl position-absolute
+                top-50 start-50 translate-middle text-white">
                 <p data-swiper-parallax="-300">欣賞萬物就是欣賞藝術</p>
                 <router-link to="/user/products" class="text-decoration-none">
-                  <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                  <w-button data-swiper-parallax="-200"
+                    class="offset-btn tracking-widest font-bold mt-5
+                    text-white px-5 py-3 border border-3" lg bg-color="transparent"
                     tile>
                     藝術雜誌
                   </w-button>
@@ -66,10 +88,15 @@
             <swiper-slide>
               <div class="swiperBg5 w-100 h-100"></div>
               <div
-                class="swiperBg-content w-100 font-semibold tracking-wider text-2xl position-absolute top-50 start-50 translate-middle text-white">
+                class="swiperBg-content w-100 font-semibold
+                tracking-wider text-2xl position-absolute
+                top-50 start-50 translate-middle text-white">
                 <p data-swiper-parallax="-300">時尚是一種生活態度</p>
-                <router-link to="/user/products" class="text-decoration-none">
-                  <w-button data-swiper-parallax="-200" class="offset-btn tracking-widest font-bold mt-5 text-white px-5 py-3 border border-3" lg bg-color="transparent"
+                <router-link to="/user/products"
+                    class="text-decoration-none">
+                  <w-button data-swiper-parallax="-200"
+                    class="offset-btn tracking-widest font-bold mt-5 text-white
+                    px-5 py-3 border border-3" lg bg-color="transparent"
                     tile>
                     時尚雜誌
                   </w-button>
@@ -83,31 +110,39 @@
     <div class="container">
       <div class="row text-white gx-3">
         <div class="col-12">
-          <h1 id="recommend" class="text-3xl font-semibold tracking-widest text-center mt-5">好書推薦</h1>
+          <h1 id="recommend"
+          class="text-3xl font-semibold tracking-widest
+          text-center mt-5">好書推薦</h1>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
           <div class="recommend-item px-3 tracking-wide my-5">
-            <div class="">
+            <div>
               <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第一</div>
               <div class="rounded-pill bg-info my-2 d-inline-block px-2">推薦</div>
             </div>
             <div class="my-1 p-5 p-md-0">
-              <a class="d-block recommend-img" href="#/user/product/-NAkm6tU8bQ1adqkp5Q6  ">
-                <img src="../assets/pic/homePage-recommend/faune.png" class="w-100 h-100 mx-auto d-block" alt="">
+              <a class="d-block recommend-img"
+              href="#/user/product/-NAkm6tU8bQ1adqkp5Q6  ">
+                <img src="../assets/pic/homePage-recommend/faune.png"
+                class="w-100 h-100 mx-auto d-block" alt="recommendArtImage">
               </a>
             </div>
             <div class="text-center">
               <h3 class="my-md-3 tracking-wider font-semibold text-lg">《FAUNE|攝影》</h3>
               <div class="rounded-pill bg-info my-2 d-inline-block px-3 me-3 m-lg-0">知名攝影家</div>
               <div class="rounded-pill bg-info my-2 d-inline-block px-3">榮獲金獎攝影組</div>
-              <p class="pt-5 text-base leading-7 tracking-wide" style="text-indent:1rem">得獎這組〈FAUNE〉動物系列專題，攝影者以十張不同面向的照片，
+              <p class="pt-5 text-base leading-7 tracking-wide"
+                style="text-indent:1rem">得獎這組〈FAUNE〉動物系列專題，攝影者以十張不同面向的照片，
                 如動物生態、保安林、森林步道、樹屋、都會廊帶及植物的培育栽種等，
                 努力經營多元的影像，藉此探討居住環境與林木之間的依存關係。</p>
             </div>
             <div class="text-end">
               <router-link to="/user/product/-NAkm6tU8bQ1adqkp5Q6" class="text-decoration-none">
-                <w-button class="offset-btn tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent" tile>
-                more  
+                <w-button
+                  class="offset-btn tracking-wide my-3 text-white
+                  px-3 py-3 border border-3 font-medium"
+                  lg bg-color="transparent" tile>
+                  more
                 </w-button>
               </router-link>
             </div>
@@ -120,8 +155,10 @@
               <div class="rounded-pill bg-info my-2 d-inline-block px-2">推薦</div>
             </div>
             <div class="my-1 p-5 p-md-0">
-              <a class="d-block recommend-img" href="#/user/product/-NAklvqQCunu-L8Xjryy">
-                <img src="../assets/pic/homePage-recommend/mockup.png" class="w-100 h-100 mx-auto d-block" alt="">
+              <a class="d-block recommend-img"
+                href="#/user/product/-NAklvqQCunu-L8Xjryy">
+                <img src="../assets/pic/homePage-recommend/mockup.png"
+                class="w-100 h-100 mx-auto d-block" alt="recommendArtImage">
               </a>
             </div>
             <div class="text-center">
@@ -136,7 +173,10 @@
             </div>
             <div class="text-end">
               <router-link to="/user/product/-NAklvqQCunu-L8Xjryy" class="text-decoration-none">
-                <w-button class="offset-btn tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
+                <w-button
+                  class="offset-btn tracking-wide my-3
+                  text-white px-3 py-3 border border-3 font-medium"
+                  lg bg-color="transparent"
                   tile>
                   more
                 </w-button>
@@ -150,8 +190,10 @@
               <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第三</div>
             </div>
             <div class="my-1 p-5 p-md-0">
-              <a class="d-block recommend-img" href="#/user/product/-NAkkWx8Eff6JS9kfwXM">
-                <img src="../assets/pic/homePage-recommend/art.png" class="w-100 h-100 mx-auto d-block" alt="">
+              <a class="d-block recommend-img"
+              href="#/user/product/-NAkkWx8Eff6JS9kfwXM">
+                <img src="../assets/pic/homePage-recommend/art.png"
+                class="w-100 h-100 mx-auto d-block" alt="recommendArtImage">
               </a>
             </div>
             <div class="text-center">
@@ -165,7 +207,10 @@
             </div>
             <div class="text-end">
               <router-link to="/user/product/-NAkkWx8Eff6JS9kfwXM" class="text-decoration-none">
-                <w-button class="offset-btn tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
+                <w-button
+                  class="offset-btn tracking-wide my-3
+                  text-white px-3 py-3 border border-3 font-medium"
+                  lg bg-color="transparent"
                   tile>
                   more
                 </w-button>
@@ -179,8 +224,10 @@
               <div class="rounded-pill bg-info my-2 d-inline-block px-2 me-3">熱銷第四</div>
             </div>
             <div class="my-1 p-5 p-md-0">
-              <a class="d-block recommend-img" href="#/user/product/-NAkjWcSbcaLuPjC3Km_">
-                <img src="../assets/pic/homePage-recommend/travel.png" class="w-100 h-100 mx-auto d-block" alt="">
+              <a class="d-block recommend-img"
+              href="#/user/product/-NAkjWcSbcaLuPjC3Km_">
+                <img src="../assets/pic/homePage-recommend/travel.png"
+                class="w-100 h-100 mx-auto d-block" alt="recommendTravelImage">
               </a>
             </div>
             <div class="text-center">
@@ -193,16 +240,19 @@
             </div>
             <div class="text-end">
               <router-link to="/user/product/-NAkjWcSbcaLuPjC3Km_" class="text-decoration-none">
-                <w-button class="offset-btn tracking-wide my-3 text-white px-3 py-3 border border-3 font-medium" lg bg-color="transparent"
-                  tile>
-                  more
+                <w-button class="offset-btn tracking-wide my-3
+                  text-white px-3 py-3 border border-3 font-medium"
+                  lg bg-color="transparent" tile>
+                    more
                 </w-button>
               </router-link>
             </div>
           </div>
         </div>
         <div class="col-12 text-end mb-3 py-2">
-          <a href="#/user/products" class="position-relative d-inline-block fs-3 ps-5 tracking-wider font-semibold text-decoration-none text-white">
+          <a href="#/user/products"
+            class="position-relative d-inline-block fs-3 ps-5
+            tracking-wider font-semibold text-decoration-none text-white">
             查看更多<i class="ms-2 bi bi-arrow-right opacity-always"></i>
           </a>
         </div>
@@ -210,7 +260,11 @@
     </div>
     <div class="container my-5">
       <div class="row text-white text-center">
-        <div class="col-12"><h1 class="text-3xl font-semibold tracking-widest my-5 pb-2">輕鬆挑選 放心購物</h1></div>
+        <div class="col-12">
+          <h1 class="text-3xl font-semibold tracking-widest my-5 pb-2">
+            輕鬆挑選 放心購物
+          </h1>
+        </div>
         <div class="col-12 col-md-6 py-5" data-aos="fade-up">
           <div class="homeDetails-inner overflow-hidden mx-auto">
             <w-image :src="content01" class="w-100 h-100" alt="driver" />
@@ -224,8 +278,17 @@
           <div class="homeDetails-inner overflow-hidden mx-auto">
             <w-image :src="content02" class="w-100 h-100" alt="driver" />
           </div>
-          <h4 class="pt-3 pb-1 tracking-wide text-xl font-semibold" data-aos="fade-up" data-aos-duration="1000">退貨機制</h4>
-          <p class="text-lg leading-7" data-aos="fade-up" data-aos-duration="2000">3天無條件退貨 10天鑑賞期</p>
+          <h4
+            class="pt-3 pb-1 tracking-wide text-xl font-semibold"
+            data-aos="fade-up"
+            data-aos-duration="1000">
+            退貨機制
+          </h4>
+          <p
+            class="text-lg leading-7"
+            data-aos="fade-up"
+            data-aos-duration="2000">3天無條件退貨 10天鑑賞期
+          </p>
         </div>
         <div class="col-12 d-md-flex justify-content-md-around my-5 flex-wrap">
           <div class="d-flex align-items-center justify-content-center pb-3"
@@ -258,7 +321,8 @@
           <h1 class="text-3xl font-semibold tracking-widest text-white text-center my-5">售後服務</h1>
         </div>
         <div class="col-12 col-md-4">
-          <a href="mailto:mgzofficer@gmail.com" class="salesServer-item d-block text-decoration-none text-white py-3 my-3">
+          <a href="mailto:mgzofficer@gmail.com"
+            class="salesServer-item d-block text-decoration-none text-white py-3 my-3">
             <div class="text-center" data-aos="fade-up"
               data-aos-anchor-placement="bottom-bottom">
               <i class="bi bi-envelope text-5xl"></i>
@@ -268,7 +332,8 @@
           </a>
         </div>
         <div class="col-12 col-md-4">
-          <a href="tel:(02)1010101" class="salesServer-item d-block text-decoration-none text-white py-3 my-3">
+          <a href="tel:(02)1010101"
+            class="salesServer-item d-block text-decoration-none text-white py-3 my-3">
             <div class="text-center" data-aos="fade-up"
               data-aos-anchor-placement="bottom-bottom"
               data-aos-delay="200">
@@ -296,12 +361,13 @@
       <div class="row">
         <div class="col-12">
           <div class="couponBg position-relative">
-            <div class="coupon-content position-absolute text-center top-50 start-50 translate-middle"
-            data-aos="fade-up" data-aos-duration="1000">
-              <div class="coupon-outline rounded-4 px-4 py-2 mb-2">
-                <p class="text-2xl tracking-widest">歡慶開幕<br>
-                  <span class="text-xl">全品項折扣活動</span></p>
-              </div>
+            <div
+              class="coupon-content position-absolute text-center top-50 start-50 translate-middle"
+              data-aos="fade-up" data-aos-duration="1000">
+                <div class="coupon-outline rounded-4 px-4 py-2 mb-2">
+                  <p class="text-2xl tracking-widest">歡慶開幕<br>
+                    <span class="text-xl">全品項折扣活動</span></p>
+                </div>
               <p class="text-lg tracking-wide">總金額<span class="coupon-span">10%</span>優惠</p>
               <p class="d-block py-2 mt-2 mb-1 mt-md-3 mb-md-2 coupon-border">限時優惠卷</p>
               <p class="text-lg tracking-wide">優惠碼coupon012</p>
@@ -313,9 +379,12 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <div :class="{'d-none': openDrawer}" class="coupon position-fixed
-          bottom-0 end-0 m-2 m-md-3"
-            @click="noOverlay = true;overlayColor = '';openDrawer = !openDrawer">
+          <div
+            :class="{'d-none': openDrawer}"
+            class="coupon position-fixed
+            bottom-0 end-0 m-2 m-md-3"
+            @click="noOverlay = true;overlayColor = '';openDrawer = !openDrawer"
+            @keydown="noOverlay = true;overlayColor = '';openDrawer = !openDrawer">
             <img src="@/assets/pic/coupon.png" class="coupon-img" alt="coupon">
           </div>
           <w-drawer v-model="openDrawer" :no-overlay="noOverlay" :overlay-color="overlayColor"
@@ -340,20 +409,26 @@
 </template>
 
 <script>
+import {
+  Swiper, SwiperSlide,
+} from 'swiper/vue';
+import {
+  Parallax, EffectFade, Autoplay, Mousewheel, Pagination,
+} from 'swiper';
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "../assets/scss/swiper/homePageSwiper.css";
-import "swiper/css/pagination";
-import { Parallax, EffectFade, Autoplay, Mousewheel, Pagination } from "swiper";
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import '../assets/scss/swiper/homePageSwiper.css';
+import 'swiper/css/pagination';
 
 export default {
   data() {
     return {
+      /* eslint-disable global-require */
       content01: require('@/assets/pic/homePage-content/content01.jpg'),
       content02: require('@/assets/pic/homePage-content/content02.jpg'),
+      /* eslint-disable global-require */
       openDrawer: false,
       once: false,
       noOverlay: false,
@@ -361,11 +436,11 @@ export default {
     };
   },
   components: {
-    Navbar, Footer, Swiper, SwiperSlide
+    Navbar, Footer, Swiper, SwiperSlide,
   },
   setup() {
     return {
-      modules: [ Parallax, EffectFade, Autoplay, Mousewheel, Pagination ],
+      modules: [Parallax, EffectFade, Autoplay, Mousewheel, Pagination],
     };
   },
   methods: {
@@ -379,20 +454,20 @@ export default {
         this.openDrawer = true;
       }
     },
-    countdown() {}
+    // countdown() {}
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('load', () => {
-      new WOW({
-        boxClass: 'wow',
-        animateClass: 'animated',
-        offset: 0,
-        mobile: true,
-        live: true,
-      }).init();
-    });
-    this.countdown();
+    // window.addEventListener('load', () => {
+    //   new WOW({
+    //     boxClass: 'wow',
+    //     animateClass: 'animated',
+    //     offset: 0,
+    //     mobile: true,
+    //     live: true,
+    //   }).init();
+    // });
+    // this.countdown();
   },
 };
 </script>

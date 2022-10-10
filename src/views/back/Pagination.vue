@@ -6,7 +6,7 @@
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-      <li class="page-item" v-for="page in pages.total_pages">
+      <li class="page-item" v-for="page,k in pages.total_pages" :key="k">
         <a class="page-link text-secondary" href="#" @click.prevent="updatePage(page)">
         {{page}}
         </a>

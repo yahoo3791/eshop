@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative top-0 start-0">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="@/assets/pic/logo.png" style="height:50px" alt="">
+        <img src="@/assets/pic/logo.png" style="height:50px" alt="Logo">
       </a>
       <button class="navbar-toggler" type="button"
       data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"

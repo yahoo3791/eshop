@@ -6,7 +6,11 @@
       <div class="modal-content rounded-0">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">清除購物車</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close">
+          </button>
         </div>
         <div class="modal-body tracking-wide text-lg">
           刪除全部後無法恢復
@@ -26,14 +30,14 @@
   </div>
 </template>
 <script>
-  import modalMixin from '@/mixins/modalMixin';
+import modalMixin from '@/mixins/modalMixin';
 
-  export default {
-    data() {
-      return {
-        modal: {},
-      }
-    },
-    mixins: [modalMixin],
-  }
+export default {
+  data() {
+    return {
+      modal: {},
+    };
+  },
+  mixins: [modalMixin],
+};
 </script>

@@ -14,13 +14,13 @@
           購買時間:{{this.deleteData.create_at}} <br>
           訂單編號:{{this.deleteData.id}} <br>
           <h5>購買款項</h5>
-          <div class="" v-for="item in this.deleteData.products">
+          <div v-for="item,k in this.deleteData.products" :key="k">
             {{item.product.title}} <br>
             {{item.qty}} / {{item.product.unit}} <br>
           </div>
           {{this.deleteData.total}}$
           <h5>顧客資訊</h5>
-          <div class="" v-for="item in this.deleteData.user">
+          <div v-for="item,k in this.deleteData.user" :key="k">
             {{item}}
           </div>
         </div>

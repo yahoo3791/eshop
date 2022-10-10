@@ -67,7 +67,6 @@ import productModal from './ProductsModal.vue';
 import deleteModal from './DeleteModal.vue';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import pagination from './Pagination.vue';
-import Navbar from '../../components/BackNavbar.vue';
 
 export default {
   data() {
