@@ -1,0 +1,75 @@
+/* 全局置頂按鈕 start */
+.scrollTop-container {
+  z-index: 100;
+  bottom: 0px;
+  transition: all .3s;
+  transform: translateY(-20px);
+  transition-duration: .3s;
+  opacity: 0;
+  .scrollTop-btn {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #ccc;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    &:hover {
+      opacity: 0.9;
+      border: 1px solid $secondary-80;
+    }
+  }
+}
+.scrollIconMoveIn {
+  opacity: 1;
+  transform: translateY(0px);
+}
+/* 全局置頂按鈕 end */
+// 首頁banner滑動提示紐 start
+.slider-icon {
+  margin-bottom: 10px;
+  &:after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    transform: translateY(0px);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 5px;
+    animation: move 1.2s linear .3s infinite;
+  }
+}
+@keyframes move {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+}
+.btn-hidden-toggle {
+  transition: all 1s;
+  transform: translate(-50%, 100px) !important;
+  opacity: 0;
+}
+// 首頁banner滑動提示紐 end
+// 全局共用按鈕 start
+.offset-btn {
+  background-color: #fff;
+  transition: all .3s !important;
+  box-shadow: 0.3em 0.3em 0 white;
+  color: black;
+  cursor: pointer;
+  &:hover,
+  &:active {
+    box-shadow: 0 0 0 white, inset 0.2em 0.2em 0 white;
+  }
+}
+// 全局共用按鈕 end

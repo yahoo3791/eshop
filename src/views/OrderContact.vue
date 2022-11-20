@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <div class="bg-dark"  style="padding-top:100px;">
+  <div class="bg-dark">
     <div class="container py-2 py-md-5">
       <div class="row text-white flex-column-reverse flex-md-row">
         <div class="col-12 col-md-6">

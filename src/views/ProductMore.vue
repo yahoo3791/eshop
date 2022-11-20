@@ -74,6 +74,18 @@
           </div>
           <div class="text-indent2rem">
             <p class="leading-8 tracking-normal text-white">{{product.description}}</p>
+            【葷】製作過程中有加酒
+            兩種不同比例的巧克力，讓蛋糕體呈現綿密濕潤多層次的巧克力風味，香氣十足也不會感到甜膩，<br>
+            一口一口的咀嚼還能咬到真材實料的蔓越莓及香橙果肉，這濃郁巧克力香中又帶點果香酸甜，令人回味無窮！
+            ｜特選食材｜Ingredients
+            Valrhona100%無糖可可粉
+            70%比利時苦甜巧克力
+            新鮮牧場蛋
+            糖漬橙皮及乾燥糖漬香橙片
+            蔓越莓乾
+            ｜產品規格｜Spec.
+            20x5x6cm/320g± 5g 內容物
+            24x11.5x8cm 精裝禮盒及提袋
           </div>
         </div>
         <div class="productmore-item py-5">
@@ -115,6 +127,29 @@
     </div>
   </div>
   <!-- END -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        ｜運送｜Shipping
+        採用黑貓低溫配送，
+        週日不做配送配送時間可選擇上午（9:00-13:00)，下午（14:00-18:00)
+        ｜最佳賞味期限｜Best Before
+        可冷藏保存1週，冷凍保存2週。請見商品標示日期。
+        建議放入冷藏前請將蛋糕用保鮮盒密封好，再存放食用前於室溫回溫20-30分鐘風味更佳！開封後請儘速食用完畢。
+        ｜訂購注意事項｜Notice
+        法絨商品因全程手工新鮮製作，訂單成立後，製作需4-7個工作天，黑貓宅配也需1-2天配送至您指定的地點。故共需5-9天。
+        如有大量訂購的需求，訂單成立後，製作需10-15個工作天，黑貓宅配也需1-2天配送至您指定的地點。故共需11-17天。提醒您要提前預留到貨時間。
+        年節禮盒因有預購商品，出貨日期會在訂購頁面另行通知。
+        若訂單爆量時，我們會另行公告並電話或E-mail通知。
+        蛋糕宅配有一定風險，車體運送途中可能造成蛋糕左右位移3~5cm。蛋糕位移、側邊損傷或裝飾掉落、微損，均不在毀壞補償範圍內，風險須自行承擔。
+        糕點皆無添加防腐劑，建議天氣炎熱請放置室內涼爽空間或冷藏保存，因無法確認保存情況，商品收到後5天將不接受因糕點變異而退貨。
+        無法回收再販售的生鮮商品，不適用消保法7日無條件退貨（行政院消保處2016.12.31公布）
+        急單請直接來電洽詢門市人員 07-5527727 ，他們將會與您確認出貨相關事宜。
+        餅乾：常溫密封約可保存2週，冷凍密封約可保存2-3個月，回溫即可食用。<br> 🍮 布丁、奶酪：放置冷藏約可保存5天。 <br>
+        💡 慕斯：密封冷藏約可保存2-3天，密封冷凍約可保存7-10天，回溫即可食用
+      </div>
+    </div>
+  </div>
   <!-- swiper -->
   <div class="container">
     <div class="row justify-content-center">
@@ -157,56 +192,6 @@
               </div>
             </swiper-slide>
           </swiper>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- END -->
-  <!-- 商品規格 書本內容 -->
-  <div class="container">
-    <div class="row mt-5 pb-5 justify-content-center">
-      <div class="col-12 col-md-9">
-        <div class="accordion" id="accordionPanelsStayOpenExample">
-          <div class="accordion-item" style="border-radius:0">
-            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-              <button class="tracking-wide accordion-button"
-              type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne">
-                商品規格
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
-              aria-labelledby="panelsStayOpen-headingOne">
-              <div class="accordion-body leading-7">
-                <p>
-                顏色：彩色<br>
-                材質：環保回收紙<br>
-                尺寸：30 公分 X 40 公分 X 75 公分(長×寬×高)
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-              <button class="tracking-wide accordion-button collapsed rounded-0"
-              type="button" data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseThree">
-                書本內容
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseThree"
-            class="accordion-collapse collapse show rounded-0"
-              aria-labelledby="panelsStayOpen-headingThree">
-              <div class="accordion-body leading-7">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Placeat amet quasi hic officia, esse quas voluptatem sunt
-                laboriosam architecto ratione, cum, sint doloremque corrupti
-                repudiandae dolorem! Reiciendis doloribus dolorum autem.
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

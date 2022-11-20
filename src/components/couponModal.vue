@@ -3,7 +3,7 @@
   aria-labelledby="exampleModalLabel" aria-hidden="true"
     ref="modal">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content text-black">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">優惠卷</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"

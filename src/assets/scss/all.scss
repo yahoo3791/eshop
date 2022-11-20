@@ -4,13 +4,15 @@
 @import "../scss/abstracts/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/bootstrap";                            
+@import "./themes/theme";
 @import "./page/homePage";
 @import "./page/loginPage";
 @import "./page/products";
 @import './page/productMore';
-@import "./components/navbar";
-@import "./components/footer";
+@import "./layout/navbar";
+@import "./layout/footer";
 @import "./page/checkout";
 @import "./page/carts";
 @import "./page/faq";
 @import "./page/contact";
+@import "../scss/components/btn";

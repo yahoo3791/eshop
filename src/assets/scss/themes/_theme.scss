@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+$base-color: #FFFFFF;
+$secondary-BF: #BFBFBF;
+$secondary-80: #808080;
+$secondary-40: #404040;
+$secondary-E6: #E6E6E6;
+$dark: black;
+html {
+  font-size: 16px;
+}
+body {
+  font-family: 'Noto Sans TC', sans-serif !important;
+  font-size: 1rem;
+  color: $base-color;
+  background-color: black;
+}
+.logo_font {
+  font-family: 'Dancing Script', cursive;
+}
+.text-indent2rem {
+  text-indent: 2rem;
+}
+/* 麵包削 */
+.breadcrumb-style {
+  margin-top: 20px;
+  border-radius: 5px;
+  background: $base-color;
+  .breadcrumb-item-none {
+    color: #6c757D
+  }
+}
+.breadcrumb-item:nth-child(1) a:hover {
+  border-bottom: 1px solid $secondary-40;
+}
+.pt-utility {
+  padding-top: 60px;
+}
+@include media-breakpoint-up(md) {
+  .pt-utility {
+    padding-top: 80px;
+  }
+}

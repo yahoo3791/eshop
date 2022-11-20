@@ -5,7 +5,7 @@
       <div class="col-md-6">
         <h1 class="h3 mb-3 font-weight-normal text-center">
             <router-link to="/">
-              <img src="@/assets/pic/logo.png" alt="logo">
+              logo
             </router-link>
         </h1>
         <div class="mb-2">
@@ -58,7 +58,7 @@ export default {
         .then((res) => {
           if (res.data.success) {
             const { token, expired } = res.data;
-            document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
+            document.cookie = `dessertToken=${token}; expires=${new Date(expired)}`;
             this.$router.push('/dashboard/backproducts');
           }
         });

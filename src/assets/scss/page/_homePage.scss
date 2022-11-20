@@ -1,268 +1,137 @@
-/* banner carousel && title */
-.swiperBg1 {
-  background-image: url('@/assets/pic/homePage-swiperBanner/swiperBg1.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  &::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, 
-    rgba(233, 217, 217, 0.49625787815126055) 0%,
-    rgba(123, 128, 129, 0.5466780462184874) 48%,
-      rgba(123, 128, 129, 0.4010197829131653) 80%,
-    rgba(143, 143, 143, 0.4150253851540616) 100%);
-  }
-}
-.swiperBg2 {
-  background-image: url('@/assets/pic/homePage-swiperBanner/swiperBg2.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  &::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle,
-    rgba(233, 217, 217, 0.49625787815126055) 0%,
-      rgba(123, 128, 129, 0.5466780462184874) 48%,
-      rgba(123, 128, 129, 0.4010197829131653) 80%,
-      rgba(143, 143, 143, 0.4150253851540616) 100%);
-  }
-}
-.swiperBg3 {
-  background-image: url('@/assets/pic/homePage-swiperBanner/swiperBg3.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  &::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle,
-        rgba(233, 217, 217, 0.49625787815126055) 0%,
-        rgba(123, 128, 129, 0.5466780462184874) 48%,
-        rgba(123, 128, 129, 0.4010197829131653) 80%,
-        rgba(143, 143, 143, 0.4150253851540616) 100%);
-  }
-}
-.swiperBg4 {
-  background-image: url('@/assets/pic/homePage-swiperBanner/swiperBg4.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  &::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle,
-        rgba(233, 217, 217, 0.49625787815126055) 0%,
-        rgba(123, 128, 129, 0.5466780462184874) 48%,
-        rgba(123, 128, 129, 0.4010197829131653) 80%,
-        rgba(143, 143, 143, 0.4150253851540616) 100%);
-  }
-}
-.swiperBg5 {
-  background-image: url('@/assets/pic/homePage-swiperBanner/swiperBg5.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  &::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle,
-        rgba(233, 217, 217, 0.49625787815126055) 0%,
-        rgba(123, 128, 129, 0.5466780462184874) 48%,
-        rgba(123, 128, 129, 0.4010197829131653) 80%,
-        rgba(143, 143, 143, 0.4150253851540616) 100%);
-  }
-}
-.swiperBg-content {
-  color: $secondary-BF;
-}
-/* details */
-.homeDetails-inner {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-}
-.homeDetails-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  box-shadow: 0px 0px 3px gray;
-  line-height: 45px;
-}
-/* coupon style */
-.coupon-img {
-  width: 45px;
-  height: 45px;
-  filter: invert(1);
-}
-.coupon {
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 2px solid #ccc;
-  border-radius: 50%;
-  z-index: 100;
-  cursor: pointer;
-  transition: all .3s ease-in;
-  &:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 2px solid rgba(255, 255, 255,0.3);
-  }
-}
-.nav-link {
-  position: relative;
-}
-.nav-link::after {
-  content: '';
-  position: absolute;
-  background-color: $secondary-80;
-  height: 2px;
-  width: 0%;
-  left: 0;
-  bottom: 0px;
-  border-radius: 5px;
-}
-.nav-link:hover::after {
-  content: '';
-  width: 100%;
-  transition: all .2s ease-in-out;
-}
-// recommend-itemSTART
-.recommend-item {
-  box-shadow: 0px 0px 20px black;
-  transition: all .3s;
-  &:hover {
-    transform: translateY(-20px);
-    box-shadow: 0px 10px 20px black;
-  }
-  .recommend-img {
-    transition: all .2s;
-    &:hover {
-      box-shadow: 2px 2px 2px white;
+/* banner */
+.homeContainer {
+  height: calc(50vh - 70px);
+  .homeBanner {
+    background-image: url('@/assets/pic/banner/homeBanner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, 
+      rgba(233, 217, 217, 0.1) 0%,
+      rgba(123, 128, 129, 0.1) 48%,
+        rgba(123, 128, 129, 0.1) 80%,
+      rgba(143, 143, 143, 0.1) 100%);
     }
   }
 }
-// recommend-item END
-.salesServer-item {
-  transition: all .3s;
-  &:hover,
-  &:active {
-    box-shadow: inset 5px 5px 8px rgba(0, 0, 0, 0.3),
-    inset -5px -5px 8px rgba(0, 0, 0, 0.4);
-
-  }
-}
-// START coupon item
-.couponBg {
-  background-image: url('@/assets/pic/homePage-couponBanner/couponBg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  width: 100%;
-  height: 300px;
-  &::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, 
-    rgba(233, 217, 217, 0.49625787815126055) 0%,
-    rgba(123, 128, 129, 0.5466780462184874) 48%, 
-    rgba(123, 128, 129, 0.4010197829131653) 80%, 
-    rgba(143, 143, 143, 0.4150253851540616) 100%);
-  }
-  .coupon-content {
-    width: 250px;
-    color: $secondary-E6;
-    .coupon-outline {
-      text-shadow: .5px .5px 0px white;
-      background-color: #d9d9d996;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.138);
+.main {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  .fruitPic-container {
+    h2 {
+      display: none;
     }
-    .coupon-span {
-      color: $base-color;
-    }
-    .coupon-border {
-      text-shadow: .5px .5px 0px white;
-      border-radius: 2px;
-      border-top: 2px solid $base-color;
-      border-bottom: 2px solid $base-color;
+    &:hover,
+    &:active {
+      img {
+        transition: all 1s;
+        opacity: 0.7;
+        animation: rotate360 infinite 10s linear;
+      }
+      h2 {
+        display: block;
+      }
     }
   }
 }
-// END coupon item
-
-.slider-icon {
-  margin-bottom: 10px;
-  &:after {
-    content: '';
-    display: inline-block;
-    position: relative;
-    transform: translateY(0px);
-    width:8px;
-    height: 8px;
-    background: white;
-    border-radius: 5px;
-    animation: move 1.2s linear .3s infinite;
-  }
-}
-.opacity-always {
-  opacity: 0;
-  animation: opacity-always 5s linear .3s infinite;
-}
-@keyframes opacity-always {
-  0%{
-  opacity: 0;
-  }
-  100%{
-  opacity: 1;
-  }
-}
-@keyframes move {
+@keyframes rotate360 {
   0% {
-    transform: translateY(-10px);
-    opacity: 0;
+    transform: rotate(0deg);
   }
   100% {
-    transform: translateY(15px);
+    transform: rotate(360deg);
   }
 }
-@include media-breakpoint-down(sm) {
-  .couponBg {
-    background-attachment: scroll;
+.customized-container {
+  h2 {
+    opacity: 0;
+    transition: all .3s;
   }
+    &:hover,
+    &:active {
+      img {
+        transition: all .3s;
+        opacity: 0.7;
+      }
+      h2 {
+        opacity: 1;
+      }
+    }
+}
+.hot-product-container {
+  .content {
+    opacity: 0;
+    transition: all .3s;
+    }
+    &:hover,
+    &:active {
+      img {
+        transition: all .3s;
+        opacity: 0.7;
+      }
+      .content {
+        opacity: 1;
+      }
+    }
+}
+.main2 {
+  padding-bottom: 40px;
+}
+.line {
+  background-image: url('@/assets/pic/icon/line.png');
+  width: 100%;
+  height: 9px;
+  margin-bottom: 40px;
+  opacity: 0.5;
+}
+.subBg {
+  background-image: url('@/assets/pic/homepage/訂閱區背景.png');
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px;
+  position: relative;
+  z-index: 10;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+.swiper-bg {
+  background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%,
+  rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 1) 100%);
+  width: 100%;
+  height: 100%;
+  z-index: 12;
 }
 @include media-breakpoint-up(md) {
-  .couponBg{
-    .coupon-content {
-      width: 400px;
-    }
+.homeContainer {
+  height: calc(70vh - 70px);
+  .homeBanner {
+    background-attachment: fixed;
   }
 }
-@include media-breakpoint-up(lg) {
-  .couponBg {
-    height: 450px;
-  }
+.main {
+  padding-top: 140px;
+  padding-bottom: 140px;
 }
-// utility
-.offset-btn {
-  background-color: #fff;
-  transition: all .3s !important;
-  box-shadow: 0.3em 0.3em 0 white;
-  &:hover,
-  &:active {
-  box-shadow: 0 0 0 white,inset 0.2em 0.2em 0 white;}
+.main2 {
+  padding-bottom: 140px;
+}
+.line {
+  margin-bottom: 140px;
+}
 }

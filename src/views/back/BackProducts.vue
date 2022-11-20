@@ -1,42 +1,58 @@
 <template>
-  <div class="container" style="margin-top:100px;margin-bottom:100px">
+  <div class="container pt-utility">
     <loading v-model:active="isLoading" />
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 px-0 px-md-2">
         <div class="text-end">
-          <button @click="openModal(true)" type="button" class="btn border"
+          <button @click="openModal(true)" type="button"
+          class="btn btn-outline-primary"
             data-bs-target="#exampleModal">
-            新增一個項目
+            新增
           </button>
         </div>
       </div>
-      <div class="col-12">
-        <table class="table mt-4">
+      <div class="col-12"
+        v-if="this.Data.length === 0">
+        <h2
+        class="text-black text-center"
+        style="padding:30vh 0">尚未新增商品。</h2>
+      </div>
+      <div class="col-12 px-0 px-md-2" v-else>
+        <table class="table mt-4 text-nowrap" style="table-layout: fixed">
           <thead>
-            <tr>
-              <th width="120">分類</th>
-              <th>產品名稱</th>
-              <th width="120">原價</th>
-              <th width="120">售價</th>
-              <th width="100">是否啟用</th>
-              <th width="200">編輯</th>
+            <tr class="font-medium tracking-wider">
+              <th>品名</th>
+              <th class="d-none d-md-table-cell">分類</th>
+              <th class="d-none d-md-table-cell">原價</th>
+              <th>售價</th>
+              <th>上線</th>
+              <th width="95">編輯</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in this.Data" :key="item.id">
-              <td>{{item.category}}</td>
-              <td>{{item.title}}</td>
-              <td class="text-right">
+              <td
+              style="overflow: hidden; text-overflow:ellipsis">
+                {{item.title}}
+              </td>
+              <td class="d-none d-md-table-cell">
+                {{item.category}}
+              </td>
+              <td class="d-none d-md-table-cell">
                 {{ $filters.currency(item.origin_price)}}
               </td>
-              <td class="text-right">
+              <td>
                 {{item.price}}
               </td>
               <td>
-                <span class="text-success" v-if="item.is_enabled === 1">啟用</span>
-                <span class="text-success" v-else>未啟用</span>
+                <span class="text-success"
+                v-if="item.is_enabled === 1">啟用
+                </span>
+                <span class="text-success"
+                v-else>未啟用
+                </span>
               </td>
-              <td>
+              <td class="p-0">
                 <div class="btn-group">
                   <button class="btn btn-outline-primary btn-sm"
                   @click="openModal(false, item)">編輯</button>
@@ -49,24 +65,24 @@
         </table>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 position-fixed bottom-0 start-0">
+    <div class="row" v-if="this.Data.length !== 0">
+      <div class="col-12 position-fixed bottom-0 start-50 translate-middle-x">
         <pagination :pages="Pagination" @update-page="getData"></pagination>
       </div>
     </div>
   </div>
   <productModal ref="productModal" :product="tempProduct"
-  @add="UpdateData"></productModal>
+  @add="UpdateData" :is-new="isNew"></productModal>
   <deleteModal ref="deleteModal" :delete="deleteItem"
   @delete-item="deleteProduct"></deleteModal>
 </template>
 
 <script>
 import Loading from 'vue-loading-overlay';
-import productModal from './ProductsModal.vue';
-import deleteModal from './DeleteModal.vue';
+import productModal from '../../components/back/ProductsModal.vue';
+import deleteModal from '../../components/back/DeleteProductsModal.vue';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import pagination from './Pagination.vue';
+import pagination from '../../components/back/Pagination.vue';
 
 export default {
   data() {
@@ -93,6 +109,7 @@ export default {
       this.axios.get(api).then((res) => {
         this.isLoading = false;
         this.Data = res.data.products;
+        console.log(this.Data);
         this.Pagination = res.data.pagination;
       });
     },

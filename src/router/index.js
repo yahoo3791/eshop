@@ -14,15 +14,15 @@ const routes = [
       {
         path: 'products',
         name: '產品',
-        component: () => import('../views/Products.vue'),
+        component: () => import('../views/ProductsView.vue'),
       },
       {
         path: 'carts',
         name: '購物車',
-        component: () => import('../views/Cart.vue'),
+        component: () => import('../views/CartView.vue'),
       },
       {
-        path: 'contact',
+        path: 'ordercontact',
         name: '訂購人資訊',
         component: () => import('../views/OrderContact.vue'),
       },
@@ -34,27 +34,32 @@ const routes = [
       {
         path: 'checkout/:orderId',
         name: '結帳流程',
-        component: () => import('../views/Checkout.vue'),
+        component: () => import('../views/CheckoutView.vue'),
       },
       {
         path: 'faq',
         name: '常見問題',
-        component: () => import('../views/FAQ.vue'),
+        component: () => import('../views/FaqView.vue'),
       },
       {
-        path: 'companyContact',
+        path: 'contact',
         name: '聯絡方式',
-        component: () => import('../views/Contact.vue'),
+        component: () => import('../views/ContactView.vue'),
       },
       {
         path: 'favorite',
         name: '我的收藏',
-        component: () => import('../views/Favorite.vue'),
+        component: () => import('../views/FavoriteView.vue'),
       },
       {
         path: 'checkOrder',
         name: '查詢訂單',
         component: () => import('../views/CheckOrder.vue'),
+      },
+      {
+        path: 'about',
+        name: '品牌歷史',
+        component: () => import('../views/AboutView.vue'),
       },
     ],
   },

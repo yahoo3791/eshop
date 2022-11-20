@@ -135,12 +135,12 @@ export default {
         this.isLoading = false;
         this.orderNumber = '';
         console.log(res.data);
-        if (res.data.order === undefined) {
+        if (res.data.order === null) {
           Swal.fire({
             icon: 'error',
             title: '訂單編號錯誤',
             text: '如有需要請聯絡客服人員,感謝您!',
-            footer: '辦公室地址:台北市信義區市府路101號<br>客服電話:(02)1010101<br>客服時間:週一至週五上午07:00~下午17:00<br>Email:MgzOfficer010@gmail.com',
+            footer: '辦公室地址:台北市信義區市府路101號<br>客服電話:(02)1010101<br>客服時間:週一至週五上午07:00~下午17:00<br>Email:DessertOfficer010@gmail.com',
           });
         } else {
           this.getOrder = true;
