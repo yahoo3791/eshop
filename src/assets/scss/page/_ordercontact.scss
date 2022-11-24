@@ -1,0 +1,12 @@
+.payCart-item {
+  img {
+    max-width: 200px;
+  }
+}
+@include media-breakpoint-down(md) {
+.payCart-item {
+    img {
+      max-width: 150px;
+    }
+  }
+}

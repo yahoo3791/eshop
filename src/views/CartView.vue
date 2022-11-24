@@ -27,9 +27,7 @@
           style="padding: 20vh 0;">
           <h1 class="">目前購物車是空的<br>快去逛逛吧！！</h1>
           <router-link to="/user/products" class="text-decoration-none">
-            <w-button class="mt-5 text-black px-3 py-md-3 px-md-4 py-lg-4
-            px-lg-5" lg bg-color="white"
-            tile>前往商城</w-button>
+            <w-button class="mt-5 w-btn">前往商城</w-button>
           </router-link>
         </div>
       </div>
@@ -40,17 +38,13 @@
             <!-- 購物車標題按鈕 -->
             <div class="d-flex justify-content-between align-items-center pb-3"
             style="border-bottom: 1px solid #404040;">
-              <h1 class="mb-0 text-center tracking-widest font-bold text-xl">購物車</h1>
-              <div class="tracking-wide text-black">
-                <w-button class="deleteAllCarts px-1
-                py-md-2 px-md-3 py-lg-2 px-lg-4"
-                lg bg-color="white" tile
+              <h1 class="mb-0 text-center tracking-widest font-bold text-3xl">購物車</h1>
+              <div class="">
+                <w-button class="w-btn"
                   @click.prevent="this.$refs.DeleteCartsAll.modalShow()">刪除全部
                 </w-button>
-                <w-button @click="this.$router.push('/user/products')"
-                class="ms-2 px-1
-                py-md-2 px-md-3 py-lg-2 px-lg-4"
-                lg bg-color="white" tile>繼續購物
+                <w-button class="w-btn ms-2"
+                  @click="this.$router.push('/user/products')">繼續購物
                 </w-button>
               </div>
             </div>
@@ -59,9 +53,8 @@
         <div class="row">
           <div class="col-12 mt-4 mb-2" v-for="item,key in cartsData" :key="item.id">
             <div class="d-flex d-md-none justify-content-between pb-2 tracking-wide">
-              <w-button class="text-black px-3 py-md-2 px-md-3 py-lg-2 px-lg-4"
-              lg bg-color="white" tile @click="open(item,key)">
-                編輯
+              <w-button class="w-btn ms-2"
+                @click="open(item,key)">編輯
               </w-button>
               <p>{{item.product.category}}類</p>
             </div>
@@ -92,22 +85,22 @@
               </div>
             </div>
             <div class="d-flex align-items-center cartsItem pb-5" ref="right"
-            style="transform:translateX(0px);">
+              style="transform:translateX(0px);">
               <div class="d-flex">
                 <div class="carts-pic">
                   <img :src="item.product.imageUrl" class="carts-img" alt="">
                 </div>
-                <div class="ms-3 d-flex flex-column justify-content-between">
-                  <p class="tracking-wide font-semibold text-lg">{{ item.product.title }}
-                    <span class="d-none d-md-inline-block text-xs">
-                      {{item.product.category}}類
+                <div class="ms-3 d-flex flex-column justify-content-between text-2xl">
+                  <p class="tracking-wide font-semibold">{{ item.product.title }}
+                    <span class="d-none d-md-inline-block">
+                      ({{ item.product.unit }})
                     </span>
                   </p>
-                  <p class="leading-7 tracking-wider">
-                    {{ item.product.price }}$/{{ item.product.unit }}
+                  <p class="leading-7 tracking-wider text-lg">
+                    單價:{{ item.product.price }}$
                   </p>
-                  <p class="leading-7 d-block tracking-wider">
-                    {{ $filters.currency( item.total ) }}$/{{item.qty}}
+                  <p class="leading-7 d-block tracking-wider text-xl">
+                    金額{{ $filters.currency( item.total ) }}$
                   </p>
                 </div>
               </div>
@@ -116,7 +109,7 @@
                   <div @click.prevent="min(item.id, key)"
                   @keydown="min(item.id, key)"
                   class="cartsInput-md-min cursor-pointer text-center border">-</div>
-                  <div class="cartsInput-md-input">
+                  <div class="cartsInput-md-input text-xl">
                     <label for="num" class="d-block h-100">
                       <input id="num" name="num" v-model="item.qty" type="text" min="1"
                         class="d-block border rounded-0 bg-dark
@@ -138,7 +131,7 @@
               </div>
             </div>
           </div>
-          <p class="text-white text-end tracking-widest font-semibold text-base
+          <p class="text-white text-end tracking-widest font-semibold text-xl
             pb-3">總計 {{ $filters.currency( this.orderTotal.total ) }} $
           </p>
         </div>
@@ -146,12 +139,13 @@
           <div class="col-12 mb-5">
             <w-flex class="align-center tracking-wide">
               <w-checkbox class="ms-auto" color="grey" v-model="selection1">
-                <p class="text-white">我已確認商品資訊</p></w-checkbox>
+                <p class="text-white text-xl">我已確認商品資訊</p></w-checkbox>
             </w-flex>
           </div>
           <div class="col-12 text-end">
-            <w-button class="text-black px-3 py-md-3 px-md-4 py-lg-3 px-lg-5"
-            lg bg-color="white" tile @click="contactMethod">下一步</w-button>
+            <w-button class="w-btn"
+              @click="contactMethod">下一步
+            </w-button>
           </div>
         </div>
         </div>

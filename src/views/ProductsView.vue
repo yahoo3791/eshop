@@ -37,7 +37,7 @@
             <img src="@/assets/pic/banner/productBanner.png" class="w-100 productBanner"
             style="object-fit: cover; border-radius:5px" alt="全部商品圖片">
             <div class="position-absolute top-50 translate-middle-y" style="right:20%">
-              <h2>全部甜點</h2>
+              <h2 class="text-3xl font-medium tracking-widest">全部甜點</h2>
             </div>
           </div>
         </div>
@@ -90,20 +90,29 @@
                 </div>
                 <div class="product-content pt-1">
                   <h5 class="product-content-h5 text-base font-medium tracking-wide">
-                    {{ item.title }}
+                    {{ item.title }}({{ item.unit }})
                   </h5>
-                    <p class="product-p">${{ item.price }}</p>
-                    <div
+                  <div class="d-block d-md-flex justify-content-md-between">
+                    <p>
+                      <del>{{ item.origin_price }}$</del>/
+                      <span class="product-p">優惠價{{ item.price }}$</span>
+                    </p>
+                  </div>
+                    <div v-if="item.num >= 1"
                       :class="{'opacity-75': this.isLoading === true }"
                       @click.stop="addCart(item, $event)"
                       @keydown="addCart(item, $event)"
                       :disabled="this.isLoading ===true"
-                      class="d-block mt-2 p-1 text-center product-btn
-                      tracking-wide font-medium bg-white text-decoration-none">
-                      <div
-                        @click.stop class="d-none spinner-border spinner-border-sm" role="status">
+                      class="w-btn-product mt-2 w-100">
+                      <div @click.stop class="d-none spinner-border spinner-border-sm"
+                      role="status">
                       </div>
                       加入購物車
+                    </div>
+                    <div v-else
+                    class="w-btn-product w-100 mt-2 opacity-50"
+                    @click.stop>
+                      已售完
                     </div>
                 </div>
               </div>

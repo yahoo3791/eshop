@@ -39,7 +39,7 @@
               style="font-size:1em">
                 <span :class="{'d-none': favoriteData.length == 0 }" ref="fav"
                 class="d-block position-absolute navbar-badge navbar-badge-md
-                          animated">{{favoriteData.length}}
+                  animated">{{favoriteData.length}}
                 </span>
               </i>
             </router-link>
@@ -54,38 +54,6 @@
               <i class="bi bi-clipboard2-minus-fill me-1" style="font-size:1em"></i>
             </router-link>
           </div>
-          <!-- <router-link to="/user/carts"
-            class="nav-link py-3 animated fadeInDown"
-            style="animation-duration: 1.5s;">
-            <div class="d-inline-block position-relative">購物車
-              <span :class="{'d-none': cartsNum == 0 }"
-                class="d-inline-block navbar-badge navbar-badge-sm animated
-                position-absolute">{{cartsNum}}
-              </span>
-            </div>
-          </router-link>
-          <router-link to="/user/favorite"
-            class="nav-link d-lg-none py-3 animated fadeInDown"
-            style="animation-duration: 2s;">
-              <div class="d-inline-block position-relative">收藏
-                <span :class="{'d-none': favoriteData.length == 0 }"
-                  class="d-inline-block navbar-badge navbar-badge-sm
-                  animated position-absolute">{{favoriteData.length}}
-                </span>
-              </div>
-          </router-link>
-          <div
-            @click="login"
-            @keypress="login"
-            class="nav-link d-lg-none py-3 animated fadeInDown"
-            style="animation-duration: 2.5s;">
-            <div class="d-inline-block position-relative">登入
-            </div>
-          </div>
-          <router-link to="/user/checkOrder" class="nav-link d-lg-none py-3 animated fadeInDown"
-          style="animation-duration: 3s;">
-            <div class="d-inline-block position-relative">查詢訂單</div>
-          </router-link> -->
         </div>
     </div>
     <div class="d-flex align-items-center">

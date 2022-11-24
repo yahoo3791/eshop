@@ -2,7 +2,7 @@
   <div class="position-absolute top-0 start-0 w-100">
     <Navbar />
   </div>
-  <div class="container-fluid">
+  <div class="container-fluid bg-white">
     <router-view></router-view>
     <div class="container-fluid mt-3">
       <ToastMessages></ToastMessages>

@@ -49,8 +49,10 @@
                 <a href="" class="text-decoration-none text-white">忘記密碼</a> |
                 <a href="" class="text-decoration-none text-white">加入會員</a>
               </div>
-              <w-button type="submit" class="text-black px-3 py-md-3 px-md-4 py-lg-4
-              px-lg-5" lg bg-color="white" tile>登入</w-button>
+              <w-button
+              class="w-btn"
+              type="submit">登入
+              </w-button>
             </div>
           </Form>
           </div>

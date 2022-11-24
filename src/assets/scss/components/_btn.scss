@@ -72,4 +72,30 @@
     box-shadow: 0 0 0 white, inset 0.2em 0.2em 0 white;
   }
 }
+            // <w-button class="font-bold tracking-wider text-black px-3
+            //  py-md-3 px-md-4 py-lg-3 px-lg-5"
+            //  bg-color="white" tile data-aos="fade-up">聯絡我們 </w-button>
+.w-btn {
+  font-size: 1.125rem !important;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: black !important;
+  padding: 1rem 1.5rem !important;
+  background: white !important;
+}
+.w-btn-product {
+  font-size: 1.125rem !important;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: black !important;
+  padding: 0.25rem !important;
+  background: white !important;
+  text-align: center;
+  border-radius: 3px;
+}
+@include media-breakpoint-up(md) {
+.w-btn {
+    padding: 1.2rem 2rem !important;
+  }
+}
 // 全局共用按鈕 end

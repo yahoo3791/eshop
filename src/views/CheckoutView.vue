@@ -82,11 +82,9 @@
             </div>
           </div>
           <div class="col-12 pt-2 pb-5 text-end my-5">
-              <w-button
-                @click="this.$router.push('/user/products')"
-                class="text-black px-3 py-md-3 px-md-4 py-lg-3
-                px-lg-5" lg bg-color="white" tile>繼續購物
-              </w-button>
+            <w-button class="w-btn"
+            @click="this.$router.push('/user/products')">繼續購物
+            </w-button>
           </div>
         </div>
       </div>

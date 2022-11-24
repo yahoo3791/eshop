@@ -47,6 +47,12 @@
                     </label>
                   </div>
                   <div class="mb-3 col-md-6">
+                    <label for="num" class="form-label w-100 font-medium tracking-wider">數量
+                      <input v-model="data.num" type="text"
+                      class="form-control" id="num" placeholder="請輸入數量">
+                    </label>
+                  </div>
+                  <div class="mb-3 col-md-6">
                     <label for="price" class="form-label w-100 font-medium tracking-wider">單位
                       <input v-model="data.unit" type="text"
                       class="form-control" id="unit" placeholder="請輸入單位">

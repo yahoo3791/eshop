@@ -9,7 +9,7 @@
               style="object-fit: cover; border-radius:5px" alt="關於我們圖片">
             <div class="position-absolute top-50 translate-middle-y"
             style="right:20%">
-              <h2>關於我們</h2>
+              <h2 class="text-3xl font-medium tracking-widest">關於我們</h2>
             </div>
           </div>
         </div>

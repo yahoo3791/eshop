@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-utility">
+  <div class="container pt-utility" style="height: 100vh">
     <loading v-model:active="isLoading" />
     <div class="row">
       <div class="col-12 px-0 px-md-2">
@@ -65,7 +65,7 @@
         </table>
       </div>
     </div>
-    <div class="row" v-if="this.Data.length !== 0">
+    <div class="row" style="padding-top: calc(100vh-20vh)" v-if="this.Data.length !== 0">
       <div class="col-12 position-fixed bottom-0 start-50 translate-middle-x">
         <pagination :pages="Pagination" @update-page="getData"></pagination>
       </div>

@@ -84,18 +84,32 @@
                   </div>
                 </div>
                 <div class="product-content pt-1">
-                  <h5 class="product-content-h5 text-base
-                  font-medium tracking-wide">{{ item.title }}</h5>
-                  <p class="product-p">${{ item.price }}</p>
-                  <div @click.stop="addCart(item, $event)"
-                    @keydown="addCart(item, $event)"
+                  <h5 class="product-content-h5 text-base font-medium tracking-wide">
+                    {{ item.title }}({{ item.unit }})
+                  </h5>
+                  <div class="d-flex justify-content-between">
+                    <p>
+                      <del>${{ item.origin_price }}</del>/
+                      <span class="product-p">優惠價${{ item.price }}</span>
+                    </p>
+                  </div>
+                  <div v-if="item.num >= 1"
                     :class="{'opacity-75': this.isLoading === true }"
+                    @click.stop="addCart(item, $event)"
+                    @keydown="addCart(item, $event)"
                     :disabled="this.isLoading ===true"
-                    class="d-block mt-2 p-1 text-center product-btn
-                    tracking-wide font-medium bg-white text-decoration-none">
-                    <div @click.stop class="d-none spinner-border spinner-border-sm" role="status">
+                    class="w-btn-product mt-2">
+                    <div
+                    @click.stop
+                    class="d-none spinner-border spinner-border-sm"
+                    role="status">
                     </div>
                     加入購物車
+                  </div>
+                  <div v-else
+                  class="w-btn-product mt-2 opacity-50"
+                  @click.stop>
+                    已售完
                   </div>
                 </div>
               </div>
