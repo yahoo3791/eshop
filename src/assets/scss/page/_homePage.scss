@@ -1,6 +1,6 @@
 /* banner */
 .homeContainer {
-  height: calc(50vh - 70px);
+  height: calc(100vh - 60px);
   .homeBanner {
     background-image: url('@/assets/pic/banner/homeBanner.png');
     background-size: cover;
@@ -119,7 +119,7 @@
 }
 @include media-breakpoint-up(md) {
 .homeContainer {
-  height: calc(70vh - 70px);
+  height: calc(100vh - 70px);
   .homeBanner {
     background-attachment: fixed;
   }

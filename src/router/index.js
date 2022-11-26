@@ -64,11 +64,6 @@ const routes = [
     ],
   },
   {
-    path: '/login',
-    name: '後台登入',
-    component: () => import('../views/Login.vue'),
-  },
-  {
     path: '/dashboard',
     name: 'dashboard',
     component: () => import('../views/Dashboard.vue'),

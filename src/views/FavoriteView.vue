@@ -40,7 +40,7 @@
         <div class="col-12 col-md-3" :class="{ 'd-none' :this.favoriteData.length <= 1 }">
           <div class="px-0 px-md-0 d-flex flex-wrap justify-content-end
           justify-content-md-center align-items-center mt-3">
-            <label for="sort" class="text-white pe-2 pb-md-2 d-inline-block">顯示方法(底下加輪播)
+            <label for="sort" class="text-white pe-2 pb-md-2 d-inline-block">顯示方法
               <div class="bg-white tracking-wide
                 font-medium d-inline-block"
                 style="max-width:300px;border-radius: 5px;">

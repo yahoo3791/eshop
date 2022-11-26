@@ -21,17 +21,6 @@
   <div class="bg-dark">
     <div class="container-fluid pt-utility">
       <div class="row">
-        <!-- <div class="col-12">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb p-2 breadcrumb-style tracking-wider">
-              <li class="breadcrumb-item">
-                <a class="text-black text-decoration-none" href="#">首頁
-                </a>
-              </li>
-              <li class="breadcrumb-item breadcrumb-item-none">商品列表</li>
-            </ol>
-          </nav>
-        </div> -->
         <div class="col-12 col-md-9 mx-auto p-0">
           <div class="position-relative">
             <img src="@/assets/pic/banner/productBanner.png" class="w-100 productBanner"
@@ -68,9 +57,13 @@
             <div class="col-6 col-md-6 col-lg-4 col-xl-3 mb-5"
             v-for="item,index in products"
             :key="index">
-              <div class="text-white product-content-container mx-auto cursor-pointer"
+              <div class="text-white product-content-container mx-auto
+              cursor-pointer position-relative"
               @click.prevent="more(item.id,$event,index)"
               @keydown="more(item.id,$event,index)">
+                <span class="badge bg-danger position-absolute"
+                v-if="item.num <= 5 && item.num >= 1"
+                style="z-index:5; top:15px; left:15px">HOT</span>
                 <div class="product-item position-relative">
                   <w-image :src="item.imageUrl"
                   class="position-relative w-100 h-100 product-img" alt="雜誌圖片">
@@ -125,12 +118,11 @@
     :class="{ 'scrollIconMoveIn':!scrollIcon  }"
     ref="scrollTop"
     class="scrollTop-container position-fixed text-center
-      bottom-0 end-0 cursor-pointer">
+      end-0 bottom-0 cursor-pointer m-3">
       <div
         @click.prevent="scrollToTop"
         @keydown="scrollToTop"
-        class="scrollTop-btn d-block m-1 rounded-circle text-white m-2 m-md-3">
-        <i class="bi-arrow-bar-up fs-5"></i>
+        class="scrollTop-btn d-block">
       </div>
     </div>
   </div>
@@ -144,6 +136,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import Swal from 'sweetalert2/dist/sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 import emitter from '@/methods/emitter';
+import scrollMixins from '../mixins/scroll';
 
 export default {
   data() {
@@ -152,15 +145,14 @@ export default {
       isLoading: false,
       cartsNum: 0,
       carts: {},
-      scrollIcon: true,
       openDrawer: false,
-      clickText: '全部雜誌',
       favoriteData: [],
       filterBar: false,
       history: [],
     };
   },
   components: { Navbar, Footer, Loading },
+  mixins: [scrollMixins],
   methods: {
     getData() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
@@ -284,16 +276,6 @@ export default {
         this.carts = res.data.data.carts;
       });
     },
-    scrollToTop() {
-      window.scrollTo(0, 0);
-    },
-    handleScroll() {
-      if (window.scrollY >= 650) {
-        this.scrollIcon = false;
-      } else {
-        this.scrollIcon = true;
-      }
-    },
     onChange(e) {
       const { value } = e.target;
       if (value === '價格排序低到高' && this.products.length > 1) {
@@ -354,7 +336,6 @@ export default {
     },
   },
   created() {
-    window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', () => {
       if (document.body.clientWidth >= 768) {
         this.filterBar = false;

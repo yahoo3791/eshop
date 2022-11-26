@@ -35,7 +35,6 @@
                 </div>
                 <p>
                   留言: {{this.changeData.message}}
-                  <!-- <span v-if="this.changeData.message.length === 0">無</span> -->
                 </p>
               </div>
             </div>

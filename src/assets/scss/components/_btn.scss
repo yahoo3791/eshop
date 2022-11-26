@@ -7,14 +7,14 @@
   transition-duration: .3s;
   opacity: 0;
   .scrollTop-btn {
-    background-color: rgba(255, 255, 255, 0.7);
-    border: 1px solid #ccc;
-    height: 50px;
+    background-image: url('@/assets/pic/icon/scrollbtn.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     width: 50px;
-    line-height: 50px;
+    height: 50px;
     &:hover {
-      opacity: 0.9;
-      border: 1px solid $secondary-80;
+      background-image: url('@/assets/pic/icon/scrollbtn-hover.png');
     }
   }
 }
@@ -25,7 +25,7 @@
 /* 全局置頂按鈕 end */
 // 首頁banner滑動提示紐 start
 .slider-icon {
-  margin-bottom: 10px;
+  margin-bottom: 150px;
   &:after {
     content: '';
     display: inline-block;
@@ -72,9 +72,6 @@
     box-shadow: 0 0 0 white, inset 0.2em 0.2em 0 white;
   }
 }
-            // <w-button class="font-bold tracking-wider text-black px-3
-            //  py-md-3 px-md-4 py-lg-3 px-lg-5"
-            //  bg-color="white" tile data-aos="fade-up">聯絡我們 </w-button>
 .w-btn {
   font-size: 1.125rem !important;
   font-weight: 700;
@@ -94,8 +91,11 @@
   border-radius: 3px;
 }
 @include media-breakpoint-up(md) {
-.w-btn {
+  .w-btn {
     padding: 1.2rem 2rem !important;
+  }
+  .slider-icon {
+    margin-bottom: 50px;
   }
 }
 // 全局共用按鈕 end

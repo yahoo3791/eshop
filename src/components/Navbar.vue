@@ -11,9 +11,9 @@
         :class="{'d-none': togglerOverlay }"
         class="text-lg navbar-nav
         text-white text-center w-75 mx-auto tracking-wider">
-          <router-link to="/user/about"
+          <router-link to="/#/"
             class="nav-link py-3 animated fadeInDown"
-            style="animation-duration: .5s;">品牌
+            style="animation-duration: .5s;">首頁
           </router-link>
           <router-link to="/user/products"
             class="nav-link py-3 animated fadeInDown"
@@ -72,11 +72,11 @@
       </div>
       <div
         class="navbar-md d-none d-md-flex ms-auto tracking-wider text-lg">
-        <router-link to="/user/about" class="nav-link px-3 py-3"
+        <router-link to="/#/" class="nav-link px-3 py-3"
         data-bs-toggle="tooltip"
         data-bs-placement="bottom"
-        title="關於甜點品牌歷史">
-        品牌
+        title="回到首頁">
+        首頁
         </router-link>
         <router-link to="/user/products" class="nav-link px-3 py-3">
         商品

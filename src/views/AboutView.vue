@@ -18,12 +18,11 @@
         </div>
       </div>
     </div>
-    <div :class="{ 'scrollIconMoveIn':!scrollIcon  }"
-    ref="scrollTop" class="scrollTop-container position-fixed text-center
-      bottom-0 end-0 cursor-pointer">
+    <div :class="{ 'scrollIconMoveIn': !scrollIcon }"
+      ref="scrollTop" class="scrollTop-container position-fixed text-center
+      end-0 bottom-0 cursor-pointer m-3">
       <div @click.prevent="scrollToTop" @keydown="scrollToTop"
-        class="scrollTop-btn d-block m-1 rounded-circle text-white m-2 m-md-3">
-        <i class="bi-arrow-bar-up fs-5"></i>
+        class="scrollTop-btn d-block">
       </div>
     </div>
   </div>
@@ -32,11 +31,13 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
+import scrollMixins from '../mixins/scroll';
 
 export default {
   data() {
     return {};
   },
+  mixins: [scrollMixins],
   components: {
     Navbar, Footer,
   },

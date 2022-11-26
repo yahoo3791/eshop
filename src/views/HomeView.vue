@@ -11,49 +11,112 @@
             style="width:30px;height:50px;z-index:10;border-radius: 30px;">
             <span class="d-none">eslint</span>
           </a>
+          <div class="position-absolute top-50 start-50 translate-middle">
+            <h1 class="tracking-widest text-nowrap">軟在口中，甜在心上。</h1>
+          </div>
         </div>
       </div>
     </div>
     <div class="container main" id="recommend">
-      <div class="row align-items-md-center flex-column-reverse flex-md-row">
-        <div class="col-12 col-md-6 py-5 py-md-0">
-          <h1 class="text-center pb-5 title-01"
-          data-aos="fade-up">天然新鮮食材、健康食譜</h1>
-          <p class="pb-4 p-01" data-aos="fade-up"
-          >製作配方減油、減鈉、減糖，無添加化學調味料、防腐劑，
-            使用原型食物製作，保留天然食材原有的風味特性，利用天然香料打造料理豐富的層次感。</p>
-          <ul class="text-center text-base tracking-wide">
-            <li data-aos="fade-up">
-              <img src="../assets/pic/icon/quality.png"
-              alt="">榮獲2022金牌好店店家
-            </li>
-            <li data-aos="fade-up">
-              <img src="../assets/pic/icon/quality.png"
-              alt="">2022溯源餐廳一星肯定
-            </li>
-          </ul>
+      <div class="row">
+        <div class="col-12 col-md-6 my-2 position-relative" data-aos="fade-right">
+          <img src="../assets/pic/banner/grocery01.png"
+          style="border:1px solid white; border-radius:5px" class="w-100" alt="">
+          <div class="position-absolute top-50 translate-middle-y ps-5 tracking-widest">
+            <h3>巧克力系列</h3>
+            <p class="mb-2 mb-md-3">現正7折優惠中！</p>
+            <a href="/#/user/products" class="href-none">
+              <w-button class="w-btn">前往商店
+              </w-button>
+            </a>
+          </div>
         </div>
-        <div class="col-12 col-md-6">
-          <div class="w-100 h-100 position-relative fruitPic-container"
-          data-aos="fade-up">
-            <img src="@/assets/pic/homepage/新鮮食材.png" class="w-100 h-100"
-            style="object-fit: contain" alt="新鮮水果圖片">
-            <div class="position-absolute top-50 start-50 translate-middle text-center">
-              <h2 class="text-nowrap text-xl font-medium tracking-wider">
-                當季新鮮水果
-              </h2>
-            </div>
+        <div class="col-12 col-md-6 my-2 position-relative" data-aos="fade-left">
+          <img src="../assets/pic/banner/grocery02.png"
+          style="border:1px solid white; border-radius:5px" class="w-100" alt="">
+          <div class="position-absolute top-50 translate-middle-y ps-5 tracking-widest">
+            <h3>杯子蛋糕系列</h3>
+            <p class="mb-2 mb-md-3">現正7折優惠中！</p>
+            <a href="/#/user/products" class="href-none">
+              <w-button class="w-btn">前往商店
+              </w-button>
+            </a>
           </div>
         </div>
       </div>
+      <div class="line my-5"></div>
+      <div class="row">
+        <div class="col-12 text-center my-5">
+          <h3 class="title-01">熱銷商品</h3>
+        </div>
+        <div class="col-6 col-md-6 col-lg-4 col-xl-3 mb-5"
+        v-for="item,index in products"
+        :key="index">
+          <div class="text-white product-content-container
+          mx-auto cursor-pointer position-relative"
+            @click.prevent="more(item.id,$event,index)"
+            @keydown="more(item.id,$event,index)">
+            <span class="badge bg-danger position-absolute"
+            style="z-index:5; top:15px; left:15px">HOT</span>
+            <div class="product-item position-relative">
+              <w-image :src="item.imageUrl"
+              class="position-relative w-100 h-100 product-img" alt="雜誌圖片">
+              </w-image>
+              <div class="w-100 productNotes-container position-absolute bottom-0 start-50">
+                <i class="productNotes-icon d-block bi bi-info-square text-4xl
+                  position-relative top-50 start-50 text-center">
+                </i>
+              </div>
+              <div class="fav position-absolute end-0 top-0"
+              @click.stop="addFav(item,index)" @keydown="addFav(item,index)">
+                <i class="bi fs-2 mx-2"
+                :class="favoriteData.includes(item.id) ? 'bi-heart-fill' : 'bi-heart'">
+                </i>
+              </div>
+            </div>
+            <div class="product-content pt-1">
+              <h5 class="product-content-h5 text-base font-medium tracking-wide">
+                {{ item.title }}({{ item.unit }})
+              </h5>
+              <div class="d-block d-md-flex justify-content-md-between">
+                <p>
+                  <del>{{ item.origin_price }}$</del>/
+                  <span class="product-p">優惠價{{ item.price }}$</span>
+                </p>
+              </div>
+              <div v-if="item.num >= 1"
+                :class="{'opacity-75': this.isLoading === true }"
+                @click.stop="addCart(item, $event)"
+                @keydown="addCart(item, $event)"
+                :disabled="this.isLoading ===true"
+                class="w-btn-product mt-2 w-100">
+                <div @click.stop class="d-none spinner-border spinner-border-sm" role="status">
+                </div>
+                加入購物車
+              </div>
+              <div v-else class="w-btn-product w-100 mt-2 opacity-50" @click.stop>
+                已售完
+              </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-12 text-center my-5">
+          <a href="/#/user/products" class="href-none">
+            <w-button class="w-btn">看更多
+            </w-button>
+          </a>
+        </div>
+      </div>
+      <div class="line my-5"></div>
+    </div>
+    <div class="container">
       <div class="row flex-column-reverse flex-md-row-reverse align-items-md-center">
         <div class="col-12 col-md-6 text-center py-5 py-md-0">
-          <h1 class="pb-5 title-01"
-          data-aos="fade-up">客製化訂單 <img src="@/assets/pic/icon/chef.png" alt=""></h1>
-          <p class="pb-4 p-01" data-aos="fade-up"
-          >始終找不到您心中幻想的甜點嗎？<br><span>( 聯絡我們提供想法、溝通報價 )</span></p>
+          <h1 class="title-01">客製化訂單</h1>
+          <p class="pb-5 p-01">始終找不到您心中幻想的甜點嗎？<br>
+            <span>( 聯絡我們提供想法、溝通報價 )</span></p>
           <a href="/#/user/contact" class="href-none">
-            <w-button class="w-btn" data-aos="fade-up">聯絡我們
+            <w-button class="w-btn">聯絡我們
             </w-button>
           </a>
         </div>
@@ -76,113 +139,69 @@
               },
             }"
             class="mySwiper position-relative customized-container">
-              <div class="position-absolute swiper-bg top-0"></div>
-              <swiper-slide class="position-relative">
-                <img class="" src="@/assets/pic/homepage/母親節蛋糕.png" alt="">
-                <h2 class="position-absolute top-50 start-50 translate-middle
-                text-xl font-medium tracking-wider text-nowrap">母親節蛋糕</h2>
-              </swiper-slide>
-              <swiper-slide class="position-relative">
-                <img class="" src="@/assets/pic/homepage/聖誕節餅乾.png" alt="">
-                <h2 class="position-absolute top-50 start-50 translate-middle
-                text-xl font-medium tracking-wider">暖心餅乾</h2>
-              </swiper-slide>
-              <swiper-slide class="position-relative">
-                <img class="" src="@/assets/pic/homepage/萬聖節餅乾.png" alt="">
-                <h2 class="position-absolute top-50 start-50 translate-middle
-                text-xl font-medium tracking-wider">搞怪餅乾</h2>
-              </swiper-slide>
+            <div class="position-absolute swiper-bg top-0"></div>
+            <swiper-slide class="position-relative">
+              <img class="" src="@/assets/pic/homepage/母親節蛋糕.png" alt="">
+              <h2 class="position-absolute top-50 start-50 translate-middle
+              text-xl font-medium tracking-wider text-nowrap">母親節蛋糕</h2>
+            </swiper-slide>
+            <swiper-slide class="position-relative">
+              <img class="" src="@/assets/pic/homepage/聖誕節餅乾.png" alt="">
+              <h2 class="position-absolute top-50 start-50 translate-middle
+              text-xl font-medium tracking-wider">暖心餅乾</h2>
+            </swiper-slide>
+            <swiper-slide class="position-relative">
+              <img class="" src="@/assets/pic/homepage/萬聖節餅乾.png" alt="">
+              <h2 class="position-absolute top-50 start-50 translate-middle
+              text-xl font-medium tracking-wider">搞怪餅乾</h2>
+            </swiper-slide>
           </swiper>
         </div>
       </div>
     </div>
-    <div class="line"></div>
-    <div class="container main2">
-      <div class="row">
-        <div class="col-12">
-          <h1 class="text-center pb-5" data-aos="fade-up">
-            <span class="position-relative title-01">熱銷商品
-              <img src="@/assets/pic/icon/hot.png"
-              class="position-absolute top-0 start-0"
-              style="transform: translate(-40px, -15px) rotate(-45deg);" alt="">
-            </span>
-            <img src="@/assets/pic/icon/trophy.png" alt="">
-          </h1>
-          <swiper ref="{swiperRef}"
-            :slidesPerView="1"
-            :centeredSlides="true"
-            :spaceBetween="30"
-            :navigation="true"
-            :modules="modules"
-            :autoplay="{
-              delay: 2000,
-              disableOnInteraction: false,
-            }" :speed="500" :breakpoints="{
-              '768': {
-                slidesPerView: 2,
-                spaceBetween: 40,
-              },
-              '1024': {
-                slidesPerView: 3,
-                spaceBetween: 50,
-              }
-            }" class="mySwiper hot-product-container">
-            <div class="position-absolute swiper-bg top-0"></div>
-            <swiper-slide class="position-relative">
-              <a href="#">
-                <img class="w-100" src="@/assets/pic/products/巧克力焦糖杯子蛋糕.png" alt="巧克力焦糖杯子蛋糕">
-              </a>
-              <div class="position-absolute top-50 start-50 translate-middle content">
-                <h2 class="text-xl font-medium tracking-wider">巧克力焦糖杯子蛋糕</h2>
-                <p>兩種不同比例的巧克力，讓蛋糕體呈現綿密濕潤多層次的巧克力風味，利用焦糖提升不同香氣也不會產生甜膩感，焦糖巧妙比例健康和口感中平衡。</p>
-              </div>
-            </swiper-slide>
-            <swiper-slide class="position-relative">
-              <a href="">
-                <img class="w-100" src="@/assets/pic/products/巧克力布朗尼.png" alt="巧克力布朗尼">
-              </a>
-              <div class="position-absolute top-50 start-50 translate-middle content">
-                <h2 class="text-xl font-medium tracking-wider">威士忌布朗尼 (900g)</h2>
-                <p>苦甜布朗尼基底在熱呼呼出爐瞬間刷上威士忌，淋上特調85%黑巧克力，特別設計給大人享用的香醇極致口味。</p>
-              </div>
-            </swiper-slide>
-            <swiper-slide class="position-relative">
-              <a href="">
-                <img class="w-100" src="@/assets/pic/products/巧克力金沙蛋糕.png" alt="巧克力金沙蛋糕">
-              </a>
-              <div class="position-absolute top-50 start-50 translate-middle content">
-                <h2 class="text-xl font-medium tracking-wider text-nowrap">巧克力金沙蛋糕 (7寸)</h2>
-                <p>蛋糕體不惜成本使用較多的雞蛋與較少比例麵粉，因此糕體會較一般蛋糕卷更加柔滑綿密，抹上榛果醬，加上糕體上特製低糖巧克力球，身體無負擔喔！</p>
-              </div>
-            </swiper-slide>
-            <swiper-slide class="position-relative">
-              <a href="">
-                <img class="w-100" src="@/assets/pic/products/檸檬蜂蜜奶油蛋糕.png" alt="檸檬蜂蜜奶油蛋糕">
-              </a>
-              <div class="position-absolute top-50 start-50 translate-middle content">
-                <h2 class="text-xl font-medium tracking-wider text-nowrap">檸檬蜂蜜奶油蛋糕 (7寸)</h2>
-                <p>蜂蜜檸檬的滋味酸酸甜甜，是很多人喜歡的味道，做成棉花蛋糕，吃起來也是相當可口。味道清新，帶點蜂蜜香， 加了檸檬片點綴提升香氣，值得嚐鮮看看！</p>
-              </div>
-            </swiper-slide>
-            <swiper-slide class="position-relative">
-              <a href="">
-                <img class="w-100" src="@/assets/pic/products/起司藍莓蛋糕.png" alt="起司藍莓蛋糕">
-              </a>
-              <div class="position-absolute top-50 start-50 translate-middle content">
-                <h2 class="text-xl font-medium tracking-wider text-nowrap">起司藍莓蛋糕 (片)</h2>
-                <p>消化餅乾加上乳酪起司蛋糕為基底搭配蔓越莓醬中含有藍莓果肉，相當順口，起司控絕對不要錯過了！</p>
-              </div>
-            </swiper-slide>
-            <swiper-slide class="position-relative">
-              <a href="">
-                <img class="w-100" src="@/assets/pic/products/混合巧克力蛋糕.png" alt="混合巧克力蛋糕">
-              </a>
-                <div class="position-absolute top-50 start-50 translate-middle content">
-                  <h2 class="text-xl font-medium tracking-wider">混合巧克力蛋糕 (片)</h2>
-                  <p>底層由消化餅乾，第一層白巧克力，第二層50%巧克力慕斯，第三層100%巧克力。味蕾體驗了四層舌尖上的味覺饗宴！</p>
-                </div>
-            </swiper-slide>
-          </swiper>
+    <div class="container">
+      <div class="row py-5">
+        <div class="col-12 mb-5"
+        style="border-top:1px solid rgb(64, 64, 64);">
+        </div>
+        <div class="col-12 text-center mb-5">
+          <h4 class="title-01">榮獲標章</h4>
+          <p class="p-01">食在好安心</p>
+        </div>
+        <div class="col-12 col-md-3 d-flex my-3 my-md-0" data-aos="fade-left">
+          <img src="@/assets/pic/icon/CAS.png"
+          style="width:50px;height:50px" alt="">
+          <div class="ps-2">
+            <h5>CAS優良食品標誌</h5>
+            <p>經學者、專家嚴格評核通過標準</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-3 d-flex my-3 my-md-0" data-aos="fade-left"
+          data-aos-delay="100">
+          <img src="@/assets/pic/icon/GMP.png"
+          style="width:50px;height:50px" alt="">
+          <div class="ps-2">
+            <h5>GMP認證標章</h5>
+            <p>製造過程中，品質與衛生安全都符合規範</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-3 d-flex my-3 my-md-0"
+          data-aos="fade-left" data-aos-delay="200">
+          <img src="@/assets/pic/icon/TAP.png"
+          style="width:50px;height:50px" alt="">
+          <div class="ps-2">
+            <h5>TAP產銷履歷農產品</h5>
+            <p>驗證機構以親自前往生產場地，且也已通過產品進行抽驗。</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-3 d-flex my-3 my-md-0"
+          data-aos="fade-left" data-aos-delay="300">
+          <img src="@/assets/pic/icon/安全蔬果.png"
+          style="width:50px;height:50px" alt="">
+          <div class="ps-2">
+            <h5>安全蔬果吉園圃標章</h5>
+            <p>輔導農民正確使用農藥，以生產優質安全蔬果。</p>
+          </div>
         </div>
       </div>
     </div>
@@ -190,12 +209,10 @@
       <div class="subBg">
         <div class="mx-auto" style="max-width:450px;">
           <Form @submit="submit" class="position-relative form-outline form-white my-5">
-            <h2 class="font-medium tracking-widest text-3xl d-block"
-            data-aos="fade-up">
+            <h2 class="font-medium tracking-widest text-3xl d-block">
               訂閱甜點電子報<br>立馬獲得8折優惠卷
             </h2>
-            <div class="sub d-flex flex-wrap justify-content-center pt-3"
-            data-aos="fade-up">
+            <div class="sub d-flex flex-wrap justify-content-center pt-3">
               <Field v-model="subMail" type="email"
               name="信箱" id="subscription" rules="required|email" :validateOnBlur="false"
                 :validateOnChange="false"
@@ -210,6 +227,14 @@
           </Form>
         </div>
       </div>
+    </div>
+  </div>
+  <div :class="{ 'scrollIconMoveIn':!scrollIcon  }"
+    ref="scrollTop" class="scrollTop-container position-fixed text-center
+    end-0 bottom-0 cursor-pointer m-3">
+    <div @click.prevent="scrollToTop"
+    @keydown="scrollToTop"
+    class="scrollTop-btn d-block">
     </div>
   </div>
   <Footer/>
@@ -227,18 +252,26 @@ import 'sweetalert2/src/sweetalert2.scss';
 import {
   Field, Form, ErrorMessage,
 } from 'vee-validate';
+import emitter from '@/methods/emitter';
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import '../assets/scss/swiper/homePageSwiper.css';
 import 'swiper/css/navigation';
+import scrollMixins from '../mixins/scroll';
 
 export default {
   data() {
     return {
       subMail: '',
       slider: false,
+      products: {},
+      isLoading: false,
+      cartsNum: 0,
+      carts: {},
+      favoriteData: [],
+      history: [],
     };
   },
   components: {
@@ -249,23 +282,193 @@ export default {
       modules: [Parallax, Autoplay, Navigation],
     };
   },
+  mixins: [scrollMixins],
   methods: {
-    handleScroll() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-        || document.body.scrollTop;
-      if (scrollTop > 20) {
-        this.slider = true;
-      } else {
-        this.slider = false;
-      }
-    },
     submit() {
       this.subMail = '';
       Swal.fire('感謝您的訂閱，<br>8折優惠碼:coupon012');
     },
+    getData() {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+      this.axios.get(api).then((res) => {
+        this.products = res.data.products.filter((item) => {
+          if (item.num <= 5 && item.num > 0) {
+            return item;
+          }
+          return false;
+        });
+      });
+    },
+    more(id) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
+      this.axios.get(api).then((res) => {
+        if (res.data.success) {
+          this.$router.push(`/user/product/${id}`);
+        }
+      });
+      this.productHistory(id);
+    },
+    productHistory(id) {
+      this.history = JSON.parse(localStorage.getItem('setHistory')) || [];
+      if (this.history.includes(id)) {
+        this.history.splice(this.history.indexOf(id), 1);
+      } else {
+        this.history.push(id);
+        localStorage.setItem('setHistory', JSON.stringify(this.history));
+      }
+    },
+    addCart(item, e) {
+      e.target.childNodes[0].classList.remove('d-none');
+      const data = {
+        product_id: item.id,
+        qty: 1,
+      };
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      this.isLoading = true;
+      this.axios.post(api, { data }).then((res) => {
+        this.isLoading = false;
+        e.target.childNodes[0].classList.add('d-none');
+        if (res.data.success) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: 'success',
+            title: '成功加入購物車',
+          });
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: 'error',
+            title: '加入購物車失敗',
+          });
+        }
+      });
+      this.axios.get(api).then((res) => {
+        const { carts } = res.data.data;
+        if (res.data.success) {
+          let num = 1;
+          carts.forEach((i) => {
+            num += i.qty;
+          });
+          this.cartsNum = num;
+        }
+        this.getCarts();
+      });
+      this.renderCarts();
+      emitter.emit('updateCartsNum');
+    },
+    productsFilter(e) {
+      const clickText = e;
+      this.clickText = e;
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+      this.axios.get(api).then((res) => {
+        const getProducts = res.data.products;
+        let data = [];
+        getProducts.forEach((item) => {
+          if (clickText === item.category) {
+            data.push(item);
+          } else if (clickText === '全部雜誌') {
+            data = getProducts;
+          }
+        });
+        if (data.length === 0) {
+          return;
+        }
+        this.products = data;
+      });
+    },
+    getCarts() {
+      if (!this.cartsNum) {
+        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+        this.axios.get(api).then((res) => {
+          const { carts } = res.data.data;
+          let num = 0;
+          carts.forEach((i) => {
+            num += i.qty;
+            this.cartsNum = num;
+          });
+        });
+      }
+    },
+    renderCarts() {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      this.axios.get(api).then((res) => {
+        this.carts = res.data.data.carts;
+      });
+    },
+    onChange(e) {
+      const { value } = e.target;
+      if (value === '價格排序低到高' && this.products.length > 1) {
+        this.products.sort((a, b) => a.price - b.price);
+      } else if (value === '價格排序高到低' && this.products.length > 1) {
+        this.products.sort((b, a) => a.price - b.price);
+      }
+    },
+    addFav(item) {
+      if (this.favoriteData.includes(item.id)) {
+        this.favoriteData.splice(this.favoriteData.indexOf(item.id), 1);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: '成功移除收藏',
+        });
+      } else {
+        this.favoriteData.push(item.id);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: '成功加入收藏',
+        });
+      }
+      localStorage.setItem('fav', JSON.stringify(this.favoriteData));
+      emitter.emit('updateNum');
+    },
+    updateFav() {
+      this.favoriteData = JSON.parse(localStorage.getItem('fav')) || [];
+    },
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll);
+    this.getData();
+    this.updateFav();
   },
 };
 </script>
