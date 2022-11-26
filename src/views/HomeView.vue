@@ -12,7 +12,14 @@
             <span class="d-none">eslint</span>
           </a>
           <div class="position-absolute top-50 start-50 translate-middle">
-            <h1 class="tracking-widest text-nowrap">軟在口中，甜在心上。</h1>
+            <span class="badge bg-warning text-dark"
+            style="font-size: 1rem">全站免運費中</span>
+            <h1 class="tracking-widest font-bold text-nowrap pt-2">專業、健康、新鮮現做的甜點店</h1>
+            <h2 class="tracking-widest mb-5">軟在口中，甜在心上。</h2>
+            <router-link to="/user/products" class="href-none d-block text-center">
+              <w-button class="w-btn">前往商店
+              </w-button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -25,10 +32,10 @@
           <div class="position-absolute top-50 translate-middle-y ps-5 tracking-widest">
             <h3>巧克力系列</h3>
             <p class="mb-2 mb-md-3">現正7折優惠中！</p>
-            <a href="/#/user/products" class="href-none">
+            <router-link to="/user/products" class="href-none">
               <w-button class="w-btn">前往商店
               </w-button>
-            </a>
+            </router-link>
           </div>
         </div>
         <div class="col-12 col-md-6 my-2 position-relative" data-aos="fade-left">
@@ -37,10 +44,10 @@
           <div class="position-absolute top-50 translate-middle-y ps-5 tracking-widest">
             <h3>杯子蛋糕系列</h3>
             <p class="mb-2 mb-md-3">現正7折優惠中！</p>
-            <a href="/#/user/products" class="href-none">
+            <router-link to="/user/products" class="href-none">
               <w-button class="w-btn">前往商店
               </w-button>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -48,6 +55,13 @@
       <div class="row">
         <div class="col-12 text-center my-5">
           <h3 class="title-01">熱銷商品</h3>
+        </div>
+        <div class="col-12 text-center pt-5"
+          :class="{ 'd-none': productLoading }">
+          <div class="spinner-border text-light" role="status"
+          style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
         <div class="col-6 col-md-6 col-lg-4 col-xl-3 mb-5"
         v-for="item,index in products"
@@ -69,7 +83,7 @@
               </div>
               <div class="fav position-absolute end-0 top-0"
               @click.stop="addFav(item,index)" @keydown="addFav(item,index)">
-                <i class="bi fs-2 mx-2"
+                <i class="bi mx-2 fs-1"
                 :class="favoriteData.includes(item.id) ? 'bi-heart-fill' : 'bi-heart'">
                 </i>
               </div>
@@ -101,10 +115,10 @@
         </div>
         </div>
         <div class="col-12 text-center my-5">
-          <a href="/#/user/products" class="href-none">
+          <router-link to="/user/products" class="href-none">
             <w-button class="w-btn">看更多
             </w-button>
-          </a>
+          </router-link>
         </div>
       </div>
       <div class="line my-5"></div>
@@ -115,10 +129,10 @@
           <h1 class="title-01">客製化訂單</h1>
           <p class="pb-5 p-01">始終找不到您心中幻想的甜點嗎？<br>
             <span>( 聯絡我們提供想法、溝通報價 )</span></p>
-          <a href="/#/user/contact" class="href-none">
+          <router-link to="/user/contact" class="href-none">
             <w-button class="w-btn">聯絡我們
             </w-button>
-          </a>
+          </router-link>
         </div>
         <div class="col-12 col-md-6">
           <swiper ref="{swiperRef}"
@@ -272,6 +286,7 @@ export default {
       carts: {},
       favoriteData: [],
       history: [],
+      productLoading: true,
     };
   },
   components: {
@@ -290,7 +305,9 @@ export default {
     },
     getData() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+      this.productLoading = false;
       this.axios.get(api).then((res) => {
+        this.productLoading = true;
         this.products = res.data.products.filter((item) => {
           if (item.num <= 5 && item.num > 0) {
             return item;

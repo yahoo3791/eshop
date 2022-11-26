@@ -22,10 +22,17 @@
     <div class="container pt-utility text-white position-relative">
       <!-- 購物車空時 -->
       <div class="row">
+        <div class="col-12 text-center pt-5"
+          :class="{ 'd-none': productLoading }">
+          <div class="spinner-border text-light" role="status"
+          style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
         <div class="col-12 text-center"
         :class="{ 'd-none': orderOpen }"
           style="padding: 20vh 0;">
-          <h1 class="">目前購物車是空的<br>快去逛逛吧！！</h1>
+          <h1 class="title-01">購物車無加入商品</h1>
           <router-link to="/user/products" class="text-decoration-none">
             <w-button class="mt-5 w-btn">前往商城</w-button>
           </router-link>
@@ -52,14 +59,14 @@
         </div>
         <div class="row">
           <div class="col-12 mt-4 mb-2" v-for="item,key in cartsData" :key="item.id">
-            <div class="d-flex d-md-none justify-content-between pb-2 tracking-wide">
+            <div class="d-flex d-md-none justify-content-between pb-2 mb-2 tracking-wide">
               <w-button class="w-btn ms-2"
                 @click="open(item,key)">編輯
               </w-button>
               <p>{{item.product.category}}類</p>
             </div>
             <div class="d-md-none cartsInput-sm-container
-              position-absolute mx-auto mt-3 mb-2 text-white"
+              position-absolute mx-auto mt-1 mb-2 text-white"
               ref="left"
               style="transform: translateX(-500px);">
               <div class="d-flex">
@@ -97,10 +104,10 @@
                     </span>
                   </p>
                   <p class="leading-7 tracking-wider text-lg">
-                    單價:{{ item.product.price }}$
+                    單價{{ item.product.price }}$
                   </p>
                   <p class="leading-7 d-block tracking-wider text-xl">
-                    金額{{ $filters.currency( item.total ) }}$
+                    小計{{ $filters.currency( item.total ) }}$
                   </p>
                 </div>
               </div>
@@ -112,6 +119,7 @@
                   <div class="cartsInput-md-input text-xl">
                     <label for="num" class="d-block h-100">
                       <input id="num" name="num" v-model="item.qty" type="text" min="1"
+                        style="max-width:120px"
                         class="d-block border rounded-0 bg-dark
                         text-center text-white border w-100"
                         @change="updateQty(item.id, key)"
@@ -178,6 +186,7 @@ export default {
       selection1: false,
       deleteItem: {},
       num: 1,
+      productLoading: true,
     };
   },
   components: {
@@ -187,9 +196,11 @@ export default {
     getData() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.orderOpen = true;
+      this.productLoading = false;
       this.axios.get(api).then((res) => {
         this.orderTotal = res.data.data;
         this.cartsData = res.data.data.carts;
+        this.productLoading = true;
         if (this.cartsData.length === 0) {
           this.orderHide = true;
           this.orderOpen = false;

@@ -15,17 +15,21 @@
             class="nav-link py-3 animated fadeInDown"
             style="animation-duration: .5s;">首頁
           </router-link>
+          <router-link to="/user/contact"
+          class="nav-link py-3 animated fadeInDown"
+          style="animation-duration: .5s;">聯絡我們
+          </router-link>
           <router-link to="/user/products"
             class="nav-link py-3 animated fadeInDown"
-            style="animation-duration: 1s;">商品
+            style="animation-duration: .5s;">商品
           </router-link>
           <div class="d-flex justify-content-center animated fadeInDown"
-          style="animation-duration: 1.5s;">
+          style="animation-duration: .5s;">
             <router-link to="/user/carts"
             class="nav-link px-3 py-3 position-relative" data-bs-toggle="tooltip"
               data-bs-placement="bottom" title="購物車">
               <i class="bi bi-cart-fill me-1 position-relative"
-              style="font-size:1em">
+              style="font-size:18px">
                 <span :class="{'d-none': cartsNum == 0 }" ref="cartsNum"
                 class="d-block position-absolute navbar-badge navbar-badge-md
                   animated">{{cartsNum}}
@@ -36,7 +40,7 @@
             class="nav-link px-3 py-3 position-relative" data-bs-toggle="tooltip"
               data-bs-placement="bottom" title="我的最愛">
               <i class="bi bi-heart-fill me-1 position-relative"
-              style="font-size:1em">
+              style="font-size:18px">
                 <span :class="{'d-none': favoriteData.length == 0 }" ref="fav"
                 class="d-block position-absolute navbar-badge navbar-badge-md
                   animated">{{favoriteData.length}}
@@ -46,12 +50,12 @@
             <div @click="login" @keypress="login"
             class="nav-link px-3 py-3 position-relative cursor-pointer"
               data-bs-toggle="tooltip" data-bs-placement="bottom" title="會員">
-              <i class="bi bi-person-fill me-1" style="font-size:1em"></i>
+              <i class="bi bi-person-fill me-1" style="font-size:18px"></i>
             </div>
             <router-link to="/user/checkOrder"
             class="nav-link px-3 py-3 position-relative" data-bs-toggle="tooltip"
               data-bs-placement="bottom" title="查詢訂單">
-              <i class="bi bi-clipboard2-minus-fill me-1" style="font-size:1em"></i>
+              <i class="bi bi-clipboard2-minus-fill me-1" style="font-size:18px"></i>
             </router-link>
           </div>
         </div>
@@ -78,10 +82,16 @@
         title="回到首頁">
         首頁
         </router-link>
-        <router-link to="/user/products" class="nav-link px-3 py-3">
+        <router-link to="/user/contact"
+        class="nav-link py-3">
+        聯絡我們
+        </router-link>
+        <router-link to="/user/products"
+        class="nav-link px-3 py-3">
         商品
         </router-link>
-        <router-link to="/user/carts" class="nav-link px-3 py-3 position-relative"
+        <router-link to="/user/carts"
+        class="nav-link px-3 py-3 position-relative"
           data-bs-toggle="tooltip"
           data-bs-placement="bottom"
           title="購物車">

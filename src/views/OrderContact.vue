@@ -6,7 +6,7 @@
         <div class="col-12 col-md-6">
           <div class="d-flex justify-content-between align-items-center pb-3 mb-3"
           style="border-bottom: 1px solid #404040;">
-            <h1 class="mb-0 text-center tracking-widest font-bold text-3xl">訂購人資訊</h1>
+            <h1 class="mb-0 tracking-widest font-bold text-3xl">訂購人資訊</h1>
           </div>
           <Form @submit="submit">
             <div class="py-3 position-relative">
@@ -110,20 +110,20 @@
             <div class="text-2xl d-flex flex-column justify-content-between ps-3">
               <p class="tracking-wide font-semibold">{{item.product.title}}
               ({{item.product.unit}})</p>
-              <p class="leading-7 tracking-wider text-lg">單價:{{item.product.price}}$</p>
-              <p class="leading-7 tracking-wider text-lg">數量:{{item.qty}}</p>
-              <p class="leading-7 d-block tracking-wider text-xl">金額:{{item.total}}$</p>
+              <p class="leading-7 tracking-wider text-lg">單價{{item.product.price}}$</p>
+              <p class="leading-7 tracking-wider text-lg">數量{{item.qty}}</p>
+              <p class="leading-7 d-block tracking-wider text-xl">金額{{item.total}}$</p>
             </div>
           </div>
           <div class="text-white text-end tracking-widest font-semibold text-xl">
-            <div :class="{'d-none': coupon}">總金額:{{cartsData.total}}$
+            <div :class="{'d-none': coupon}">總金額{{cartsData.total}}$
             </div>
             <div class=""><del :class="{'d-none' : !coupon}"
-              style="text-decoration-color: red;">總金額:{{cartsData.total}}$</del></div>
+              style="text-decoration-color: red;">總金額{{cartsData.total}}$</del></div>
             <div
               class="col-12 pt-2 pb-3 text-red text-end tracking-widest font-semibold text-base">
               <p :class="{'d-none' : !coupon }">
-                折扣價:{{Math.round($filters.currency(cartsData.final_total))}}$
+                折扣價{{Math.round($filters.currency(cartsData.final_total))}}$
               </p>
             </div>
           </div>

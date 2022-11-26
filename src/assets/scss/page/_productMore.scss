@@ -41,21 +41,6 @@
     }
   }
 }
-@include media-breakpoint-down(sm) {
-  .productmore-item {
-    .numInput-item {
-      .counter {
-        height: 50px;
-      }
-      .numInput-prev,
-      .numInput-next {
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-      }
-    }
-  }
-}
 @include media-breakpoint-down(md) {
   .productmore-pic {
     max-width: 200px;

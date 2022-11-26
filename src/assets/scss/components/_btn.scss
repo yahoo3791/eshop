@@ -1,6 +1,6 @@
 /* 全局置頂按鈕 start */
 .scrollTop-container {
-  z-index: 100;
+  z-index: 10000000;
   bottom: 0px;
   transition: all .3s;
   transform: translateY(-20px);
@@ -80,6 +80,12 @@
   padding: 1rem 1.5rem !important;
   background: white !important;
 }
+.modal-btn {
+  font-size: 1.125rem !important;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 1rem 1.5rem !important;
+}
 .w-btn-product {
   font-size: 1.125rem !important;
   font-weight: 700;
@@ -94,8 +100,19 @@
   .w-btn {
     padding: 1.2rem 2rem !important;
   }
+  .modal-btn {
+    padding: 1.2rem 2rem !important;
+  }
   .slider-icon {
     margin-bottom: 50px;
   }
 }
 // 全局共用按鈕 end
+@media (max-width:375px) {
+  .scrollTop-container {
+      .scrollTop-btn {
+        width: 40px;
+        height: 40px;
+      }
+    }
+}

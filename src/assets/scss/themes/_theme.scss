@@ -41,3 +41,13 @@ body {
     padding-top: 80px;
   }
 }
+@media (max-width:424px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (max-width:320px) {
+  html {
+    font-size: 10px;
+  }
+}

@@ -19,11 +19,11 @@
   </div>
 </loading>
   <div class="bg-dark">
-    <div class="container-fluid pt-utility">
+    <div class="container pt-utility">
       <div class="row">
         <div class="col-12">
           <nav aria-label="breadcrumb">
-            <ol class="breadcrumb p-2 breadcrumb-style tracking-wider">
+            <ol class="breadcrumb py-2 px-1 p-md-2 breadcrumb-style tracking-wider">
               <li class="breadcrumb-item">
                 <a class="text-black text-decoration-none" href="#">首頁</a>
               </li>
@@ -31,11 +31,14 @@
             </ol>
           </nav>
         </div>
-        <div class="col-12 d-n"
-          :class="{ 'd-block' : this.favoriteData.length == 0}">
-          <h1 class="text-white text-center fs-4"
+        <div class="col-12 d-n text-center"
+          :class="{ 'd-block' : this.favoriteData.length == 0}"
           style="padding:20vh 0;">
-          我的收藏是空的<br>快去添加喜愛的商品吧！</h1>
+          <h1 class="title-01">
+          目前無收藏商品</h1>
+          <router-link to="/user/products" class="text-decoration-none">
+            <w-button class="mt-5 w-btn">前往商城</w-button>
+          </router-link>
         </div>
         <div class="col-12 col-md-3" :class="{ 'd-none' :this.favoriteData.length <= 1 }">
           <div class="px-0 px-md-0 d-flex flex-wrap justify-content-end
@@ -55,6 +58,13 @@
                 </select>
               </div>
             </label>
+          </div>
+        </div>
+        <div class="col-12 col-md-9 text-center pt-5"
+        :class="{ 'd-none': productLoading }">
+          <div class="spinner-border text-light" role="status"
+          style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
           </div>
         </div>
         <div class="col-12 col-md-9 text-white mt-3"
@@ -79,7 +89,7 @@
                   <div @click.stop="addFav(item,index)"
                     @keydown="addFav(item,index)"
                     class="fav position-absolute end-0 top-0">
-                    <i class="bi fs-2 mx-2"
+                    <i class="bi fs-1 mx-2"
                     :class="favoriteData.includes(item.id) ? 'bi-heart-fill' : 'bi-heart'"></i>
                   </div>
                 </div>
@@ -138,15 +148,18 @@ export default {
       products: [],
       filterData: [],
       isLoading: false,
+      productLoading: true,
     };
   },
   components: { Navbar, Footer, Loading },
   methods: {
     getData() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+      this.productLoading = false;
       this.axios.get(api).then((res) => {
         this.products = res.data.products;
         if (res.data.success) {
+          this.productLoading = true;
           this.getFavoriteData();
         }
       });

@@ -2,7 +2,7 @@
   <div class="modal fade" id="exampleModal" tabindex="-1"
   aria-labelledby="exampleModalLabel" aria-hidden="true"
   ref="modal">
-    <div class="modal-dialog modal-sm" style="margin:30vh auto;">
+    <div class="modal-dialog" style="margin:30vh auto;">
       <div class="modal-content text-black">
         <div class="modal-header">
           <button type="button"
@@ -11,14 +11,14 @@
             aria-label="Close">
           </button>
         </div>
-        <div class="modal-body tracking-widest font-bold text-lg text-center">
+        <div class="modal-body title-01 text-center py-5">
           清除購物車
         </div>
         <div class="modal-footer">
-          <w-button class="" bg-color="black" color="white"
+          <w-button class="modal-btn" bg-color="black" color="white"
           data-bs-dismiss="modal">取消
           </w-button>
-          <w-button class="" bg-color="red" color="white"
+          <w-button class="modal-btn" bg-color="red" color="white"
           @click="this.$emit('checkDeleteAll')">確定刪除
           </w-button>
         </div>

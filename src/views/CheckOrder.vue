@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-10 col-md-6 mx-auto text-white text-center"
         style="padding-top:20vh; padding-bottom:10vh">
-          <h1 class="text-xl">查詢訂單</h1>
+          <h1 class="title-01">查詢訂單</h1>
           <div class="d-flex py-3">
             <input id="message" name="留言"
             class="carts-input p-2 border-0 border-bottom text-white tracking-wider"
@@ -41,17 +41,17 @@
     :class="{'d-none': !getOrder}">
       <div class="row">
         <div class="col-10 col-md-6 mx-auto">
-          <h3 class="text-base pb-3 mt-5"
+          <h3 class="tracking-widest font-bold text-3xl pb-3 mt-5"
           style="border-bottom: 1px solid #404040;">訂購人資訊</h3>
           <div class="row">
             <div class="col-12 text-white mb-5 d-flex">
-              <div class="text-base">
+              <div class="text-base tracking-widest text-lg">
                 <p class="py-1">聯絡人姓名</p>
                 <p class="py-1">聯絡人信箱</p>
                 <p class="py-1">聯絡人手機</p>
                 <p class="py-1">收件人地址</p>
               </div>
-              <div class="ps-3">
+              <div class="ps-3 tracking-widest text-lg">
                 <p class="py-1">{{user.name}}</p>
                 <p class="py-1">{{user.email}}</p>
                 <p class="py-1">{{user.tel}}</p>
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="row">
-            <h3 class="text-base pb-3 mt-3"
+            <h3 class="tracking-widest font-bold text-3xl pb-3 mt-3"
             style="border-bottom: 1px solid #404040;">商品資訊</h3>
             <div class="col-12 text-white mb-5">
               <div class="payCart-item border-bottom d-flex py-3"
@@ -69,25 +69,26 @@
                 class="d-block"
                 style="max-width: 100px;" alt="cartImage">
                 <div class="text-sm d-flex flex-column justify-content-between ps-3">
-                  <p>{{item.product.title}}</p>
-                  <p>{{item.product.category}}類</p>
-                  <p><i class="bi bi-x"></i>{{item.qty}}</p>
-                  <p>{{item.total}}<i class="bi bi-currency-dollar"></i></p>
+                  <p class="text-2xl">{{item.product.title}}</p>
+                  <p class="leading-7 tracking-wider text-lg">
+                    <i class="bi bi-x"></i>{{item.qty}}</p>
+                  <p class="leading-7 d-block tracking-wider text-xl">
+                    {{item.total}}<i class="bi bi-currency-dollar"></i></p>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <h3 class="text-base pb-3 mt-3"
+            <h3 class="tracking-widest font-bold text-3xl pb-3 mt-3"
             style="border-bottom: 1px solid #404040;">付款資訊</h3>
-            <div class="col-12">
+            <div class="col-12 tracking-widest text-lg">
               <p>訂單時間: {{ $filters.date(order.create_at)}}</p>
-              <p class="py-1">訂單編號: {{order.id}}</p>
-              <div v-for="item,k in order.products" :key="k">
+              <p class="py-1">訂單編號:<br>{{order.id}}</p>
+              <!-- <div v-for="item,k in order.products" :key="k">
                 <p v-if="!item.coupon == 0">{{ item.product.title }} 已使用優惠卷，
                 折扣{{ Math.round($filters.currency(item.total
                 - item.final_total)) }}$</p>
-              </div>
+              </div> -->
               <p class="py-1">金額 {{ Math.round($filters.currency(order.total)) }}$</p>
               <p class="py-1" v-if="order.is_paid === true">付款完成</p>
               <p class="py-1" v-else-if="order.is_paid === false">尚未付款</p>

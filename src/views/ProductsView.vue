@@ -52,6 +52,13 @@
           </label>
           </div>
         </div>
+        <div class="col-12 text-center pt-5"
+          :class="{ 'd-none': productLoading }">
+          <div class="spinner-border text-light" role="status"
+            style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
         <div class="col-12 col-md-9 mx-auto">
           <div class="row">
             <div class="col-6 col-md-6 col-lg-4 col-xl-3 mb-5"
@@ -76,7 +83,7 @@
                   <div class="fav position-absolute end-0 top-0"
                   @click.stop="addFav(item,index)"
                   @keydown="addFav(item,index)">
-                    <i class="bi fs-2 mx-2"
+                    <i class="bi fs-1 mx-2"
                       :class="favoriteData.includes(item.id) ? 'bi-heart-fill' : 'bi-heart'">
                     </i>
                   </div>
@@ -149,6 +156,7 @@ export default {
       favoriteData: [],
       filterBar: false,
       history: [],
+      productLoading: true,
     };
   },
   components: { Navbar, Footer, Loading },
@@ -156,8 +164,10 @@ export default {
   methods: {
     getData() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+      this.productLoading = false;
       this.axios.get(api).then((res) => {
         this.products = res.data.products;
+        this.productLoading = true;
       });
     },
     more(id) {
