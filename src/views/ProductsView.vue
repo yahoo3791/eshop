@@ -18,7 +18,6 @@
   </div>
 </loading>
   <Navbar />
-  <div class="bg-dark">
     <div class="container-fluid pt-utility">
       <div class="row">
         <div class="col-12 col-md-9 mx-auto p-0">
@@ -119,7 +118,38 @@
             </div>
           </div>
         </div>
+        <!-- START -->
       </div>
+    </div>
+    <div class="container">
+      <nav aria-label="...">
+        <ul class="pagination d-flex justify-content-center">
+          <li class="page-item"
+            :class="{ 'disabled': !this.pagination.has_pre,
+            'cursor-pointer': this.pagination.has_pre }">
+            <a class="page-link" style="color: gray"
+            @click.prevent="getData(pagination.current_page - 1)"
+            @keypress="getData(pagination.current_page - 1)">&laquo;</a>
+          </li>
+          <li class="page-item active-gray"
+            v-for="page in pagination.total_pages" :key="page"
+            @click.prevent="getData(page)"
+            @keypress="getData(page)">
+            <a class="page-link" href="#"
+            :class="{ 'active-E6': page === pagination.current_page }"
+            style="color:gray">
+              {{ page }}
+            </a>
+          </li>
+          <li class="page-item"
+            :class="{ 'disabled': !this.pagination.has_next,
+              'cursor-pointer': this.pagination.has_next}">
+            <a class="page-link" style="color: gray"
+            @click.prevent="getData(pagination.current_page + 1)"
+            @keypress="getData(pagination.current_page + 1)">&raquo;</a>
+          </li>
+        </ul>
+      </nav>
     </div>
     <div
     :class="{ 'scrollIconMoveIn':!scrollIcon  }"
@@ -132,7 +162,6 @@
         class="scrollTop-btn d-block">
       </div>
     </div>
-  </div>
 <Footer />
 </template>
 <script>
@@ -157,15 +186,17 @@ export default {
       filterBar: false,
       history: [],
       productLoading: true,
+      pagination: {},
     };
   },
   components: { Navbar, Footer, Loading },
   mixins: [scrollMixins],
   methods: {
-    getData() {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+    getData(page = 1) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products?page=${page}`;
       this.productLoading = false;
       this.axios.get(api).then((res) => {
+        this.pagination = res.data.pagination;
         this.products = res.data.products;
         this.productLoading = true;
       });
@@ -246,26 +277,6 @@ export default {
       });
       this.renderCarts();
       emitter.emit('updateCartsNum');
-    },
-    productsFilter(e) {
-      const clickText = e;
-      this.clickText = e;
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
-      this.axios.get(api).then((res) => {
-        const getProducts = res.data.products;
-        let data = [];
-        getProducts.forEach((item) => {
-          if (clickText === item.category) {
-            data.push(item);
-          } else if (clickText === '全部雜誌') {
-            data = getProducts;
-          }
-        });
-        if (data.length === 0) {
-          return;
-        }
-        this.products = data;
-      });
     },
     getCarts() {
       if (!this.cartsNum) {

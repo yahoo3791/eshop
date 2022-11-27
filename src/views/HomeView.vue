@@ -393,26 +393,6 @@ export default {
       this.renderCarts();
       emitter.emit('updateCartsNum');
     },
-    productsFilter(e) {
-      const clickText = e;
-      this.clickText = e;
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
-      this.axios.get(api).then((res) => {
-        const getProducts = res.data.products;
-        let data = [];
-        getProducts.forEach((item) => {
-          if (clickText === item.category) {
-            data.push(item);
-          } else if (clickText === '全部雜誌') {
-            data = getProducts;
-          }
-        });
-        if (data.length === 0) {
-          return;
-        }
-        this.products = data;
-      });
-    },
     getCarts() {
       if (!this.cartsNum) {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
