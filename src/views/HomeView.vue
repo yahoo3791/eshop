@@ -14,7 +14,7 @@
           <div class="position-absolute top-50 start-50 translate-middle">
             <span class="badge bg-warning text-dark"
             style="font-size: 1rem">全站免運費中</span>
-            <h1 class="tracking-widest font-bold text-nowrap pt-2">專業、健康、新鮮現做的甜點店</h1>
+            <h1 class="font-bold text-nowrap pt-2">專業、健康、新鮮現做的甜點店</h1>
             <h2 class="tracking-widest mb-5">軟在口中，甜在心上。</h2>
             <router-link to="/user/products" class="href-none d-block text-center">
               <w-button class="w-btn">前往商店

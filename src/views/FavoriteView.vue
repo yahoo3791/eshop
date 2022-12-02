@@ -60,8 +60,9 @@
             </label>
           </div>
         </div>
-        <div class="col-12 col-md-9 text-center pt-5"
-        :class="{ 'd-none': productLoading }">
+        <div class="col-12 text-center pt-5"
+        :class="{ 'd-none': productLoading }"
+        v-if="this.favoriteData.length !== 0">
           <div class="spinner-border text-light" role="status"
           style="width: 3rem; height: 3rem;">
             <span class="visually-hidden">Loading...</span>

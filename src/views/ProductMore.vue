@@ -134,7 +134,8 @@
   <!-- swiper -->
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-md-9 py-5 text-white">
+      <div class="col-12 col-md-9 py-5 text-white"
+      v-if="productHistory.length >= 2">
         <h4 class="pb-2 tracking-wide font-medium text-xl"
         style="border-bottom:1px solid #404040">您可能喜歡這些</h4>
         <div class="swiper-container">
@@ -179,9 +180,50 @@
           </swiper>
         </div>
       </div>
+    <!-- START -->
+      <div class="col-12 col-md-9 py-5 text-white"
+      v-else-if="productHistory.length === 1">
+        <h4 class="pb-2 tracking-wide font-medium text-xl"
+        style="border-bottom:1px solid #404040">相似的商品</h4>
+        <div class="swiper-container">
+          <swiper ref="{swiperRef}"
+          :slidesPerView="2"
+          :centeredSlides="true"
+          :spaceBetween="30"
+          :navigation="true"
+          :modules="modules"
+          class="mySwiper">
+            <swiper-slide v-for="item,index in sameProduct"
+              :key="index"
+              class="flex-column">
+              <div class="mx-auto product-content-container cursor-pointer"
+                @click.stop="more(item.id, index)"
+                @keydown="more(item.id, index)"
+                style="max-width:250px">
+                <img :src="item.imageUrl" alt="">
+                <h5 class="product-content-h5 text-base font-medium tracking-wide py-2">
+                  {{ item.title }}
+                </h5>
+                <p class="product-p">${{ item.price }}</p>
+                <div v-if="item.num >= 1"
+                  :class="{'opacity-75': this.isLoading === true }"
+                  :disabled="this.isLoading ===true"
+                  class="mt-2 w-btn-product"
+                  @click.stop="addCart(item.id, $event)"
+                  @keydown="addCart(item.id, $event)">
+                  <div class="d-none spinner-border spinner-border-sm" role="status">
+                  </div>加入購物車
+                </div>
+                <div v-else class="w-btn-product mt-2 opacity-50" @click.stop>
+                  已售完
+                </div>
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- END -->
 </div>
 <Footer/>
 </template>
@@ -213,6 +255,7 @@ export default {
       num: 1,
       isLoading: false,
       productHistory: [],
+      sameProduct: [],
     };
   },
   components: {
@@ -344,6 +387,11 @@ export default {
             this.productHistory.push(history);
           }
         });
+      });
+      this.productAll.forEach((item) => {
+        if (this.productHistory[0].category === item.category) {
+          this.sameProduct.push(item);
+        }
       });
     },
     more(id) {

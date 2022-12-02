@@ -29,8 +29,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-9 mx-auto p-0"
-        :class="{'d-none': filterBar}">
+        <div class="col-12 col-md-9 mx-auto p-0">
           <div class="ps-3 px-md-0 d-flex flex-wrap justify-content-end
           align-items-center my-3">
             <label for="sort"
@@ -118,7 +117,6 @@
             </div>
           </div>
         </div>
-        <!-- START -->
       </div>
     </div>
     <div class="container">
@@ -181,9 +179,7 @@ export default {
       isLoading: false,
       cartsNum: 0,
       carts: {},
-      openDrawer: false,
       favoriteData: [],
-      filterBar: false,
       history: [],
       productLoading: true,
       pagination: {},
@@ -355,13 +351,6 @@ export default {
       },
       immediate: true,
     },
-  },
-  created() {
-    window.addEventListener('resize', () => {
-      if (document.body.clientWidth >= 768) {
-        this.filterBar = false;
-      }
-    });
   },
   mounted() {
     this.getData();

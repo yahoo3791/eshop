@@ -109,7 +109,6 @@ export default {
       this.axios.get(api).then((res) => {
         this.isLoading = false;
         this.Data = res.data.products;
-        console.log(this.Data);
         this.Pagination = res.data.pagination;
       });
     },
