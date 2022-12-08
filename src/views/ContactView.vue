@@ -62,7 +62,7 @@
               <div class="col-12 text-center pb-5"
               data-aos="fade-up"
               data-aos-delay="500">
-                <p>客服時間:週一至週五,上午7:00~下午17:00</p>
+                <p>◎ 客服時間:週一至週五,上午7:00~下午17:00</p>
               </div>
             </div>
           </div>

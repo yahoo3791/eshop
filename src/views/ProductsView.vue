@@ -68,8 +68,11 @@
               @click.prevent="more(item.id,$event,index)"
               @keydown="more(item.id,$event,index)">
                 <span class="badge bg-danger position-absolute"
-                v-if="(item.num <= 5)"
+                v-if="(item.num <= 5 && item.num >= 1)"
                 style="z-index:5; top:15px; left:15px">HOT</span>
+                <span class="badge bg-dark opacity-50 position-absolute"
+                v-else-if="(item.num === 0)" style="z-index:5; top:15px; left:15px"
+                >SOLD OUT</span>
                 <div class="product-item position-relative">
                   <w-image :src="item.imageUrl"
                   class="position-relative w-100 h-100 product-img" alt="雜誌圖片">

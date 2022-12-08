@@ -42,18 +42,27 @@
             </ol>
           </nav>
       </div>
+      <div class="col-12 text-center pt-5"
+        :class="{ 'd-none': productLoading }">
+        <div class="spinner-border text-light"
+          role="status"
+          style="width: 3rem; height: 3rem;">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
     </div>
   </div>
   <!-- END -->
   <!-- content -->
-  <div class="container">
+  <div class="container"
+    :class="{'d-none': !productLoading }">
     <div class="row justify-content-center align-items-center">
       <div class="col-12 col-md-4">
         <div class=" position-relative cursor-pointer overflow-hidden"
           @click="showSingle"
           @keypress="showSingle">
           <img :src="product.imageUrl" class="w-100 h-100" alt="productImage">
-            <div class="position-absolute swiper-bg top-0"></div>ß
+            <div class="position-absolute swiper-bg top-0"></div>
         </div>
         <vue-easy-lightbox
           :visible="visibleRef"
@@ -66,7 +75,12 @@
         <div class="">
           <div class="">
             <h1 class="text-2xl font-bold
-            tracking-wider my-4 mb-md-4 text-white">{{product.title}}
+            tracking-wider my-4 mb-md-4 text-white">
+            <span class="badge bg-danger"
+            v-if="(product.num <= 5 && product.num >= 1)">HOT</span>
+            <span class="badge bg-secondary opacity-50"
+            v-else-if="(product.num === 0)">SOLD OUT</span>
+            {{product.title}}
             ({{product.unit}})
             </h1>
           </div>
@@ -75,11 +89,12 @@
             <p class="my-5">{{product.description}}</p>
           </div>
           <div class="">
-            <h4>保存方式</h4>
-            <p>
-            ｜最佳賞味期限｜<br>
+            <h4 class="mb-4">保存方式</h4>
+            <p>｜最佳賞味期限｜<br>
             可冷藏保存1週，冷凍保存2週。請見商品標示日期。<br>
             建議放入冷藏前請將蛋糕用保鮮盒密封好，再存放食用前於室溫回溫20-30分鐘風味更佳！開封後請儘速食用完畢。<br>
+            </p>
+            <p class="mt-3">
             餅乾：常溫密封約可保存2週，冷凍密封約可保存2-3個月，回溫即可食用。<br>
             蛋糕：放置冷藏約可保存5天。<br>
             慕斯：密封冷藏約可保存2-3天，密封冷凍約可保存7-10天，回溫即可食用。
@@ -160,7 +175,10 @@
                   class="product-content-h5 text-base font-medium tracking-wide py-2">
                   {{ item.title }}
                 </h5>
-                <p class="product-p">${{ item.price }}</p>
+                <p class="product-content">
+                  <del>{{ item.origin_price }}$</del>/
+                  <span class="product-p">優惠價{{ item.price }}$</span>
+                </p>
                 <div v-if="item.num >= 1"
                   :class="{'opacity-75': this.isLoading === true }"
                   :disabled="this.isLoading ===true"
@@ -204,7 +222,10 @@
                 <h5 class="product-content-h5 text-base font-medium tracking-wide py-2">
                   {{ item.title }}
                 </h5>
-                <p class="product-p">${{ item.price }}</p>
+                <p class="product-content">
+                  <del>{{ item.origin_price }}$</del>/
+                  <span class="product-p">優惠價{{ item.price }}$</span>
+                </p>
                 <div v-if="item.num >= 1"
                   :class="{'opacity-75': this.isLoading === true }"
                   :disabled="this.isLoading ===true"
@@ -254,6 +275,7 @@ export default {
       product: {},
       num: 1,
       isLoading: false,
+      productLoading: true,
       productHistory: [],
       sameProduct: [],
     };
@@ -286,8 +308,10 @@ export default {
   methods: {
     getData() {
       const id = this.$route.params.productId;
+      this.productLoading = false;
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`;
       this.axios.get(api).then((res) => {
+        this.productLoading = true;
         this.product = res.data.product;
       });
     },
