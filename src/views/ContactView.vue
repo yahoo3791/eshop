@@ -75,7 +75,8 @@
                     tracking-wide text-lg">*聯絡人姓名</h3>
                 <Field id="name" name="姓名" rules="required" type="text"
                   class="carts-input w-100 p-2 border-0 border-bottom text-white"
-                  placeholder="請輸入姓名">
+                  placeholder="請輸入姓名"
+                  v-model="this.formData.user.name">
                 </Field>
                 <br>
                 <ErrorMessage style="color:#ff4343"
@@ -83,11 +84,11 @@
                 </ErrorMessage>
               </div>
               <div class="py-3 position-relative">
-                <h3 class="tracking-wide text-lg">性別</h3>
-                <w-radio class="ps-2" color="white" value="male" name="gendor">
+                <h3 class="tracking-wide text-lg">*性別</h3>
+                <w-radio class="ps-2" color="white" value="male" name="gendor" v-model="gendor">
                   <p class="text-white">男</p>
                 </w-radio>
-                <w-radio class="ps-3" color="white" value="female" name="gendor">
+                <w-radio class="ps-3" color="white" value="female" name="gendor" v-model="gendor">
                   <p class="text-white">女</p>
                 </w-radio>
               </div>
@@ -98,7 +99,8 @@
                 <Field id="email" name="信箱" rules="required|email"
                   type="email" class="carts-input w-100 p-2
                   border-0 border-bottom text-white"
-                  placeholder="請輸入電子信箱">
+                  placeholder="請輸入電子信箱"
+                  v-model="formData.user.email">
                 </Field>
                 <br>
                 <ErrorMessage style="color:#ff4343"
@@ -110,7 +112,8 @@
                   tracking-widest text-lg" for="phone">*聯絡人手機</h3>
                   <Field id="phone" name="手機" rules="required" type="tel"
                     class="carts-input w-100 p-2 border-0 border-bottom text-white"
-                    placeholder="請輸入手機號碼">
+                    placeholder="請輸入手機號碼"
+                    v-model="formData.user.tel">
                   </Field>
                 <br>
                 <ErrorMessage style="color:#ff4343"
@@ -119,16 +122,17 @@
               </div>
               <div class="py-3 position-relative">
                 <label ref="formMessage" class="d-block formData-label
-                  tracking-wide text-lg pb-2" for="adress">*留言區
+                  tracking-wide text-lg pb-2" for="address">*留言區
                   <span class="text-sm tracking-wide opacity-75"></span>
                   <textarea name="" id="" cols="30" rows="10"
                     class="carts-textarea text-white border p-3 tracking-wide w-100"
-                    placeholder="留下疑問或需求" maxlength="300">
+                    placeholder="留下疑問或需求" maxlength="300"
+                    v-model="this.formData.message">
                   </textarea>
                 </label>
               </div>
               <div class="text-end mb-5 mt-3">
-                <w-button type="submit"
+                <w-button type="submit" @click="submit()"
                   class="w-btn">寄送
                 </w-button>
               </div>
@@ -143,11 +147,80 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
+import Swal from 'sweetalert2/dist/sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
 
 export default {
+  data() {
+    return {
+      formData: {
+        user: {
+          name: '',
+          email: '',
+          tel: '',
+        },
+        message: '',
+      },
+      gendor: '',
+    };
+  },
   components: { Navbar, Footer },
   methods: {
-    submit() {},
+    submit() {
+      if (this.formData.user.name === '' || this.formData.user.email === '' || this.formData.user.tel === '' || this.formData.message === '') {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'info',
+          title: '資料未完整填寫',
+        });
+      } else if (this.gendor !== true) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'info',
+          title: '請填寫性別欄位 <i class="bi bi-emoji-smile-fill"></i>',
+        });
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: '成功寄送<i class="bi bi-emoji-smile-fill"></i>',
+        });
+        this.formData.user.name = '';
+        this.formData.user.email = '';
+        this.formData.user.tel = '';
+        this.formData.message = '';
+      }
+    },
   },
 };
 </script>

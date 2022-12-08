@@ -12,7 +12,7 @@
             <div class="py-3 position-relative">
               <h3 class="d-block formData-label
                 tracking-wide text-lg" for="name">*聯絡人姓名</h3>
-                <Field id="name" v-model="this.formData.user.name" name="name" rules="required"
+                <Field id="name" v-model="this.formData.user.name" name="姓名" rules="required"
                   type="text" class="carts-input w-100 p-2 border-0 border-bottom text-white"
                   placeholder="請輸入姓名">
                 </Field>
@@ -21,7 +21,7 @@
               class="ps-2 position-absolute text-xs" name="姓名"></ErrorMessage>
             </div>
             <div class="py-3 position-relative">
-              <h3 class="tracking-wide text-lg">性別</h3>
+              <h3 class="tracking-wide text-lg">*性別</h3>
                 <w-radio class="ps-2" color="white"
                 value="male" name="gendor" id="gendor" v-model="gendor">
                   <p class="text-white">男</p>
@@ -35,7 +35,7 @@
               <h3 class="d-block formData-label
                 tracking-widest text-lg" for="email">
                 *聯絡人信箱</h3>
-                <Field id="email" v-model="formData.user.email" name="email"
+                <Field id="email" v-model="formData.user.email" name="信箱"
                   rules="required|email" type="email" class="carts-input w-100 p-2
                   border-0 border-bottom text-white" placeholder="請輸入電子信箱">
                 </Field>
@@ -47,7 +47,7 @@
             <div class="py-3 position-relative">
               <h3 class="d-block formData-label  tracking-widest text-lg"
                 for="phone">*聯絡人手機</h3>
-                <Field id="phone" v-model="formData.user.tel" name="phone" rules="required"
+                <Field id="phone" v-model="formData.user.tel" name="手機" rules="required"
                   type="tel" class="carts-input w-100 p-2 border-0 border-bottom text-white"
                   placeholder="請輸入手機號碼">
                 </Field>
@@ -60,7 +60,7 @@
             <div class="py-3 position-relative">
               <h3 class="d-block formData-label
                 tracking-widest text-lg" for="address">*收件人地址</h3>
-                <Field id="address" v-model="formData.user.address" name="address" rules="required"
+                <Field id="address" v-model="formData.user.address" name="地址" rules="required"
                   type="address" class="carts-input w-100 p-2 border-0 border-bottom text-white"
                   placeholder="請輸入完整地址">
                 </Field>
@@ -69,7 +69,7 @@
               class="ps-2 position-absolute text-xs" name="地址"></ErrorMessage>
             </div>
             <div class="py-3 position-relative">
-              <label ref="formMessage" class="ps-2 d-block formData-label
+              <label ref="formMessage" class=" d-block formData-label
                 tracking-wide text-lg" for="adress">備註<span
                 class="text-lg tracking-wide opacity-75"></span>
                 <input id="message" v-model="formData.message" name="留言"
@@ -188,7 +188,7 @@ export default {
   methods: {
     submit() {
       // 欄位勾選 ｏｋ
-      if (this.selection1 === false) {
+      if (this.formData.user.name === '' || this.formData.user.email === '' || this.formData.user.tel === '' || this.formData.user.address === '') {
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
@@ -202,11 +202,9 @@ export default {
         });
         Toast.fire({
           icon: 'info',
-          title: '確認資訊完成後<br>記得勾選確認欄位 <i class="bi bi-emoji-smile-fill"></i>',
+          title: '資料未完整填寫',
         });
-        return;
-      }
-      if (this.gendor !== true) {
+      } else if (this.gendor !== true) {
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
@@ -221,6 +219,23 @@ export default {
         Toast.fire({
           icon: 'info',
           title: '請填寫性別欄位 <i class="bi bi-emoji-smile-fill"></i>',
+        });
+        return;
+      } else if (this.selection1 === false) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'info',
+          title: '確認資訊完成後<br>記得勾選確認欄位 <i class="bi bi-emoji-smile-fill"></i>',
         });
         return;
       }
