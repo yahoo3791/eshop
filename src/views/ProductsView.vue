@@ -119,36 +119,6 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <nav aria-label="...">
-        <ul class="pagination d-flex justify-content-center">
-          <li class="page-item"
-            :class="{ 'disabled': !this.pagination.has_pre,
-            'cursor-pointer': this.pagination.has_pre }">
-            <a class="page-link" style="color: gray"
-            @click.prevent="getData(pagination.current_page - 1)"
-            @keypress="getData(pagination.current_page - 1)">&laquo;</a>
-          </li>
-          <li class="page-item active-gray"
-            v-for="page in pagination.total_pages" :key="page"
-            @click.prevent="getData(page)"
-            @keypress="getData(page)">
-            <a class="page-link" href="#"
-            :class="{ 'active-E6': page === pagination.current_page }"
-            style="color:gray">
-              {{ page }}
-            </a>
-          </li>
-          <li class="page-item"
-            :class="{ 'disabled': !this.pagination.has_next,
-              'cursor-pointer': this.pagination.has_next}">
-            <a class="page-link" style="color: gray"
-            @click.prevent="getData(pagination.current_page + 1)"
-            @keypress="getData(pagination.current_page + 1)">&raquo;</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
     <div
     :class="{ 'scrollIconMoveIn':!scrollIcon  }"
     ref="scrollTop"
@@ -188,8 +158,8 @@ export default {
   components: { Navbar, Footer, Loading },
   mixins: [scrollMixins],
   methods: {
-    getData(page = 1) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products?page=${page}`;
+    getData() {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
       this.productLoading = false;
       this.axios.get(api).then((res) => {
         this.pagination = res.data.pagination;

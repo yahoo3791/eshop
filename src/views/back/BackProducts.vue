@@ -107,6 +107,7 @@ export default {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`;
       this.isLoading = true;
       this.axios.get(api).then((res) => {
+        console.log(res);
         this.isLoading = false;
         this.Data = res.data.products;
         this.Pagination = res.data.pagination;

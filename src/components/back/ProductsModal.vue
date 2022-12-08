@@ -48,7 +48,7 @@
                   </div>
                   <div class="mb-3 col-md-6">
                     <label for="num" class="form-label w-100 font-medium tracking-wider">數量
-                      <input v-model="data.num" type="text"
+                      <input v-model="data.num" type="number"
                       class="form-control" id="num" placeholder="請輸入數量">
                     </label>
                   </div>
