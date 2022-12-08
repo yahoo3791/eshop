@@ -53,6 +53,7 @@
                   <option selected="selected" disabled="disabled"
                     style='display: none' value=''>選擇顯示方法
                   </option>
+                  <option value="熱銷商品">熱銷商品</option>
                   <option value="價格排序低到高">價格排序低到高</option>
                   <option value="價格排序高到低">價格排序高到低</option>
                 </select>
@@ -73,9 +74,13 @@
           <div class="row d-flex flex-wrap align-items-center">
             <div class="col-6 col-md-6 col-lg-4 mb-5"
             v-for="item,index in filterData" :key="index">
-              <div class="text-white product-content-container mx-auto cursor-pointer"
+              <div class="text-white product-content-container
+              mx-auto cursor-pointer position-relative"
               @click.prevent="more(item.id,$event,index)"
               @keydown="more(item.id,$event,index)">
+                <span class="badge bg-danger position-absolute"
+                v-if="(item.num <= 5)"
+                style="z-index:5; top:15px; left:15px">HOT</span>
                 <div class="product-item position-relative">
                   <w-image :src="item.imageUrl"
                     class="position-relative w-100 h-100 product-img"
@@ -270,6 +275,8 @@ export default {
         this.filterData.sort((a, b) => a.price - b.price);
       } else if (value === '價格排序高到低' && this.filterData.length > 1) {
         this.filterData.sort((b, a) => a.price - b.price);
+      } else if (value === '熱銷商品' && this.products.length > 1) {
+        this.filterData.sort((a, b) => a.num - b.num);
       }
     },
   },

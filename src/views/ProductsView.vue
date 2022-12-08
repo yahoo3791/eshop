@@ -43,6 +43,7 @@
                   disabled="disabled"
                   style='display: none' value=''>選擇顯示方法
                 </option>
+                <option value="熱銷商品">熱銷商品</option>
                 <option value="價格排序低到高">價格排序低到高</option>
                 <option value="價格排序高到低">價格排序高到低</option>
               </select>
@@ -67,7 +68,7 @@
               @click.prevent="more(item.id,$event,index)"
               @keydown="more(item.id,$event,index)">
                 <span class="badge bg-danger position-absolute"
-                v-if="item.num <= 5 && item.num >= 1"
+                v-if="(item.num <= 5)"
                 style="z-index:5; top:15px; left:15px">HOT</span>
                 <div class="product-item position-relative">
                   <w-image :src="item.imageUrl"
@@ -269,6 +270,8 @@ export default {
         this.products.sort((a, b) => a.price - b.price);
       } else if (value === '價格排序高到低' && this.products.length > 1) {
         this.products.sort((b, a) => a.price - b.price);
+      } else if (value === '熱銷商品' && this.products.length > 1) {
+        this.products.sort((a, b) => a.num - b.num);
       }
     },
     addFav(item) {
