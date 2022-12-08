@@ -156,3 +156,8 @@
   height: 335px;
 }
 }
+@media (max-width: 319px) {
+  .product-unit {
+    display: none;
+  }
+}

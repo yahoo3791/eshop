@@ -6,7 +6,7 @@
   cursor: pointer;
   .navbar-icon span {
     height: 2px;
-    background: $secondary-BF;
+    background: $base-color;
     border-radius: 10px;
   }
   .navbar-icon span:nth-child(1),
@@ -28,10 +28,11 @@
   display: none !important;
 }
 .navbar-md {
-  color: $secondary-BF;
+  color: $base-color;
 }
 a.router-link-active {
-  color: $secondary-E6;
+  color: $secondary-BF;
+  font-weight: 500;
 }
 .hideNavbar {
   top: -100px;

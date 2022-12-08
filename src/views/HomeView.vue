@@ -71,7 +71,7 @@
             @click.prevent="more(item.id,$event,index)"
             @keydown="more(item.id,$event,index)">
             <span class="badge bg-danger position-absolute"
-            style="z-index:5; top:15px; left:15px">HOT</span>
+            style="z-index:5; top:5%; left:5%">HOT</span>
             <div class="product-item position-relative">
               <w-image :src="item.imageUrl"
               class="position-relative w-100 h-100 product-img" alt="雜誌圖片">
@@ -90,7 +90,7 @@
             </div>
             <div class="product-content pt-1">
               <h5 class="product-content-h5 text-base font-medium tracking-wide">
-                {{ item.title }}({{ item.unit }})
+                {{ item.title }}<span class="product-unit">({{ item.unit }})</span>
               </h5>
               <div class="d-block d-md-flex justify-content-md-between">
                 <p>

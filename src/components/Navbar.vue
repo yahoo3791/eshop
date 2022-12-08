@@ -112,7 +112,7 @@
           <i class="bi bi-heart-fill me-1 position-relative"
           style="font-size:1em">
             <span
-              :class="{'d-none': favoriteData.length == 0 }"
+              :class="{ 'd-none': favoriteData.length == 0 }"
               ref="fav"
               class="d-block position-absolute navbar-badge navbar-badge-md
               animated">{{favoriteData.length}}

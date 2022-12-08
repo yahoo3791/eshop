@@ -69,9 +69,9 @@
               @keydown="more(item.id,$event,index)">
                 <span class="badge bg-danger position-absolute"
                 v-if="(item.num <= 5 && item.num >= 1)"
-                style="z-index:5; top:15px; left:15px">HOT</span>
+                style="z-index:5; top:5%; left:5%">HOT</span>
                 <span class="badge bg-dark opacity-50 position-absolute"
-                v-else-if="(item.num === 0)" style="z-index:5; top:15px; left:15px"
+                v-else-if="(item.num === 0)" style="z-index:5; top:5%; left:5%"
                 >SOLD OUT</span>
                 <div class="product-item position-relative">
                   <w-image :src="item.imageUrl"
@@ -92,7 +92,7 @@
                 </div>
                 <div class="product-content pt-1">
                   <h5 class="product-content-h5 text-base font-medium tracking-wide">
-                    {{ item.title }}({{ item.unit }})
+                    {{ item.title }}<span class="product-unit">({{ item.unit }})</span>
                   </h5>
                   <div class="d-block d-md-flex justify-content-md-between">
                     <p>
