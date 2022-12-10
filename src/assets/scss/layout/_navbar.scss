@@ -114,3 +114,16 @@ a.router-link-active {
   width: 50%;
   transition: all .2s ease-in-out;
 }
+.aaa {
+  transition: all .3s;
+  animation: name02 1s;
+}
+@keyframes name02 {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

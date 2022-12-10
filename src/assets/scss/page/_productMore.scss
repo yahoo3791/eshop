@@ -99,3 +99,18 @@
   border-bottom: 1px solid $secondary-40;
 }
 // bootstrap style change END//
+@media (max-width: 280px) {
+  .productmore-item {
+      .numInput-item {
+        .counter {
+          height: 25px;
+        }
+        .numInput-prev,
+        .numInput-next {
+          width: 25px;
+          height: 25px;
+          line-height: 25px;
+      }
+    }
+  }
+}

@@ -104,7 +104,7 @@
                 </div>
                 <div class="product-content pt-1">
                   <h5 class="product-content-h5 text-base font-medium tracking-wide">
-                    {{ item.title }}<span class="product-unit">({{ item.unit }})</span>
+                    {{ item.title }}
                   </h5>
                   <div class="d-flex justify-content-between">
                     <p>

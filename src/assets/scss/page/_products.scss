@@ -156,8 +156,8 @@
   height: 335px;
 }
 }
-@media (max-width: 319px) {
-  .product-unit {
-    display: none;
+@media (max-width: 280px) {
+  .product-content {
+    font-size: 12px;
   }
 }

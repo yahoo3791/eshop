@@ -81,31 +81,21 @@
             <span class="badge bg-secondary opacity-50"
             v-else-if="(product.num === 0)">SOLD OUT</span>
             {{product.title}}
-            ({{product.unit}})
             </h1>
           </div>
-          <div class="text-indent2rem p-01">
-            <p class="mt-5">{{ product.content }}</p>
-            <p class="my-5">{{product.description}}</p>
-          </div>
-          <div class="">
-            <h4 class="mb-4">保存方式</h4>
-            <p>｜最佳賞味期限｜<br>
-            可冷藏保存1週，冷凍保存2週。請見商品標示日期。<br>
-            建議放入冷藏前請將蛋糕用保鮮盒密封好，再存放食用前於室溫回溫20-30分鐘風味更佳！開封後請儘速食用完畢。<br>
-            </p>
-            <p class="mt-3">
-            餅乾：常溫密封約可保存2週，冷凍密封約可保存2-3個月，回溫即可食用。<br>
-            蛋糕：放置冷藏約可保存5天。<br>
-            慕斯：密封冷藏約可保存2-3天，密封冷凍約可保存7-10天，回溫即可食用。
-            </p>
+          <div class="p-01">
+            <p class="mt-5 text-indent2rem">{{ product.content }}</p>
+            <h5 class="mt-5">成份:</h5>
+            <p class="">{{product.description}}</p>
+            <h5 class="mt-5">尺寸:</h5>
+            <div class="type-btn">{{product.unit}}</div>
           </div>
         </div>
         <div class="productmore-item py-5">
-          <del class="text-white">原價：{{product.origin_price}}$</del>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="productmore-price d-inline-block">
-              <p class="font-semibold text-2xl text-red">優惠價：{{product.price}}$</p>
+          <div class="d-flex align-items-center">
+            <del class="text-white">原價{{product.origin_price}}$</del>
+            <div class="productmore-price d-inline-block ps-2">
+              <p class="font-semibold text-2xl text-red">優惠價{{product.price}}$</p>
             </div>
           </div>
           <div class="d-flex align-items-center justify-content-between mt-2">
@@ -125,6 +115,13 @@
               @keydown="add()"
               class="cursor-pointer numInput-next text-center">+</div>
             </div>
+            <div class="fav text-red ms-auto me-3 cursor-pointer"
+              @click.stop="addFav(product)"
+              @keydown="addFav(product)">
+              <i class="bi mx-2 fs-1"
+                :class="favoriteData.includes(product.id) ? 'bi-heart-fill' : 'bi-heart'">
+              </i>
+            </div>
             <div v-if="product.num >= 1 "
               :class="{'opacity-75': this.isLoading === true }"
               @click.prevent="addCart(product.id, $event)"
@@ -142,10 +139,25 @@
           </div>
         </div>
       </div>
+      <div class="line"></div>
+      <div class="col-12 col-md-9 mx-auto">
+        <div class="mb-5">
+          <h4 class="pb-2 tracking-wide font-medium text-xl"
+        style="border-bottom:1px solid #404040">保存方式</h4>
+          <p>｜最佳賞味期限｜<br>
+          可冷藏保存1週，冷凍保存2週。請見商品標示日期。<br>
+          建議放入冷藏前請將蛋糕用保鮮盒密封好，再存放食用前於室溫回溫20-30分鐘風味更佳！開封後請儘速食用完畢。<br>
+          </p>
+          <p class="mt-3">
+          餅乾：常溫密封約可保存2週，冷凍密封約可保存2-3個月，回溫即可食用。<br>
+          蛋糕：放置冷藏約可保存5天。<br>
+          慕斯：密封冷藏約可保存2-3天，密封冷凍約可保存7-10天，回溫即可食用。
+          </p>
+        </div>
+      </div>
     </div>
   </div>
   <!-- END -->
-  <div class="line"></div>
   <!-- swiper -->
   <div class="container">
     <div class="row justify-content-center">
@@ -278,6 +290,7 @@ export default {
       productLoading: true,
       productHistory: [],
       sameProduct: [],
+      favoriteData: [],
     };
   },
   components: {
@@ -404,7 +417,10 @@ export default {
       });
     },
     updateHistory() {
-      const data = JSON.parse(localStorage.getItem('setHistory')) || [];
+      const data = JSON.parse(localStorage.getItem('setHistory'));
+      if (data === null) {
+        return;
+      }
       this.productAll.forEach((history) => {
         data.forEach((i) => {
           if (history.id === i) {
@@ -421,10 +437,53 @@ export default {
     more(id) {
       this.$router.replace(`/user/product/${id}`);
     },
+    addFav(item) {
+      if (this.favoriteData.includes(item.id)) {
+        this.favoriteData.splice(this.favoriteData.indexOf(item.id), 1);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: '成功移除收藏',
+        });
+      } else {
+        this.favoriteData.push(item.id);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: '成功加入收藏',
+        });
+      }
+      localStorage.setItem('fav', JSON.stringify(this.favoriteData));
+      emitter.emit('updateNum');
+    },
+    updateFav() {
+      this.favoriteData = JSON.parse(localStorage.getItem('fav')) || [];
+    },
   },
   mounted() {
     this.getData();
     this.getDataAll();
+    this.updateFav();
     setInterval(() => {
       localStorage.removeItem('setHistory');
     }, 3600000);
